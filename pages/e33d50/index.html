@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Spring整合Mybatis原理 | wen chao</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_3129839_xft6cqs5gc.css">
+    <meta name="description" content="架构进阶之路...">
+    <meta name="keywords" content="全栈博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,js,ES6,TypeScript,vue">
+    <meta name="theme-color" content="#11a8cd">
+    
+    <link rel="preload" href="/assets/css/0.styles.237ce36e.css" as="style"><link rel="preload" href="/assets/js/app.b2807c2b.js" as="script"><link rel="preload" href="/assets/js/2.eeaab5de.js" as="script"><link rel="preload" href="/assets/js/226.1f245007.js" as="script"><link rel="prefetch" href="/assets/js/10.30d760c8.js"><link rel="prefetch" href="/assets/js/100.d2a91f05.js"><link rel="prefetch" href="/assets/js/101.aa15113f.js"><link rel="prefetch" href="/assets/js/102.303aae62.js"><link rel="prefetch" href="/assets/js/103.39dbd83e.js"><link rel="prefetch" href="/assets/js/104.30434bc2.js"><link rel="prefetch" href="/assets/js/105.68d90558.js"><link rel="prefetch" href="/assets/js/106.2a47de1c.js"><link rel="prefetch" href="/assets/js/107.6c92802c.js"><link rel="prefetch" href="/assets/js/108.1a019470.js"><link rel="prefetch" href="/assets/js/109.f2cc4655.js"><link rel="prefetch" href="/assets/js/11.8c97a85c.js"><link rel="prefetch" href="/assets/js/110.8630d06d.js"><link rel="prefetch" href="/assets/js/111.fdf10f1a.js"><link rel="prefetch" href="/assets/js/112.ea841a58.js"><link rel="prefetch" href="/assets/js/113.bd8e761d.js"><link rel="prefetch" href="/assets/js/114.63ed667a.js"><link rel="prefetch" href="/assets/js/115.909a8353.js"><link rel="prefetch" href="/assets/js/116.62dab6c0.js"><link rel="prefetch" href="/assets/js/117.d0ef1d76.js"><link rel="prefetch" href="/assets/js/118.39e6e925.js"><link rel="prefetch" href="/assets/js/119.e0265f93.js"><link rel="prefetch" href="/assets/js/12.156b3963.js"><link rel="prefetch" href="/assets/js/120.4be98e6e.js"><link rel="prefetch" href="/assets/js/121.518d8dd5.js"><link rel="prefetch" href="/assets/js/122.477dd94b.js"><link rel="prefetch" href="/assets/js/123.d6065aca.js"><link rel="prefetch" href="/assets/js/124.c6f965c7.js"><link rel="prefetch" href="/assets/js/125.3ee79c35.js"><link rel="prefetch" href="/assets/js/126.bcc69ad9.js"><link rel="prefetch" href="/assets/js/127.8f3ce1ac.js"><link rel="prefetch" href="/assets/js/128.03c90841.js"><link rel="prefetch" href="/assets/js/129.ab248cd9.js"><link rel="prefetch" href="/assets/js/13.c67aac42.js"><link rel="prefetch" href="/assets/js/130.dd64983e.js"><link rel="prefetch" href="/assets/js/131.6ffe6940.js"><link rel="prefetch" href="/assets/js/132.2a8fed26.js"><link rel="prefetch" href="/assets/js/133.6a7673eb.js"><link rel="prefetch" href="/assets/js/134.c00b7bf2.js"><link rel="prefetch" href="/assets/js/135.59d75ce6.js"><link rel="prefetch" href="/assets/js/136.bcd27d57.js"><link rel="prefetch" href="/assets/js/137.75dd3384.js"><link rel="prefetch" href="/assets/js/138.a2ababbf.js"><link rel="prefetch" href="/assets/js/139.6aa75eaa.js"><link rel="prefetch" href="/assets/js/14.8ab9a27a.js"><link rel="prefetch" href="/assets/js/140.58295019.js"><link rel="prefetch" href="/assets/js/141.8d05c3a5.js"><link rel="prefetch" href="/assets/js/142.18498abf.js"><link rel="prefetch" href="/assets/js/143.20c6bdde.js"><link rel="prefetch" href="/assets/js/144.ac94f8ff.js"><link rel="prefetch" href="/assets/js/145.e135dd8a.js"><link rel="prefetch" href="/assets/js/146.13a537e3.js"><link rel="prefetch" href="/assets/js/147.016b19e9.js"><link rel="prefetch" href="/assets/js/148.d3a909f2.js"><link rel="prefetch" href="/assets/js/149.90d05716.js"><link rel="prefetch" href="/assets/js/15.2b8ce9c5.js"><link rel="prefetch" href="/assets/js/150.e61c5f29.js"><link rel="prefetch" href="/assets/js/151.c81aa646.js"><link rel="prefetch" href="/assets/js/152.82944cc0.js"><link rel="prefetch" href="/assets/js/153.410a3789.js"><link rel="prefetch" href="/assets/js/154.cc1235ef.js"><link rel="prefetch" href="/assets/js/155.1e7fae81.js"><link rel="prefetch" href="/assets/js/156.cfaa0244.js"><link rel="prefetch" href="/assets/js/157.47981f53.js"><link rel="prefetch" href="/assets/js/158.e9c295a1.js"><link rel="prefetch" href="/assets/js/159.50ba3574.js"><link rel="prefetch" href="/assets/js/16.a8b0b084.js"><link rel="prefetch" href="/assets/js/160.5845ca9d.js"><link rel="prefetch" href="/assets/js/161.0e97694f.js"><link rel="prefetch" href="/assets/js/162.3c77226a.js"><link rel="prefetch" href="/assets/js/163.17c9ec79.js"><link rel="prefetch" href="/assets/js/164.7736f87d.js"><link rel="prefetch" href="/assets/js/165.ff7b4f9e.js"><link rel="prefetch" href="/assets/js/166.6956307c.js"><link rel="prefetch" href="/assets/js/167.366611f7.js"><link rel="prefetch" href="/assets/js/168.57345d6b.js"><link rel="prefetch" href="/assets/js/169.25420ee7.js"><link rel="prefetch" href="/assets/js/17.68e41786.js"><link rel="prefetch" href="/assets/js/170.bedd4eac.js"><link rel="prefetch" href="/assets/js/171.374570cf.js"><link rel="prefetch" href="/assets/js/172.2f8bf4a8.js"><link rel="prefetch" href="/assets/js/173.42ea0d36.js"><link rel="prefetch" href="/assets/js/174.0ccfd7c6.js"><link rel="prefetch" href="/assets/js/175.7ab333d2.js"><link rel="prefetch" href="/assets/js/176.c7266816.js"><link rel="prefetch" href="/assets/js/177.d0a95fb6.js"><link rel="prefetch" href="/assets/js/178.2bb652ad.js"><link rel="prefetch" href="/assets/js/179.a8eab386.js"><link rel="prefetch" href="/assets/js/18.8e0d47a1.js"><link rel="prefetch" href="/assets/js/180.9fd22be7.js"><link rel="prefetch" href="/assets/js/181.5d5358d4.js"><link rel="prefetch" href="/assets/js/182.af7d36e2.js"><link rel="prefetch" href="/assets/js/183.dddc555d.js"><link rel="prefetch" href="/assets/js/184.a3396baf.js"><link rel="prefetch" href="/assets/js/185.2f7da675.js"><link rel="prefetch" href="/assets/js/186.92639766.js"><link rel="prefetch" href="/assets/js/187.711debd8.js"><link rel="prefetch" href="/assets/js/188.149256e6.js"><link rel="prefetch" href="/assets/js/189.c118aa93.js"><link rel="prefetch" href="/assets/js/19.770d847c.js"><link rel="prefetch" href="/assets/js/190.4d85ee4e.js"><link rel="prefetch" href="/assets/js/191.ff095a9a.js"><link rel="prefetch" href="/assets/js/192.4b5fe55c.js"><link rel="prefetch" href="/assets/js/193.415828fe.js"><link rel="prefetch" href="/assets/js/194.ce801921.js"><link rel="prefetch" href="/assets/js/195.c668b288.js"><link rel="prefetch" href="/assets/js/196.8825af00.js"><link rel="prefetch" href="/assets/js/197.d09dcd8b.js"><link rel="prefetch" href="/assets/js/198.396382cf.js"><link rel="prefetch" href="/assets/js/199.facc6630.js"><link rel="prefetch" href="/assets/js/20.97979961.js"><link rel="prefetch" href="/assets/js/200.db1ff45e.js"><link rel="prefetch" href="/assets/js/201.ab79fbd5.js"><link rel="prefetch" href="/assets/js/202.46e8525c.js"><link rel="prefetch" href="/assets/js/203.2cc13ae9.js"><link rel="prefetch" href="/assets/js/204.3c8a5bcd.js"><link rel="prefetch" href="/assets/js/205.3d0d8394.js"><link rel="prefetch" href="/assets/js/206.261623f6.js"><link rel="prefetch" href="/assets/js/207.6260c0aa.js"><link rel="prefetch" href="/assets/js/208.0fd63045.js"><link rel="prefetch" href="/assets/js/209.e5eaeeca.js"><link rel="prefetch" href="/assets/js/21.e6565c56.js"><link rel="prefetch" href="/assets/js/210.bccc650e.js"><link rel="prefetch" href="/assets/js/211.c238d796.js"><link rel="prefetch" href="/assets/js/212.dd4703ab.js"><link rel="prefetch" href="/assets/js/213.110becf0.js"><link rel="prefetch" href="/assets/js/214.a90d9da2.js"><link rel="prefetch" href="/assets/js/215.81872845.js"><link rel="prefetch" href="/assets/js/216.2ae9609f.js"><link rel="prefetch" href="/assets/js/217.567657f9.js"><link rel="prefetch" href="/assets/js/218.bc570e81.js"><link rel="prefetch" href="/assets/js/219.32a64945.js"><link rel="prefetch" href="/assets/js/22.92562bc3.js"><link rel="prefetch" href="/assets/js/220.d1605ea9.js"><link rel="prefetch" href="/assets/js/221.c1483dee.js"><link rel="prefetch" href="/assets/js/222.188d3bb6.js"><link rel="prefetch" href="/assets/js/223.b4d7fc4a.js"><link rel="prefetch" href="/assets/js/224.5495522d.js"><link rel="prefetch" href="/assets/js/225.ea320f20.js"><link rel="prefetch" href="/assets/js/227.280e3176.js"><link rel="prefetch" href="/assets/js/228.7ea12e2e.js"><link rel="prefetch" href="/assets/js/229.0697746f.js"><link rel="prefetch" href="/assets/js/23.4b595789.js"><link rel="prefetch" href="/assets/js/230.8efdd773.js"><link rel="prefetch" href="/assets/js/231.44bfbfb5.js"><link rel="prefetch" href="/assets/js/232.24dc2667.js"><link rel="prefetch" href="/assets/js/233.6c77b12b.js"><link rel="prefetch" href="/assets/js/234.1ea57e5c.js"><link rel="prefetch" href="/assets/js/235.efb990b9.js"><link rel="prefetch" href="/assets/js/236.2e8820ed.js"><link rel="prefetch" href="/assets/js/237.b108feed.js"><link rel="prefetch" href="/assets/js/238.22baaff8.js"><link rel="prefetch" href="/assets/js/239.ac2c0eba.js"><link rel="prefetch" href="/assets/js/24.b1f29ab1.js"><link rel="prefetch" href="/assets/js/240.1f419e38.js"><link rel="prefetch" href="/assets/js/241.e23fbc50.js"><link rel="prefetch" href="/assets/js/242.83b3226c.js"><link rel="prefetch" href="/assets/js/243.1ce8a9be.js"><link rel="prefetch" href="/assets/js/244.d7c93bdb.js"><link rel="prefetch" href="/assets/js/245.a1b402c0.js"><link rel="prefetch" href="/assets/js/246.7eeb5e18.js"><link rel="prefetch" href="/assets/js/247.b2c0ab4a.js"><link rel="prefetch" href="/assets/js/248.5b2dd7ed.js"><link rel="prefetch" href="/assets/js/249.6278d6f1.js"><link rel="prefetch" href="/assets/js/25.748022ff.js"><link rel="prefetch" href="/assets/js/250.e3114578.js"><link rel="prefetch" href="/assets/js/251.1f576677.js"><link rel="prefetch" href="/assets/js/252.7e83dd55.js"><link rel="prefetch" href="/assets/js/253.ab219365.js"><link rel="prefetch" href="/assets/js/254.31655221.js"><link rel="prefetch" href="/assets/js/255.402ba0fd.js"><link rel="prefetch" href="/assets/js/256.2f1f131a.js"><link rel="prefetch" href="/assets/js/257.cd0dac87.js"><link rel="prefetch" href="/assets/js/258.5e84f5d0.js"><link rel="prefetch" href="/assets/js/259.72cf210e.js"><link rel="prefetch" href="/assets/js/26.d566b8b1.js"><link rel="prefetch" href="/assets/js/260.ddfd8bc7.js"><link rel="prefetch" href="/assets/js/261.b074e8b6.js"><link rel="prefetch" href="/assets/js/262.e0b94776.js"><link rel="prefetch" href="/assets/js/263.2e66950f.js"><link rel="prefetch" href="/assets/js/264.f3ac339f.js"><link rel="prefetch" href="/assets/js/265.384c189b.js"><link rel="prefetch" href="/assets/js/266.635a72af.js"><link rel="prefetch" href="/assets/js/267.c9ede946.js"><link rel="prefetch" href="/assets/js/268.9ec888f5.js"><link rel="prefetch" href="/assets/js/269.2a81258c.js"><link rel="prefetch" href="/assets/js/27.3085f660.js"><link rel="prefetch" href="/assets/js/270.973f0998.js"><link rel="prefetch" href="/assets/js/271.de24bbf3.js"><link rel="prefetch" href="/assets/js/272.68e83c3c.js"><link rel="prefetch" href="/assets/js/273.d740150b.js"><link rel="prefetch" href="/assets/js/274.dc1b1f0c.js"><link rel="prefetch" href="/assets/js/275.cf028a33.js"><link rel="prefetch" href="/assets/js/276.351dbc96.js"><link rel="prefetch" href="/assets/js/277.6a9f5699.js"><link rel="prefetch" href="/assets/js/278.0c28ac6f.js"><link rel="prefetch" href="/assets/js/279.b14576ac.js"><link rel="prefetch" href="/assets/js/28.47957820.js"><link rel="prefetch" href="/assets/js/280.906a73b1.js"><link rel="prefetch" href="/assets/js/281.4173499d.js"><link rel="prefetch" href="/assets/js/282.43873aa6.js"><link rel="prefetch" href="/assets/js/283.2a3d0552.js"><link rel="prefetch" href="/assets/js/284.2c7aa3fb.js"><link rel="prefetch" href="/assets/js/285.a62f9799.js"><link rel="prefetch" href="/assets/js/286.2f0b6532.js"><link rel="prefetch" href="/assets/js/287.d770d01f.js"><link rel="prefetch" href="/assets/js/288.97207297.js"><link rel="prefetch" href="/assets/js/289.ddf5a46c.js"><link rel="prefetch" href="/assets/js/29.716c8a52.js"><link rel="prefetch" href="/assets/js/290.9f1b4436.js"><link rel="prefetch" href="/assets/js/291.885ac485.js"><link rel="prefetch" href="/assets/js/292.b1fe886b.js"><link rel="prefetch" href="/assets/js/293.f597359f.js"><link rel="prefetch" href="/assets/js/294.f559040e.js"><link rel="prefetch" href="/assets/js/295.ef66e1a4.js"><link rel="prefetch" href="/assets/js/296.47009685.js"><link rel="prefetch" href="/assets/js/297.fb7d20ba.js"><link rel="prefetch" href="/assets/js/298.cb1631f8.js"><link rel="prefetch" href="/assets/js/299.25f28097.js"><link rel="prefetch" href="/assets/js/3.9c10c990.js"><link rel="prefetch" href="/assets/js/30.b35b7ad0.js"><link rel="prefetch" href="/assets/js/300.ab5c587e.js"><link rel="prefetch" href="/assets/js/301.544c6982.js"><link rel="prefetch" href="/assets/js/302.70396486.js"><link rel="prefetch" href="/assets/js/303.fa1f3a02.js"><link rel="prefetch" href="/assets/js/304.c344682e.js"><link rel="prefetch" href="/assets/js/305.a0620b1d.js"><link rel="prefetch" href="/assets/js/306.8cb43e28.js"><link rel="prefetch" href="/assets/js/307.ee4d9e2d.js"><link rel="prefetch" href="/assets/js/308.bb04656d.js"><link rel="prefetch" href="/assets/js/309.b3e3c0be.js"><link rel="prefetch" href="/assets/js/31.af0fa05e.js"><link rel="prefetch" href="/assets/js/310.162df0c7.js"><link rel="prefetch" href="/assets/js/311.1a5e341e.js"><link rel="prefetch" href="/assets/js/312.9fe4ed85.js"><link rel="prefetch" href="/assets/js/313.e187b781.js"><link rel="prefetch" href="/assets/js/314.c832b372.js"><link rel="prefetch" href="/assets/js/315.66b7260d.js"><link rel="prefetch" href="/assets/js/316.074c1e65.js"><link rel="prefetch" href="/assets/js/317.9210b762.js"><link rel="prefetch" href="/assets/js/318.50ac3392.js"><link rel="prefetch" href="/assets/js/319.996a4c1b.js"><link rel="prefetch" href="/assets/js/32.81b4ee4b.js"><link rel="prefetch" href="/assets/js/320.661c3aa7.js"><link rel="prefetch" href="/assets/js/321.91d065c2.js"><link rel="prefetch" href="/assets/js/322.21d177e9.js"><link rel="prefetch" href="/assets/js/323.c240199c.js"><link rel="prefetch" href="/assets/js/324.fc71e18c.js"><link rel="prefetch" href="/assets/js/325.d441ab5e.js"><link rel="prefetch" href="/assets/js/326.6065a9e1.js"><link rel="prefetch" href="/assets/js/327.b68a9e0f.js"><link rel="prefetch" href="/assets/js/328.082fa547.js"><link rel="prefetch" href="/assets/js/329.17abf0b7.js"><link rel="prefetch" href="/assets/js/33.c41edd68.js"><link rel="prefetch" href="/assets/js/330.076712a3.js"><link rel="prefetch" href="/assets/js/331.b883690e.js"><link rel="prefetch" href="/assets/js/332.a942e6bd.js"><link rel="prefetch" href="/assets/js/333.e193acf6.js"><link rel="prefetch" href="/assets/js/334.5721c074.js"><link rel="prefetch" href="/assets/js/335.b759f5ec.js"><link rel="prefetch" href="/assets/js/336.8f786a4b.js"><link rel="prefetch" href="/assets/js/337.8ef80b90.js"><link rel="prefetch" href="/assets/js/338.8c63fda7.js"><link rel="prefetch" href="/assets/js/339.3df2ba0b.js"><link rel="prefetch" href="/assets/js/34.e166f3d5.js"><link rel="prefetch" href="/assets/js/340.e54bd836.js"><link rel="prefetch" href="/assets/js/341.1de3160e.js"><link rel="prefetch" href="/assets/js/342.52f64508.js"><link rel="prefetch" href="/assets/js/343.f56c914e.js"><link rel="prefetch" href="/assets/js/344.63033532.js"><link rel="prefetch" href="/assets/js/345.b23610d1.js"><link rel="prefetch" href="/assets/js/346.2c817177.js"><link rel="prefetch" href="/assets/js/347.bb20d78f.js"><link rel="prefetch" href="/assets/js/348.bba2b968.js"><link rel="prefetch" href="/assets/js/349.620d4fde.js"><link rel="prefetch" href="/assets/js/35.827d2ea3.js"><link rel="prefetch" href="/assets/js/350.a24a894c.js"><link rel="prefetch" href="/assets/js/351.9fc8ae8f.js"><link rel="prefetch" href="/assets/js/352.9229b958.js"><link rel="prefetch" href="/assets/js/353.ffe6628c.js"><link rel="prefetch" href="/assets/js/354.4f883a51.js"><link rel="prefetch" href="/assets/js/355.3232e481.js"><link rel="prefetch" href="/assets/js/356.52bb9172.js"><link rel="prefetch" href="/assets/js/357.4ee29887.js"><link rel="prefetch" href="/assets/js/358.22886190.js"><link rel="prefetch" href="/assets/js/359.1f40fcc5.js"><link rel="prefetch" href="/assets/js/36.7c80731a.js"><link rel="prefetch" href="/assets/js/360.630b9c12.js"><link rel="prefetch" href="/assets/js/37.6608ea0a.js"><link rel="prefetch" href="/assets/js/38.4c69b602.js"><link rel="prefetch" href="/assets/js/39.19f940a6.js"><link rel="prefetch" href="/assets/js/4.55a001d1.js"><link rel="prefetch" href="/assets/js/40.d3257c4f.js"><link rel="prefetch" href="/assets/js/41.89db1eaf.js"><link rel="prefetch" href="/assets/js/42.4a12d693.js"><link rel="prefetch" href="/assets/js/43.cbe3ed47.js"><link rel="prefetch" href="/assets/js/44.61c79193.js"><link rel="prefetch" href="/assets/js/45.ce5ed428.js"><link rel="prefetch" href="/assets/js/46.eea0f2fa.js"><link rel="prefetch" href="/assets/js/47.f3bd04d8.js"><link rel="prefetch" href="/assets/js/48.ed81abeb.js"><link rel="prefetch" href="/assets/js/49.978d3cae.js"><link rel="prefetch" href="/assets/js/5.fe551af2.js"><link rel="prefetch" href="/assets/js/50.e21176fc.js"><link rel="prefetch" href="/assets/js/51.2f5a0327.js"><link rel="prefetch" href="/assets/js/52.125f820a.js"><link rel="prefetch" href="/assets/js/53.4a1c114d.js"><link rel="prefetch" href="/assets/js/54.dfe3253b.js"><link rel="prefetch" href="/assets/js/55.5959dcbb.js"><link rel="prefetch" href="/assets/js/56.9d18670e.js"><link rel="prefetch" href="/assets/js/57.c238fb54.js"><link rel="prefetch" href="/assets/js/58.e221eedb.js"><link rel="prefetch" href="/assets/js/59.f628533d.js"><link rel="prefetch" href="/assets/js/6.4670d323.js"><link rel="prefetch" href="/assets/js/60.919ac5be.js"><link rel="prefetch" href="/assets/js/61.3a63b17e.js"><link rel="prefetch" href="/assets/js/62.e61011ad.js"><link rel="prefetch" href="/assets/js/63.55200ef4.js"><link rel="prefetch" href="/assets/js/64.7c19f83d.js"><link rel="prefetch" href="/assets/js/65.833da817.js"><link rel="prefetch" href="/assets/js/66.13f4f83f.js"><link rel="prefetch" href="/assets/js/67.0c77e799.js"><link rel="prefetch" href="/assets/js/68.cc0e543d.js"><link rel="prefetch" href="/assets/js/69.555bef08.js"><link rel="prefetch" href="/assets/js/7.90cda232.js"><link rel="prefetch" href="/assets/js/70.5d2ec40f.js"><link rel="prefetch" href="/assets/js/71.81f1af4b.js"><link rel="prefetch" href="/assets/js/72.8a66936f.js"><link rel="prefetch" href="/assets/js/73.2655fba2.js"><link rel="prefetch" href="/assets/js/74.ba0b3153.js"><link rel="prefetch" href="/assets/js/75.536955ba.js"><link rel="prefetch" href="/assets/js/76.3a946a81.js"><link rel="prefetch" href="/assets/js/77.9b243f6c.js"><link rel="prefetch" href="/assets/js/78.f580a907.js"><link rel="prefetch" href="/assets/js/79.38cbcc11.js"><link rel="prefetch" href="/assets/js/8.9cebf18a.js"><link rel="prefetch" href="/assets/js/80.e82012e8.js"><link rel="prefetch" href="/assets/js/81.73c65f97.js"><link rel="prefetch" href="/assets/js/82.ddfa06dd.js"><link rel="prefetch" href="/assets/js/83.b75fcea2.js"><link rel="prefetch" href="/assets/js/84.5e0efc6d.js"><link rel="prefetch" href="/assets/js/85.3a495ae2.js"><link rel="prefetch" href="/assets/js/86.1ebe8967.js"><link rel="prefetch" href="/assets/js/87.cd673062.js"><link rel="prefetch" href="/assets/js/88.f50e4960.js"><link rel="prefetch" href="/assets/js/89.06660ffb.js"><link rel="prefetch" href="/assets/js/9.04fce59d.js"><link rel="prefetch" href="/assets/js/90.aa61aeaf.js"><link rel="prefetch" href="/assets/js/91.865e8535.js"><link rel="prefetch" href="/assets/js/92.fd2d2a62.js"><link rel="prefetch" href="/assets/js/93.b185de83.js"><link rel="prefetch" href="/assets/js/94.f5290c38.js"><link rel="prefetch" href="/assets/js/95.be5b7fed.js"><link rel="prefetch" href="/assets/js/96.d442acd0.js"><link rel="prefetch" href="/assets/js/97.2f9b0746.js"><link rel="prefetch" href="/assets/js/98.3bba4945.js"><link rel="prefetch" href="/assets/js/99.cd82a6ed.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.237ce36e.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.png" alt="wen chao" class="logo"> <span class="site-name can-hide">wen chao</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Algorithm" class="dropdown-title"><a href="/Algorithm/" class="link-title">Algorithm</a> <span class="title" style="display:none;">Algorithm</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/d8e764/" class="nav-link">Theory</a></li><li class="dropdown-item"><!----> <a href="/pages/81a4bd/" class="nav-link">LeetCode</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Spring" class="dropdown-title"><a href="/Spring/" class="link-title">Spring</a> <span class="title" style="display:none;">Spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/373439/" class="nav-link">Spring</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Technology" class="dropdown-title"><a href="/Technology/" class="link-title">Technology</a> <span class="title" style="display:none;">Technology</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/3b6841/" class="nav-link">DB</a></li><li class="dropdown-item"><!----> <a href="/pages/d7857e/" class="nav-link">Linux</a></li><li class="dropdown-item"><!----> <a href="/pages/b89362/" class="nav-link">Redis</a></li><li class="dropdown-item"><!----> <a href="/pages/ec8b81/" class="nav-link">MongoDB</a></li><li class="dropdown-item"><!----> <a href="/pages/4e3ff1/" class="nav-link">Zookeeper</a></li><li class="dropdown-item"><!----> <a href="/pages/a75fef/" class="nav-link">MQ</a></li><li class="dropdown-item"><!----> <a href="/pages/b194d7/" class="nav-link">Dubbo</a></li><li class="dropdown-item"><!----> <a href="/pages/371f2f/" class="nav-link">ElasticSearch</a></li><li class="dropdown-item"><!----> <a href="/pages/027aa3/" class="nav-link">Workflow</a></li><li class="dropdown-item"><!----> <a href="/pages/73ab4b/" class="nav-link">OAuth2</a></li><li class="dropdown-item"><!----> <a href="/pages/d7a38a/" class="nav-link">JPA</a></li><li class="dropdown-item"><!----> <a href="/pages/eb5dc1/" class="nav-link">Liquibase</a></li><li class="dropdown-item"><!----> <a href="/pages/e54277/" class="nav-link">Lombok</a></li><li class="dropdown-item"><!----> <a href="/pages/62e4f6/" class="nav-link">Git</a></li><li class="dropdown-item"><!----> <a href="/pages/13c836/" class="nav-link">Nginx</a></li><li class="dropdown-item"><!----> <a href="/pages/b50b3d/" class="nav-link">Mini Program</a></li><li class="dropdown-item"><!----> <a href="/pages/09d3b8/" class="nav-link">JVM</a></li><li class="dropdown-item"><!----> <a href="/pages/a526c7/" class="nav-link">Log</a></li><li class="dropdown-item"><!----> <a href="/pages/59cf4f/" class="nav-link">JDK</a></li><li class="dropdown-item"><!----> <a href="/pages/d50dab/" class="nav-link">Thymeleaf</a></li><li class="dropdown-item"><!----> <a href="/pages/97abaa/" class="nav-link">Maven</a></li><li class="dropdown-item"><!----> <a href="/pages/7879f1/" class="nav-link">Mybatis</a></li><li class="dropdown-item"><!----> <a href="/pages/745b7c/" class="nav-link">Network</a></li><li class="dropdown-item"><!----> <a href="/pages/274dac/" class="nav-link">Raspberrypi</a></li><li class="dropdown-item"><!----> <a href="/pages/87c097/" class="nav-link">Node</a></li><li class="dropdown-item"><!----> <a href="/pages/927664/" class="nav-link">HTML</a></li><li class="dropdown-item"><!----> <a href="/pages/2c3f19/" class="nav-link">Vue</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Other" class="dropdown-title"><a href="/Other/" class="link-title">Other</a> <span class="title" style="display:none;">Other</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/fea344/" class="nav-link">Book</a></li><li class="dropdown-item"><!----> <a href="/pages/d62f72/" class="nav-link">面试</a></li><li class="dropdown-item"><!----> <a href="/pages/f3d338/" class="nav-link">问题</a></li><li class="dropdown-item"><!----> <a href="/pages/ff202b/" class="nav-link">友链</a></li><li class="dropdown-item"><!----> <a href="/pages/2b746e/" class="nav-link">证券</a></li></ul></div></div><div class="nav-item"><a href="/About/" class="nav-link">About</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Index" class="dropdown-title"><a href="/archives/" class="link-title">Index</a> <span class="title" style="display:none;">Index</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="/img/touxiang-lanse.png"> <div class="blogger-info"><h3>wen chao</h3> <span>持之以恒做正确有价值的事!</span></div></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Algorithm" class="dropdown-title"><a href="/Algorithm/" class="link-title">Algorithm</a> <span class="title" style="display:none;">Algorithm</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/d8e764/" class="nav-link">Theory</a></li><li class="dropdown-item"><!----> <a href="/pages/81a4bd/" class="nav-link">LeetCode</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Spring" class="dropdown-title"><a href="/Spring/" class="link-title">Spring</a> <span class="title" style="display:none;">Spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/373439/" class="nav-link">Spring</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Technology" class="dropdown-title"><a href="/Technology/" class="link-title">Technology</a> <span class="title" style="display:none;">Technology</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/3b6841/" class="nav-link">DB</a></li><li class="dropdown-item"><!----> <a href="/pages/d7857e/" class="nav-link">Linux</a></li><li class="dropdown-item"><!----> <a href="/pages/b89362/" class="nav-link">Redis</a></li><li class="dropdown-item"><!----> <a href="/pages/ec8b81/" class="nav-link">MongoDB</a></li><li class="dropdown-item"><!----> <a href="/pages/4e3ff1/" class="nav-link">Zookeeper</a></li><li class="dropdown-item"><!----> <a href="/pages/a75fef/" class="nav-link">MQ</a></li><li class="dropdown-item"><!----> <a href="/pages/b194d7/" class="nav-link">Dubbo</a></li><li class="dropdown-item"><!----> <a href="/pages/371f2f/" class="nav-link">ElasticSearch</a></li><li class="dropdown-item"><!----> <a href="/pages/027aa3/" class="nav-link">Workflow</a></li><li class="dropdown-item"><!----> <a href="/pages/73ab4b/" class="nav-link">OAuth2</a></li><li class="dropdown-item"><!----> <a href="/pages/d7a38a/" class="nav-link">JPA</a></li><li class="dropdown-item"><!----> <a href="/pages/eb5dc1/" class="nav-link">Liquibase</a></li><li class="dropdown-item"><!----> <a href="/pages/e54277/" class="nav-link">Lombok</a></li><li class="dropdown-item"><!----> <a href="/pages/62e4f6/" class="nav-link">Git</a></li><li class="dropdown-item"><!----> <a href="/pages/13c836/" class="nav-link">Nginx</a></li><li class="dropdown-item"><!----> <a href="/pages/b50b3d/" class="nav-link">Mini Program</a></li><li class="dropdown-item"><!----> <a href="/pages/09d3b8/" class="nav-link">JVM</a></li><li class="dropdown-item"><!----> <a href="/pages/a526c7/" class="nav-link">Log</a></li><li class="dropdown-item"><!----> <a href="/pages/59cf4f/" class="nav-link">JDK</a></li><li class="dropdown-item"><!----> <a href="/pages/d50dab/" class="nav-link">Thymeleaf</a></li><li class="dropdown-item"><!----> <a href="/pages/97abaa/" class="nav-link">Maven</a></li><li class="dropdown-item"><!----> <a href="/pages/7879f1/" class="nav-link">Mybatis</a></li><li class="dropdown-item"><!----> <a href="/pages/745b7c/" class="nav-link">Network</a></li><li class="dropdown-item"><!----> <a href="/pages/274dac/" class="nav-link">Raspberrypi</a></li><li class="dropdown-item"><!----> <a href="/pages/87c097/" class="nav-link">Node</a></li><li class="dropdown-item"><!----> <a href="/pages/927664/" class="nav-link">HTML</a></li><li class="dropdown-item"><!----> <a href="/pages/2c3f19/" class="nav-link">Vue</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Other" class="dropdown-title"><a href="/Other/" class="link-title">Other</a> <span class="title" style="display:none;">Other</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/fea344/" class="nav-link">Book</a></li><li class="dropdown-item"><!----> <a href="/pages/d62f72/" class="nav-link">面试</a></li><li class="dropdown-item"><!----> <a href="/pages/f3d338/" class="nav-link">问题</a></li><li class="dropdown-item"><!----> <a href="/pages/ff202b/" class="nav-link">友链</a></li><li class="dropdown-item"><!----> <a href="/pages/2b746e/" class="nav-link">证券</a></li></ul></div></div><div class="nav-item"><a href="/About/" class="nav-link">About</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Index" class="dropdown-title"><a href="/archives/" class="link-title">Index</a> <span class="title" style="display:none;">Index</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Book</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>性能调优专题</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>并发编程专题</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>源码框架专题</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/pages/6f13ef/" class="sidebar-link">Spring源码</a></li><li><a href="/pages/615c1c/" class="sidebar-link">Spring核心API</a></li><li><a href="/pages/883153/" class="sidebar-link">Spring IOC</a></li><li><a href="/pages/e5e86f/" class="sidebar-link">Spring AOP</a></li><li><a href="/pages/f958e8/" class="sidebar-link">Spring声明式事务源码</a></li><li><a href="/pages/3a0c9d/" class="sidebar-link">Spring MVC</a></li><li><a href="/pages/e73dd4/" class="sidebar-link">Spring解决循环依赖</a></li><li><a href="/pages/b8bd50/" class="sidebar-link">Spring事件监听机制</a></li><li><a href="/pages/8ddff3/" class="sidebar-link">Spring设计模式</a></li><li><a href="/pages/8b0b75/" class="sidebar-link">spring事务的隔离传播机制</a></li><li><a href="/pages/ed1d6a/" class="sidebar-link">Mybatis基础</a></li><li><a href="/pages/e200a1/" class="sidebar-link">Mybatis执行SQL流程分析</a></li><li><a href="/pages/e33d50/" aria-current="page" class="active sidebar-link">Spring整合Mybatis原理</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level2"><a href="/pages/e33d50/#前言" class="sidebar-link">前言</a></li><li class="sidebar-sub-header level2"><a href="/pages/e33d50/#mybatis集成spring" class="sidebar-link">Mybatis集成Spring:</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/pages/e33d50/#_1-mybatis集成spring的适配器源码下载" class="sidebar-link">1.Mybatis集成Spring的适配器源码下载：</a></li><li class="sidebar-sub-header level3"><a href="/pages/e33d50/#_2-spring集成mybatis" class="sidebar-link">2.Spring集成MyBatis</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/pages/e33d50/#_1-sqlsessionfactorybean" class="sidebar-link">1.SqlSessionFactoryBean</a></li><li class="sidebar-sub-header level2"><a href="/pages/e33d50/#_2-spring是怎么管理mapper接口的动态代理的" class="sidebar-link">2.Spring是怎么管理Mapper接口的动态代理的</a></li></ul></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>微服务专题</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>项目实战专题</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>设计模式专题</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>面试</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>问题</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>友链</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>证券</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-06225672><div class="articleInfo" data-v-06225672><ul class="breadcrumbs" data-v-06225672><li data-v-06225672><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-06225672></a></li> <li data-v-06225672><a href="/Other/#Other" data-v-06225672>Other</a></li><li data-v-06225672><a href="/Other/#Book" data-v-06225672>Book</a></li><li data-v-06225672><a href="/Other/#源码框架专题" data-v-06225672>源码框架专题</a></li></ul> <div class="info" data-v-06225672><div title="作者" class="author iconfont icon-touxiang" data-v-06225672><a href="https://nylg.gitee.io" target="_blank" title="作者" class="beLink" data-v-06225672>wen chao</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-06225672><a href="javascript:;" data-v-06225672>2022-06-18</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABH1JREFUSA3tVl1oHFUUPmdmd2ltklqbpJDiNnXFmgbFktho7YMPNiJSSZM0+CAYSkUELVhM6YuwIPpgoOKDqOBDC0XE2CQoNtQXBUFTTcCi+Wlh1V2TQExsUzcltd3M9Tt3ZjZzZ2fT+OJTL8yeM+eee757fmeJbq//KQL8X3DUSFOcfr7cRsRtxNQMWueeVzOkaITIGqQHNg5y8+jNW9ldM7A6nTpAjuolUikAwq7CE3WcM2RRDz+XGVgN3FptU/aUSlvq9Pa3iZ1+sgAqJyyAFqkipd9dqiwHF3P65YycLWc/6sqGrvoEoIp6DOFaX5h6+dnfjkWprwqsPk0dUGq5vySwDImC10KxFHgGL1SWoc92O3eVht09qdXNH11I2SsTsJYqMWzihqGMi+A+Garf3BAuuLI5oGlULyNfyB/HYNujwktOfRrMr5t77NmevqaUopx0grnKAyvVpmwUDB4x6FPXuGvYLTDwWsejwgtgkYKPqRJg8SV6xaiZ3ZTppGneS4yfH5/66fZSDHv+QZci/+h5c5UHtpy67JUqGppM0sh0Nc1dW6/N1W5Yoqat8/TU/VnadmdeW2PLLSyh0cvxBs3KbqTmwYPpxN4do/mzE8nEpvX/UMu2Wbp74zUAK5q6WkHns7V0eWkdPbPzd3rxkTGybadYySumVzhcaJFbs5UrEkQ/+CK8gF5dnh/6ciIZ73gwQ927L1IitoxKLXYP3SjYdOrHHfTZhRRlFyrorafPk20B3HPD1y2G3qKZME5Jcf3t/HUC13/8tSd++vqFveMUTwAUxSUFI1QekR1+bIze3D9MF2aq6cPvG72CgnldWCFqyRw3lwH8ZMerjTD9ElRO7Gv44wNpC90aASqGfVlz/Rx17srQ57/UU26hkhQqUB7dBR71WmzQhHUnblGmVOEw0jhbV1n9OlXUDCIRGaNV5Jp43N516fN7JmnTHdfp7Hgy0luO4aMhtkLL8Bi3bUWYvzh5Mn1dTxrL6QmGuRhGL/TiTTxRoEdTszSaq9GR0NGA3KdkOz3hqSV3MIDhQ5IVX/Ivx3umBti2es2h4eZby7x8br1rkf7Mo90AqC8aQ3sJeNzqFRu+vSANAQe3PL7l0HGOAdwDCeZYvNKeoZp1Qfs6Aipndh86HmFRi0LAnEO47wsqM6cdfjh3jBPUzhZy7nvlUfFsamED1VQt6aISHVymXZ/B2aCtIG8AI8xfobj2d3en1wWVhOeHELKmLQ1s211s88comkv4UCwWyF787mJdYXtNfhKAXVqnKTq8QZvGAGGOfaTo5pGZ/PwbUCr5+DPr/1J92JNHr9aOl/F3iI5+O1nfybsGxoimvZ3ViWSluDITw3P37mypheDIPY0tw7+O/5ApbkYw+zpfaUVu32Pi98+defdUhEpZkRFq0aqyNh9FuL9hpYbEm6iwi0z2REd09ZmyENEbuhjDWzKvZXTqKYaBIr3tt5kuPtQBZFvEUwHt60vfCNu41XsksH9Ij1BMMz1Y0OOunHNShFIP5868g5zeXmuLwL9T4b6Q2+KejgAAAABJRU5ErkJggg==">Spring整合Mybatis原理<!----></h1>  <div class="theme-vdoing-content content__default"><div class="language- line-numbers-mode"><pre class="language-text"><code>U2FsdGVkX193qLUs1fpb9m6NiHKZYUPlJY7oOo6SArn745xyZ+EF8YmU3ahCpjNb
+i46negdFlb/IVS/l29hr+XtdahrE1UTYA58cUW19ieRM/Q+fKwcL9YOAmfEpkgq4
+TA==
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h2 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h2> <p>Spring整合MyBatis的原理也是一道非常高频的面试题， 下面我们一起来记录一下其中的原理，  主要是Spring是怎么管理MyBatis中的Mapper动态代理的。</p> <h2 id="mybatis集成spring"><a href="#mybatis集成spring" class="header-anchor">#</a> Mybatis集成Spring:</h2> <h3 id="_1-mybatis集成spring的适配器源码下载"><a href="#_1-mybatis集成spring的适配器源码下载" class="header-anchor">#</a> 1.Mybatis集成Spring的适配器源码下载：</h3> <p>1.https://github.com/mybatis/spring</p> <p>下载时注意版本：</p> <p><img src="https://gitee.com/nylg/picture/raw/master/spring/image-20220618102247031.png" alt="image-20220618102247031"></p> <p>2.为了在Spring源码中能够看到MyBatis的源码，需要将Mybatis的源码和MyBatis-Spring的源码 设置标识名称和添加安装源码到本地仓库的插件：</p> <p>​</p> <p><img src="https://gitee.com/nylg/picture/raw/master/spring/image-20220618102259124.png" alt="image-20220618102259124"></p> <p>​</p> <p><img src="https://gitee.com/nylg/picture/raw/master/spring/image-20220618102307996.png" alt="image-20220618102307996"></p> <p>安装源码到本地仓库的插件：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;plugin&gt;
+  &lt;artifactId&gt;maven-source-plugin&lt;/artifactId&gt;
+  &lt;version&gt;3.0.1&lt;/version&gt;
+  &lt;configuration&gt;
+    &lt;attach&gt;true&lt;/attach&gt;
+  &lt;/configuration&gt;
+  &lt;executions&gt;
+    &lt;execution&gt;
+      &lt;phase&gt;compile&lt;/phase&gt;
+      &lt;goals&gt;
+        &lt;goal&gt;jar&lt;/goal&gt;
+      &lt;/goals&gt;
+    &lt;/execution&gt;
+  &lt;/executions&gt;
+&lt;/plugin&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>​</p> <h3 id="_2-spring集成mybatis"><a href="#_2-spring集成mybatis" class="header-anchor">#</a> 2.Spring集成MyBatis</h3> <p>1.在Spring源码中添加Mybatis集成测试模块：</p> <p>​</p> <p><img src="https://gitee.com/nylg/picture/raw/master/spring/image-20220618102345478.png" alt="image-20220618102345478"></p> <p>2.添加gradle依赖：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>repositories {
+    mavenLocal()  //优先从本地仓库中获取
+    mavenCentral()
+}
+
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile(&quot;mysql:mysql-connector-java:5.1.46&quot;)
+    compile(&quot;com.alibaba:druid:1.1.8&quot;)
+    compile(&quot;org.mybatis:mybatis-spring:2.0.3-xsls&quot;)
+    compile(&quot;org.mybatis:mybatis:3.5.3-xsls&quot;)
+    compile(&quot;org.projectlombok:lombok:1.18.4&quot;)
+    compile(&quot;com.github.pagehelper:pagehelper:4.1.6&quot;)
+    optional(project(&quot;:spring-context&quot;))
+    compile(project(&quot;:spring-jdbc&quot;))
+    compile(&quot;ch.qos.logback:logback-core:1.1.2&quot;)
+    compile(&quot;ch.qos.logback:logback-classic:1.1.2&quot;)
+    compile(&quot;org.slf4j:slf4j-api:1.7.7&quot;)
+    optional(project(&quot;:spring-aop&quot;))
+    compile(project(&quot;:spring-jdbc&quot;)) 
+    compile(&quot;org.mybatis.caches:mybatis-ehcache:1.1.0&quot;)
+    compile(&quot;net.sf.ehcache:ehcache-core:2.6.11&quot;)
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><p><img src="https://gitee.com/nylg/picture/raw/master/spring/image-20220618102420547.png" alt="image-20220618102420547"></p> <p><strong>保证的已经将本地仓库配置在上图任意settings中， gradle才会去maven本地仓库去找</strong></p> <p>3.添加mybatis的测试代码：</p> <p>请参考提供的项目， 这里就不一一放代码了...  放上配置类：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>@EnableTransactionManagement
+@Configuration
+@MapperScan(basePackages = {&quot;com.tuling.mapper&quot;})
+@ComponentScan(basePackages = {&quot;com.tuling&quot;})
+@Repository
+public class MyBatisConfig {    // =====&gt;   spring.xml
+
+
+   /**
+    * &lt;bean class=&quot;com.alibaba.druid.pool.DruidDataSource&quot; id=&quot;dataSource&quot;&gt;  &lt;/bean&gt;
+    *
+    * &lt;bean class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot; id=&quot;sqlSessionFactory&quot;&gt;
+    *     datasource
+    *     mapper文件的路径
+    *     别名
+    *
+    *   &lt;/bean&gt;
+    *
+    *   &lt;mapper-scan basePackage=&quot;&quot;/&gt;
+    * @return
+    * @throws IOException
+    */
+   @Bean    // =====  &gt;    &lt;bean  class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
+   public SqlSessionFactoryBean sqlSessionFactory( ) throws IOException {
+      SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
+      factoryBean.setDataSource(dataSource());
+      // 设置 MyBatis 配置文件路径
+      factoryBean.setConfigLocation(new ClassPathResource(&quot;mybatis/mybatis-config.xml&quot;));
+      // 设置 SQL 映射文件路径
+      factoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(&quot;classpath:mybatis/mapper/*.xml&quot;));
+      factoryBean.setTypeAliases(User.class);
+
+      return factoryBean;
+
+
+   }
+
+    public DataSource dataSource() {
+        DruidDataSource dataSource = new DruidDataSource();
+        dataSource.setUsername(&quot;root&quot;);
+        dataSource.setPassword(&quot;123456&quot;);
+        dataSource.setDriverClassName(&quot;com.mysql.jdbc.Driver&quot;);
+        dataSource.setUrl(&quot;jdbc:mysql://localhost:3306/mybatis_example&quot;);
+        return dataSource;
+    }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br></div></div><p>​</p> <h2 id="_1-sqlsessionfactorybean"><a href="#_1-sqlsessionfactorybean" class="header-anchor">#</a> 1.SqlSessionFactoryBean</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class SqlSessionFactoryBean implements FactoryBean&lt;SqlSessionFactory&gt;, InitializingBean, ApplicationListener&lt;ApplicationEvent&gt; {
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>​</p> <p>实现FactoryBean接口的getObject方法：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>/**
+   * 
+   * 将SqlSessionFactory对象注入spring容器
+   * {@inheritDoc}
+   */
+  @Override
+  public SqlSessionFactory getObject() throws Exception {
+    if (this.sqlSessionFactory == null) {
+      afterPropertiesSet();
+    }
+
+    return this.sqlSessionFactory;
+  }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>​</p> <p>SqlSessionFactoryBean实现InitializingBean接口，需要实现其afterPropertiesSet()：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>/**
+ * {@inheritDoc}
+ */
+/**
+ * 方法实现说明:我们自己配置文件中配置了SqlSessionFactoryBean,我们发现配置了 该类实现了FactoryBean接口, 也实现了bean的生命周期回调接口InitializingBean
+ * 首先我们会调用生命周期的回调afterPropertiesSet() 就是我们的SqlSessionFactorybean已经调用了构造方法，已经调用了 我们的
+ *
+ * @author:xsls
+ * @return:
+ * @exception:
+ * @date:2019/8/23 19:33
+ */
+@Override
+public void afterPropertiesSet() throws Exception {
+  notNull(dataSource, &quot;Property 'dataSource' is required&quot;);
+  notNull(sqlSessionFactoryBuilder, &quot;Property 'sqlSessionFactoryBuilder' is required&quot;);
+  state((configuration == null &amp;&amp; configLocation == null) || !(configuration != null &amp;&amp; configLocation != null),
+      &quot;Property 'configuration' and 'configLocation' can not specified with together&quot;);
+
+  /**
+   * 通过sqlSessionFactoryBuilder来构建我们的sqlSessionFactory
+   */
+  this.sqlSessionFactory = buildSqlSessionFactory();
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><p>​</p> <p>核心是buildSqlSessionFactory：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>/**
+ * 方法实现说明:构建我们的sqlSessionFactory的实例
+ *
+ * @author:xsls
+ * @return:
+ * @exception:
+ * @date:2019/8/23 20:06
+ */
+protected SqlSessionFactory buildSqlSessionFactory() throws Exception {
+
+  // 声明一个Configuration对象用于保存mybatis的所有的配置信息
+  final Configuration targetConfiguration;
+
+  XMLConfigBuilder xmlConfigBuilder = null;
+  // 初始化 configuration 对象，和设置其 `configuration.variables` 属性
+  /**
+   * 判断当前的SqlSessionFactoryBean是否在配置@Bean的时候 factoryBean.setConfiguration();
+   *
+   */
+  if (this.configuration != null) {
+    /**
+     * 把配置的SqlSessionFactoryBean配置的configuration 赋值给targetConfiguration
+     */
+    targetConfiguration = this.configuration;
+    if (targetConfiguration.getVariables() == null) {
+      targetConfiguration.setVariables(this.configurationProperties);
+    } else if (this.configurationProperties != null) {
+      targetConfiguration.getVariables().putAll(this.configurationProperties);
+    }
+  }
+  /**
+   * 对configLocation进行非空判断，由于我们配置了SqlSessionFactoryBean的configLocation属性设置
+   *
+   * @Bean public SqlSessionFactoryBean sqlSessionFactory( ) throws IOException { SqlSessionFactoryBean factoryBean
+   *       =new SqlSessionFactoryBean(); factoryBean.setDataSource(dataSource()); factoryBean.setConfigLocation(new
+   *       ClassPathResource(&quot;mybatis/mybatis-config.xml&quot;)); factoryBean.setMapperLocations(new
+   *       PathMatchingResourcePatternResolver().getResources(&quot;classpath:mybatis/mapper/*.xml&quot;)); return factoryBean;
+   *       }
+   */
+
+  else if (this.configLocation != null) {
+    /**
+     * 创建我们xml配置构建器对象,对mybatis/mybatis-config.xml配置文件进行解析 在这里以及把我们的mybaits-config.xml解析出要给document对象
+     */
+    xmlConfigBuilder = new XMLConfigBuilder(this.configLocation.getInputStream(), null, this.configurationProperties);
+    /**
+     * 因为我们在创建XMLConfigBuilder的时候已经把我们的Configuration对象创建出来了
+     */
+    targetConfiguration = xmlConfigBuilder.getConfiguration();
+  } else {
+    LOGGER.debug(
+        () -&gt; &quot;Property 'configuration' or 'configLocation' not specified, using default MyBatis Configuration&quot;);
+    targetConfiguration = new Configuration();
+    /**
+     * 判断configurationProperties不为空,那么就调用targetConfiguration.set方法 把configurationProperties注入到Configuration对象中
+     */
+    Optional.ofNullable(this.configurationProperties).ifPresent(targetConfiguration::setVariables);
+  }
+
+  /**
+   * objectFactory不为空,那么就调用targetConfiguration.set方法 把objectFactory注入到Configuration对象中
+   */
+  Optional.ofNullable(this.objectFactory).ifPresent(targetConfiguration::setObjectFactory);
+  /**
+   * objectWrapperFactory不为空,那么就调用targetConfiguration.set方法把 ObjectWrapperFactory注入到Configuration对象中
+   */
+  Optional.ofNullable(this.objectWrapperFactory).ifPresent(targetConfiguration::setObjectWrapperFactory);
+
+  /**
+   * vfs不为空,那么就调用targetConfiguration.set方法把 vfs注入到Configuration对象中
+   */
+  Optional.ofNullable(this.vfs).ifPresent(targetConfiguration::setVfsImpl);
+
+  /**
+   * typeAliasesPackage配置情况分为二种 1) 在mybaits-config.xml中配置了(mybatis的方式) &lt;typeAliases&gt;
+   * &lt;package name=&quot;com.tuling.entity&quot;&gt;&lt;/package&gt; &lt;/typeAliases&gt;
+   * 2)在配置我们的SqlSessionFactoryBean的时候配置了(Spring整合mybatis的方式)
+   *
+   * @Bean public SqlSessionFactoryBean sqlSessionFactory( ) throws IOException { SqlSessionFactoryBean factoryBean =
+   *       new SqlSessionFactoryBean(); factoryBean.setDataSource(dataSource()); // 设置 MyBatis 配置文件路径
+   *       factoryBean.setConfigLocation(new ClassPathResource(&quot;mybatis/mybatis-config.xml&quot;)); // 设置 SQL 映射文件路径
+   *       factoryBean.setMapperLocations(new
+   *       PathMatchingResourcePatternResolver().getResources(&quot;classpath:mybatis/mapper/*.xml&quot;));
+   *
+   *       factoryBean.setTypeAliasesPackage(&quot;com.tuling.entity&quot;); return factoryBean; }
+   *
+   *
+   *       那么在Dept 就不需要写成com.tuling.entity了 &lt;select id=&quot;findOne&quot; parameterType=&quot;Integer&quot; resultType=&quot;Dept&quot;&gt; select *
+   *       from dept where id = #{id} &lt;/select&gt;
+   *
+   *       若我们在配置SqlSessionFactoryBean接口的时候配置了typeAliasesPackage 那么
+   *       这里才不会为空,同理,我们可以通过SqlSessionFactoryBean的typeAliasesSuperType 来控制哪些类的别名不支持
+   */
+  if (hasLength(this.typeAliasesPackage)) {
+
+    /**
+     * 第一步:扫描我们typeAliasesPackage 包路径下的所有的实体类的class类型 第二步:进行过滤,然后注册到Configuration的别名映射器中
+     */
+    scanClasses(this.typeAliasesPackage, this.typeAliasesSuperType).stream()
+        .filter(clazz -&gt; !clazz.isAnonymousClass()).filter(clazz -&gt; !clazz.isInterface())
+        .filter(clazz -&gt; !clazz.isMemberClass()).forEach(targetConfiguration.getTypeAliasRegistry()::registerAlias);
+  }
+
+  /**
+   * 判断我们SqlSessionFactory是否配置了typeAliases(class类型) 一般typeAliasesPackage配置好了 就没有必要配置typeAliases
+   * 注册到Configuration的别名映射器中
+   */
+  if (!isEmpty(this.typeAliases)) {
+    Stream.of(this.typeAliases).forEach(typeAlias -&gt; {
+      targetConfiguration.getTypeAliasRegistry().registerAlias(typeAlias);
+      LOGGER.debug(() -&gt; &quot;Registered type alias: '&quot; + typeAlias + &quot;'&quot;);
+    });
+  }
+
+  /**
+   * 把我们自定义的插件注册到我们的mybatis的配置类上 系统默认的插件 Executor (update, query, flushStatements, commit, rollback, getTransaction,
+   * close, isClosed) ParameterHandler (getParameterObject, setParameters) ResultSetHandler (handleResultSets,
+   * handleOutputParameters) StatementHandler (prepare, parameterize, batch, update, query)
+   */
+  if (!isEmpty(this.plugins)) {
+    Stream.of(this.plugins).forEach(plugin -&gt; {
+      targetConfiguration.addInterceptor(plugin);
+      LOGGER.debug(() -&gt; &quot;Registered plugin: '&quot; + plugin + &quot;'&quot;);
+    });
+  }
+
+  /**
+   * 扫描我们自定义的类型处理器(用来处理我们的java类型和数据库类型的转化) 并且注册到我们的 targetConfiguration(批量注册)
+   */
+  if (hasLength(this.typeHandlersPackage)) {
+    scanClasses(this.typeHandlersPackage, TypeHandler.class).stream().filter(clazz -&gt; !clazz.isAnonymousClass())
+        .filter(clazz -&gt; !clazz.isInterface()).filter(clazz -&gt; !Modifier.isAbstract(clazz.getModifiers()))
+        .forEach(targetConfiguration.getTypeHandlerRegistry()::register);
+  }
+
+  /**
+   * 通过配置&lt;TypeHandlers&gt;&lt;/TypeHandlers&gt;的形式来注册我们的类型处理器对象
+   */
+  if (!isEmpty(this.typeHandlers)) {
+    Stream.of(this.typeHandlers).forEach(typeHandler -&gt; {
+      targetConfiguration.getTypeHandlerRegistry().register(typeHandler);
+      LOGGER.debug(() -&gt; &quot;Registered type handler: '&quot; + typeHandler + &quot;'&quot;);
+    });
+  }
+
+  /**
+   * MyBatis 从 3.2 开始支持可插拔的脚本语言， 因此你可以在插入一种语言的驱动（language driver）之后来写基于这种语言的动态 SQL 查询
+   * 具体用法:博客地址:https://www.jianshu.com/p/5c368c621b89
+   */
+  if (!isEmpty(this.scriptingLanguageDrivers)) {
+    Stream.of(this.scriptingLanguageDrivers).forEach(languageDriver -&gt; {
+      targetConfiguration.getLanguageRegistry().register(languageDriver);
+      LOGGER.debug(() -&gt; &quot;Registered scripting language driver: '&quot; + languageDriver + &quot;'&quot;);
+    });
+  }
+  Optional.ofNullable(this.defaultScriptingLanguageDriver)
+      .ifPresent(targetConfiguration::setDefaultScriptingLanguage);
+
+  /**
+   * 设置数据库厂商
+   */
+  if (this.databaseIdProvider != null) {// fix #64 set databaseId before parse mapper xmls
+    try {
+      targetConfiguration.setDatabaseId(this.databaseIdProvider.getDatabaseId(this.dataSource));
+    } catch (SQLException e) {
+      throw new NestedIOException(&quot;Failed getting a databaseId&quot;, e);
+    }
+  }
+
+  /**
+   * 若二级缓存不为空,注册二级缓存
+   */
+  Optional.ofNullable(this.cache).ifPresent(targetConfiguration::addCache);
+
+  if (xmlConfigBuilder != null) {
+    try {
+      /**
+       * 真正的解析我们的配置(mybatis-config.xml)的document对象
+       */
+      xmlConfigBuilder.parse();
+      LOGGER.debug(() -&gt; &quot;Parsed configuration file: '&quot; + this.configLocation + &quot;'&quot;);
+    } catch (Exception ex) {
+      throw new NestedIOException(&quot;Failed to parse config resource: &quot; + this.configLocation, ex);
+    } finally {
+      ErrorContext.instance().reset();
+    }
+  }
+
+  /**
+   * 为我们的configuration设置一个环境变量
+   */
+  targetConfiguration.setEnvironment(new Environment(this.environment,
+      this.transactionFactory == null ? new SpringManagedTransactionFactory() : this.transactionFactory,
+      this.dataSource));
+
+  /**
+   * 循环我们的mapper.xml文件
+   */
+  if (this.mapperLocations != null) {
+    if (this.mapperLocations.length == 0) {
+      LOGGER.warn(() -&gt; &quot;Property 'mapperLocations' was specified but matching resources are not found.&quot;);
+    } else {
+      for (Resource mapperLocation : this.mapperLocations) {
+        if (mapperLocation == null) {
+          continue;
+        }
+        try {
+          /**
+           * 真正的循环我们的mapper.xml文件
+           */
+          XMLMapperBuilder xmlMapperBuilder = new XMLMapperBuilder(mapperLocation.getInputStream(),
+              targetConfiguration, mapperLocation.toString(), targetConfiguration.getSqlFragments());
+          xmlMapperBuilder.parse();
+        } catch (Exception e) {
+          throw new NestedIOException(&quot;Failed to parse mapping resource: '&quot; + mapperLocation + &quot;'&quot;, e);
+        } finally {
+          ErrorContext.instance().reset();
+        }
+        LOGGER.debug(() -&gt; &quot;Parsed mapper file: '&quot; + mapperLocation + &quot;'&quot;);
+      }
+    }
+  } else {
+    LOGGER.debug(() -&gt; &quot;Property 'mapperLocations' was not specified.&quot;);
+  }
+
+  /**
+   * 通过建造者模式构建我们的SqlSessionFactory对象 默认是DefaultSqlSessionFactory
+   */
+  return this.sqlSessionFactoryBuilder.build(targetConfiguration);
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br><span class="line-number">156</span><br><span class="line-number">157</span><br><span class="line-number">158</span><br><span class="line-number">159</span><br><span class="line-number">160</span><br><span class="line-number">161</span><br><span class="line-number">162</span><br><span class="line-number">163</span><br><span class="line-number">164</span><br><span class="line-number">165</span><br><span class="line-number">166</span><br><span class="line-number">167</span><br><span class="line-number">168</span><br><span class="line-number">169</span><br><span class="line-number">170</span><br><span class="line-number">171</span><br><span class="line-number">172</span><br><span class="line-number">173</span><br><span class="line-number">174</span><br><span class="line-number">175</span><br><span class="line-number">176</span><br><span class="line-number">177</span><br><span class="line-number">178</span><br><span class="line-number">179</span><br><span class="line-number">180</span><br><span class="line-number">181</span><br><span class="line-number">182</span><br><span class="line-number">183</span><br><span class="line-number">184</span><br><span class="line-number">185</span><br><span class="line-number">186</span><br><span class="line-number">187</span><br><span class="line-number">188</span><br><span class="line-number">189</span><br><span class="line-number">190</span><br><span class="line-number">191</span><br><span class="line-number">192</span><br><span class="line-number">193</span><br><span class="line-number">194</span><br><span class="line-number">195</span><br><span class="line-number">196</span><br><span class="line-number">197</span><br><span class="line-number">198</span><br><span class="line-number">199</span><br><span class="line-number">200</span><br><span class="line-number">201</span><br><span class="line-number">202</span><br><span class="line-number">203</span><br><span class="line-number">204</span><br><span class="line-number">205</span><br><span class="line-number">206</span><br><span class="line-number">207</span><br><span class="line-number">208</span><br><span class="line-number">209</span><br><span class="line-number">210</span><br><span class="line-number">211</span><br><span class="line-number">212</span><br><span class="line-number">213</span><br><span class="line-number">214</span><br><span class="line-number">215</span><br><span class="line-number">216</span><br><span class="line-number">217</span><br><span class="line-number">218</span><br><span class="line-number">219</span><br><span class="line-number">220</span><br><span class="line-number">221</span><br><span class="line-number">222</span><br><span class="line-number">223</span><br><span class="line-number">224</span><br><span class="line-number">225</span><br><span class="line-number">226</span><br><span class="line-number">227</span><br><span class="line-number">228</span><br><span class="line-number">229</span><br><span class="line-number">230</span><br></div></div><p>​</p> <p>可知SqlSessionFactoryBean主要通过对applicationContext.xml解析完成时Configuration的实例化以及对完成对映射配置文件mapper*.xml的解析。</p> <p>关键点：</p> <ol><li><p>*XMLConfigBuilder：在mybatis中主要负责解释mybatis-config.xml</p></li> <li><ol><li>解析完后，如果我们自己设置了则使用我们的设置的进行覆盖，不做一一介绍了</li></ol></li> <li><p>XMLMapperBuilder：负责解析映射配置文件</p></li> <li><p>targetConfiguration.setEnvironment   这里注意一下   ，  事务工厂会使用一个新的new SpringManagedTransactionFactory()</p></li></ol> <p>而不是MyBatis之前的ManagedTransactionFactory.   这个SpringManagedTransactionFactory会使用Spring事务中的dataSource ， 从而达到跟事务集成</p> <h2 id="_2-spring是怎么管理mapper接口的动态代理的"><a href="#_2-spring是怎么管理mapper接口的动态代理的" class="header-anchor">#</a> 2.Spring是怎么管理Mapper接口的动态代理的</h2> <p>https://www.processon.com/view/link/5f153429e401fd2e0deefd01</p> <p>Spring和Mybatis时，我们重点要关注的就是这个代理对象。因为整合的目的就是：<strong>把某个Mapper的代理对象作为一个bean放入Spring容器中，使得能够像使用一个普通bean一样去使用这个代理对象，比如能被@Autowire自动注入。</strong></p> <p>比如当Spring和Mybatis整合之后，我们就可以使用如下的代码来使用Mybatis中的代理对象了：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>@Component
+public class UserService {
+    @Autowired
+    private UserMapper userMapper;
+
+    public User getUserById(Integer id) {
+        return userMapper.selectById(id);
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>​</p> <p>UserService中的userMapper属性就会被自动注入为Mybatis中的代理对象。如果你基于一个已经完成整合的项目去调试即可发现，userMapper的类型为：org.apache.ibatis.binding.MapperProxy@41a0aa7d。证明确实是Mybatis中的代理对象。</p> <p>好，那么现在我们要解决的问题的就是：<strong>如何能够把Mybatis的代理对象作为一个bean放入Spring容器中？</strong></p> <p>要解决这个，我们需要对Spring的bean生成过程有一个了解。</p> <p><strong>Spring中Bean的产生过程</strong></p> <p>Spring启动过程中，大致会经过如下步骤去生成bean</p> <ol><li>扫描指定的包路径下的class文件</li> <li>根据class信息生成对应的BeanDefinition</li> <li>在此处，程序员可以利用某些机制去修改BeanDefinition</li> <li>根据BeanDefinition生成bean实例</li> <li>把生成的bean实例放入Spring容器中</li></ol> <p>假设有一个A类，假设有如下代码：</p> <p>一个A类：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>@Component
+public class A {
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>​</p> <p>一个B类，不存在@Component注解</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class B {
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>执行如下代码：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+System.out.println(context.getBean(&quot;a&quot;));
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>​</p> <p>输出结果为：com.tulingxueyuan.beans.A@6acdbdf5</p> <p>A类对应的bean对象类型仍然为A类。但是这个结论是不确定的，我们可以利用BeanFactory后置处理器来修改BeanDefinition，我们添加一个BeanFactory后置处理器：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>@Component
+public class MyBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
+    @Override
+    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
+        BeanDefinition beanDefinition = beanFactory.getBeanDefinition(&quot;a&quot;);
+        beanDefinition.setBeanClassName(B.class.getName());
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>这样就会导致，原本的A类对应的BeanDefiniton被修改了，被修改成了B类，那么后续正常生成的bean对象的类型就是B类。此时，调用如下代码会报错：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>context.getBean(A.class);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>​</p> <p>但是调用如下代码不会报错，尽管B类上没有@Component注解：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>    context.getBean(B.class);        
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>​</p> <p>并且，下面代码返回的结果是：com.tulingxueyuan.beans.B@4b1c1ea0</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+System.out.println(context.getBean(&quot;a&quot;));
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>​</p> <p>之所以讲这个问题，是想说明一个问题：<strong>在Spring中，bean对象跟class没有直接关系，跟BeanDefinition才有直接关系。</strong></p> <p>那么回到我们要解决的问题：<strong>如何能够把Mybatis的代理对象作为一个bean放入Spring容器中？</strong></p> <p>在Spring中，<strong>如果你想生成一个bean，那么得先生成一个BeanDefinition</strong>，就像你想new一个对象实例，得先有一个class。</p> <p><strong>解决问题</strong></p> <p>继续回到我们的问题，我们现在想自己生成一个bean，那么得先生成一个BeanDefinition，只要有了BeanDefinition，通过在BeanDefinition中设置<strong>bean对象的类型</strong>，然后把BeanDefinition添加给Spring，Spring就会根据BeanDefinition自动帮我们生成一个类型对应的bean对象。</p> <p>所以，现在我们要解决两个问题：</p> <ol><li><strong>Mybatis的代理对象的类型是什么？因为我们要设置给BeanDefinition</strong></li> <li><strong>我们怎么把BeanDefinition添加给Spring容器？</strong></li></ol> <p>注意：上文中我们使用的BeanFactory后置处理器，他只能修改BeanDefinition，并不能新增一个BeanDefinition。我们应该使用Import技术来添加一个BeanDefinition。后文再详细介绍如果使用Import技术来添加一个BeanDefinition，可以先看一下伪代码实现思路。</p> <p>假设：我们有一个UserMapper接口，他的代理对象的类型为UserMapperProxy。</p> <p>那么我们的思路就是这样的，伪代码如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>BeanDefinitoin bd = new BeanDefinitoin();
+bd.setBeanClassName(UserMapperProxy.class.getName());
+SpringContainer.addBd(bd);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>但是，这里有一个严重的问题，就是上文中的UserMapperProxy是我们假设的，他表示一个代理类的类型，然而Mybatis中的代理对象是利用的JDK的动态代理技术实现的，也就是代理对象的代理类是动态生成的，我们根本无法确定代理对象的代理类到底是什么。</p> <p>所以回到我们的问题：<strong>Mybatis的代理对象的类型是什么？</strong></p> <p>本来可以有两个答案：</p> <ol><li>代理对象对应的代理类</li> <li>代理对象对应的接口</li></ol> <p>那么答案1就相当于没有了，因为是代理类是动态生成的，那么我们来看答案2：<strong>代理对象对应的接口</strong></p> <p>如果我们采用答案2，那么我们的思路就是：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>BeanDefinition bd = new BeanDefinitoin();
+// 注意这里，设置的是UserMapper
+bd.setBeanClassName(UserMapper.class.getName());
+SpringContainer.addBd(bd);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>但是，实际上给BeanDefinition对应的类型设置为一个接口是<strong>行不通</strong>的，因为Spring没有办法根据这个BeanDefinition去new出对应类型的实例，接口是没法直接new出实例的。</p> <p>那么现在问题来了，我要解决的问题：<strong>Mybatis的代理对象的类型是什么？</strong></p> <p>两个答案都被我们否定了，所以这个问题是无解的，所以我们不能再沿着这个思路去思考了，只能回到最开始的问题：<strong>如何能够把Mybatis的代理对象作为一个bean放入Spring容器中？</strong></p> <p>总结上面的推理：<strong>我们想通过设置BeanDefinition的class类型，然后由Spring自动的帮助我们去生成对应的bean，但是这条路是行不通的。</strong></p> <p><strong>终极解决方案</strong></p> <p>那么我们还有没有其他办法，可以去生成bean呢？并且<strong>生成bean的逻辑不能由Spring来帮我们做</strong>了，得由我们自己来做。</p> <p><strong>FactoryBean</strong></p> <p>有，那就是Spring中的FactoryBean。我们可以利用FactoryBean去自定义我们要生成的bean对象，比如：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>@Component
+public class MyFactoryBean implements FactoryBean {
+    @Override
+    public Object getObject() throws Exception {
+        Object proxyInstance = Proxy.newProxyInstance(MyFactoryBean.class.getClassLoader(), new Class[]{UserMapper.class}, new InvocationHandler() {
+            @Override
+            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                if (Object.class.equals(method.getDeclaringClass())) {
+                    return method.invoke(this, args);
+                } else {
+                    // 执行代理逻辑
+                    return null;
+                }
+            }
+        });
+
+        return proxyInstance;
+    }
+
+    @Override
+    public Class&lt;?&gt; getObjectType() {
+        return UserMapper.class;
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><p>我们定义了一个MyFactoryBean，它实现了FactoryBean，getObject方法就是用来自定义生成bean对象逻辑的。</p> <p>执行如下代码：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class Test {
+    public static void main(String[] args) {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        System.out.println(&quot;myFactoryBean: &quot; + context.getBean(&quot;myFactoryBean&quot;));
+        System.out.println(&quot;&amp;myFactoryBean: &quot; + context.getBean(&quot;&amp;myFactoryBean&quot;));
+        System.out.println(&quot;myFactoryBean-class: &quot; + context.getBean(&quot;myFactoryBean&quot;).getClass());
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>将打印：</p> <p>myFactoryBean: com.tulingxueyuan.beans.myFactoryBean$1@4d41cee</p> <p>&amp;myFactoryBean: com.tulingxueyuan.beans.myFactoryBean@3712b94</p> <p>myFactoryBean-class: class com.sun.proxy.$Proxy20</p> <p>从结果我们可以看到，从Spring容器中拿名字为&quot;myFactoryBean&quot;的bean对象，就是我们所自定义的jdk动态代理所生成的代理对象。</p> <p>所以，我们可以通过FactoryBean来向Spring容器中添加一个自定义的bean对象。上文中所定义的MyFactoryBean对应的就是UserMapper，表示我们定义了一个MyFactoryBean，相当于把UserMapper对应的代理对象作为一个bean放入到了容器中。</p> <p>但是作为程序员，我们不可能每定义了一个Mapper，还得去定义一个MyFactoryBean，这是很麻烦的事情，我们改造一下MyFactoryBean，让他变得更通用，比如：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>@Component
+public class MyFactoryBean implements FactoryBean {
+
+    // 注意这里
+    private Class mapperInterface;
+    public MyFactoryBean(Class mapperInterface) {
+        this.mapperInterface = mapperInterface;
+    }
+
+    @Override
+    public Object getObject() throws Exception {
+        Object proxyInstance = Proxy.newProxyInstance(MyFactoryBean.class.getClassLoader(), new Class[]{mapperInterface}, new InvocationHandler() {
+            @Override
+            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+
+                if (Object.class.equals(method.getDeclaringClass())) {
+                    return method.invoke(this, args);
+                } else {
+                    // 执行代理逻辑
+                    return null;
+                }
+            }
+        });
+
+        return proxyInstance;
+    }
+
+    @Override
+    public Class&lt;?&gt; getObjectType() {
+        return mapperInterface;
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br></div></div><p>改造MyFactoryBean之后，MyFactoryBean变得灵活了，可以在构造MyFactoryBean时，通过构造传入不同的Mapper接口。</p> <p>实际上MyFactoryBean也是一个Bean，我们也可以通过生成一个BeanDefinition来生成一个MyFactoryBean，并给构造方法的参数设置不同的值，比如伪代码如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>BeanDefinition bd = new BeanDefinitoin();
+// 注意一：设置的是MyFactoryBean
+bd.setBeanClassName(MyFactoryBean.class.getName());
+// 注意二：表示当前BeanDefinition在生成bean对象时，会通过调用MyFactoryBean的构造方法来生成，并传入UserMapper
+bd.getConstructorArgumentValues().addGenericArgumentValue(UserMapper.class.getName())
+SpringContainer.addBd(bd);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>特别说一下注意二，表示表示当前BeanDefinition在生成bean对象时，会通过调用MyFactoryBean的构造方法来生成，并传入UserMapper的Class对象。那么在生成MyFactoryBean时就会生成一个UserMapper接口对应的代理对象作为bean了。</p> <p>到此为止，其实就完成了我们要解决的问题：<strong>把Mybatis中的代理对象作为一个bean放入Spring容器中</strong>。只是我们这里是用简单的JDK代理对象模拟的Mybatis中的代理对象，如果有时间，我们完全可以调用Mybatis中提供的方法区生成一个代理对象。这里就不花时间去介绍了。</p> <p><strong>Import</strong></p> <p>到这里，我们还有一个事情没有做，就是怎么真正的定义一个BeanDefinition，并把它<strong>添加</strong>到Spring中，上文说到我们要利用Import技术，比如可以这么实现：</p> <p>定义如下类：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class MyImportBeanDefinitionRegistrar implements ImportBeanDefinitionRegistrar {
+
+    @Override
+    public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
+        BeanDefinitionBuilder builder = BeanDefinitionBuilder.genericBeanDefinition();
+        AbstractBeanDefinition beanDefinition = builder.getBeanDefinition();
+        beanDefinition.setBeanClass(MyFactoryBean.class);
+        beanDefinition.getConstructorArgumentValues().addGenericArgumentValue(UserMapper.class);
+        // 添加beanDefinition
+        registry.registerBeanDefinition(&quot;my&quot;+UserMapper.class.getSimpleName(), beanDefinition);
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>并且在AppConfig上添加@Import注解：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>@Import(MyImportBeanDefinitionRegistrar.class)
+public class AppConfig {
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>这样在启动Spring时就会新增一个BeanDefinition，该BeanDefinition会生成一个MyFactoryBean对象，并且在生成MyFactoryBean对象时会传入UserMapper.class对象，通过MyFactoryBean内部的逻辑，相当于会自动生产一个UserMapper接口的代理对象作为一个bean。</p> <p><strong>总结</strong></p> <p>总结一下，通过我们的分析，我们要整合Spring和Mybatis，需要我们做的事情如下：</p> <ol><li>定义一个MyFactoryBean</li> <li>定义一个MyImportBeanDefinitionRegistrar</li> <li>在AppConfig上添加一个注解@Import(MyImportBeanDefinitionRegistrar.class)</li></ol> <p><strong>优化</strong></p> <p>这样就可以基本完成整合的需求了，当然还有两个点是可以优化的</p> <p>第一，单独再定义一个@MyScan的注解，如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>@Retention(RetentionPolicy.RUNTIME)
+@Import(MyImportBeanDefinitionRegistrar.class)
+public @interface MyScan {
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>这样在AppConfig上直接使用@MyScan即可</p> <p>第二，在MyImportBeanDefinitionRegistrar中，我们可以去扫描Mapper，在MyImportBeanDefinitionRegistrar我们可以通过AnnotationMetadata获取到对应的@MyScan注解，所以我们可以在@MyScan上设置一个value，用来指定待扫描的包路径。然后在MyImportBeanDefinitionRegistrar中获取所设置的包路径，然后扫描该路径下的所有Mapper，生成BeanDefinition，放入Spring容器中。</p> <p>所以，到此为止，Spring整合Mybatis的核心原理就结束了，再次总结一下：</p> <ol><li>定义一个MyFactoryBean，用来将Mybatis的代理对象生成一个bean对象</li> <li>定义一个MyImportBeanDefinitionRegistrar，用来生成不同Mapper对象的MyFactoryBean</li> <li>定义一个@MynScan，用来在启动Spring时执行MyImportBeanDefinitionRegistrar的逻辑，并指定包路径</li></ol> <p>以上这个三个要素分别对象org.mybatis.spring中的：</p> <ol><li>MapperFactoryBean</li> <li>MapperScannerRegistrar</li> <li>@MapperScan</li></ol> <p>附录：</p> <p>spring整合mybatis</p> <p><img src="https://gitee.com/nylg/picture/raw/master/spring/spring%E6%95%B4%E5%90%88mybatis.png" alt="spring整合mybatis"></p></div></div>  <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2022/06/23, 19:19:48</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/e200a1/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">Mybatis执行SQL流程分析</div></a> <a href="/pages/4774be/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">SpringBoot自动配置原理</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/e200a1/" class="prev">Mybatis执行SQL流程分析</a></span> <span class="next"><a href="/pages/4774be/">SpringBoot自动配置原理</a>→
+      </span></p></div></div></div> <div class="article-list"><div class="article-title"><a href="/archives/" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/pages/80365f/"><div>
+            证券市场基本法律法规
+            <!----></div></a> <span class="date">03-13</span></dt></dl><dl><dd>02</dd> <dt><a href="/pages/d9e4f4/"><div>
+            证券考试规则
+            <!----></div></a> <span class="date">03-12</span></dt></dl><dl><dd>03</dd> <dt><a href="/pages/cb2c17/"><div>
+            金融市场基础知识
+            <!----></div></a> <span class="date">03-12</span></dt></dl> <dl><dd></dd> <dt><a href="/archives/" class="more">更多文章&gt;</a></dt></dl></div></div></main></div> <div class="footer"><div class="icons"><a href="mailto:cloudjava@163.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="https://github.com/bigdatajava" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="https://gitee.com/nylg" title="Gitee" target="_blank" class="iconfont icon-gitee"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2014-2024
+    <span>wen chao | <a href="https://github.com/bigdatajava/blog-talk/blob/main/LICENSE" target="_blank">MIT License</a></span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"><div></div></div></div>
+    <script src="/assets/js/app.b2807c2b.js" defer></script><script src="/assets/js/2.eeaab5de.js" defer></script><script src="/assets/js/226.1f245007.js" defer></script>
+  </body>
+</html>

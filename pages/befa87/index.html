@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>后台管理系统一 | wen chao</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_3129839_xft6cqs5gc.css">
+    <meta name="description" content="架构进阶之路...">
+    <meta name="keywords" content="全栈博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,js,ES6,TypeScript,vue">
+    <meta name="theme-color" content="#11a8cd">
+    
+    <link rel="preload" href="/assets/css/0.styles.237ce36e.css" as="style"><link rel="preload" href="/assets/js/app.b2807c2b.js" as="script"><link rel="preload" href="/assets/js/2.eeaab5de.js" as="script"><link rel="preload" href="/assets/js/158.e9c295a1.js" as="script"><link rel="prefetch" href="/assets/js/10.30d760c8.js"><link rel="prefetch" href="/assets/js/100.d2a91f05.js"><link rel="prefetch" href="/assets/js/101.aa15113f.js"><link rel="prefetch" href="/assets/js/102.303aae62.js"><link rel="prefetch" href="/assets/js/103.39dbd83e.js"><link rel="prefetch" href="/assets/js/104.30434bc2.js"><link rel="prefetch" href="/assets/js/105.68d90558.js"><link rel="prefetch" href="/assets/js/106.2a47de1c.js"><link rel="prefetch" href="/assets/js/107.6c92802c.js"><link rel="prefetch" href="/assets/js/108.1a019470.js"><link rel="prefetch" href="/assets/js/109.f2cc4655.js"><link rel="prefetch" href="/assets/js/11.8c97a85c.js"><link rel="prefetch" href="/assets/js/110.8630d06d.js"><link rel="prefetch" href="/assets/js/111.fdf10f1a.js"><link rel="prefetch" href="/assets/js/112.ea841a58.js"><link rel="prefetch" href="/assets/js/113.bd8e761d.js"><link rel="prefetch" href="/assets/js/114.63ed667a.js"><link rel="prefetch" href="/assets/js/115.909a8353.js"><link rel="prefetch" href="/assets/js/116.62dab6c0.js"><link rel="prefetch" href="/assets/js/117.d0ef1d76.js"><link rel="prefetch" href="/assets/js/118.39e6e925.js"><link rel="prefetch" href="/assets/js/119.e0265f93.js"><link rel="prefetch" href="/assets/js/12.156b3963.js"><link rel="prefetch" href="/assets/js/120.4be98e6e.js"><link rel="prefetch" href="/assets/js/121.518d8dd5.js"><link rel="prefetch" href="/assets/js/122.477dd94b.js"><link rel="prefetch" href="/assets/js/123.d6065aca.js"><link rel="prefetch" href="/assets/js/124.c6f965c7.js"><link rel="prefetch" href="/assets/js/125.3ee79c35.js"><link rel="prefetch" href="/assets/js/126.bcc69ad9.js"><link rel="prefetch" href="/assets/js/127.8f3ce1ac.js"><link rel="prefetch" href="/assets/js/128.03c90841.js"><link rel="prefetch" href="/assets/js/129.ab248cd9.js"><link rel="prefetch" href="/assets/js/13.c67aac42.js"><link rel="prefetch" href="/assets/js/130.dd64983e.js"><link rel="prefetch" href="/assets/js/131.6ffe6940.js"><link rel="prefetch" href="/assets/js/132.2a8fed26.js"><link rel="prefetch" href="/assets/js/133.6a7673eb.js"><link rel="prefetch" href="/assets/js/134.c00b7bf2.js"><link rel="prefetch" href="/assets/js/135.59d75ce6.js"><link rel="prefetch" href="/assets/js/136.bcd27d57.js"><link rel="prefetch" href="/assets/js/137.75dd3384.js"><link rel="prefetch" href="/assets/js/138.a2ababbf.js"><link rel="prefetch" href="/assets/js/139.6aa75eaa.js"><link rel="prefetch" href="/assets/js/14.8ab9a27a.js"><link rel="prefetch" href="/assets/js/140.58295019.js"><link rel="prefetch" href="/assets/js/141.8d05c3a5.js"><link rel="prefetch" href="/assets/js/142.18498abf.js"><link rel="prefetch" href="/assets/js/143.20c6bdde.js"><link rel="prefetch" href="/assets/js/144.ac94f8ff.js"><link rel="prefetch" href="/assets/js/145.e135dd8a.js"><link rel="prefetch" href="/assets/js/146.13a537e3.js"><link rel="prefetch" href="/assets/js/147.016b19e9.js"><link rel="prefetch" href="/assets/js/148.d3a909f2.js"><link rel="prefetch" href="/assets/js/149.90d05716.js"><link rel="prefetch" href="/assets/js/15.2b8ce9c5.js"><link rel="prefetch" href="/assets/js/150.e61c5f29.js"><link rel="prefetch" href="/assets/js/151.c81aa646.js"><link rel="prefetch" href="/assets/js/152.82944cc0.js"><link rel="prefetch" href="/assets/js/153.410a3789.js"><link rel="prefetch" href="/assets/js/154.cc1235ef.js"><link rel="prefetch" href="/assets/js/155.1e7fae81.js"><link rel="prefetch" href="/assets/js/156.cfaa0244.js"><link rel="prefetch" href="/assets/js/157.47981f53.js"><link rel="prefetch" href="/assets/js/159.50ba3574.js"><link rel="prefetch" href="/assets/js/16.a8b0b084.js"><link rel="prefetch" href="/assets/js/160.5845ca9d.js"><link rel="prefetch" href="/assets/js/161.0e97694f.js"><link rel="prefetch" href="/assets/js/162.3c77226a.js"><link rel="prefetch" href="/assets/js/163.17c9ec79.js"><link rel="prefetch" href="/assets/js/164.7736f87d.js"><link rel="prefetch" href="/assets/js/165.ff7b4f9e.js"><link rel="prefetch" href="/assets/js/166.6956307c.js"><link rel="prefetch" href="/assets/js/167.366611f7.js"><link rel="prefetch" href="/assets/js/168.57345d6b.js"><link rel="prefetch" href="/assets/js/169.25420ee7.js"><link rel="prefetch" href="/assets/js/17.68e41786.js"><link rel="prefetch" href="/assets/js/170.bedd4eac.js"><link rel="prefetch" href="/assets/js/171.374570cf.js"><link rel="prefetch" href="/assets/js/172.2f8bf4a8.js"><link rel="prefetch" href="/assets/js/173.42ea0d36.js"><link rel="prefetch" href="/assets/js/174.0ccfd7c6.js"><link rel="prefetch" href="/assets/js/175.7ab333d2.js"><link rel="prefetch" href="/assets/js/176.c7266816.js"><link rel="prefetch" href="/assets/js/177.d0a95fb6.js"><link rel="prefetch" href="/assets/js/178.2bb652ad.js"><link rel="prefetch" href="/assets/js/179.a8eab386.js"><link rel="prefetch" href="/assets/js/18.8e0d47a1.js"><link rel="prefetch" href="/assets/js/180.9fd22be7.js"><link rel="prefetch" href="/assets/js/181.5d5358d4.js"><link rel="prefetch" href="/assets/js/182.af7d36e2.js"><link rel="prefetch" href="/assets/js/183.dddc555d.js"><link rel="prefetch" href="/assets/js/184.a3396baf.js"><link rel="prefetch" href="/assets/js/185.2f7da675.js"><link rel="prefetch" href="/assets/js/186.92639766.js"><link rel="prefetch" href="/assets/js/187.711debd8.js"><link rel="prefetch" href="/assets/js/188.149256e6.js"><link rel="prefetch" href="/assets/js/189.c118aa93.js"><link rel="prefetch" href="/assets/js/19.770d847c.js"><link rel="prefetch" href="/assets/js/190.4d85ee4e.js"><link rel="prefetch" href="/assets/js/191.ff095a9a.js"><link rel="prefetch" href="/assets/js/192.4b5fe55c.js"><link rel="prefetch" href="/assets/js/193.415828fe.js"><link rel="prefetch" href="/assets/js/194.ce801921.js"><link rel="prefetch" href="/assets/js/195.c668b288.js"><link rel="prefetch" href="/assets/js/196.8825af00.js"><link rel="prefetch" href="/assets/js/197.d09dcd8b.js"><link rel="prefetch" href="/assets/js/198.396382cf.js"><link rel="prefetch" href="/assets/js/199.facc6630.js"><link rel="prefetch" href="/assets/js/20.97979961.js"><link rel="prefetch" href="/assets/js/200.db1ff45e.js"><link rel="prefetch" href="/assets/js/201.ab79fbd5.js"><link rel="prefetch" href="/assets/js/202.46e8525c.js"><link rel="prefetch" href="/assets/js/203.2cc13ae9.js"><link rel="prefetch" href="/assets/js/204.3c8a5bcd.js"><link rel="prefetch" href="/assets/js/205.3d0d8394.js"><link rel="prefetch" href="/assets/js/206.261623f6.js"><link rel="prefetch" href="/assets/js/207.6260c0aa.js"><link rel="prefetch" href="/assets/js/208.0fd63045.js"><link rel="prefetch" href="/assets/js/209.e5eaeeca.js"><link rel="prefetch" href="/assets/js/21.e6565c56.js"><link rel="prefetch" href="/assets/js/210.bccc650e.js"><link rel="prefetch" href="/assets/js/211.c238d796.js"><link rel="prefetch" href="/assets/js/212.dd4703ab.js"><link rel="prefetch" href="/assets/js/213.110becf0.js"><link rel="prefetch" href="/assets/js/214.a90d9da2.js"><link rel="prefetch" href="/assets/js/215.81872845.js"><link rel="prefetch" href="/assets/js/216.2ae9609f.js"><link rel="prefetch" href="/assets/js/217.567657f9.js"><link rel="prefetch" href="/assets/js/218.bc570e81.js"><link rel="prefetch" href="/assets/js/219.32a64945.js"><link rel="prefetch" href="/assets/js/22.92562bc3.js"><link rel="prefetch" href="/assets/js/220.d1605ea9.js"><link rel="prefetch" href="/assets/js/221.c1483dee.js"><link rel="prefetch" href="/assets/js/222.188d3bb6.js"><link rel="prefetch" href="/assets/js/223.b4d7fc4a.js"><link rel="prefetch" href="/assets/js/224.5495522d.js"><link rel="prefetch" href="/assets/js/225.ea320f20.js"><link rel="prefetch" href="/assets/js/226.1f245007.js"><link rel="prefetch" href="/assets/js/227.280e3176.js"><link rel="prefetch" href="/assets/js/228.7ea12e2e.js"><link rel="prefetch" href="/assets/js/229.0697746f.js"><link rel="prefetch" href="/assets/js/23.4b595789.js"><link rel="prefetch" href="/assets/js/230.8efdd773.js"><link rel="prefetch" href="/assets/js/231.44bfbfb5.js"><link rel="prefetch" href="/assets/js/232.24dc2667.js"><link rel="prefetch" href="/assets/js/233.6c77b12b.js"><link rel="prefetch" href="/assets/js/234.1ea57e5c.js"><link rel="prefetch" href="/assets/js/235.efb990b9.js"><link rel="prefetch" href="/assets/js/236.2e8820ed.js"><link rel="prefetch" href="/assets/js/237.b108feed.js"><link rel="prefetch" href="/assets/js/238.22baaff8.js"><link rel="prefetch" href="/assets/js/239.ac2c0eba.js"><link rel="prefetch" href="/assets/js/24.b1f29ab1.js"><link rel="prefetch" href="/assets/js/240.1f419e38.js"><link rel="prefetch" href="/assets/js/241.e23fbc50.js"><link rel="prefetch" href="/assets/js/242.83b3226c.js"><link rel="prefetch" href="/assets/js/243.1ce8a9be.js"><link rel="prefetch" href="/assets/js/244.d7c93bdb.js"><link rel="prefetch" href="/assets/js/245.a1b402c0.js"><link rel="prefetch" href="/assets/js/246.7eeb5e18.js"><link rel="prefetch" href="/assets/js/247.b2c0ab4a.js"><link rel="prefetch" href="/assets/js/248.5b2dd7ed.js"><link rel="prefetch" href="/assets/js/249.6278d6f1.js"><link rel="prefetch" href="/assets/js/25.748022ff.js"><link rel="prefetch" href="/assets/js/250.e3114578.js"><link rel="prefetch" href="/assets/js/251.1f576677.js"><link rel="prefetch" href="/assets/js/252.7e83dd55.js"><link rel="prefetch" href="/assets/js/253.ab219365.js"><link rel="prefetch" href="/assets/js/254.31655221.js"><link rel="prefetch" href="/assets/js/255.402ba0fd.js"><link rel="prefetch" href="/assets/js/256.2f1f131a.js"><link rel="prefetch" href="/assets/js/257.cd0dac87.js"><link rel="prefetch" href="/assets/js/258.5e84f5d0.js"><link rel="prefetch" href="/assets/js/259.72cf210e.js"><link rel="prefetch" href="/assets/js/26.d566b8b1.js"><link rel="prefetch" href="/assets/js/260.ddfd8bc7.js"><link rel="prefetch" href="/assets/js/261.b074e8b6.js"><link rel="prefetch" href="/assets/js/262.e0b94776.js"><link rel="prefetch" href="/assets/js/263.2e66950f.js"><link rel="prefetch" href="/assets/js/264.f3ac339f.js"><link rel="prefetch" href="/assets/js/265.384c189b.js"><link rel="prefetch" href="/assets/js/266.635a72af.js"><link rel="prefetch" href="/assets/js/267.c9ede946.js"><link rel="prefetch" href="/assets/js/268.9ec888f5.js"><link rel="prefetch" href="/assets/js/269.2a81258c.js"><link rel="prefetch" href="/assets/js/27.3085f660.js"><link rel="prefetch" href="/assets/js/270.973f0998.js"><link rel="prefetch" href="/assets/js/271.de24bbf3.js"><link rel="prefetch" href="/assets/js/272.68e83c3c.js"><link rel="prefetch" href="/assets/js/273.d740150b.js"><link rel="prefetch" href="/assets/js/274.dc1b1f0c.js"><link rel="prefetch" href="/assets/js/275.cf028a33.js"><link rel="prefetch" href="/assets/js/276.351dbc96.js"><link rel="prefetch" href="/assets/js/277.6a9f5699.js"><link rel="prefetch" href="/assets/js/278.0c28ac6f.js"><link rel="prefetch" href="/assets/js/279.b14576ac.js"><link rel="prefetch" href="/assets/js/28.47957820.js"><link rel="prefetch" href="/assets/js/280.906a73b1.js"><link rel="prefetch" href="/assets/js/281.4173499d.js"><link rel="prefetch" href="/assets/js/282.43873aa6.js"><link rel="prefetch" href="/assets/js/283.2a3d0552.js"><link rel="prefetch" href="/assets/js/284.2c7aa3fb.js"><link rel="prefetch" href="/assets/js/285.a62f9799.js"><link rel="prefetch" href="/assets/js/286.2f0b6532.js"><link rel="prefetch" href="/assets/js/287.d770d01f.js"><link rel="prefetch" href="/assets/js/288.97207297.js"><link rel="prefetch" href="/assets/js/289.ddf5a46c.js"><link rel="prefetch" href="/assets/js/29.716c8a52.js"><link rel="prefetch" href="/assets/js/290.9f1b4436.js"><link rel="prefetch" href="/assets/js/291.885ac485.js"><link rel="prefetch" href="/assets/js/292.b1fe886b.js"><link rel="prefetch" href="/assets/js/293.f597359f.js"><link rel="prefetch" href="/assets/js/294.f559040e.js"><link rel="prefetch" href="/assets/js/295.ef66e1a4.js"><link rel="prefetch" href="/assets/js/296.47009685.js"><link rel="prefetch" href="/assets/js/297.fb7d20ba.js"><link rel="prefetch" href="/assets/js/298.cb1631f8.js"><link rel="prefetch" href="/assets/js/299.25f28097.js"><link rel="prefetch" href="/assets/js/3.9c10c990.js"><link rel="prefetch" href="/assets/js/30.b35b7ad0.js"><link rel="prefetch" href="/assets/js/300.ab5c587e.js"><link rel="prefetch" href="/assets/js/301.544c6982.js"><link rel="prefetch" href="/assets/js/302.70396486.js"><link rel="prefetch" href="/assets/js/303.fa1f3a02.js"><link rel="prefetch" href="/assets/js/304.c344682e.js"><link rel="prefetch" href="/assets/js/305.a0620b1d.js"><link rel="prefetch" href="/assets/js/306.8cb43e28.js"><link rel="prefetch" href="/assets/js/307.ee4d9e2d.js"><link rel="prefetch" href="/assets/js/308.bb04656d.js"><link rel="prefetch" href="/assets/js/309.b3e3c0be.js"><link rel="prefetch" href="/assets/js/31.af0fa05e.js"><link rel="prefetch" href="/assets/js/310.162df0c7.js"><link rel="prefetch" href="/assets/js/311.1a5e341e.js"><link rel="prefetch" href="/assets/js/312.9fe4ed85.js"><link rel="prefetch" href="/assets/js/313.e187b781.js"><link rel="prefetch" href="/assets/js/314.c832b372.js"><link rel="prefetch" href="/assets/js/315.66b7260d.js"><link rel="prefetch" href="/assets/js/316.074c1e65.js"><link rel="prefetch" href="/assets/js/317.9210b762.js"><link rel="prefetch" href="/assets/js/318.50ac3392.js"><link rel="prefetch" href="/assets/js/319.996a4c1b.js"><link rel="prefetch" href="/assets/js/32.81b4ee4b.js"><link rel="prefetch" href="/assets/js/320.661c3aa7.js"><link rel="prefetch" href="/assets/js/321.91d065c2.js"><link rel="prefetch" href="/assets/js/322.21d177e9.js"><link rel="prefetch" href="/assets/js/323.c240199c.js"><link rel="prefetch" href="/assets/js/324.fc71e18c.js"><link rel="prefetch" href="/assets/js/325.d441ab5e.js"><link rel="prefetch" href="/assets/js/326.6065a9e1.js"><link rel="prefetch" href="/assets/js/327.b68a9e0f.js"><link rel="prefetch" href="/assets/js/328.082fa547.js"><link rel="prefetch" href="/assets/js/329.17abf0b7.js"><link rel="prefetch" href="/assets/js/33.c41edd68.js"><link rel="prefetch" href="/assets/js/330.076712a3.js"><link rel="prefetch" href="/assets/js/331.b883690e.js"><link rel="prefetch" href="/assets/js/332.a942e6bd.js"><link rel="prefetch" href="/assets/js/333.e193acf6.js"><link rel="prefetch" href="/assets/js/334.5721c074.js"><link rel="prefetch" href="/assets/js/335.b759f5ec.js"><link rel="prefetch" href="/assets/js/336.8f786a4b.js"><link rel="prefetch" href="/assets/js/337.8ef80b90.js"><link rel="prefetch" href="/assets/js/338.8c63fda7.js"><link rel="prefetch" href="/assets/js/339.3df2ba0b.js"><link rel="prefetch" href="/assets/js/34.e166f3d5.js"><link rel="prefetch" href="/assets/js/340.e54bd836.js"><link rel="prefetch" href="/assets/js/341.1de3160e.js"><link rel="prefetch" href="/assets/js/342.52f64508.js"><link rel="prefetch" href="/assets/js/343.f56c914e.js"><link rel="prefetch" href="/assets/js/344.63033532.js"><link rel="prefetch" href="/assets/js/345.b23610d1.js"><link rel="prefetch" href="/assets/js/346.2c817177.js"><link rel="prefetch" href="/assets/js/347.bb20d78f.js"><link rel="prefetch" href="/assets/js/348.bba2b968.js"><link rel="prefetch" href="/assets/js/349.620d4fde.js"><link rel="prefetch" href="/assets/js/35.827d2ea3.js"><link rel="prefetch" href="/assets/js/350.a24a894c.js"><link rel="prefetch" href="/assets/js/351.9fc8ae8f.js"><link rel="prefetch" href="/assets/js/352.9229b958.js"><link rel="prefetch" href="/assets/js/353.ffe6628c.js"><link rel="prefetch" href="/assets/js/354.4f883a51.js"><link rel="prefetch" href="/assets/js/355.3232e481.js"><link rel="prefetch" href="/assets/js/356.52bb9172.js"><link rel="prefetch" href="/assets/js/357.4ee29887.js"><link rel="prefetch" href="/assets/js/358.22886190.js"><link rel="prefetch" href="/assets/js/359.1f40fcc5.js"><link rel="prefetch" href="/assets/js/36.7c80731a.js"><link rel="prefetch" href="/assets/js/360.630b9c12.js"><link rel="prefetch" href="/assets/js/37.6608ea0a.js"><link rel="prefetch" href="/assets/js/38.4c69b602.js"><link rel="prefetch" href="/assets/js/39.19f940a6.js"><link rel="prefetch" href="/assets/js/4.55a001d1.js"><link rel="prefetch" href="/assets/js/40.d3257c4f.js"><link rel="prefetch" href="/assets/js/41.89db1eaf.js"><link rel="prefetch" href="/assets/js/42.4a12d693.js"><link rel="prefetch" href="/assets/js/43.cbe3ed47.js"><link rel="prefetch" href="/assets/js/44.61c79193.js"><link rel="prefetch" href="/assets/js/45.ce5ed428.js"><link rel="prefetch" href="/assets/js/46.eea0f2fa.js"><link rel="prefetch" href="/assets/js/47.f3bd04d8.js"><link rel="prefetch" href="/assets/js/48.ed81abeb.js"><link rel="prefetch" href="/assets/js/49.978d3cae.js"><link rel="prefetch" href="/assets/js/5.fe551af2.js"><link rel="prefetch" href="/assets/js/50.e21176fc.js"><link rel="prefetch" href="/assets/js/51.2f5a0327.js"><link rel="prefetch" href="/assets/js/52.125f820a.js"><link rel="prefetch" href="/assets/js/53.4a1c114d.js"><link rel="prefetch" href="/assets/js/54.dfe3253b.js"><link rel="prefetch" href="/assets/js/55.5959dcbb.js"><link rel="prefetch" href="/assets/js/56.9d18670e.js"><link rel="prefetch" href="/assets/js/57.c238fb54.js"><link rel="prefetch" href="/assets/js/58.e221eedb.js"><link rel="prefetch" href="/assets/js/59.f628533d.js"><link rel="prefetch" href="/assets/js/6.4670d323.js"><link rel="prefetch" href="/assets/js/60.919ac5be.js"><link rel="prefetch" href="/assets/js/61.3a63b17e.js"><link rel="prefetch" href="/assets/js/62.e61011ad.js"><link rel="prefetch" href="/assets/js/63.55200ef4.js"><link rel="prefetch" href="/assets/js/64.7c19f83d.js"><link rel="prefetch" href="/assets/js/65.833da817.js"><link rel="prefetch" href="/assets/js/66.13f4f83f.js"><link rel="prefetch" href="/assets/js/67.0c77e799.js"><link rel="prefetch" href="/assets/js/68.cc0e543d.js"><link rel="prefetch" href="/assets/js/69.555bef08.js"><link rel="prefetch" href="/assets/js/7.90cda232.js"><link rel="prefetch" href="/assets/js/70.5d2ec40f.js"><link rel="prefetch" href="/assets/js/71.81f1af4b.js"><link rel="prefetch" href="/assets/js/72.8a66936f.js"><link rel="prefetch" href="/assets/js/73.2655fba2.js"><link rel="prefetch" href="/assets/js/74.ba0b3153.js"><link rel="prefetch" href="/assets/js/75.536955ba.js"><link rel="prefetch" href="/assets/js/76.3a946a81.js"><link rel="prefetch" href="/assets/js/77.9b243f6c.js"><link rel="prefetch" href="/assets/js/78.f580a907.js"><link rel="prefetch" href="/assets/js/79.38cbcc11.js"><link rel="prefetch" href="/assets/js/8.9cebf18a.js"><link rel="prefetch" href="/assets/js/80.e82012e8.js"><link rel="prefetch" href="/assets/js/81.73c65f97.js"><link rel="prefetch" href="/assets/js/82.ddfa06dd.js"><link rel="prefetch" href="/assets/js/83.b75fcea2.js"><link rel="prefetch" href="/assets/js/84.5e0efc6d.js"><link rel="prefetch" href="/assets/js/85.3a495ae2.js"><link rel="prefetch" href="/assets/js/86.1ebe8967.js"><link rel="prefetch" href="/assets/js/87.cd673062.js"><link rel="prefetch" href="/assets/js/88.f50e4960.js"><link rel="prefetch" href="/assets/js/89.06660ffb.js"><link rel="prefetch" href="/assets/js/9.04fce59d.js"><link rel="prefetch" href="/assets/js/90.aa61aeaf.js"><link rel="prefetch" href="/assets/js/91.865e8535.js"><link rel="prefetch" href="/assets/js/92.fd2d2a62.js"><link rel="prefetch" href="/assets/js/93.b185de83.js"><link rel="prefetch" href="/assets/js/94.f5290c38.js"><link rel="prefetch" href="/assets/js/95.be5b7fed.js"><link rel="prefetch" href="/assets/js/96.d442acd0.js"><link rel="prefetch" href="/assets/js/97.2f9b0746.js"><link rel="prefetch" href="/assets/js/98.3bba4945.js"><link rel="prefetch" href="/assets/js/99.cd82a6ed.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.237ce36e.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.png" alt="wen chao" class="logo"> <span class="site-name can-hide">wen chao</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Algorithm" class="dropdown-title"><a href="/Algorithm/" class="link-title">Algorithm</a> <span class="title" style="display:none;">Algorithm</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/d8e764/" class="nav-link">Theory</a></li><li class="dropdown-item"><!----> <a href="/pages/81a4bd/" class="nav-link">LeetCode</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Spring" class="dropdown-title"><a href="/Spring/" class="link-title">Spring</a> <span class="title" style="display:none;">Spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/373439/" class="nav-link">Spring</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Technology" class="dropdown-title"><a href="/Technology/" class="link-title">Technology</a> <span class="title" style="display:none;">Technology</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/3b6841/" class="nav-link">DB</a></li><li class="dropdown-item"><!----> <a href="/pages/d7857e/" class="nav-link">Linux</a></li><li class="dropdown-item"><!----> <a href="/pages/b89362/" class="nav-link">Redis</a></li><li class="dropdown-item"><!----> <a href="/pages/ec8b81/" class="nav-link">MongoDB</a></li><li class="dropdown-item"><!----> <a href="/pages/4e3ff1/" class="nav-link">Zookeeper</a></li><li class="dropdown-item"><!----> <a href="/pages/a75fef/" class="nav-link">MQ</a></li><li class="dropdown-item"><!----> <a href="/pages/b194d7/" class="nav-link">Dubbo</a></li><li class="dropdown-item"><!----> <a href="/pages/371f2f/" class="nav-link">ElasticSearch</a></li><li class="dropdown-item"><!----> <a href="/pages/027aa3/" class="nav-link">Workflow</a></li><li class="dropdown-item"><!----> <a href="/pages/73ab4b/" class="nav-link">OAuth2</a></li><li class="dropdown-item"><!----> <a href="/pages/d7a38a/" class="nav-link">JPA</a></li><li class="dropdown-item"><!----> <a href="/pages/eb5dc1/" class="nav-link">Liquibase</a></li><li class="dropdown-item"><!----> <a href="/pages/e54277/" class="nav-link">Lombok</a></li><li class="dropdown-item"><!----> <a href="/pages/62e4f6/" class="nav-link">Git</a></li><li class="dropdown-item"><!----> <a href="/pages/13c836/" class="nav-link">Nginx</a></li><li class="dropdown-item"><!----> <a href="/pages/b50b3d/" class="nav-link">Mini Program</a></li><li class="dropdown-item"><!----> <a href="/pages/09d3b8/" class="nav-link">JVM</a></li><li class="dropdown-item"><!----> <a href="/pages/a526c7/" class="nav-link">Log</a></li><li class="dropdown-item"><!----> <a href="/pages/59cf4f/" class="nav-link">JDK</a></li><li class="dropdown-item"><!----> <a href="/pages/d50dab/" class="nav-link">Thymeleaf</a></li><li class="dropdown-item"><!----> <a href="/pages/97abaa/" class="nav-link">Maven</a></li><li class="dropdown-item"><!----> <a href="/pages/7879f1/" class="nav-link">Mybatis</a></li><li class="dropdown-item"><!----> <a href="/pages/745b7c/" class="nav-link">Network</a></li><li class="dropdown-item"><!----> <a href="/pages/274dac/" class="nav-link">Raspberrypi</a></li><li class="dropdown-item"><!----> <a href="/pages/87c097/" class="nav-link">Node</a></li><li class="dropdown-item"><!----> <a href="/pages/927664/" class="nav-link">HTML</a></li><li class="dropdown-item"><!----> <a href="/pages/2c3f19/" class="nav-link">Vue</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Other" class="dropdown-title"><a href="/Other/" class="link-title">Other</a> <span class="title" style="display:none;">Other</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/fea344/" class="nav-link">Book</a></li><li class="dropdown-item"><!----> <a href="/pages/d62f72/" class="nav-link">面试</a></li><li class="dropdown-item"><!----> <a href="/pages/f3d338/" class="nav-link">问题</a></li><li class="dropdown-item"><!----> <a href="/pages/ff202b/" class="nav-link">友链</a></li><li class="dropdown-item"><!----> <a href="/pages/2b746e/" class="nav-link">证券</a></li></ul></div></div><div class="nav-item"><a href="/About/" class="nav-link">About</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Index" class="dropdown-title"><a href="/archives/" class="link-title">Index</a> <span class="title" style="display:none;">Index</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="/img/touxiang-lanse.png"> <div class="blogger-info"><h3>wen chao</h3> <span>持之以恒做正确有价值的事!</span></div></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Algorithm" class="dropdown-title"><a href="/Algorithm/" class="link-title">Algorithm</a> <span class="title" style="display:none;">Algorithm</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/d8e764/" class="nav-link">Theory</a></li><li class="dropdown-item"><!----> <a href="/pages/81a4bd/" class="nav-link">LeetCode</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Spring" class="dropdown-title"><a href="/Spring/" class="link-title">Spring</a> <span class="title" style="display:none;">Spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/373439/" class="nav-link">Spring</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Technology" class="dropdown-title"><a href="/Technology/" class="link-title">Technology</a> <span class="title" style="display:none;">Technology</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/3b6841/" class="nav-link">DB</a></li><li class="dropdown-item"><!----> <a href="/pages/d7857e/" class="nav-link">Linux</a></li><li class="dropdown-item"><!----> <a href="/pages/b89362/" class="nav-link">Redis</a></li><li class="dropdown-item"><!----> <a href="/pages/ec8b81/" class="nav-link">MongoDB</a></li><li class="dropdown-item"><!----> <a href="/pages/4e3ff1/" class="nav-link">Zookeeper</a></li><li class="dropdown-item"><!----> <a href="/pages/a75fef/" class="nav-link">MQ</a></li><li class="dropdown-item"><!----> <a href="/pages/b194d7/" class="nav-link">Dubbo</a></li><li class="dropdown-item"><!----> <a href="/pages/371f2f/" class="nav-link">ElasticSearch</a></li><li class="dropdown-item"><!----> <a href="/pages/027aa3/" class="nav-link">Workflow</a></li><li class="dropdown-item"><!----> <a href="/pages/73ab4b/" class="nav-link">OAuth2</a></li><li class="dropdown-item"><!----> <a href="/pages/d7a38a/" class="nav-link">JPA</a></li><li class="dropdown-item"><!----> <a href="/pages/eb5dc1/" class="nav-link">Liquibase</a></li><li class="dropdown-item"><!----> <a href="/pages/e54277/" class="nav-link">Lombok</a></li><li class="dropdown-item"><!----> <a href="/pages/62e4f6/" class="nav-link">Git</a></li><li class="dropdown-item"><!----> <a href="/pages/13c836/" class="nav-link">Nginx</a></li><li class="dropdown-item"><!----> <a href="/pages/b50b3d/" class="nav-link">Mini Program</a></li><li class="dropdown-item"><!----> <a href="/pages/09d3b8/" class="nav-link">JVM</a></li><li class="dropdown-item"><!----> <a href="/pages/a526c7/" class="nav-link">Log</a></li><li class="dropdown-item"><!----> <a href="/pages/59cf4f/" class="nav-link">JDK</a></li><li class="dropdown-item"><!----> <a href="/pages/d50dab/" class="nav-link">Thymeleaf</a></li><li class="dropdown-item"><!----> <a href="/pages/97abaa/" class="nav-link">Maven</a></li><li class="dropdown-item"><!----> <a href="/pages/7879f1/" class="nav-link">Mybatis</a></li><li class="dropdown-item"><!----> <a href="/pages/745b7c/" class="nav-link">Network</a></li><li class="dropdown-item"><!----> <a href="/pages/274dac/" class="nav-link">Raspberrypi</a></li><li class="dropdown-item"><!----> <a href="/pages/87c097/" class="nav-link">Node</a></li><li class="dropdown-item"><!----> <a href="/pages/927664/" class="nav-link">HTML</a></li><li class="dropdown-item"><!----> <a href="/pages/2c3f19/" class="nav-link">Vue</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Other" class="dropdown-title"><a href="/Other/" class="link-title">Other</a> <span class="title" style="display:none;">Other</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/fea344/" class="nav-link">Book</a></li><li class="dropdown-item"><!----> <a href="/pages/d62f72/" class="nav-link">面试</a></li><li class="dropdown-item"><!----> <a href="/pages/f3d338/" class="nav-link">问题</a></li><li class="dropdown-item"><!----> <a href="/pages/ff202b/" class="nav-link">友链</a></li><li class="dropdown-item"><!----> <a href="/pages/2b746e/" class="nav-link">证券</a></li></ul></div></div><div class="nav-item"><a href="/About/" class="nav-link">About</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Index" class="dropdown-title"><a href="/archives/" class="link-title">Index</a> <span class="title" style="display:none;">Index</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>DB</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Linux</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Redis</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>MongoDB</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Zookeeper</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>MQ</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Dubbo</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ElasticSearch</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Workflow</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>OAuth2</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JPA</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Liquibase</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Lombok</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Git</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Nginx</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>小程序</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JVM</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Log</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JDK</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Thymeleaf</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Maven</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Mybatis</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Network</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Raspberrypi</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Node</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Web</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Vue</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/pages/2c3f19/" class="sidebar-link">vue概述</a></li><li><a href="/pages/d5aed3/" class="sidebar-link">Vue模板语法</a></li><li><a href="/pages/9dd717/" class="sidebar-link">vue常用特性</a></li><li><a href="/pages/958ac3/" class="sidebar-link">vue组件化</a></li><li><a href="/pages/cc641c/" class="sidebar-link">vue前后端交互</a></li><li><a href="/pages/dfe537/" class="sidebar-link">vue路由</a></li><li><a href="/pages/2fde05/" class="sidebar-link">vue前段工程化</a></li><li><a href="/pages/a49467/" class="sidebar-link">vuex</a></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>案例1-后台管理系统</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/pages/befa87/" aria-current="page" class="active sidebar-link">后台管理系统一</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level2"><a href="/pages/befa87/#地址" class="sidebar-link">地址</a></li><li class="sidebar-sub-header level2"><a href="/pages/befa87/#_1-电商业务概述" class="sidebar-link">1.电商业务概述</a></li><li class="sidebar-sub-header level2"><a href="/pages/befa87/#_2-项目初始化" class="sidebar-link">2.项目初始化</a></li><li class="sidebar-sub-header level2"><a href="/pages/befa87/#_3-码云相关操作" class="sidebar-link">3.码云相关操作</a></li><li class="sidebar-sub-header level2"><a href="/pages/befa87/#_4-配置后台项目" class="sidebar-link">4.配置后台项目</a></li><li class="sidebar-sub-header level2"><a href="/pages/befa87/#_5-实现登录功能" class="sidebar-link">5.实现登录功能</a></li><li class="sidebar-sub-header level2"><a href="/pages/befa87/#_6-登录成功之后的操作" class="sidebar-link">6.登录成功之后的操作</a></li><li class="sidebar-sub-header level2"><a href="/pages/befa87/#补充" class="sidebar-link">补充</a></li></ul></li><li><a href="/pages/47880d/" class="sidebar-link">后台管理系统二</a></li><li><a href="/pages/988f73/" class="sidebar-link">后台管理系统三</a></li><li><a href="/pages/bf4200/" class="sidebar-link">后台管理系统四</a></li><li><a href="/pages/fece72/" class="sidebar-link">后台管理系统五</a></li><li><a href="/pages/bb8bcc/" class="sidebar-link">后台管理系统六</a></li><li><a href="/pages/3c5b6e/" class="sidebar-link">后台管理系统七</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>案例2-heimatoutiao</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-06225672><div class="articleInfo" data-v-06225672><ul class="breadcrumbs" data-v-06225672><li data-v-06225672><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-06225672></a></li> <li data-v-06225672><a href="/Technology/#Technology" data-v-06225672>Technology</a></li><li data-v-06225672><a href="/Technology/#Vue" data-v-06225672>Vue</a></li><li data-v-06225672><a href="/Technology/#案例1-后台管理系统" data-v-06225672>案例1-后台管理系统</a></li></ul> <div class="info" data-v-06225672><div title="作者" class="author iconfont icon-touxiang" data-v-06225672><a href="https://nylg.gitee.io" target="_blank" title="作者" class="beLink" data-v-06225672>wen chao</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-06225672><a href="javascript:;" data-v-06225672>2022-04-24</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABKFJREFUSA3tVl1oFVcQnrMbrak3QUgkya1akpJYcrUtIqW1JvFBE9LiQ5v6JmJpolbMg32rVrhgoYK0QiMY6i9Y6EMaW5D+xFJaTYItIuK2Kr3+BJNwkxBj05sQY3b3nM6cs2dv9t7NT/vQJw/sndk5M/PNzJkzewGerP+pAmy+ON8lLzUJgA8ZYxYIYZmGYRnctDaWvJJAmTtfP1pvXsBCCPP8QFcCaRkZYACgDZFO4stNIcBCajEOlmmC9XpJ9bAGCaPaPmzPl32dvLSVu3BWCTQs0XQQ6g0DYgwLIoAZbBCdW/i+781o1VVlm/410mw4h06Y7bIPHNyWDyL4FHkX03Q8SrzNhZTZriieckWt7cL6MM85YcLpsi/7O9/iXFT6MswI0DmmpkSaJ0qLxFIm3+i1THHB3zmBH3PYx9CcykcLOeQVVa7QtdxTgQgEleX2AjHYfwA+2ddV77ruGoJUbhGDI09YSNXyMpUt5ylOzxgbUmtOp7NmbNt8v3arjTBfYELmLUV+M+nSawNNAUqpT3ClJWg5I3BLT+cGW/DXNGCa6tx1aakCGEigArTn4TDIPdrXXYKCZNrHLMCOEPvHBlLQ99s9eHB7EB6NTki73CVPQ2F5MSx/uRQixfmq7rK0wYD8w8E905bnPDfwoWs/rfv93NWN/ZfvwsLIU7A09gxECyISeGJkHAau98L97tuw7NXnoPyNF8FcYGLGKsOs0mN3OEyec9esGW/ZEl945dTP34wlR2FZVQWU1q0Cw8Tr7p+hgLLNL0FPxx/Q35mA8aEUrH6nCgwEl0tn7wUiZYJnNRh6DK4UH/k0lfyrsBKdPVv/AriGIQcEDQZ65LBAGe2Rzui9Ybjz7XUppz1/uKBbyVPGkN3ZAeC6hr0x7Nr38N5+EqkoOm17xpoqR9ohQF55ERSvr4Dkr3chNfC3DMzGJlNBElW8w9nsGQvhNGIzDkXzCg8cLK951xHsFBlTJspJNi3ZFIMF2AeDV3q8DNOB+YHi6QTrChDIWDBRi5U5f+ZMfJLu3ccrqxtdxk4SKH336LFxSmkqefwU5T8fhdSdQf9IVKD6aNiwI/hnmcAZ91isYMJIaCUCx9W098+LgruikeTqzqqxKPUwqJyCPJiyemVVZBOijDGjD38Os0jOiSPL1z3SPjXNANbiNPXAdzTfukjjuknNBbyz3nwgTd3AVFqUJ5hpHlq9MveLnWwttUfoygBmvVjuikxND3znrhsELnZk7k+OjIGxeNEkomyLVta0xxn+HZhjBc4YZ/AFjHjz9u3xRZl2BN4aq9nFwWh16IrQ1aHHEd3j1+4/dB9OtH4e29A2H1DyHQRmOSfQZ1Fy7MHBTGB6J/Djq6p3OxyO2cB+4Car7v/o3GXgfAkj23+x9ID1Teoamo/SXcbvSf2PX7Vc8DdCmE1vN9di+32P9/5YR3vLnhCVGUWBjEkr3yh4H8v9CzmsbdhzOKzsJKM90iFdaTMjRPhGVsakRvOaRidljo6H6G7j+ctrJpsP+4COhDIl0La2+FS4+5mlocBaXY5QnGZysIBYoeSsl5qQzrSj/cgNrfuEzlWBfwA+EjrZyWUvpAAAAABJRU5ErkJggg==">后台管理系统一<!----></h1>  <div class="theme-vdoing-content content__default"><p>1.初始化项目
+2.基于Vue技术栈进行项目开发
+3.使用Vue的第三方组件进行项目开发
+4.理解前后端分离开发模式</p> <h2 id="地址"><a href="#地址" class="header-anchor">#</a> 地址</h2> <p><code>https://gitee.com/nylg/project/tree/master/vue-%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F</code></p> <h2 id="_1-电商业务概述"><a href="#_1-电商业务概述" class="header-anchor">#</a> 1.电商业务概述</h2> <p>客户使用的业务服务：PC端，小程序，移动web，移动app
+管理员使用的业务服务：PC后台管理端。
+PC后台管理端的功能：管理用户账号（登录，退出，用户管理，权限管理），商品管理（商品分类，分类参数，商品信息，订单），数据统计
+电商后台管理系统采用前后端分离的开发模式
+前端项目是基于Vue的SPA（单页应用程序）项目</p> <p>前端技术栈:Vue,Vue-Router,Element-UI,Axios,Echarts
+后端技术栈：Node.js,Express,Jwt(模拟session),Mysql,Sequelize(操作数据库的框架)</p> <h2 id="_2-项目初始化"><a href="#_2-项目初始化" class="header-anchor">#</a> 2.项目初始化</h2> <p>A.安装Vue脚手架
+B.通过脚手架创建项目
+C.配置路由
+D.配置Element-UI:在插件中安装，搜索vue-cli-plugin-element
+E.配置Axios：在依赖中安装,搜索axios(运行依赖)
+F.初始化git仓库
+G.将本地项目托管到github或者码云中</p> <h2 id="_3-码云相关操作"><a href="#_3-码云相关操作" class="header-anchor">#</a> 3.码云相关操作</h2> <p>A.注册登录码云账号</p> <p>B.安装git</p> <p>C.点击网站右上角“登录”，登录码云，并进行账号设置</p> <p>D.在本地创建公钥：在终端运行：<code>ssh-keygen -t rsa -C &quot;xxx@xxx.com&quot;</code>
+E.找到公钥地址</p> <p>E.打开id_rsa.pub文件，复制文件中的所有代码，点击码云中的SSH公钥，将生成的公钥复制到公钥中
+G.测试公钥：打开终端，输入命令：<code>ssh -T git@gitee.com</code></p> <p>H.将本地代码托管到码云中
+点击码云右上角的+号-&gt;新建仓库</p> <p>I.进行git配置</p> <h2 id="_4-配置后台项目"><a href="#_4-配置后台项目" class="header-anchor">#</a> 4.配置后台项目</h2> <p>A.新建mysql数据库mydb，将vue_api_server目录<code>db</code>下的SQL导入数据库mydb;
+B.安装nodeJS，配置后台项目,从终端打开后台项目vue_api_server
+然后在终端中输入命令安装项目依赖包：npm install</p> <p>启动后台vue_api_server项目</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>npm .\app.js
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>C.使用postman测试api接口</p> <h2 id="_5-实现登录功能"><a href="#_5-实现登录功能" class="header-anchor">#</a> 5.实现登录功能</h2> <p>A.登录状态保持
+如果服务器和客户端同源，建议可以使用cookie或者session来保持登录状态
+如果客户端和服务器跨域了，建议使用token进行维持登录状态。</p> <p>B.登录逻辑：
+在登录页面输入账号和密码进行登录，将数据发送给服务器
+服务器返回登录的结果，登录成功则返回数据中带有token
+客户端得到token并进行保存，后续的请求都需要将此token发送给服务器，服务器会验证token以保证用户身份。</p> <p>C.添加新分支login，在login分支中开发当前项目vue_shop：
+打开vue_shop终端，使用git status确定当前项目状态。
+确定当前工作目录是干净的之后，创建一个分支进行开发，开发完毕之后将其合并到master
+git checkout -b login
+然后查看新创建的分支：git branch
+确定我们正在使用login分支进行开发</p> <p>然后执行vue ui命令打开ui界面，然后运行serve，运行app查看当前项目效果</p> <p>发现现在是一个默认页面，我们需要进行更改，打开项目的src目录，点击main.js文件（入口文件）</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import './plugins/element.js'
+
+Vue.config.productionTip = false
+
+
+new Vue({
+  router,
+  render: h =&gt; h(App)
+}).$mount('#app')
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>再打开App.vue(根组件)，将根组件的内容进行操作梳理(template中留下根节点，script中留下默认导出，去掉组件，style中去掉所有样式)</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+  &lt;div id=&quot;app&quot;&gt;
+    &lt;router-view&gt;&lt;/router-view&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  name: 'app'
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>再打开router.js(路由)，将routes数组中的路由规则清除，然后将views删除，将components中的helloworld.vue删除</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import Vue from 'vue'
+import Router from 'vue-router'
+
+Vue.use(Router)
+
+export default new Router({
+  routes: [
+    
+  ]
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>在components文件夹中新建Login.vue组件,添加template，script，style标签,style标签中的scoped可以防止组件之间的样式冲突，没有scoped则样式是全局的</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+    &lt;div class=&quot;login_container&quot;&gt;
+        
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  
+}
+&lt;/script&gt;
+
+&lt;style lang=&quot;less&quot; scoped&gt;
+.login_container {
+  background-color: #2b5b6b;
+  height: 100%;
+}
+
+&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><p>在router.js中导入组件并设置规则
+在App.vue中添加路由占位符</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const router = new Router({
+  routes: [
+    { path: '/', redirect: '/login' },
+    { path: '/login', component: Login }
+  ]
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>当我们给Login.vue中的内容添加样式的时候，会报错“缺少less-loader”，需要配置less加载器（开发依赖），安装less(开发依赖)</p> <p>然后需要添加公共样式，在assets文件夹下面添加css文件夹，创建global.css文件,添加全局样式</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>/* 全局样式表 */
+html,body,#app{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0; 
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>在main.js中导入global.css，使得全局样式生效 import &quot;./assets/css/global.css&quot;
+然后Login.vue中的根元素也需要设置撑满全屏（height:100%）
+最终Login.vue文件中的代码如下</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+    &lt;div class=&quot;login_container&quot;&gt;
+        &lt;!-- 登录盒子  --&gt;
+        &lt;div class=&quot;login_box&quot;&gt;
+            &lt;!-- 头像 --&gt;
+            &lt;div class=&quot;avatar_box&quot;&gt;
+                &lt;img src=&quot;../assets/logo.png&quot; alt=&quot;&quot;&gt;
+            &lt;/div&gt;
+            &lt;!-- 登录表单 --&gt;
+            &lt;el-form :model=&quot;loginForm&quot; ref=&quot;LoginFormRef&quot; :rules=&quot;loginFormRules&quot; label-width=&quot;0px&quot; class=&quot;login_form&quot;&gt;
+                &lt;!-- 用户名 --&gt;
+                &lt;el-form-item prop=&quot;username&quot;&gt;
+                    &lt;el-input v-model=&quot;loginForm.username&quot; prefix-icon=&quot;iconfont icon-user&quot; &gt;&lt;/el-input&gt;
+                &lt;/el-form-item&gt; 
+                &lt;!-- 密码 --&gt;
+                &lt;el-form-item prop=&quot;password&quot;&gt;
+                    &lt;el-input type=&quot;password&quot; v-model=&quot;loginForm.password&quot; prefix-icon=&quot;iconfont icon-3702mima&quot;&gt;&lt;/el-input&gt;
+                &lt;/el-form-item&gt; 
+                &lt;!-- 按钮 --&gt;
+                &lt;el-form-item class=&quot;btns&quot;&gt;
+                    &lt;el-button type=&quot;primary&quot; @click=&quot;login&quot;&gt;登录&lt;/el-button&gt;
+                    &lt;el-button type=&quot;info&quot; @click=&quot;resetLoginForm&quot;&gt;重置&lt;/el-button&gt;
+                &lt;/el-form-item&gt; 
+            &lt;/el-form&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      //数据绑定
+      loginForm: {
+        username: 'admin',
+        password: '123456'
+      },
+      //表单验证规则
+      loginFormRules: {
+        username: [
+          { required: true, message: '请输入登录名', trigger: 'blur' },
+          {
+            min: 3,
+            max: 10,
+            message: '登录名长度在 3 到 10 个字符',
+            trigger: 'blur'
+          }
+        ],
+        password: [
+          { required: true, message: '请输入密码', trigger: 'blur' },
+          {
+            min: 6,
+            max: 15,
+            message: '密码长度在 6 到 15 个字符',
+            trigger: 'blur'
+          }
+        ]
+      }
+    }
+  },
+  //添加行为，
+  methods: {
+    //添加表单重置方法
+    resetLoginForm() {
+      //this=&gt;当前组件对象，其中的属性$refs包含了设置的表单ref
+      //   console.log(this)
+      this.$refs.LoginFormRef.resetFields()
+    },
+    login() {
+      //点击登录的时候先调用validate方法验证表单内容是否有误
+      this.$refs.LoginFormRef.validate(async valid =&gt; {
+        console.log(this.loginFormRules)
+        //如果valid参数为true则验证通过
+        if (!valid) {
+          return
+        }
+
+        //发送请求进行登录
+        const { data: res } = await this.$http.post('login', this.loginForm)
+        //   console.log(res);
+        if (res.meta.status !== 200) {
+          return this.$message.error('登录失败:' + res.meta.msg) //console.log(&quot;登录失败:&quot;+res.meta.msg)
+        }
+
+        this.$message.success('登录成功')
+        console.log(res)
+        //保存token
+        window.sessionStorage.setItem('token', res.data.token)
+        // 导航至/home
+        this.$router.push('/home')
+      })
+    }
+  }
+}
+&lt;/script&gt;
+
+&lt;style lang=&quot;less&quot; scoped&gt;
+.login_container {
+  background-color: #2b5b6b;
+  height: 100%;
+}
+.login_box {
+  width: 450px;
+  height: 300px;
+  background: #fff;
+  border-radius: 3px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  .avatar_box {
+    height: 130px;
+    width: 130px;
+    border: 1px solid #eee;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 0 10px #ddd;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: #eee;
+    }
+  }
+}
+.login_form {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.btns {
+  display: flex;
+  justify-content: flex-end;
+}
+&lt;/style&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br></div></div><p>其中我们有用到一下内容，需要进行进一步处理：</p> <p>A.添加element-ui的表单组件
+在plugins文件夹中打开element.js文件，进行elementui的按需导入</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import Vue from 'vue'
+import { Button } from 'element-ui'
+import { Form, FormItem } from 'element-ui'
+import { Input } from 'element-ui'
+
+Vue.use(Button)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Input)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>B.添加第三方字体
+复制素材中的fonts文件夹到assets中,在入口文件main.js中导入<code>import './assets/fonts/iconfont.css'</code>
+然后直接在 <code>&lt;el-input prefix-icon=&quot;iconfont icon-3702mima&quot;&gt;&lt;/el-input&gt;</code>
+接着添加登录盒子</p> <p>C.添加表单验证的步骤
+1).给<code>&lt;el-form&gt;</code>添加属性:rules=&quot;rules&quot;，rules是一堆验证规则，定义在script、中
+2).在script中添加rules：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>export default{ data(){return{......, rules: {
+          name: [
+            { required: true, message: '请输入活动名称', trigger: 'blur' },
+            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+          ],
+          region: [
+            { required: true, message: '请选择活动区域', trigger: 'change' }
+          ]
+}......
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>3).通过<code>&lt;el-form-item&gt;</code>的prop属性设置验证规则<code>&lt;el-form-item label=&quot;活动名称&quot; prop=&quot;name&quot;&gt;</code></p> <p>4.导入axios以发送ajax请求
+打开main.js，<code>import axios from 'axios';</code>
+设置请求的根路径：<code>axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/';</code>
+挂载axios：<code>Vue.prototype.$http = axios;</code></p> <p>5.配置弹窗提示：
+在plugins文件夹中打开element.js文件，进行elementui的按需导入
+<code>import {Message} from 'element-ui'</code>
+进行全局挂载：<code>Vue.prototype.$message = Message;</code>
+在login.vue组件中编写弹窗代码：<code>this.$message.error('登录失败')</code></p> <h2 id="_6-登录成功之后的操作"><a href="#_6-登录成功之后的操作" class="header-anchor">#</a> 6.登录成功之后的操作</h2> <p>A.登录成功之后，需要将后台返回的token保存到sessionStorage中
+操作完毕之后，需要跳转到/home</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>login() {
+      //点击登录的时候先调用validate方法验证表单内容是否有误
+      this.$refs.LoginFormRef.validate(async valid =&gt; {
+        console.log(this.loginFormRules)
+        //如果valid参数为true则验证通过
+        if (!valid) {
+          return
+        }
+
+        //发送请求进行登录
+        const { data: res } = await this.$http.post('login', this.loginForm)
+        //   console.log(res);
+        if (res.meta.status !== 200) {
+          return this.$message.error('登录失败:' + res.meta.msg) //console.log(&quot;登录失败:&quot;+res.meta.msg)
+        }
+
+        this.$message.success('登录成功')
+        console.log(res)
+        //保存token
+        window.sessionStorage.setItem('token', res.data.token)
+        // 导航至/home
+        this.$router.push('/home')
+      })
+    }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><p>添加一个组件Home.vue，并为之添加规则</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;template&gt;
+    &lt;div&gt;
+        this is home
+        &lt;el-button type=&quot;info&quot; @click=&quot;logout&quot;&gt; 退出 &lt;/el-button&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  methods: {
+    logout() {
+      window.sessionStorage.clear()
+      this.$router.push('/login')
+    }
+  }
+}
+&lt;/script&gt;
+
+&lt;style lang='less' scoped&gt;
+&lt;/style&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p>添加路由规则</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>const router = new Router({
+  routes: [
+    { path: '/', redirect: '/login' },
+    { path: '/login', component: Login },
+    { path: '/home', component: Home }
+  ]
+})
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>添加路由守卫
+如果用户没有登录，不能访问/home,如果用户通过url地址直接访问，则强制跳转到登录页面
+打开router.js</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import Vue from 'vue'
+import Router from 'vue-router'
+import Login from './components/Login.vue'
+import Home from './components/Home.vue'
+
+Vue.use(Router)
+
+const router = new Router({
+  routes: [
+    { path:'/', redirect:'/login'},
+    { path:'/login' , component:Login },
+    { path:'/home' , component:Home}
+  ]
+})
+
+//挂载路由导航守卫,to表示将要访问的路径，from表示从哪里来，next是下一个要做的操作
+router.beforeEach((to,from,next)=&gt;{ 
+  if(to.path === '/login')
+    return next();
+  
+  //获取token
+  const tokenStr = window.sessionStorage.getItem('token');
+
+  if(!tokenStr)
+    return next('/login');
+
+  next();
+
+})
+
+export default router 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br></div></div><p>实现退出功能
+在Home组件中添加一个退出功能按钮,给退出按钮添加点击事件，添加事件处理代码如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>export default {
+    methods:{
+        logout(){
+            window.sessionStorage.clear();
+            this.$router.push('/login');
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h2 id="补充"><a href="#补充" class="header-anchor">#</a> 补充</h2> <p>A.处理ESLint警告
+打开脚手架面板，查看警告信息
+[图片]
+默认情况下，ESLint和vscode格式化工具有冲突，需要添加配置文件解决冲突。
+在项目根目录添加 .prettierrc 文件</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>{
+    &quot;semi&quot;:false,
+    &quot;singleQuote&quot;:true
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>打开.eslintrc.js文件，禁用对 space-before-function-paren 的检查:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>  rules: {
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'space-before-function-paren' : 0
+  },
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>B.合并按需导入的element-ui</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>import Vue from 'vue'
+import { Button, Form, FormItem, Input, Message } from 'element-ui'
+
+Vue.use(Button)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Input)
+// 进行全局挂载：
+Vue.prototype.$message = Message
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>C.将代码提交到码云
+新建一个项目终端,输入命令‘git status’查看修改过的与新增的文件内容
+将所有文件添加到暂存区：git add .
+将所有代码提交到本地仓库：git commit -m &quot;添加登录功能以及/home的基本结构&quot;
+查看分支： git branch  发现所有代码都被提交到了login分支
+将login分支代码合并到master主分支，先切换到master：git checkout master
+在master分支进行代码合并：git merge login
+将本地的master推送到远端的码云：git push</p> <p>推送本地的子分支到码云，先切换到子分支：git checkout 分支名
+然后推送到码云：git push -u origin 远端分支名</p></div></div>  <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2022/05/07, 17:43:25</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/a49467/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">vuex</div></a> <a href="/pages/47880d/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">后台管理系统二</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/a49467/" class="prev">vuex</a></span> <span class="next"><a href="/pages/47880d/">后台管理系统二</a>→
+      </span></p></div></div></div> <div class="article-list"><div class="article-title"><a href="/archives/" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/pages/80365f/"><div>
+            证券市场基本法律法规
+            <!----></div></a> <span class="date">03-13</span></dt></dl><dl><dd>02</dd> <dt><a href="/pages/d9e4f4/"><div>
+            证券考试规则
+            <!----></div></a> <span class="date">03-12</span></dt></dl><dl><dd>03</dd> <dt><a href="/pages/cb2c17/"><div>
+            金融市场基础知识
+            <!----></div></a> <span class="date">03-12</span></dt></dl> <dl><dd></dd> <dt><a href="/archives/" class="more">更多文章&gt;</a></dt></dl></div></div></main></div> <div class="footer"><div class="icons"><a href="mailto:cloudjava@163.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="https://github.com/bigdatajava" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="https://gitee.com/nylg" title="Gitee" target="_blank" class="iconfont icon-gitee"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2014-2024
+    <span>wen chao | <a href="https://github.com/bigdatajava/blog-talk/blob/main/LICENSE" target="_blank">MIT License</a></span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"><div></div></div></div>
+    <script src="/assets/js/app.b2807c2b.js" defer></script><script src="/assets/js/2.eeaab5de.js" defer></script><script src="/assets/js/158.e9c295a1.js" defer></script>
+  </body>
+</html>

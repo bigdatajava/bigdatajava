@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>wrapper详解 | wen chao</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_3129839_xft6cqs5gc.css">
+    <meta name="description" content="架构进阶之路...">
+    <meta name="keywords" content="全栈博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,js,ES6,TypeScript,vue">
+    <meta name="theme-color" content="#11a8cd">
+    
+    <link rel="preload" href="/assets/css/0.styles.237ce36e.css" as="style"><link rel="preload" href="/assets/js/app.b2807c2b.js" as="script"><link rel="preload" href="/assets/js/2.eeaab5de.js" as="script"><link rel="preload" href="/assets/js/321.91d065c2.js" as="script"><link rel="prefetch" href="/assets/js/10.30d760c8.js"><link rel="prefetch" href="/assets/js/100.d2a91f05.js"><link rel="prefetch" href="/assets/js/101.aa15113f.js"><link rel="prefetch" href="/assets/js/102.303aae62.js"><link rel="prefetch" href="/assets/js/103.39dbd83e.js"><link rel="prefetch" href="/assets/js/104.30434bc2.js"><link rel="prefetch" href="/assets/js/105.68d90558.js"><link rel="prefetch" href="/assets/js/106.2a47de1c.js"><link rel="prefetch" href="/assets/js/107.6c92802c.js"><link rel="prefetch" href="/assets/js/108.1a019470.js"><link rel="prefetch" href="/assets/js/109.f2cc4655.js"><link rel="prefetch" href="/assets/js/11.8c97a85c.js"><link rel="prefetch" href="/assets/js/110.8630d06d.js"><link rel="prefetch" href="/assets/js/111.fdf10f1a.js"><link rel="prefetch" href="/assets/js/112.ea841a58.js"><link rel="prefetch" href="/assets/js/113.bd8e761d.js"><link rel="prefetch" href="/assets/js/114.63ed667a.js"><link rel="prefetch" href="/assets/js/115.909a8353.js"><link rel="prefetch" href="/assets/js/116.62dab6c0.js"><link rel="prefetch" href="/assets/js/117.d0ef1d76.js"><link rel="prefetch" href="/assets/js/118.39e6e925.js"><link rel="prefetch" href="/assets/js/119.e0265f93.js"><link rel="prefetch" href="/assets/js/12.156b3963.js"><link rel="prefetch" href="/assets/js/120.4be98e6e.js"><link rel="prefetch" href="/assets/js/121.518d8dd5.js"><link rel="prefetch" href="/assets/js/122.477dd94b.js"><link rel="prefetch" href="/assets/js/123.d6065aca.js"><link rel="prefetch" href="/assets/js/124.c6f965c7.js"><link rel="prefetch" href="/assets/js/125.3ee79c35.js"><link rel="prefetch" href="/assets/js/126.bcc69ad9.js"><link rel="prefetch" href="/assets/js/127.8f3ce1ac.js"><link rel="prefetch" href="/assets/js/128.03c90841.js"><link rel="prefetch" href="/assets/js/129.ab248cd9.js"><link rel="prefetch" href="/assets/js/13.c67aac42.js"><link rel="prefetch" href="/assets/js/130.dd64983e.js"><link rel="prefetch" href="/assets/js/131.6ffe6940.js"><link rel="prefetch" href="/assets/js/132.2a8fed26.js"><link rel="prefetch" href="/assets/js/133.6a7673eb.js"><link rel="prefetch" href="/assets/js/134.c00b7bf2.js"><link rel="prefetch" href="/assets/js/135.59d75ce6.js"><link rel="prefetch" href="/assets/js/136.bcd27d57.js"><link rel="prefetch" href="/assets/js/137.75dd3384.js"><link rel="prefetch" href="/assets/js/138.a2ababbf.js"><link rel="prefetch" href="/assets/js/139.6aa75eaa.js"><link rel="prefetch" href="/assets/js/14.8ab9a27a.js"><link rel="prefetch" href="/assets/js/140.58295019.js"><link rel="prefetch" href="/assets/js/141.8d05c3a5.js"><link rel="prefetch" href="/assets/js/142.18498abf.js"><link rel="prefetch" href="/assets/js/143.20c6bdde.js"><link rel="prefetch" href="/assets/js/144.ac94f8ff.js"><link rel="prefetch" href="/assets/js/145.e135dd8a.js"><link rel="prefetch" href="/assets/js/146.13a537e3.js"><link rel="prefetch" href="/assets/js/147.016b19e9.js"><link rel="prefetch" href="/assets/js/148.d3a909f2.js"><link rel="prefetch" href="/assets/js/149.90d05716.js"><link rel="prefetch" href="/assets/js/15.2b8ce9c5.js"><link rel="prefetch" href="/assets/js/150.e61c5f29.js"><link rel="prefetch" href="/assets/js/151.c81aa646.js"><link rel="prefetch" href="/assets/js/152.82944cc0.js"><link rel="prefetch" href="/assets/js/153.410a3789.js"><link rel="prefetch" href="/assets/js/154.cc1235ef.js"><link rel="prefetch" href="/assets/js/155.1e7fae81.js"><link rel="prefetch" href="/assets/js/156.cfaa0244.js"><link rel="prefetch" href="/assets/js/157.47981f53.js"><link rel="prefetch" href="/assets/js/158.e9c295a1.js"><link rel="prefetch" href="/assets/js/159.50ba3574.js"><link rel="prefetch" href="/assets/js/16.a8b0b084.js"><link rel="prefetch" href="/assets/js/160.5845ca9d.js"><link rel="prefetch" href="/assets/js/161.0e97694f.js"><link rel="prefetch" href="/assets/js/162.3c77226a.js"><link rel="prefetch" href="/assets/js/163.17c9ec79.js"><link rel="prefetch" href="/assets/js/164.7736f87d.js"><link rel="prefetch" href="/assets/js/165.ff7b4f9e.js"><link rel="prefetch" href="/assets/js/166.6956307c.js"><link rel="prefetch" href="/assets/js/167.366611f7.js"><link rel="prefetch" href="/assets/js/168.57345d6b.js"><link rel="prefetch" href="/assets/js/169.25420ee7.js"><link rel="prefetch" href="/assets/js/17.68e41786.js"><link rel="prefetch" href="/assets/js/170.bedd4eac.js"><link rel="prefetch" href="/assets/js/171.374570cf.js"><link rel="prefetch" href="/assets/js/172.2f8bf4a8.js"><link rel="prefetch" href="/assets/js/173.42ea0d36.js"><link rel="prefetch" href="/assets/js/174.0ccfd7c6.js"><link rel="prefetch" href="/assets/js/175.7ab333d2.js"><link rel="prefetch" href="/assets/js/176.c7266816.js"><link rel="prefetch" href="/assets/js/177.d0a95fb6.js"><link rel="prefetch" href="/assets/js/178.2bb652ad.js"><link rel="prefetch" href="/assets/js/179.a8eab386.js"><link rel="prefetch" href="/assets/js/18.8e0d47a1.js"><link rel="prefetch" href="/assets/js/180.9fd22be7.js"><link rel="prefetch" href="/assets/js/181.5d5358d4.js"><link rel="prefetch" href="/assets/js/182.af7d36e2.js"><link rel="prefetch" href="/assets/js/183.dddc555d.js"><link rel="prefetch" href="/assets/js/184.a3396baf.js"><link rel="prefetch" href="/assets/js/185.2f7da675.js"><link rel="prefetch" href="/assets/js/186.92639766.js"><link rel="prefetch" href="/assets/js/187.711debd8.js"><link rel="prefetch" href="/assets/js/188.149256e6.js"><link rel="prefetch" href="/assets/js/189.c118aa93.js"><link rel="prefetch" href="/assets/js/19.770d847c.js"><link rel="prefetch" href="/assets/js/190.4d85ee4e.js"><link rel="prefetch" href="/assets/js/191.ff095a9a.js"><link rel="prefetch" href="/assets/js/192.4b5fe55c.js"><link rel="prefetch" href="/assets/js/193.415828fe.js"><link rel="prefetch" href="/assets/js/194.ce801921.js"><link rel="prefetch" href="/assets/js/195.c668b288.js"><link rel="prefetch" href="/assets/js/196.8825af00.js"><link rel="prefetch" href="/assets/js/197.d09dcd8b.js"><link rel="prefetch" href="/assets/js/198.396382cf.js"><link rel="prefetch" href="/assets/js/199.facc6630.js"><link rel="prefetch" href="/assets/js/20.97979961.js"><link rel="prefetch" href="/assets/js/200.db1ff45e.js"><link rel="prefetch" href="/assets/js/201.ab79fbd5.js"><link rel="prefetch" href="/assets/js/202.46e8525c.js"><link rel="prefetch" href="/assets/js/203.2cc13ae9.js"><link rel="prefetch" href="/assets/js/204.3c8a5bcd.js"><link rel="prefetch" href="/assets/js/205.3d0d8394.js"><link rel="prefetch" href="/assets/js/206.261623f6.js"><link rel="prefetch" href="/assets/js/207.6260c0aa.js"><link rel="prefetch" href="/assets/js/208.0fd63045.js"><link rel="prefetch" href="/assets/js/209.e5eaeeca.js"><link rel="prefetch" href="/assets/js/21.e6565c56.js"><link rel="prefetch" href="/assets/js/210.bccc650e.js"><link rel="prefetch" href="/assets/js/211.c238d796.js"><link rel="prefetch" href="/assets/js/212.dd4703ab.js"><link rel="prefetch" href="/assets/js/213.110becf0.js"><link rel="prefetch" href="/assets/js/214.a90d9da2.js"><link rel="prefetch" href="/assets/js/215.81872845.js"><link rel="prefetch" href="/assets/js/216.2ae9609f.js"><link rel="prefetch" href="/assets/js/217.567657f9.js"><link rel="prefetch" href="/assets/js/218.bc570e81.js"><link rel="prefetch" href="/assets/js/219.32a64945.js"><link rel="prefetch" href="/assets/js/22.92562bc3.js"><link rel="prefetch" href="/assets/js/220.d1605ea9.js"><link rel="prefetch" href="/assets/js/221.c1483dee.js"><link rel="prefetch" href="/assets/js/222.188d3bb6.js"><link rel="prefetch" href="/assets/js/223.b4d7fc4a.js"><link rel="prefetch" href="/assets/js/224.5495522d.js"><link rel="prefetch" href="/assets/js/225.ea320f20.js"><link rel="prefetch" href="/assets/js/226.1f245007.js"><link rel="prefetch" href="/assets/js/227.280e3176.js"><link rel="prefetch" href="/assets/js/228.7ea12e2e.js"><link rel="prefetch" href="/assets/js/229.0697746f.js"><link rel="prefetch" href="/assets/js/23.4b595789.js"><link rel="prefetch" href="/assets/js/230.8efdd773.js"><link rel="prefetch" href="/assets/js/231.44bfbfb5.js"><link rel="prefetch" href="/assets/js/232.24dc2667.js"><link rel="prefetch" href="/assets/js/233.6c77b12b.js"><link rel="prefetch" href="/assets/js/234.1ea57e5c.js"><link rel="prefetch" href="/assets/js/235.efb990b9.js"><link rel="prefetch" href="/assets/js/236.2e8820ed.js"><link rel="prefetch" href="/assets/js/237.b108feed.js"><link rel="prefetch" href="/assets/js/238.22baaff8.js"><link rel="prefetch" href="/assets/js/239.ac2c0eba.js"><link rel="prefetch" href="/assets/js/24.b1f29ab1.js"><link rel="prefetch" href="/assets/js/240.1f419e38.js"><link rel="prefetch" href="/assets/js/241.e23fbc50.js"><link rel="prefetch" href="/assets/js/242.83b3226c.js"><link rel="prefetch" href="/assets/js/243.1ce8a9be.js"><link rel="prefetch" href="/assets/js/244.d7c93bdb.js"><link rel="prefetch" href="/assets/js/245.a1b402c0.js"><link rel="prefetch" href="/assets/js/246.7eeb5e18.js"><link rel="prefetch" href="/assets/js/247.b2c0ab4a.js"><link rel="prefetch" href="/assets/js/248.5b2dd7ed.js"><link rel="prefetch" href="/assets/js/249.6278d6f1.js"><link rel="prefetch" href="/assets/js/25.748022ff.js"><link rel="prefetch" href="/assets/js/250.e3114578.js"><link rel="prefetch" href="/assets/js/251.1f576677.js"><link rel="prefetch" href="/assets/js/252.7e83dd55.js"><link rel="prefetch" href="/assets/js/253.ab219365.js"><link rel="prefetch" href="/assets/js/254.31655221.js"><link rel="prefetch" href="/assets/js/255.402ba0fd.js"><link rel="prefetch" href="/assets/js/256.2f1f131a.js"><link rel="prefetch" href="/assets/js/257.cd0dac87.js"><link rel="prefetch" href="/assets/js/258.5e84f5d0.js"><link rel="prefetch" href="/assets/js/259.72cf210e.js"><link rel="prefetch" href="/assets/js/26.d566b8b1.js"><link rel="prefetch" href="/assets/js/260.ddfd8bc7.js"><link rel="prefetch" href="/assets/js/261.b074e8b6.js"><link rel="prefetch" href="/assets/js/262.e0b94776.js"><link rel="prefetch" href="/assets/js/263.2e66950f.js"><link rel="prefetch" href="/assets/js/264.f3ac339f.js"><link rel="prefetch" href="/assets/js/265.384c189b.js"><link rel="prefetch" href="/assets/js/266.635a72af.js"><link rel="prefetch" href="/assets/js/267.c9ede946.js"><link rel="prefetch" href="/assets/js/268.9ec888f5.js"><link rel="prefetch" href="/assets/js/269.2a81258c.js"><link rel="prefetch" href="/assets/js/27.3085f660.js"><link rel="prefetch" href="/assets/js/270.973f0998.js"><link rel="prefetch" href="/assets/js/271.de24bbf3.js"><link rel="prefetch" href="/assets/js/272.68e83c3c.js"><link rel="prefetch" href="/assets/js/273.d740150b.js"><link rel="prefetch" href="/assets/js/274.dc1b1f0c.js"><link rel="prefetch" href="/assets/js/275.cf028a33.js"><link rel="prefetch" href="/assets/js/276.351dbc96.js"><link rel="prefetch" href="/assets/js/277.6a9f5699.js"><link rel="prefetch" href="/assets/js/278.0c28ac6f.js"><link rel="prefetch" href="/assets/js/279.b14576ac.js"><link rel="prefetch" href="/assets/js/28.47957820.js"><link rel="prefetch" href="/assets/js/280.906a73b1.js"><link rel="prefetch" href="/assets/js/281.4173499d.js"><link rel="prefetch" href="/assets/js/282.43873aa6.js"><link rel="prefetch" href="/assets/js/283.2a3d0552.js"><link rel="prefetch" href="/assets/js/284.2c7aa3fb.js"><link rel="prefetch" href="/assets/js/285.a62f9799.js"><link rel="prefetch" href="/assets/js/286.2f0b6532.js"><link rel="prefetch" href="/assets/js/287.d770d01f.js"><link rel="prefetch" href="/assets/js/288.97207297.js"><link rel="prefetch" href="/assets/js/289.ddf5a46c.js"><link rel="prefetch" href="/assets/js/29.716c8a52.js"><link rel="prefetch" href="/assets/js/290.9f1b4436.js"><link rel="prefetch" href="/assets/js/291.885ac485.js"><link rel="prefetch" href="/assets/js/292.b1fe886b.js"><link rel="prefetch" href="/assets/js/293.f597359f.js"><link rel="prefetch" href="/assets/js/294.f559040e.js"><link rel="prefetch" href="/assets/js/295.ef66e1a4.js"><link rel="prefetch" href="/assets/js/296.47009685.js"><link rel="prefetch" href="/assets/js/297.fb7d20ba.js"><link rel="prefetch" href="/assets/js/298.cb1631f8.js"><link rel="prefetch" href="/assets/js/299.25f28097.js"><link rel="prefetch" href="/assets/js/3.9c10c990.js"><link rel="prefetch" href="/assets/js/30.b35b7ad0.js"><link rel="prefetch" href="/assets/js/300.ab5c587e.js"><link rel="prefetch" href="/assets/js/301.544c6982.js"><link rel="prefetch" href="/assets/js/302.70396486.js"><link rel="prefetch" href="/assets/js/303.fa1f3a02.js"><link rel="prefetch" href="/assets/js/304.c344682e.js"><link rel="prefetch" href="/assets/js/305.a0620b1d.js"><link rel="prefetch" href="/assets/js/306.8cb43e28.js"><link rel="prefetch" href="/assets/js/307.ee4d9e2d.js"><link rel="prefetch" href="/assets/js/308.bb04656d.js"><link rel="prefetch" href="/assets/js/309.b3e3c0be.js"><link rel="prefetch" href="/assets/js/31.af0fa05e.js"><link rel="prefetch" href="/assets/js/310.162df0c7.js"><link rel="prefetch" href="/assets/js/311.1a5e341e.js"><link rel="prefetch" href="/assets/js/312.9fe4ed85.js"><link rel="prefetch" href="/assets/js/313.e187b781.js"><link rel="prefetch" href="/assets/js/314.c832b372.js"><link rel="prefetch" href="/assets/js/315.66b7260d.js"><link rel="prefetch" href="/assets/js/316.074c1e65.js"><link rel="prefetch" href="/assets/js/317.9210b762.js"><link rel="prefetch" href="/assets/js/318.50ac3392.js"><link rel="prefetch" href="/assets/js/319.996a4c1b.js"><link rel="prefetch" href="/assets/js/32.81b4ee4b.js"><link rel="prefetch" href="/assets/js/320.661c3aa7.js"><link rel="prefetch" href="/assets/js/322.21d177e9.js"><link rel="prefetch" href="/assets/js/323.c240199c.js"><link rel="prefetch" href="/assets/js/324.fc71e18c.js"><link rel="prefetch" href="/assets/js/325.d441ab5e.js"><link rel="prefetch" href="/assets/js/326.6065a9e1.js"><link rel="prefetch" href="/assets/js/327.b68a9e0f.js"><link rel="prefetch" href="/assets/js/328.082fa547.js"><link rel="prefetch" href="/assets/js/329.17abf0b7.js"><link rel="prefetch" href="/assets/js/33.c41edd68.js"><link rel="prefetch" href="/assets/js/330.076712a3.js"><link rel="prefetch" href="/assets/js/331.b883690e.js"><link rel="prefetch" href="/assets/js/332.a942e6bd.js"><link rel="prefetch" href="/assets/js/333.e193acf6.js"><link rel="prefetch" href="/assets/js/334.5721c074.js"><link rel="prefetch" href="/assets/js/335.b759f5ec.js"><link rel="prefetch" href="/assets/js/336.8f786a4b.js"><link rel="prefetch" href="/assets/js/337.8ef80b90.js"><link rel="prefetch" href="/assets/js/338.8c63fda7.js"><link rel="prefetch" href="/assets/js/339.3df2ba0b.js"><link rel="prefetch" href="/assets/js/34.e166f3d5.js"><link rel="prefetch" href="/assets/js/340.e54bd836.js"><link rel="prefetch" href="/assets/js/341.1de3160e.js"><link rel="prefetch" href="/assets/js/342.52f64508.js"><link rel="prefetch" href="/assets/js/343.f56c914e.js"><link rel="prefetch" href="/assets/js/344.63033532.js"><link rel="prefetch" href="/assets/js/345.b23610d1.js"><link rel="prefetch" href="/assets/js/346.2c817177.js"><link rel="prefetch" href="/assets/js/347.bb20d78f.js"><link rel="prefetch" href="/assets/js/348.bba2b968.js"><link rel="prefetch" href="/assets/js/349.620d4fde.js"><link rel="prefetch" href="/assets/js/35.827d2ea3.js"><link rel="prefetch" href="/assets/js/350.a24a894c.js"><link rel="prefetch" href="/assets/js/351.9fc8ae8f.js"><link rel="prefetch" href="/assets/js/352.9229b958.js"><link rel="prefetch" href="/assets/js/353.ffe6628c.js"><link rel="prefetch" href="/assets/js/354.4f883a51.js"><link rel="prefetch" href="/assets/js/355.3232e481.js"><link rel="prefetch" href="/assets/js/356.52bb9172.js"><link rel="prefetch" href="/assets/js/357.4ee29887.js"><link rel="prefetch" href="/assets/js/358.22886190.js"><link rel="prefetch" href="/assets/js/359.1f40fcc5.js"><link rel="prefetch" href="/assets/js/36.7c80731a.js"><link rel="prefetch" href="/assets/js/360.630b9c12.js"><link rel="prefetch" href="/assets/js/37.6608ea0a.js"><link rel="prefetch" href="/assets/js/38.4c69b602.js"><link rel="prefetch" href="/assets/js/39.19f940a6.js"><link rel="prefetch" href="/assets/js/4.55a001d1.js"><link rel="prefetch" href="/assets/js/40.d3257c4f.js"><link rel="prefetch" href="/assets/js/41.89db1eaf.js"><link rel="prefetch" href="/assets/js/42.4a12d693.js"><link rel="prefetch" href="/assets/js/43.cbe3ed47.js"><link rel="prefetch" href="/assets/js/44.61c79193.js"><link rel="prefetch" href="/assets/js/45.ce5ed428.js"><link rel="prefetch" href="/assets/js/46.eea0f2fa.js"><link rel="prefetch" href="/assets/js/47.f3bd04d8.js"><link rel="prefetch" href="/assets/js/48.ed81abeb.js"><link rel="prefetch" href="/assets/js/49.978d3cae.js"><link rel="prefetch" href="/assets/js/5.fe551af2.js"><link rel="prefetch" href="/assets/js/50.e21176fc.js"><link rel="prefetch" href="/assets/js/51.2f5a0327.js"><link rel="prefetch" href="/assets/js/52.125f820a.js"><link rel="prefetch" href="/assets/js/53.4a1c114d.js"><link rel="prefetch" href="/assets/js/54.dfe3253b.js"><link rel="prefetch" href="/assets/js/55.5959dcbb.js"><link rel="prefetch" href="/assets/js/56.9d18670e.js"><link rel="prefetch" href="/assets/js/57.c238fb54.js"><link rel="prefetch" href="/assets/js/58.e221eedb.js"><link rel="prefetch" href="/assets/js/59.f628533d.js"><link rel="prefetch" href="/assets/js/6.4670d323.js"><link rel="prefetch" href="/assets/js/60.919ac5be.js"><link rel="prefetch" href="/assets/js/61.3a63b17e.js"><link rel="prefetch" href="/assets/js/62.e61011ad.js"><link rel="prefetch" href="/assets/js/63.55200ef4.js"><link rel="prefetch" href="/assets/js/64.7c19f83d.js"><link rel="prefetch" href="/assets/js/65.833da817.js"><link rel="prefetch" href="/assets/js/66.13f4f83f.js"><link rel="prefetch" href="/assets/js/67.0c77e799.js"><link rel="prefetch" href="/assets/js/68.cc0e543d.js"><link rel="prefetch" href="/assets/js/69.555bef08.js"><link rel="prefetch" href="/assets/js/7.90cda232.js"><link rel="prefetch" href="/assets/js/70.5d2ec40f.js"><link rel="prefetch" href="/assets/js/71.81f1af4b.js"><link rel="prefetch" href="/assets/js/72.8a66936f.js"><link rel="prefetch" href="/assets/js/73.2655fba2.js"><link rel="prefetch" href="/assets/js/74.ba0b3153.js"><link rel="prefetch" href="/assets/js/75.536955ba.js"><link rel="prefetch" href="/assets/js/76.3a946a81.js"><link rel="prefetch" href="/assets/js/77.9b243f6c.js"><link rel="prefetch" href="/assets/js/78.f580a907.js"><link rel="prefetch" href="/assets/js/79.38cbcc11.js"><link rel="prefetch" href="/assets/js/8.9cebf18a.js"><link rel="prefetch" href="/assets/js/80.e82012e8.js"><link rel="prefetch" href="/assets/js/81.73c65f97.js"><link rel="prefetch" href="/assets/js/82.ddfa06dd.js"><link rel="prefetch" href="/assets/js/83.b75fcea2.js"><link rel="prefetch" href="/assets/js/84.5e0efc6d.js"><link rel="prefetch" href="/assets/js/85.3a495ae2.js"><link rel="prefetch" href="/assets/js/86.1ebe8967.js"><link rel="prefetch" href="/assets/js/87.cd673062.js"><link rel="prefetch" href="/assets/js/88.f50e4960.js"><link rel="prefetch" href="/assets/js/89.06660ffb.js"><link rel="prefetch" href="/assets/js/9.04fce59d.js"><link rel="prefetch" href="/assets/js/90.aa61aeaf.js"><link rel="prefetch" href="/assets/js/91.865e8535.js"><link rel="prefetch" href="/assets/js/92.fd2d2a62.js"><link rel="prefetch" href="/assets/js/93.b185de83.js"><link rel="prefetch" href="/assets/js/94.f5290c38.js"><link rel="prefetch" href="/assets/js/95.be5b7fed.js"><link rel="prefetch" href="/assets/js/96.d442acd0.js"><link rel="prefetch" href="/assets/js/97.2f9b0746.js"><link rel="prefetch" href="/assets/js/98.3bba4945.js"><link rel="prefetch" href="/assets/js/99.cd82a6ed.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.237ce36e.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.png" alt="wen chao" class="logo"> <span class="site-name can-hide">wen chao</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Algorithm" class="dropdown-title"><a href="/Algorithm/" class="link-title">Algorithm</a> <span class="title" style="display:none;">Algorithm</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/d8e764/" class="nav-link">Theory</a></li><li class="dropdown-item"><!----> <a href="/pages/81a4bd/" class="nav-link">LeetCode</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Spring" class="dropdown-title"><a href="/Spring/" class="link-title">Spring</a> <span class="title" style="display:none;">Spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/373439/" class="nav-link">Spring</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Technology" class="dropdown-title"><a href="/Technology/" class="link-title">Technology</a> <span class="title" style="display:none;">Technology</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/3b6841/" class="nav-link">DB</a></li><li class="dropdown-item"><!----> <a href="/pages/d7857e/" class="nav-link">Linux</a></li><li class="dropdown-item"><!----> <a href="/pages/b89362/" class="nav-link">Redis</a></li><li class="dropdown-item"><!----> <a href="/pages/ec8b81/" class="nav-link">MongoDB</a></li><li class="dropdown-item"><!----> <a href="/pages/4e3ff1/" class="nav-link">Zookeeper</a></li><li class="dropdown-item"><!----> <a href="/pages/a75fef/" class="nav-link">MQ</a></li><li class="dropdown-item"><!----> <a href="/pages/b194d7/" class="nav-link">Dubbo</a></li><li class="dropdown-item"><!----> <a href="/pages/371f2f/" class="nav-link">ElasticSearch</a></li><li class="dropdown-item"><!----> <a href="/pages/027aa3/" class="nav-link">Workflow</a></li><li class="dropdown-item"><!----> <a href="/pages/73ab4b/" class="nav-link">OAuth2</a></li><li class="dropdown-item"><!----> <a href="/pages/d7a38a/" class="nav-link">JPA</a></li><li class="dropdown-item"><!----> <a href="/pages/eb5dc1/" class="nav-link">Liquibase</a></li><li class="dropdown-item"><!----> <a href="/pages/e54277/" class="nav-link">Lombok</a></li><li class="dropdown-item"><!----> <a href="/pages/62e4f6/" class="nav-link">Git</a></li><li class="dropdown-item"><!----> <a href="/pages/13c836/" class="nav-link">Nginx</a></li><li class="dropdown-item"><!----> <a href="/pages/b50b3d/" class="nav-link">Mini Program</a></li><li class="dropdown-item"><!----> <a href="/pages/09d3b8/" class="nav-link">JVM</a></li><li class="dropdown-item"><!----> <a href="/pages/a526c7/" class="nav-link">Log</a></li><li class="dropdown-item"><!----> <a href="/pages/59cf4f/" class="nav-link">JDK</a></li><li class="dropdown-item"><!----> <a href="/pages/d50dab/" class="nav-link">Thymeleaf</a></li><li class="dropdown-item"><!----> <a href="/pages/97abaa/" class="nav-link">Maven</a></li><li class="dropdown-item"><!----> <a href="/pages/7879f1/" class="nav-link">Mybatis</a></li><li class="dropdown-item"><!----> <a href="/pages/745b7c/" class="nav-link">Network</a></li><li class="dropdown-item"><!----> <a href="/pages/274dac/" class="nav-link">Raspberrypi</a></li><li class="dropdown-item"><!----> <a href="/pages/87c097/" class="nav-link">Node</a></li><li class="dropdown-item"><!----> <a href="/pages/927664/" class="nav-link">HTML</a></li><li class="dropdown-item"><!----> <a href="/pages/2c3f19/" class="nav-link">Vue</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Other" class="dropdown-title"><a href="/Other/" class="link-title">Other</a> <span class="title" style="display:none;">Other</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/fea344/" class="nav-link">Book</a></li><li class="dropdown-item"><!----> <a href="/pages/d62f72/" class="nav-link">面试</a></li><li class="dropdown-item"><!----> <a href="/pages/f3d338/" class="nav-link">问题</a></li><li class="dropdown-item"><!----> <a href="/pages/ff202b/" class="nav-link">友链</a></li><li class="dropdown-item"><!----> <a href="/pages/2b746e/" class="nav-link">证券</a></li></ul></div></div><div class="nav-item"><a href="/About/" class="nav-link">About</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Index" class="dropdown-title"><a href="/archives/" class="link-title">Index</a> <span class="title" style="display:none;">Index</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="/img/touxiang-lanse.png"> <div class="blogger-info"><h3>wen chao</h3> <span>持之以恒做正确有价值的事!</span></div></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Algorithm" class="dropdown-title"><a href="/Algorithm/" class="link-title">Algorithm</a> <span class="title" style="display:none;">Algorithm</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/d8e764/" class="nav-link">Theory</a></li><li class="dropdown-item"><!----> <a href="/pages/81a4bd/" class="nav-link">LeetCode</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Spring" class="dropdown-title"><a href="/Spring/" class="link-title">Spring</a> <span class="title" style="display:none;">Spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/373439/" class="nav-link">Spring</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Technology" class="dropdown-title"><a href="/Technology/" class="link-title">Technology</a> <span class="title" style="display:none;">Technology</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/3b6841/" class="nav-link">DB</a></li><li class="dropdown-item"><!----> <a href="/pages/d7857e/" class="nav-link">Linux</a></li><li class="dropdown-item"><!----> <a href="/pages/b89362/" class="nav-link">Redis</a></li><li class="dropdown-item"><!----> <a href="/pages/ec8b81/" class="nav-link">MongoDB</a></li><li class="dropdown-item"><!----> <a href="/pages/4e3ff1/" class="nav-link">Zookeeper</a></li><li class="dropdown-item"><!----> <a href="/pages/a75fef/" class="nav-link">MQ</a></li><li class="dropdown-item"><!----> <a href="/pages/b194d7/" class="nav-link">Dubbo</a></li><li class="dropdown-item"><!----> <a href="/pages/371f2f/" class="nav-link">ElasticSearch</a></li><li class="dropdown-item"><!----> <a href="/pages/027aa3/" class="nav-link">Workflow</a></li><li class="dropdown-item"><!----> <a href="/pages/73ab4b/" class="nav-link">OAuth2</a></li><li class="dropdown-item"><!----> <a href="/pages/d7a38a/" class="nav-link">JPA</a></li><li class="dropdown-item"><!----> <a href="/pages/eb5dc1/" class="nav-link">Liquibase</a></li><li class="dropdown-item"><!----> <a href="/pages/e54277/" class="nav-link">Lombok</a></li><li class="dropdown-item"><!----> <a href="/pages/62e4f6/" class="nav-link">Git</a></li><li class="dropdown-item"><!----> <a href="/pages/13c836/" class="nav-link">Nginx</a></li><li class="dropdown-item"><!----> <a href="/pages/b50b3d/" class="nav-link">Mini Program</a></li><li class="dropdown-item"><!----> <a href="/pages/09d3b8/" class="nav-link">JVM</a></li><li class="dropdown-item"><!----> <a href="/pages/a526c7/" class="nav-link">Log</a></li><li class="dropdown-item"><!----> <a href="/pages/59cf4f/" class="nav-link">JDK</a></li><li class="dropdown-item"><!----> <a href="/pages/d50dab/" class="nav-link">Thymeleaf</a></li><li class="dropdown-item"><!----> <a href="/pages/97abaa/" class="nav-link">Maven</a></li><li class="dropdown-item"><!----> <a href="/pages/7879f1/" class="nav-link">Mybatis</a></li><li class="dropdown-item"><!----> <a href="/pages/745b7c/" class="nav-link">Network</a></li><li class="dropdown-item"><!----> <a href="/pages/274dac/" class="nav-link">Raspberrypi</a></li><li class="dropdown-item"><!----> <a href="/pages/87c097/" class="nav-link">Node</a></li><li class="dropdown-item"><!----> <a href="/pages/927664/" class="nav-link">HTML</a></li><li class="dropdown-item"><!----> <a href="/pages/2c3f19/" class="nav-link">Vue</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Other" class="dropdown-title"><a href="/Other/" class="link-title">Other</a> <span class="title" style="display:none;">Other</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/fea344/" class="nav-link">Book</a></li><li class="dropdown-item"><!----> <a href="/pages/d62f72/" class="nav-link">面试</a></li><li class="dropdown-item"><!----> <a href="/pages/f3d338/" class="nav-link">问题</a></li><li class="dropdown-item"><!----> <a href="/pages/ff202b/" class="nav-link">友链</a></li><li class="dropdown-item"><!----> <a href="/pages/2b746e/" class="nav-link">证券</a></li></ul></div></div><div class="nav-item"><a href="/About/" class="nav-link">About</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Index" class="dropdown-title"><a href="/archives/" class="link-title">Index</a> <span class="title" style="display:none;">Index</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Book</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>面试</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>问题</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/pages/08391b/" class="sidebar-link">jdk版本导致报错</a></li><li><a href="/pages/008a6e/" class="sidebar-link">一千万个数高效求和</a></li><li><a href="/pages/ec824f/" class="sidebar-link">pdf编辑</a></li><li><a href="/pages/be4cb8/" class="sidebar-link">移动目录下的指定类型文件-正则实现（File Move）</a></li><li><a href="/pages/cb76f1/" class="sidebar-link">懒加载可能会出现的异常</a></li><li><a href="/pages/c8309e/" class="sidebar-link">spring boot jpa级联保存</a></li><li><a href="/pages/8861d4/" class="sidebar-link">ConfigurationProperties读取配置文件内容</a></li><li><a href="/pages/1ada76/" class="sidebar-link">spring请求入参-Map类型</a></li><li><a href="/pages/f8ee2c/" class="sidebar-link">base64解析方式-浏览器控制台命令行方式</a></li><li><a href="/pages/97ce84/" class="sidebar-link">判断两个类改动字段有哪些方式</a></li><li><a href="/pages/85deb6/" class="sidebar-link">Mac中解决windows中GBK编码的文件乱码现象</a></li><li><a href="/pages/198fdf/" class="sidebar-link">快捷键</a></li><li><a href="/pages/c5630c/" class="sidebar-link">Mac下Chrome安装crx格式插件</a></li><li><a href="/pages/66a9e5/" class="sidebar-link">WIFI破解</a></li><li><a href="/pages/b8fe94/" class="sidebar-link">日常杂集</a></li><li><a href="/pages/57d5e7/" class="sidebar-link">图片加水印后，解决ImageIo write图片质量变模糊</a></li><li><a href="/pages/de9404/" class="sidebar-link">Mac下Ant安装</a></li><li><a href="/pages/936cd5/" class="sidebar-link">MD文档添加Github图床图片</a></li><li><a href="/pages/8c770b/" class="sidebar-link">npm install时报错</a></li><li><a href="/pages/f3d338/" class="sidebar-link">mysql字符集不一致问题</a></li><li><a href="/pages/2ed783/" class="sidebar-link">MySQL查找json字段里的值</a></li><li><a href="/pages/43fdda/" class="sidebar-link">maven的pom文件报错</a></li><li><a href="/pages/09c539/" class="sidebar-link">Dia无法输入中文解决(ubuntu)</a></li><li><a href="/pages/9edc4f/" class="sidebar-link">ubuntu使用</a></li><li><a href="/pages/5e55f8/" class="sidebar-link">JMM代码执行流程</a></li><li><a href="/pages/794d4c/" class="sidebar-link">博客搭建</a></li><li><a href="/pages/3235ec/" class="sidebar-link">Idea 高效开发技巧</a></li><li><a href="/pages/7da8e4/" class="sidebar-link">DownloadHelper使用教程</a></li><li><a href="/pages/d0aa5a/" class="sidebar-link">博客搭建教程-Github Pages,jekyll,自定义域名</a></li><li><a href="/pages/47a151/" class="sidebar-link">jmimts教程</a></li><li><a href="/pages/a75c09/" class="sidebar-link">GitLab安装部署使用</a></li><li><a href="/pages/8e0299/" class="sidebar-link">dbeaver工具使用</a></li><li><a href="/pages/4310dc/" class="sidebar-link">Mac安装Homebrew</a></li><li><a href="/pages/835873/" class="sidebar-link">正则表达式</a></li><li><a href="/pages/a45841/" class="sidebar-link">cron语法教程</a></li><li><a href="/pages/c36ead/" class="sidebar-link">邮件模板渲染-Handlebars</a></li><li><a href="/pages/db509c/" class="sidebar-link">SVN使用</a></li><li><a href="/pages/34f608/" class="sidebar-link">二进制，八进制，十进制，十六进制之间的转换</a></li><li><a href="/pages/72aed1/" class="sidebar-link">HashMap详解</a></li><li><a href="/pages/c55c15/" class="sidebar-link">高效读取大数据文本文件</a></li><li><a href="/pages/0ee7a6/" class="sidebar-link">Jenkins详解</a></li><li><a href="/pages/955a73/" class="sidebar-link">ArrayList与LinkedList比较</a></li><li><a href="/pages/dc00a6/" class="sidebar-link">PowerMock使用</a></li><li><a href="/pages/4e3107/" aria-current="page" class="active sidebar-link">wrapper详解</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level2"><a href="/pages/4e3107/#wrapper-config参数详解" class="sidebar-link">wrapper.config参数详解</a></li><li class="sidebar-sub-header level2"><a href="/pages/4e3107/#wrapper-把jar打包成windows服务" class="sidebar-link">wrapper 把jar打包成windows服务</a></li></ul></li><li><a href="/pages/528316/" class="sidebar-link">证券从业资格</a></li><li><a href="/pages/ebb9d3/" class="sidebar-link">Nacos启动报错</a></li><li><a href="/pages/3d317f/" class="sidebar-link">SpringBoot项目启动报错</a></li><li><a href="/pages/f33bff/" class="sidebar-link">eclipse启动时要求高版本jdk的问题</a></li><li><a href="/pages/aa3608/" class="sidebar-link">查询mysql 字段里以特定字符分割的字符串</a></li><li><a href="/pages/055184/" class="sidebar-link">MySQL根据列式数据分类</a></li><li><a href="/pages/ad7b86/" class="sidebar-link">MySQL字符集报错</a></li><li><a href="/pages/f3c53d/" class="sidebar-link">MySQL排序规则</a></li><li><a href="/pages/7107fc/" class="sidebar-link">蓝牙模块不好使解决</a></li><li><a href="/pages/771dca/" class="sidebar-link">idea搜索快捷键失效</a></li><li><a href="/pages/be7c6c/" class="sidebar-link">SQL常用命令</a></li><li><a href="/pages/00463e/" class="sidebar-link">Linux常见问题解决方案</a></li><li><a href="/pages/9c61d6/" class="sidebar-link">jetty从6升级到9调研过程</a></li><li><a href="/pages/8ea63c/" class="sidebar-link">装修想法</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>友链</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>证券</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-06225672><div class="articleInfo" data-v-06225672><ul class="breadcrumbs" data-v-06225672><li data-v-06225672><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-06225672></a></li> <li data-v-06225672><a href="/Other/#Other" data-v-06225672>Other</a></li><li data-v-06225672><a href="/Other/#问题" data-v-06225672>问题</a></li></ul> <div class="info" data-v-06225672><div title="作者" class="author iconfont icon-touxiang" data-v-06225672><a href="https://gitee.com/nylg" target="_blank" title="作者" class="beLink" data-v-06225672>wenchao</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-06225672><a href="javascript:;" data-v-06225672>2022-01-06</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABKFJREFUSA3tVl1oFVcQnrMbrak3QUgkya1akpJYcrUtIqW1JvFBE9LiQ5v6JmJpolbMg32rVrhgoYK0QiMY6i9Y6EMaW5D+xFJaTYItIuK2Kr3+BJNwkxBj05sQY3b3nM6cs2dv9t7NT/vQJw/sndk5M/PNzJkzewGerP+pAmy+ON8lLzUJgA8ZYxYIYZmGYRnctDaWvJJAmTtfP1pvXsBCCPP8QFcCaRkZYACgDZFO4stNIcBCajEOlmmC9XpJ9bAGCaPaPmzPl32dvLSVu3BWCTQs0XQQ6g0DYgwLIoAZbBCdW/i+781o1VVlm/410mw4h06Y7bIPHNyWDyL4FHkX03Q8SrzNhZTZriieckWt7cL6MM85YcLpsi/7O9/iXFT6MswI0DmmpkSaJ0qLxFIm3+i1THHB3zmBH3PYx9CcykcLOeQVVa7QtdxTgQgEleX2AjHYfwA+2ddV77ruGoJUbhGDI09YSNXyMpUt5ylOzxgbUmtOp7NmbNt8v3arjTBfYELmLUV+M+nSawNNAUqpT3ClJWg5I3BLT+cGW/DXNGCa6tx1aakCGEigArTn4TDIPdrXXYKCZNrHLMCOEPvHBlLQ99s9eHB7EB6NTki73CVPQ2F5MSx/uRQixfmq7rK0wYD8w8E905bnPDfwoWs/rfv93NWN/ZfvwsLIU7A09gxECyISeGJkHAau98L97tuw7NXnoPyNF8FcYGLGKsOs0mN3OEyec9esGW/ZEl945dTP34wlR2FZVQWU1q0Cw8Tr7p+hgLLNL0FPxx/Q35mA8aEUrH6nCgwEl0tn7wUiZYJnNRh6DK4UH/k0lfyrsBKdPVv/AriGIQcEDQZ65LBAGe2Rzui9Ybjz7XUppz1/uKBbyVPGkN3ZAeC6hr0x7Nr38N5+EqkoOm17xpoqR9ohQF55ERSvr4Dkr3chNfC3DMzGJlNBElW8w9nsGQvhNGIzDkXzCg8cLK951xHsFBlTJspJNi3ZFIMF2AeDV3q8DNOB+YHi6QTrChDIWDBRi5U5f+ZMfJLu3ccrqxtdxk4SKH336LFxSmkqefwU5T8fhdSdQf9IVKD6aNiwI/hnmcAZ91isYMJIaCUCx9W098+LgruikeTqzqqxKPUwqJyCPJiyemVVZBOijDGjD38Os0jOiSPL1z3SPjXNANbiNPXAdzTfukjjuknNBbyz3nwgTd3AVFqUJ5hpHlq9MveLnWwttUfoygBmvVjuikxND3znrhsELnZk7k+OjIGxeNEkomyLVta0xxn+HZhjBc4YZ/AFjHjz9u3xRZl2BN4aq9nFwWh16IrQ1aHHEd3j1+4/dB9OtH4e29A2H1DyHQRmOSfQZ1Fy7MHBTGB6J/Djq6p3OxyO2cB+4Car7v/o3GXgfAkj23+x9ID1Teoamo/SXcbvSf2PX7Vc8DdCmE1vN9di+32P9/5YR3vLnhCVGUWBjEkr3yh4H8v9CzmsbdhzOKzsJKM90iFdaTMjRPhGVsakRvOaRidljo6H6G7j+ctrJpsP+4COhDIl0La2+FS4+5mlocBaXY5QnGZysIBYoeSsl5qQzrSj/cgNrfuEzlWBfwA+EjrZyWUvpAAAAABJRU5ErkJggg==">wrapper详解<!----></h1>  <div class="theme-vdoing-content content__default"><h2 id="wrapper-config参数详解"><a href="#wrapper-config参数详解" class="header-anchor">#</a> wrapper.config参数详解</h2> <p>官网解析：<code>https://wrapper.tanukisoftware.com/doc/english/properties.html</code></p> <p>将一个简单的程度如HelloWorld 的应用包装秤Wrapper 服务并不复杂，甚至可以认为非常简单。但是实际项目应用过程中我们的程序一般较庞大，运行环境也较复杂。</p> <p>​    通过Wrapper 配置文件的分析与配置进一步了解构建Wrapper 服务需要注意的关键点及重要部分。</p> <p>首先，打开conf 文件夹下的wrapper.conf配置文件，此配置文件时Wrapper 的主配置文件也是关键配置文件，下面开始一项一项的开始分析。</p> <p>​    <strong>1.文件编码及子配置文件</strong>
+​    文件头部包含了配置文件编码格式，子配置文件等相关信息，如下所示：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>#文件编码，每个配置文件起始位置必须指定该文件的编码格式
+encoding=UTF-8
+
+# 如果包含配置文件出现问题可以使用debug调试模式，去掉一个&quot;#&quot;，格式为#include.debug
+#include.debug
+
+# 包含子配置文件，可以是配置信息也可以是许可信息
+include ../conf/wrapper-license.conf
+include ../conf/wrapper2.conf
+
+# 是否开启许可文件debug模式
+wrapper.license.debug=TRUE
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>​    通过子配置文件的配置可以使主配置文件关联最多10级子配置，例如：wrapper.conf 包含 wrapper2.conf ，wrapper2.conf 包含wrapper3.conf ..... wrapper9.conf 包含wrapper10.conf，文件结构如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>wrapper.conf
+  |-wrapper2.conf
+    |-wrapper3.conf
+          .....
+      |-wrapper9.conf
+        |-wrapper10.conf
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>​    也就是说配置文件嵌套层级最大可达10级，引用一张官方图片可以很好的说明：</p> <p><img src="http://img0.tuicool.com/UNrMrm.png" alt="img">
+如果子配置文件不存在时，那么它将被忽略，不会导致程序运行错误。</p> <p>​    <strong>2.Wrapper 语言设置</strong></p> <p>​    通过这两项的设置可以指定Wrapper 的语言种类，可以在Wrapper 官网下到这些语言包支持，目前不支持中文。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 指定Wrapper语言，默认使用系统语言
+wrapper.lang=en_US
+
+#指定Wrapper 语言资源位置，如果该文件不存在则默认设置为en_US
+wrapper.lang.folder=../lang
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>​    <strong>3.Wrapper Java 相关属性配置</strong></p> <p>​    <strong>(1)java运行环境设置</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code># Java 程序配置：
+#   (1)默认使用PATH环境变量配置信息则使用下列配置形式
+wrapper.java.command=java
+
+#   (2)如果想单独配置运行程序，则可采用此种配置方式
+set.JAVA_HOME=/java/path
+wrapper.java.command=%JAVA_HOME%/bin/java
+
+# java程序日志级别
+wrapper.java.command.loglevel=INFO
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>​    <strong>(2)程序入口</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code># Java Main class，也就是程序入口  
+#该类需要实现WrapperListener 接口并保证WrapperManager 得到初始化(调用WrapperManager.start(WrapperListener listener, String[] args) 方法)。
+wrapper.java.mainclass=com.helloworld.hello.HelloWorld
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>​    <strong>(3)类库设置</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code># Java Classpath配置，必须从序号&quot;1&quot;开始，添加新的jar包后序号递增
+wrapper.java.classpath.1=../lib/wrapper.jar
+wrapper.java.classpath.2=../lib/hello.jar
+
+# Java 类库路径 (Wrapper.DLL 或 libwrapper.so 依赖文件的存放位置)
+wrapper.java.library.path.1=../lib
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>​    <strong>(4)JVM相关配置</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 32/64位选择，true为自动选择
+wrapper.java.additional.auto_bits=TRUE
+
+# Java附加参数
+wrapper.java.additional.1=
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>​    附加参数即为java命令可选参数，如下所示：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>-d32          use a 32-bit data model if available
+
+-d64          use a 64-bit data model if available
+-server	  to select the &quot;server&quot; VM
+    The default VM is server.
+    
+-cp &lt;class search path of directories and zip/jar files&gt;
+-classpath &lt;class search path of directories and zip/jar files&gt;
+    A : separated list of directories, JAR archives,
+    and ZIP archives to search for class files.
+-D&lt;name&gt;=&lt;value&gt;
+    set a system property
+-verbose[:class|gc|jni]
+    enable verbose output
+-version      print product version and exit
+-version:&lt;value&gt;
+    require the specified version to run
+-showversion  print product version and continue
+-jre-restrict-search | -jre-no-restrict-search
+    include/exclude user private JREs in the version search
+-? -help      print this help message
+-X            print help on non-standard options
+-ea[:&lt;packagename&gt;...|:&lt;classname&gt;]
+-enableassertions[:&lt;packagename&gt;...|:&lt;classname&gt;]
+    enable assertions
+-da[:&lt;packagename&gt;...|:&lt;classname&gt;]
+-disableassertions[:&lt;packagename&gt;...|:&lt;classname&gt;]
+    disable assertions
+-esa | -enablesystemassertions
+    enable system assertions
+-dsa | -disablesystemassertions
+    disable system assertions
+-agentlib:&lt;libname&gt;[=&lt;options&gt;]
+    load native agent library &lt;libname&gt;, e.g. -agentlib:hprof
+      see also, -agentlib:jdwp=help and -agentlib:hprof=help
+-agentpath:&lt;pathname&gt;[=&lt;options&gt;]
+    load native agent library by full pathname
+-javaagent:&lt;jarpath&gt;[=&lt;options&gt;]
+    load Java programming language agent, see java.lang.instrument
+-splash:&lt;imagepath&gt;
+    show splash screen with specified image
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br></div></div><p>​    内存大小设置：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code># Java Heap 初始化大小(单位：MB)
+wrapper.java.initmemory=3
+
+# Java Heap 最大值(单位：MB)
+wrapper.java.maxmemory=64
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>​    应用程序参数设置：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 应用程序参数，也就是main函数的String[] args参数值，序号需从&quot;1&quot;开始，例如：
+wrapper.app.parameter.1=g21121
+wrapper.app.parameter.2=http://286.iteye.com/
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>​    在main函数和start方法中添加了参数打印语句来观察参数是否已经传入，代码如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>package com.helloworld.hello;
+
+import org.tanukisoftware.wrapper.WrapperListener;
+import org.tanukisoftware.wrapper.WrapperManager;
+
+public class HelloWorld implements WrapperListener {
+
+    public static void main(String[] args) {
+        // 打印参数
+        for (String arg : args)
+            System.out.println(arg);
+        WrapperManager.start(new HelloWorld(), args);
+    }
+
+    @Override
+    public void controlEvent(int event) {
+        System.out.println(&quot;controlEvent(&quot; + event + &quot;)&quot;);
+        if ((event == WrapperManager.WRAPPER_CTRL_LOGOFF_EVENT) &amp;&amp; (WrapperManager.isLaunchedAsService() || WrapperManager.isIgnoreUserLogoffs())) {
+        } else {
+            WrapperManager.stop(0);
+        }
+    }
+
+    @Override
+    public Integer start(String[] args) {
+        // 打印参数
+        for (String arg : args)
+            System.out.println(arg);
+        System.out.println(&quot;hello world!&quot;);
+        return null;
+    }
+
+    @Override
+    public int stop(int exitCode) {
+        System.out.println(&quot;stop(&quot; + exitCode + &quot;)&quot;);
+        return exitCode;
+    }
+
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br></div></div><p>​    重新运行服务，结果如下：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>root@TFS:/usr/local/wrapper/bin# ./hello console
+Running helloWorld...
+wrapper  | --&gt; Wrapper Started as Console
+wrapper  | Java Service Wrapper Community Edition 64-bit 3.5.20
+wrapper  |   Copyright (C) 1999-2013 Tanuki Software, Ltd. All Rights Reserved.
+wrapper  |     http://wrapper.tanukisoftware.com
+wrapper  | 
+wrapper  | Launching a JVM...
+jvm 1    | g21121
+jvm 1    | http://286.iteye.com/
+jvm 1    | WrapperManager: Initializing...
+jvm 1    | g21121
+jvm 1    | http://286.iteye.com/
+jvm 1    | hello world!
+jvm 1    | stop(0)
+wrapper  | &lt;-- Wrapper Stopped
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>​    <strong>4.Wrapper 日志配置</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 是否显示debug日志
+wrapper.debug=TRUE
+
+# 控制台信息输出格式
+wrapper.console.format=PM
+
+# 控制台日志级别
+wrapper.console.loglevel=INFO
+
+# 日志文件位置及名称
+wrapper.logfile=../logs/wrapper.log
+
+# 日志文件输出格式
+wrapper.logfile.format=LPTM
+
+# 日志文件日志级别
+wrapper.logfile.loglevel=INFO
+
+# 限制日志文件大小，0为不限制，参数：k,m,g等
+wrapper.logfile.maxsize=10m
+
+# 限制最大日志文件数，0为不限制
+wrapper.logfile.maxfiles=0
+
+# syslog 日志级别
+wrapper.syslog.loglevel=NONE
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><p>​    <strong>5.Wrapper 基本属性配置</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 允许使用非连续编号的属性，例如：path的序号可以打乱
+wrapper.ignore_sequence_gaps=TRUE
+
+# 如果pid文件已经存在则不启动程序
+wrapper.pidfile.strict=TRUE
+
+# 控制台启动时显示的标题
+wrapper.console.title=------------Wrapper Console------------
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>​    <strong>6.Wrapper JVM 检查</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 检测JVM中的死锁线程（需要标准版Wrapper）
+wrapper.check.deadlock=TRUE
+#间隔，单位：秒
+wrapper.check.deadlock.interval=10
+#出现死锁时处理事件
+wrapper.check.deadlock.action=RESTART
+#信息输出级别，FULL:全部;SIMPLE:精简;NONE:无;
+wrapper.check.deadlock.output=FULL
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>​    以下为wrapper.check.deadlock.action的事件类型：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>DEBUG :
+    will cause a debug message to be logged. This is only really useful in helping to understand when the action is fired.
+DUMP :
+    will invoke a thread dump.
+GC (Since ver. 3.5.7) :
+    will invoke a full garbage collection sweep in the JVM. Be aware that doing this frequently can affect performance of the JVM as a full sweep will often cause all threads to freeze for the duration of the GC.
+RESTART :
+    will stop the current JVM and then restart a new invocation.
+SHUTDOWN :
+    will stop the JVM as well as the Wrapper.
+USER_&lt;n&gt; (Professional Edition) :
+    will cause a user defined event to be fired. This can be either the sending of an email, or the execution of an external system command. The command could be anything from performing clean up operations to raising an SNMP trap.
+PAUSE :
+    will pause the Java application if pausing is enabled and the JVM is running. See the wrapper.pausable property for details.
+RESUME :
+    will resume the Java application if it is in a paused state. This could be used if the JVM is not stopped when paused. See the wrapper.pausable property for details.
+SUCCESS (Since ver. 3.5.5) :
+    will tell the Wrapper to reset its internal failed invocation count and count the current JVM invocation as &quot;successful&quot;. This is probably not useful in this context, but here for consistency with other properties.
+NONE :
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><p>​    <strong>7.内存溢出检测</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 内存溢出检测，Wrapper提供了几种不同的匹配机制
+wrapper.filter.trigger.999=wrapper.filter.trigger.*java.lang.OutOfMemoryError
+wrapper.filter.allow_wildcards.999=TRUE
+wrapper.filter.action.999=NONE
+wrapper.filter.trigger.1000=[Loaded java.lang.OutOfMemoryError
+wrapper.filter.action.1000=NONE
+wrapper.filter.trigger.1001=java.lang.OutOfMemoryError
+#wrapper.filter.trigger.1001=Exception in thread &quot;*&quot; java.lang.OutOfMemoryError
+#wrapper.filter.allow_wildcards.1001=TRUE
+wrapper.filter.action.1001=RESTART
+wrapper.filter.message.1001=The JVM has run out of memory.
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>​    <strong>8.Wrapper Email 通知设置(需要专业版Wrapper)</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code># 邮件基本信息设置
+wrapper.event.default.email.debug=TRUE
+#smtp服务器地址
+wrapper.event.default.email.smtp.host=
+#smtp服务器端口
+wrapper.event.default.email.smtp.port=25
+#邮件主题
+wrapper.event.default.email.subject=[%WRAPPER_HOSTNAME%:%WRAPPER_NAME%:%WRAPPER_EVENT_NAME%] Event Notification
+#发件人地址
+wrapper.event.default.email.sender=&lt;Sender email&gt;
+#收件人地址
+wrapper.event.default.email.recipient=&lt;Recipient email&gt;
+# 指定文件内容
+wrapper.event.jvm_restart.email.body=The JVM was restarted.\n\nPlease check on its status.\n
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code># 邮件日志相关配置
+wrapper.event.default.email.attach_log=TRUE
+wrapper.event.default.email.maillog.lines=50
+wrapper.event.default.email.maillog.format=LPTM
+wrapper.event.default.email.maillog.loglevel=INFO
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code># 触发事件，即当以下事件为true时发送邮件
+wrapper.event.wrapper_start.email=TRUE
+wrapper.event.jvm_prelaunch.email=TRUE
+wrapper.event.jvm_start.email=TRUE
+wrapper.event.jvm_started.email=TRUE
+wrapper.event.jvm_deadlock.email=TRUE
+wrapper.event.jvm_stop.email=TRUE
+wrapper.event.jvm_stopped.email=TRUE
+wrapper.event.jvm_restart.email=TRUE
+wrapper.event.jvm_failed_invocation.email=TRUE
+wrapper.event.jvm_max_failed_invocations.email=TRUE
+wrapper.event.jvm_kill.email=TRUE
+wrapper.event.jvm_killed.email=TRUE
+wrapper.event.jvm_unexpected_exit.email=TRUE
+wrapper.event.wrapper_stop.email=TRUE
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><h2 id="wrapper-把jar打包成windows服务"><a href="#wrapper-把jar打包成windows服务" class="header-anchor">#</a> wrapper 把jar打包成windows服务</h2> <p>你是不是在找将Java程序注册成系统服务的方法？试试JavaServiceWrapper这个工具吧，你可以从这个网站上面下载你喜欢的版本：http://wrapper.tanukisoftware.org/　，JavaServiceWrapper提供了适合市面上流行的操作系统的版本。</p> <p>使用Wrapper将Java程序注册成系统服务有三种方式可供选择：</p> <p>第一种是使用WrapperSimpleApp　这个帮助类来运行你的程序，这个是最简单的方法，也是官方推荐使用的方式，但是这样可能会对你的程序有改动，如果你在项目初期就开始考虑的话，这个方法还是不错的。像JBoss也是使用这种方式。</p> <p>第二种方式是使用WraperStartStopApp这个类来实现功能，这个方法适合那些通过ClassA类来负责启动服务，ClassB类来负责停止服务的应用场景。</p> <p>一．            运行环境</p> <p>电脑上应该有java运行环境。</p> <p>二．            需要软件</p> <p>Java ServiceWrapper</p> <p>下载地址：http://wrapper.tanukisoftware.org/</p> <p>下载community 版，不要下载pro版，原因是wrapper并非完全免费的,pro 版会15分钟就重启一次wrapper.
+我用的方法是 自己继承 WrapperListener 写main()类，这样可以实现对服务 启动和关闭的监听。</p> <p>首先建立java工程，将 wrapper.jar导入工程，看下运行类：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>package com.test;
+
+import org.tanukisoftware.wrapper.WrapperManager;
+import org.tanukisoftware.wrapper.WrapperListener;
+
+
+public class TestService implements WrapperListener {
+    undefined
+
+    public void runService() {
+        undefined
+
+        new Thread() {
+            undefined
+
+            public void run() {
+                undefined
+
+                try {
+                    undefined
+                    while (true) {
+                        undefined
+                        System.out.println(&quot;testService is running ...&quot;);
+                        Thread.sleep(1000);
+                    }
+
+                } catch (InterruptedException e) {
+                    undefined
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+
+            }
+        }.start();
+    }
+
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        undefined
+        // TODO Auto-generated method stub
+
+        System.out.println(&quot;Initializing... &quot;);
+        WrapperManager.start(new TestService(), args);
+    }
+
+
+    public void controlEvent(int arg0) {
+        undefined
+        // TODO Auto-generated method stub
+
+    }
+
+
+    public Integer start(String[] arg0) {
+        undefined
+        // TODO Auto-generated method stub
+
+        System.out.println(&quot;testService is start&quot;);
+        TestService service = new TestService();
+        service.runService();
+        return null;
+    }
+
+
+    public int stop(int arg0) {
+        undefined
+        // TODO Auto-generated method stub
+        System.out.println(&quot;testService is stop&quot;);
+        return 0;
+    }
+
+
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br></div></div><p>接着把工程，编译并达成jar包。</p> <p>三．            配置过程</p> <ol><li><div class="language- extra-class"><pre><code> 首先将java程序打成jar包。
+</code></pre></div></li> <li><div class="language- extra-class"><pre><code> Java Service Wrapper包解压。
+</code></pre></div></li> <li><div class="language- extra-class"><pre><code> 比如要注册成服务的程序项目目录为workapp，那么在这个目录下面新建四个文件夹：
+</code></pre></div></li></ol> <p>bin、conf、lib、logs。</p> <ol start="4"><li><div class="language- extra-class"><pre><code> 把Java Service Wrapper包中bin目录下的Wrapper.exe、src/bin目录下的App.bat.in、InstallApp-NT.bat.in、UninstallApp-NT.bat.in文件拷贝到workapp的bin目录中,并分别改名为App.bat、InstallApp-NT.bat、UninstallApp-NT.bat。
+</code></pre></div></li></ol> <p>------------------我下载的直接就是App.bat.，因此不需要重名了-----------------</p> <ol start="5"><li><div class="language- extra-class"><pre><code> 把Java Service Wrapper包中lib目录下的Wrapper.DLL、wrapper.jar拷贝到workapp的lib目录中。并且将项目的jar和所用到的jar都拷贝到该目录。
+</code></pre></div></li> <li><div class="language- extra-class"><pre><code> 把Java Service Wrapper包中srcconf目录下的wrapper.conf.in拷贝到workapp的conf目录中,并命名为wrapper.conf。
+</code></pre></div></li> <li><p>把 Java Service Wrapper包中logs 目录下文件wrapper.log拷贝过来，或者建立一个空文件 wrapper.log</p></li> <li><div class="language- extra-class"><pre><code> 修改wrapper.conf配置文件，方法如下：
+</code></pre></div><p>主要修改以下几项即可：
+（1）JVM位置：
+wrapper.java.command=C:\jdk1.5.0_07\bin\java
+（2）运行参数：如：
+wrapper.java.additional.1=-Dprogram.name=run.bat
+（3）你的Java程序所需的jar包必须全部在此标明，注意路径准确：
+wrapper.java.classpath.1=../lib/wrapper.jar
+wrapper.java.classpath.2=../lib/test_fat.jar</p></li></ol> <p>……//列出用到的所有jar</p> <p>（4）你的Wrapper.DLL或wrapper.jar所在的目录
+wrapper.java.library.path.1=../lib</p> <p>----------------------重点----------------------------------------------------------------------------
+（5）MAIN CLASS 此处决定了使用Java Service Wrapper的方式
+wrapper.java.mainclass=org.tanukisoftware.wrapper.WrapperSimpleApp
+（6）你的Java应用程序的运行类
+wrapper.app.parameter.1= com.tes.Testjar</p> <p>-----------------------重点---------------------------------------------------------------------------</p> <p>我下载的wrapper-windows-x86-32-3.5.15-pro原来的配置</p> <p>wrapper.java.mainclass=org.tanukisoftware.wrapper.test.Main</p> <p>而我把它修改成知己的com.test.TestService</p> <p>wrapper.java.mainclass=com.test.TestService</p> <p>而  wrapper.app.parameter.1= com.tes.Testjar，我下载的这个参数配置是 # 号注释掉了，打开注释启动服务会报错。</p> <p>在安装时有用的命令，特别是 》启动
+wrapper.exe -t wrapper.conf  可以实现安装后，立即启动服务。</p> <p>》测试运行是否正常
+wrapper.exe -c wrapper.conf
+》安装服务
+wrapper.exe -i wrapper.conf
+》卸载服务
+wrapper.exe -r wrapper.conf
+》启动
+wrapper.exe -t wrapper.conf
+》停止
+wrapper.exe -p wrapper.conf</p> <p>（6）注册为服务的名称和显示名，你可以随意进行设置
+wrapper.ntservice.name=testService
+wrapper.ntservice.displayname= testService
+（7）服务描述信息
+wrapper.ntservice.description= my_testService</p> <ol start="8"><li><div class="language- extra-class"><pre><code> 修改好了以后，运行MyApp.bat即可运行你的java程序，这里可以测试配置的是否正确，如果可以运行，证明配置ok。
+</code></pre></div></li> <li><div class="language- extra-class"><pre><code> 运行InstallApp-NT.bat可以进行服务的注册，UninstallApp-NT.bat为注销服务。
+</code></pre></div></li> <li><p>运行完注册服务InstallApp-NT.bat可以在 控制面板－管理程序－服务中看到你注册的服务名称。（如：testService）</p></li></ol> <p>其他wrapper.conf配置项:</p> <p>#window服务配置
+wrapper.console.title=samplesvr
+#服务名
+wrapper.ntservice.name=samplesvr</p> <p>#显示名称</p> <p>wrapper.ntservice.displayname= sample  Service</p> <p>#描述</p> <p>wrapper.ntservice.description=sample Service</p> <p>#依赖项</p> <p>wrapper.ntservice.dependency.1=</p> <p>#启动模式：  AUTO_START or DEMAND_START</p> <p>wrapper.ntservice.starttype=AUTO_START</p> <p>#是否交互.</p> <p>wrapper.ntservice.interactive=false</p> <p>在wrapper.conf中：
+wrapper.java.mainclass=这里写你的启动ClassName： YourStartUpClass －－注意是包含包名的全名
+wrapper.java.classpath.1=../lib/wrappertest.jar
+wrapper.java.classpath.2=../lib/wrapper.jar  //这里要将所有classppath写全，注意最后一位必须是 1 2 3 4 5 6…不能重复.</p> <p>wrapper.ntservice.name=你的服务名
+wrapper.ntservice.description=你的服务的详细描述</p> <p>直接使用 bin/TestWrapper.bat就可以测试你的服务了
+InstallTestWrapper-NT.bat －－安装服务
+UninstallTestWrapper-NT.bat －－卸载服务</p></div></div>  <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2022/04/21, 18:39:57</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/dc00a6/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">PowerMock使用</div></a> <a href="/pages/528316/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">证券从业资格</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/dc00a6/" class="prev">PowerMock使用</a></span> <span class="next"><a href="/pages/528316/">证券从业资格</a>→
+      </span></p></div></div></div> <div class="article-list"><div class="article-title"><a href="/archives/" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/pages/80365f/"><div>
+            证券市场基本法律法规
+            <!----></div></a> <span class="date">03-13</span></dt></dl><dl><dd>02</dd> <dt><a href="/pages/d9e4f4/"><div>
+            证券考试规则
+            <!----></div></a> <span class="date">03-12</span></dt></dl><dl><dd>03</dd> <dt><a href="/pages/cb2c17/"><div>
+            金融市场基础知识
+            <!----></div></a> <span class="date">03-12</span></dt></dl> <dl><dd></dd> <dt><a href="/archives/" class="more">更多文章&gt;</a></dt></dl></div></div></main></div> <div class="footer"><div class="icons"><a href="mailto:cloudjava@163.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="https://github.com/bigdatajava" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="https://gitee.com/nylg" title="Gitee" target="_blank" class="iconfont icon-gitee"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2014-2024
+    <span>wen chao | <a href="https://github.com/bigdatajava/blog-talk/blob/main/LICENSE" target="_blank">MIT License</a></span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"><div></div></div></div>
+    <script src="/assets/js/app.b2807c2b.js" defer></script><script src="/assets/js/2.eeaab5de.js" defer></script><script src="/assets/js/321.91d065c2.js" defer></script>
+  </body>
+</html>

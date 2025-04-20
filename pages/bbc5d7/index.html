@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Dubbo负载均衡原理解析 | wen chao</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_3129839_xft6cqs5gc.css">
+    <meta name="description" content="架构进阶之路...">
+    <meta name="keywords" content="全栈博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,js,ES6,TypeScript,vue">
+    <meta name="theme-color" content="#11a8cd">
+    
+    <link rel="preload" href="/assets/css/0.styles.237ce36e.css" as="style"><link rel="preload" href="/assets/js/app.b2807c2b.js" as="script"><link rel="preload" href="/assets/js/2.eeaab5de.js" as="script"><link rel="preload" href="/assets/js/71.81f1af4b.js" as="script"><link rel="prefetch" href="/assets/js/10.30d760c8.js"><link rel="prefetch" href="/assets/js/100.d2a91f05.js"><link rel="prefetch" href="/assets/js/101.aa15113f.js"><link rel="prefetch" href="/assets/js/102.303aae62.js"><link rel="prefetch" href="/assets/js/103.39dbd83e.js"><link rel="prefetch" href="/assets/js/104.30434bc2.js"><link rel="prefetch" href="/assets/js/105.68d90558.js"><link rel="prefetch" href="/assets/js/106.2a47de1c.js"><link rel="prefetch" href="/assets/js/107.6c92802c.js"><link rel="prefetch" href="/assets/js/108.1a019470.js"><link rel="prefetch" href="/assets/js/109.f2cc4655.js"><link rel="prefetch" href="/assets/js/11.8c97a85c.js"><link rel="prefetch" href="/assets/js/110.8630d06d.js"><link rel="prefetch" href="/assets/js/111.fdf10f1a.js"><link rel="prefetch" href="/assets/js/112.ea841a58.js"><link rel="prefetch" href="/assets/js/113.bd8e761d.js"><link rel="prefetch" href="/assets/js/114.63ed667a.js"><link rel="prefetch" href="/assets/js/115.909a8353.js"><link rel="prefetch" href="/assets/js/116.62dab6c0.js"><link rel="prefetch" href="/assets/js/117.d0ef1d76.js"><link rel="prefetch" href="/assets/js/118.39e6e925.js"><link rel="prefetch" href="/assets/js/119.e0265f93.js"><link rel="prefetch" href="/assets/js/12.156b3963.js"><link rel="prefetch" href="/assets/js/120.4be98e6e.js"><link rel="prefetch" href="/assets/js/121.518d8dd5.js"><link rel="prefetch" href="/assets/js/122.477dd94b.js"><link rel="prefetch" href="/assets/js/123.d6065aca.js"><link rel="prefetch" href="/assets/js/124.c6f965c7.js"><link rel="prefetch" href="/assets/js/125.3ee79c35.js"><link rel="prefetch" href="/assets/js/126.bcc69ad9.js"><link rel="prefetch" href="/assets/js/127.8f3ce1ac.js"><link rel="prefetch" href="/assets/js/128.03c90841.js"><link rel="prefetch" href="/assets/js/129.ab248cd9.js"><link rel="prefetch" href="/assets/js/13.c67aac42.js"><link rel="prefetch" href="/assets/js/130.dd64983e.js"><link rel="prefetch" href="/assets/js/131.6ffe6940.js"><link rel="prefetch" href="/assets/js/132.2a8fed26.js"><link rel="prefetch" href="/assets/js/133.6a7673eb.js"><link rel="prefetch" href="/assets/js/134.c00b7bf2.js"><link rel="prefetch" href="/assets/js/135.59d75ce6.js"><link rel="prefetch" href="/assets/js/136.bcd27d57.js"><link rel="prefetch" href="/assets/js/137.75dd3384.js"><link rel="prefetch" href="/assets/js/138.a2ababbf.js"><link rel="prefetch" href="/assets/js/139.6aa75eaa.js"><link rel="prefetch" href="/assets/js/14.8ab9a27a.js"><link rel="prefetch" href="/assets/js/140.58295019.js"><link rel="prefetch" href="/assets/js/141.8d05c3a5.js"><link rel="prefetch" href="/assets/js/142.18498abf.js"><link rel="prefetch" href="/assets/js/143.20c6bdde.js"><link rel="prefetch" href="/assets/js/144.ac94f8ff.js"><link rel="prefetch" href="/assets/js/145.e135dd8a.js"><link rel="prefetch" href="/assets/js/146.13a537e3.js"><link rel="prefetch" href="/assets/js/147.016b19e9.js"><link rel="prefetch" href="/assets/js/148.d3a909f2.js"><link rel="prefetch" href="/assets/js/149.90d05716.js"><link rel="prefetch" href="/assets/js/15.2b8ce9c5.js"><link rel="prefetch" href="/assets/js/150.e61c5f29.js"><link rel="prefetch" href="/assets/js/151.c81aa646.js"><link rel="prefetch" href="/assets/js/152.82944cc0.js"><link rel="prefetch" href="/assets/js/153.410a3789.js"><link rel="prefetch" href="/assets/js/154.cc1235ef.js"><link rel="prefetch" href="/assets/js/155.1e7fae81.js"><link rel="prefetch" href="/assets/js/156.cfaa0244.js"><link rel="prefetch" href="/assets/js/157.47981f53.js"><link rel="prefetch" href="/assets/js/158.e9c295a1.js"><link rel="prefetch" href="/assets/js/159.50ba3574.js"><link rel="prefetch" href="/assets/js/16.a8b0b084.js"><link rel="prefetch" href="/assets/js/160.5845ca9d.js"><link rel="prefetch" href="/assets/js/161.0e97694f.js"><link rel="prefetch" href="/assets/js/162.3c77226a.js"><link rel="prefetch" href="/assets/js/163.17c9ec79.js"><link rel="prefetch" href="/assets/js/164.7736f87d.js"><link rel="prefetch" href="/assets/js/165.ff7b4f9e.js"><link rel="prefetch" href="/assets/js/166.6956307c.js"><link rel="prefetch" href="/assets/js/167.366611f7.js"><link rel="prefetch" href="/assets/js/168.57345d6b.js"><link rel="prefetch" href="/assets/js/169.25420ee7.js"><link rel="prefetch" href="/assets/js/17.68e41786.js"><link rel="prefetch" href="/assets/js/170.bedd4eac.js"><link rel="prefetch" href="/assets/js/171.374570cf.js"><link rel="prefetch" href="/assets/js/172.2f8bf4a8.js"><link rel="prefetch" href="/assets/js/173.42ea0d36.js"><link rel="prefetch" href="/assets/js/174.0ccfd7c6.js"><link rel="prefetch" href="/assets/js/175.7ab333d2.js"><link rel="prefetch" href="/assets/js/176.c7266816.js"><link rel="prefetch" href="/assets/js/177.d0a95fb6.js"><link rel="prefetch" href="/assets/js/178.2bb652ad.js"><link rel="prefetch" href="/assets/js/179.a8eab386.js"><link rel="prefetch" href="/assets/js/18.8e0d47a1.js"><link rel="prefetch" href="/assets/js/180.9fd22be7.js"><link rel="prefetch" href="/assets/js/181.5d5358d4.js"><link rel="prefetch" href="/assets/js/182.af7d36e2.js"><link rel="prefetch" href="/assets/js/183.dddc555d.js"><link rel="prefetch" href="/assets/js/184.a3396baf.js"><link rel="prefetch" href="/assets/js/185.2f7da675.js"><link rel="prefetch" href="/assets/js/186.92639766.js"><link rel="prefetch" href="/assets/js/187.711debd8.js"><link rel="prefetch" href="/assets/js/188.149256e6.js"><link rel="prefetch" href="/assets/js/189.c118aa93.js"><link rel="prefetch" href="/assets/js/19.770d847c.js"><link rel="prefetch" href="/assets/js/190.4d85ee4e.js"><link rel="prefetch" href="/assets/js/191.ff095a9a.js"><link rel="prefetch" href="/assets/js/192.4b5fe55c.js"><link rel="prefetch" href="/assets/js/193.415828fe.js"><link rel="prefetch" href="/assets/js/194.ce801921.js"><link rel="prefetch" href="/assets/js/195.c668b288.js"><link rel="prefetch" href="/assets/js/196.8825af00.js"><link rel="prefetch" href="/assets/js/197.d09dcd8b.js"><link rel="prefetch" href="/assets/js/198.396382cf.js"><link rel="prefetch" href="/assets/js/199.facc6630.js"><link rel="prefetch" href="/assets/js/20.97979961.js"><link rel="prefetch" href="/assets/js/200.db1ff45e.js"><link rel="prefetch" href="/assets/js/201.ab79fbd5.js"><link rel="prefetch" href="/assets/js/202.46e8525c.js"><link rel="prefetch" href="/assets/js/203.2cc13ae9.js"><link rel="prefetch" href="/assets/js/204.3c8a5bcd.js"><link rel="prefetch" href="/assets/js/205.3d0d8394.js"><link rel="prefetch" href="/assets/js/206.261623f6.js"><link rel="prefetch" href="/assets/js/207.6260c0aa.js"><link rel="prefetch" href="/assets/js/208.0fd63045.js"><link rel="prefetch" href="/assets/js/209.e5eaeeca.js"><link rel="prefetch" href="/assets/js/21.e6565c56.js"><link rel="prefetch" href="/assets/js/210.bccc650e.js"><link rel="prefetch" href="/assets/js/211.c238d796.js"><link rel="prefetch" href="/assets/js/212.dd4703ab.js"><link rel="prefetch" href="/assets/js/213.110becf0.js"><link rel="prefetch" href="/assets/js/214.a90d9da2.js"><link rel="prefetch" href="/assets/js/215.81872845.js"><link rel="prefetch" href="/assets/js/216.2ae9609f.js"><link rel="prefetch" href="/assets/js/217.567657f9.js"><link rel="prefetch" href="/assets/js/218.bc570e81.js"><link rel="prefetch" href="/assets/js/219.32a64945.js"><link rel="prefetch" href="/assets/js/22.92562bc3.js"><link rel="prefetch" href="/assets/js/220.d1605ea9.js"><link rel="prefetch" href="/assets/js/221.c1483dee.js"><link rel="prefetch" href="/assets/js/222.188d3bb6.js"><link rel="prefetch" href="/assets/js/223.b4d7fc4a.js"><link rel="prefetch" href="/assets/js/224.5495522d.js"><link rel="prefetch" href="/assets/js/225.ea320f20.js"><link rel="prefetch" href="/assets/js/226.1f245007.js"><link rel="prefetch" href="/assets/js/227.280e3176.js"><link rel="prefetch" href="/assets/js/228.7ea12e2e.js"><link rel="prefetch" href="/assets/js/229.0697746f.js"><link rel="prefetch" href="/assets/js/23.4b595789.js"><link rel="prefetch" href="/assets/js/230.8efdd773.js"><link rel="prefetch" href="/assets/js/231.44bfbfb5.js"><link rel="prefetch" href="/assets/js/232.24dc2667.js"><link rel="prefetch" href="/assets/js/233.6c77b12b.js"><link rel="prefetch" href="/assets/js/234.1ea57e5c.js"><link rel="prefetch" href="/assets/js/235.efb990b9.js"><link rel="prefetch" href="/assets/js/236.2e8820ed.js"><link rel="prefetch" href="/assets/js/237.b108feed.js"><link rel="prefetch" href="/assets/js/238.22baaff8.js"><link rel="prefetch" href="/assets/js/239.ac2c0eba.js"><link rel="prefetch" href="/assets/js/24.b1f29ab1.js"><link rel="prefetch" href="/assets/js/240.1f419e38.js"><link rel="prefetch" href="/assets/js/241.e23fbc50.js"><link rel="prefetch" href="/assets/js/242.83b3226c.js"><link rel="prefetch" href="/assets/js/243.1ce8a9be.js"><link rel="prefetch" href="/assets/js/244.d7c93bdb.js"><link rel="prefetch" href="/assets/js/245.a1b402c0.js"><link rel="prefetch" href="/assets/js/246.7eeb5e18.js"><link rel="prefetch" href="/assets/js/247.b2c0ab4a.js"><link rel="prefetch" href="/assets/js/248.5b2dd7ed.js"><link rel="prefetch" href="/assets/js/249.6278d6f1.js"><link rel="prefetch" href="/assets/js/25.748022ff.js"><link rel="prefetch" href="/assets/js/250.e3114578.js"><link rel="prefetch" href="/assets/js/251.1f576677.js"><link rel="prefetch" href="/assets/js/252.7e83dd55.js"><link rel="prefetch" href="/assets/js/253.ab219365.js"><link rel="prefetch" href="/assets/js/254.31655221.js"><link rel="prefetch" href="/assets/js/255.402ba0fd.js"><link rel="prefetch" href="/assets/js/256.2f1f131a.js"><link rel="prefetch" href="/assets/js/257.cd0dac87.js"><link rel="prefetch" href="/assets/js/258.5e84f5d0.js"><link rel="prefetch" href="/assets/js/259.72cf210e.js"><link rel="prefetch" href="/assets/js/26.d566b8b1.js"><link rel="prefetch" href="/assets/js/260.ddfd8bc7.js"><link rel="prefetch" href="/assets/js/261.b074e8b6.js"><link rel="prefetch" href="/assets/js/262.e0b94776.js"><link rel="prefetch" href="/assets/js/263.2e66950f.js"><link rel="prefetch" href="/assets/js/264.f3ac339f.js"><link rel="prefetch" href="/assets/js/265.384c189b.js"><link rel="prefetch" href="/assets/js/266.635a72af.js"><link rel="prefetch" href="/assets/js/267.c9ede946.js"><link rel="prefetch" href="/assets/js/268.9ec888f5.js"><link rel="prefetch" href="/assets/js/269.2a81258c.js"><link rel="prefetch" href="/assets/js/27.3085f660.js"><link rel="prefetch" href="/assets/js/270.973f0998.js"><link rel="prefetch" href="/assets/js/271.de24bbf3.js"><link rel="prefetch" href="/assets/js/272.68e83c3c.js"><link rel="prefetch" href="/assets/js/273.d740150b.js"><link rel="prefetch" href="/assets/js/274.dc1b1f0c.js"><link rel="prefetch" href="/assets/js/275.cf028a33.js"><link rel="prefetch" href="/assets/js/276.351dbc96.js"><link rel="prefetch" href="/assets/js/277.6a9f5699.js"><link rel="prefetch" href="/assets/js/278.0c28ac6f.js"><link rel="prefetch" href="/assets/js/279.b14576ac.js"><link rel="prefetch" href="/assets/js/28.47957820.js"><link rel="prefetch" href="/assets/js/280.906a73b1.js"><link rel="prefetch" href="/assets/js/281.4173499d.js"><link rel="prefetch" href="/assets/js/282.43873aa6.js"><link rel="prefetch" href="/assets/js/283.2a3d0552.js"><link rel="prefetch" href="/assets/js/284.2c7aa3fb.js"><link rel="prefetch" href="/assets/js/285.a62f9799.js"><link rel="prefetch" href="/assets/js/286.2f0b6532.js"><link rel="prefetch" href="/assets/js/287.d770d01f.js"><link rel="prefetch" href="/assets/js/288.97207297.js"><link rel="prefetch" href="/assets/js/289.ddf5a46c.js"><link rel="prefetch" href="/assets/js/29.716c8a52.js"><link rel="prefetch" href="/assets/js/290.9f1b4436.js"><link rel="prefetch" href="/assets/js/291.885ac485.js"><link rel="prefetch" href="/assets/js/292.b1fe886b.js"><link rel="prefetch" href="/assets/js/293.f597359f.js"><link rel="prefetch" href="/assets/js/294.f559040e.js"><link rel="prefetch" href="/assets/js/295.ef66e1a4.js"><link rel="prefetch" href="/assets/js/296.47009685.js"><link rel="prefetch" href="/assets/js/297.fb7d20ba.js"><link rel="prefetch" href="/assets/js/298.cb1631f8.js"><link rel="prefetch" href="/assets/js/299.25f28097.js"><link rel="prefetch" href="/assets/js/3.9c10c990.js"><link rel="prefetch" href="/assets/js/30.b35b7ad0.js"><link rel="prefetch" href="/assets/js/300.ab5c587e.js"><link rel="prefetch" href="/assets/js/301.544c6982.js"><link rel="prefetch" href="/assets/js/302.70396486.js"><link rel="prefetch" href="/assets/js/303.fa1f3a02.js"><link rel="prefetch" href="/assets/js/304.c344682e.js"><link rel="prefetch" href="/assets/js/305.a0620b1d.js"><link rel="prefetch" href="/assets/js/306.8cb43e28.js"><link rel="prefetch" href="/assets/js/307.ee4d9e2d.js"><link rel="prefetch" href="/assets/js/308.bb04656d.js"><link rel="prefetch" href="/assets/js/309.b3e3c0be.js"><link rel="prefetch" href="/assets/js/31.af0fa05e.js"><link rel="prefetch" href="/assets/js/310.162df0c7.js"><link rel="prefetch" href="/assets/js/311.1a5e341e.js"><link rel="prefetch" href="/assets/js/312.9fe4ed85.js"><link rel="prefetch" href="/assets/js/313.e187b781.js"><link rel="prefetch" href="/assets/js/314.c832b372.js"><link rel="prefetch" href="/assets/js/315.66b7260d.js"><link rel="prefetch" href="/assets/js/316.074c1e65.js"><link rel="prefetch" href="/assets/js/317.9210b762.js"><link rel="prefetch" href="/assets/js/318.50ac3392.js"><link rel="prefetch" href="/assets/js/319.996a4c1b.js"><link rel="prefetch" href="/assets/js/32.81b4ee4b.js"><link rel="prefetch" href="/assets/js/320.661c3aa7.js"><link rel="prefetch" href="/assets/js/321.91d065c2.js"><link rel="prefetch" href="/assets/js/322.21d177e9.js"><link rel="prefetch" href="/assets/js/323.c240199c.js"><link rel="prefetch" href="/assets/js/324.fc71e18c.js"><link rel="prefetch" href="/assets/js/325.d441ab5e.js"><link rel="prefetch" href="/assets/js/326.6065a9e1.js"><link rel="prefetch" href="/assets/js/327.b68a9e0f.js"><link rel="prefetch" href="/assets/js/328.082fa547.js"><link rel="prefetch" href="/assets/js/329.17abf0b7.js"><link rel="prefetch" href="/assets/js/33.c41edd68.js"><link rel="prefetch" href="/assets/js/330.076712a3.js"><link rel="prefetch" href="/assets/js/331.b883690e.js"><link rel="prefetch" href="/assets/js/332.a942e6bd.js"><link rel="prefetch" href="/assets/js/333.e193acf6.js"><link rel="prefetch" href="/assets/js/334.5721c074.js"><link rel="prefetch" href="/assets/js/335.b759f5ec.js"><link rel="prefetch" href="/assets/js/336.8f786a4b.js"><link rel="prefetch" href="/assets/js/337.8ef80b90.js"><link rel="prefetch" href="/assets/js/338.8c63fda7.js"><link rel="prefetch" href="/assets/js/339.3df2ba0b.js"><link rel="prefetch" href="/assets/js/34.e166f3d5.js"><link rel="prefetch" href="/assets/js/340.e54bd836.js"><link rel="prefetch" href="/assets/js/341.1de3160e.js"><link rel="prefetch" href="/assets/js/342.52f64508.js"><link rel="prefetch" href="/assets/js/343.f56c914e.js"><link rel="prefetch" href="/assets/js/344.63033532.js"><link rel="prefetch" href="/assets/js/345.b23610d1.js"><link rel="prefetch" href="/assets/js/346.2c817177.js"><link rel="prefetch" href="/assets/js/347.bb20d78f.js"><link rel="prefetch" href="/assets/js/348.bba2b968.js"><link rel="prefetch" href="/assets/js/349.620d4fde.js"><link rel="prefetch" href="/assets/js/35.827d2ea3.js"><link rel="prefetch" href="/assets/js/350.a24a894c.js"><link rel="prefetch" href="/assets/js/351.9fc8ae8f.js"><link rel="prefetch" href="/assets/js/352.9229b958.js"><link rel="prefetch" href="/assets/js/353.ffe6628c.js"><link rel="prefetch" href="/assets/js/354.4f883a51.js"><link rel="prefetch" href="/assets/js/355.3232e481.js"><link rel="prefetch" href="/assets/js/356.52bb9172.js"><link rel="prefetch" href="/assets/js/357.4ee29887.js"><link rel="prefetch" href="/assets/js/358.22886190.js"><link rel="prefetch" href="/assets/js/359.1f40fcc5.js"><link rel="prefetch" href="/assets/js/36.7c80731a.js"><link rel="prefetch" href="/assets/js/360.630b9c12.js"><link rel="prefetch" href="/assets/js/37.6608ea0a.js"><link rel="prefetch" href="/assets/js/38.4c69b602.js"><link rel="prefetch" href="/assets/js/39.19f940a6.js"><link rel="prefetch" href="/assets/js/4.55a001d1.js"><link rel="prefetch" href="/assets/js/40.d3257c4f.js"><link rel="prefetch" href="/assets/js/41.89db1eaf.js"><link rel="prefetch" href="/assets/js/42.4a12d693.js"><link rel="prefetch" href="/assets/js/43.cbe3ed47.js"><link rel="prefetch" href="/assets/js/44.61c79193.js"><link rel="prefetch" href="/assets/js/45.ce5ed428.js"><link rel="prefetch" href="/assets/js/46.eea0f2fa.js"><link rel="prefetch" href="/assets/js/47.f3bd04d8.js"><link rel="prefetch" href="/assets/js/48.ed81abeb.js"><link rel="prefetch" href="/assets/js/49.978d3cae.js"><link rel="prefetch" href="/assets/js/5.fe551af2.js"><link rel="prefetch" href="/assets/js/50.e21176fc.js"><link rel="prefetch" href="/assets/js/51.2f5a0327.js"><link rel="prefetch" href="/assets/js/52.125f820a.js"><link rel="prefetch" href="/assets/js/53.4a1c114d.js"><link rel="prefetch" href="/assets/js/54.dfe3253b.js"><link rel="prefetch" href="/assets/js/55.5959dcbb.js"><link rel="prefetch" href="/assets/js/56.9d18670e.js"><link rel="prefetch" href="/assets/js/57.c238fb54.js"><link rel="prefetch" href="/assets/js/58.e221eedb.js"><link rel="prefetch" href="/assets/js/59.f628533d.js"><link rel="prefetch" href="/assets/js/6.4670d323.js"><link rel="prefetch" href="/assets/js/60.919ac5be.js"><link rel="prefetch" href="/assets/js/61.3a63b17e.js"><link rel="prefetch" href="/assets/js/62.e61011ad.js"><link rel="prefetch" href="/assets/js/63.55200ef4.js"><link rel="prefetch" href="/assets/js/64.7c19f83d.js"><link rel="prefetch" href="/assets/js/65.833da817.js"><link rel="prefetch" href="/assets/js/66.13f4f83f.js"><link rel="prefetch" href="/assets/js/67.0c77e799.js"><link rel="prefetch" href="/assets/js/68.cc0e543d.js"><link rel="prefetch" href="/assets/js/69.555bef08.js"><link rel="prefetch" href="/assets/js/7.90cda232.js"><link rel="prefetch" href="/assets/js/70.5d2ec40f.js"><link rel="prefetch" href="/assets/js/72.8a66936f.js"><link rel="prefetch" href="/assets/js/73.2655fba2.js"><link rel="prefetch" href="/assets/js/74.ba0b3153.js"><link rel="prefetch" href="/assets/js/75.536955ba.js"><link rel="prefetch" href="/assets/js/76.3a946a81.js"><link rel="prefetch" href="/assets/js/77.9b243f6c.js"><link rel="prefetch" href="/assets/js/78.f580a907.js"><link rel="prefetch" href="/assets/js/79.38cbcc11.js"><link rel="prefetch" href="/assets/js/8.9cebf18a.js"><link rel="prefetch" href="/assets/js/80.e82012e8.js"><link rel="prefetch" href="/assets/js/81.73c65f97.js"><link rel="prefetch" href="/assets/js/82.ddfa06dd.js"><link rel="prefetch" href="/assets/js/83.b75fcea2.js"><link rel="prefetch" href="/assets/js/84.5e0efc6d.js"><link rel="prefetch" href="/assets/js/85.3a495ae2.js"><link rel="prefetch" href="/assets/js/86.1ebe8967.js"><link rel="prefetch" href="/assets/js/87.cd673062.js"><link rel="prefetch" href="/assets/js/88.f50e4960.js"><link rel="prefetch" href="/assets/js/89.06660ffb.js"><link rel="prefetch" href="/assets/js/9.04fce59d.js"><link rel="prefetch" href="/assets/js/90.aa61aeaf.js"><link rel="prefetch" href="/assets/js/91.865e8535.js"><link rel="prefetch" href="/assets/js/92.fd2d2a62.js"><link rel="prefetch" href="/assets/js/93.b185de83.js"><link rel="prefetch" href="/assets/js/94.f5290c38.js"><link rel="prefetch" href="/assets/js/95.be5b7fed.js"><link rel="prefetch" href="/assets/js/96.d442acd0.js"><link rel="prefetch" href="/assets/js/97.2f9b0746.js"><link rel="prefetch" href="/assets/js/98.3bba4945.js"><link rel="prefetch" href="/assets/js/99.cd82a6ed.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.237ce36e.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.png" alt="wen chao" class="logo"> <span class="site-name can-hide">wen chao</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Algorithm" class="dropdown-title"><a href="/Algorithm/" class="link-title">Algorithm</a> <span class="title" style="display:none;">Algorithm</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/d8e764/" class="nav-link">Theory</a></li><li class="dropdown-item"><!----> <a href="/pages/81a4bd/" class="nav-link">LeetCode</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Spring" class="dropdown-title"><a href="/Spring/" class="link-title">Spring</a> <span class="title" style="display:none;">Spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/373439/" class="nav-link">Spring</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Technology" class="dropdown-title"><a href="/Technology/" class="link-title">Technology</a> <span class="title" style="display:none;">Technology</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/3b6841/" class="nav-link">DB</a></li><li class="dropdown-item"><!----> <a href="/pages/d7857e/" class="nav-link">Linux</a></li><li class="dropdown-item"><!----> <a href="/pages/b89362/" class="nav-link">Redis</a></li><li class="dropdown-item"><!----> <a href="/pages/ec8b81/" class="nav-link">MongoDB</a></li><li class="dropdown-item"><!----> <a href="/pages/4e3ff1/" class="nav-link">Zookeeper</a></li><li class="dropdown-item"><!----> <a href="/pages/a75fef/" class="nav-link">MQ</a></li><li class="dropdown-item"><!----> <a href="/pages/b194d7/" class="nav-link">Dubbo</a></li><li class="dropdown-item"><!----> <a href="/pages/371f2f/" class="nav-link">ElasticSearch</a></li><li class="dropdown-item"><!----> <a href="/pages/027aa3/" class="nav-link">Workflow</a></li><li class="dropdown-item"><!----> <a href="/pages/73ab4b/" class="nav-link">OAuth2</a></li><li class="dropdown-item"><!----> <a href="/pages/d7a38a/" class="nav-link">JPA</a></li><li class="dropdown-item"><!----> <a href="/pages/eb5dc1/" class="nav-link">Liquibase</a></li><li class="dropdown-item"><!----> <a href="/pages/e54277/" class="nav-link">Lombok</a></li><li class="dropdown-item"><!----> <a href="/pages/62e4f6/" class="nav-link">Git</a></li><li class="dropdown-item"><!----> <a href="/pages/13c836/" class="nav-link">Nginx</a></li><li class="dropdown-item"><!----> <a href="/pages/b50b3d/" class="nav-link">Mini Program</a></li><li class="dropdown-item"><!----> <a href="/pages/09d3b8/" class="nav-link">JVM</a></li><li class="dropdown-item"><!----> <a href="/pages/a526c7/" class="nav-link">Log</a></li><li class="dropdown-item"><!----> <a href="/pages/59cf4f/" class="nav-link">JDK</a></li><li class="dropdown-item"><!----> <a href="/pages/d50dab/" class="nav-link">Thymeleaf</a></li><li class="dropdown-item"><!----> <a href="/pages/97abaa/" class="nav-link">Maven</a></li><li class="dropdown-item"><!----> <a href="/pages/7879f1/" class="nav-link">Mybatis</a></li><li class="dropdown-item"><!----> <a href="/pages/745b7c/" class="nav-link">Network</a></li><li class="dropdown-item"><!----> <a href="/pages/274dac/" class="nav-link">Raspberrypi</a></li><li class="dropdown-item"><!----> <a href="/pages/87c097/" class="nav-link">Node</a></li><li class="dropdown-item"><!----> <a href="/pages/927664/" class="nav-link">HTML</a></li><li class="dropdown-item"><!----> <a href="/pages/2c3f19/" class="nav-link">Vue</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Other" class="dropdown-title"><a href="/Other/" class="link-title">Other</a> <span class="title" style="display:none;">Other</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/fea344/" class="nav-link">Book</a></li><li class="dropdown-item"><!----> <a href="/pages/d62f72/" class="nav-link">面试</a></li><li class="dropdown-item"><!----> <a href="/pages/f3d338/" class="nav-link">问题</a></li><li class="dropdown-item"><!----> <a href="/pages/ff202b/" class="nav-link">友链</a></li><li class="dropdown-item"><!----> <a href="/pages/2b746e/" class="nav-link">证券</a></li></ul></div></div><div class="nav-item"><a href="/About/" class="nav-link">About</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Index" class="dropdown-title"><a href="/archives/" class="link-title">Index</a> <span class="title" style="display:none;">Index</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="/img/touxiang-lanse.png"> <div class="blogger-info"><h3>wen chao</h3> <span>持之以恒做正确有价值的事!</span></div></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Algorithm" class="dropdown-title"><a href="/Algorithm/" class="link-title">Algorithm</a> <span class="title" style="display:none;">Algorithm</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/d8e764/" class="nav-link">Theory</a></li><li class="dropdown-item"><!----> <a href="/pages/81a4bd/" class="nav-link">LeetCode</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Spring" class="dropdown-title"><a href="/Spring/" class="link-title">Spring</a> <span class="title" style="display:none;">Spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/373439/" class="nav-link">Spring</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Technology" class="dropdown-title"><a href="/Technology/" class="link-title">Technology</a> <span class="title" style="display:none;">Technology</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/3b6841/" class="nav-link">DB</a></li><li class="dropdown-item"><!----> <a href="/pages/d7857e/" class="nav-link">Linux</a></li><li class="dropdown-item"><!----> <a href="/pages/b89362/" class="nav-link">Redis</a></li><li class="dropdown-item"><!----> <a href="/pages/ec8b81/" class="nav-link">MongoDB</a></li><li class="dropdown-item"><!----> <a href="/pages/4e3ff1/" class="nav-link">Zookeeper</a></li><li class="dropdown-item"><!----> <a href="/pages/a75fef/" class="nav-link">MQ</a></li><li class="dropdown-item"><!----> <a href="/pages/b194d7/" class="nav-link">Dubbo</a></li><li class="dropdown-item"><!----> <a href="/pages/371f2f/" class="nav-link">ElasticSearch</a></li><li class="dropdown-item"><!----> <a href="/pages/027aa3/" class="nav-link">Workflow</a></li><li class="dropdown-item"><!----> <a href="/pages/73ab4b/" class="nav-link">OAuth2</a></li><li class="dropdown-item"><!----> <a href="/pages/d7a38a/" class="nav-link">JPA</a></li><li class="dropdown-item"><!----> <a href="/pages/eb5dc1/" class="nav-link">Liquibase</a></li><li class="dropdown-item"><!----> <a href="/pages/e54277/" class="nav-link">Lombok</a></li><li class="dropdown-item"><!----> <a href="/pages/62e4f6/" class="nav-link">Git</a></li><li class="dropdown-item"><!----> <a href="/pages/13c836/" class="nav-link">Nginx</a></li><li class="dropdown-item"><!----> <a href="/pages/b50b3d/" class="nav-link">Mini Program</a></li><li class="dropdown-item"><!----> <a href="/pages/09d3b8/" class="nav-link">JVM</a></li><li class="dropdown-item"><!----> <a href="/pages/a526c7/" class="nav-link">Log</a></li><li class="dropdown-item"><!----> <a href="/pages/59cf4f/" class="nav-link">JDK</a></li><li class="dropdown-item"><!----> <a href="/pages/d50dab/" class="nav-link">Thymeleaf</a></li><li class="dropdown-item"><!----> <a href="/pages/97abaa/" class="nav-link">Maven</a></li><li class="dropdown-item"><!----> <a href="/pages/7879f1/" class="nav-link">Mybatis</a></li><li class="dropdown-item"><!----> <a href="/pages/745b7c/" class="nav-link">Network</a></li><li class="dropdown-item"><!----> <a href="/pages/274dac/" class="nav-link">Raspberrypi</a></li><li class="dropdown-item"><!----> <a href="/pages/87c097/" class="nav-link">Node</a></li><li class="dropdown-item"><!----> <a href="/pages/927664/" class="nav-link">HTML</a></li><li class="dropdown-item"><!----> <a href="/pages/2c3f19/" class="nav-link">Vue</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Other" class="dropdown-title"><a href="/Other/" class="link-title">Other</a> <span class="title" style="display:none;">Other</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/fea344/" class="nav-link">Book</a></li><li class="dropdown-item"><!----> <a href="/pages/d62f72/" class="nav-link">面试</a></li><li class="dropdown-item"><!----> <a href="/pages/f3d338/" class="nav-link">问题</a></li><li class="dropdown-item"><!----> <a href="/pages/ff202b/" class="nav-link">友链</a></li><li class="dropdown-item"><!----> <a href="/pages/2b746e/" class="nav-link">证券</a></li></ul></div></div><div class="nav-item"><a href="/About/" class="nav-link">About</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Index" class="dropdown-title"><a href="/archives/" class="link-title">Index</a> <span class="title" style="display:none;">Index</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>DB</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Linux</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Redis</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>MongoDB</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Zookeeper</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>MQ</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Dubbo</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/pages/b194d7/" class="sidebar-link">Dubbo框架介绍与手写模拟</a></li><li><a href="/pages/4f4b83/" class="sidebar-link">Dubbo与其它微服务组件整合</a></li><li><a href="/pages/bc99c8/" class="sidebar-link">Dubbo基本应用与高级应用</a></li><li><a href="/pages/db9fb4/" class="sidebar-link">Dubbo的可扩展机制SPI源码解析</a></li><li><a href="/pages/bbc5d7/" aria-current="page" class="active sidebar-link">Dubbo负载均衡原理解析</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level2"><a href="/pages/bbc5d7/#负载均衡介绍" class="sidebar-link">负载均衡介绍</a></li><li class="sidebar-sub-header level2"><a href="/pages/bbc5d7/#负载均衡方式" class="sidebar-link">负载均衡方式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/pages/bbc5d7/#软件负载均衡" class="sidebar-link">软件负载均衡</a></li><li class="sidebar-sub-header level3"><a href="/pages/bbc5d7/#硬件负载均衡" class="sidebar-link">硬件负载均衡</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/pages/bbc5d7/#负载均衡算法" class="sidebar-link">负载均衡算法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/pages/bbc5d7/#算法前提条件" class="sidebar-link">算法前提条件</a></li><li class="sidebar-sub-header level3"><a href="/pages/bbc5d7/#随机算法-randomloadbalance" class="sidebar-link">随机算法-RandomLoadBalance</a></li><li class="sidebar-sub-header level4"><a href="/pages/bbc5d7/#权重随机算法" class="sidebar-link">权重随机算法</a></li><li class="sidebar-sub-header level3"><a href="/pages/bbc5d7/#轮询算法-roundrobinloadbalance" class="sidebar-link">轮询算法-RoundRobinLoadBalance</a></li><li class="sidebar-sub-header level4"><a href="/pages/bbc5d7/#平滑加权轮询" class="sidebar-link">平滑加权轮询</a></li><li class="sidebar-sub-header level3"><a href="/pages/bbc5d7/#一致性哈希算法-consistenthashloadbalance" class="sidebar-link">一致性哈希算法-ConsistentHashLoadBalance</a></li><li class="sidebar-sub-header level3"><a href="/pages/bbc5d7/#最小活跃数算法-leastactiveloadbalance" class="sidebar-link">最小活跃数算法-LeastActiveLoadBalance</a></li></ul></li></ul></li><li><a href="/pages/68b6a6/" class="sidebar-link">Dubbo与spring整合原理与源码分析</a></li><li><a href="/pages/d6ff2e/" class="sidebar-link">Dubbo服务导出源码解析</a></li><li><a href="/pages/4b6908/" class="sidebar-link">Dubbo服务引入源码解析</a></li><li><a href="/pages/e4c6b5/" class="sidebar-link">Dubbo服务调用源码解析</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ElasticSearch</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Workflow</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>OAuth2</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JPA</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Liquibase</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Lombok</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Git</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Nginx</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>小程序</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JVM</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Log</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>JDK</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Thymeleaf</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Maven</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Mybatis</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Network</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Raspberrypi</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Node</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Web</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Vue</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-06225672><div class="articleInfo" data-v-06225672><ul class="breadcrumbs" data-v-06225672><li data-v-06225672><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-06225672></a></li> <li data-v-06225672><a href="/Technology/#Technology" data-v-06225672>Technology</a></li><li data-v-06225672><a href="/Technology/#Dubbo" data-v-06225672>Dubbo</a></li></ul> <div class="info" data-v-06225672><div title="作者" class="author iconfont icon-touxiang" data-v-06225672><a href="https://gitee.com/nylg" target="_blank" title="作者" class="beLink" data-v-06225672>wenchao</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-06225672><a href="javascript:;" data-v-06225672>2021-09-08</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABKFJREFUSA3tVl1oFVcQnrMbrak3QUgkya1akpJYcrUtIqW1JvFBE9LiQ5v6JmJpolbMg32rVrhgoYK0QiMY6i9Y6EMaW5D+xFJaTYItIuK2Kr3+BJNwkxBj05sQY3b3nM6cs2dv9t7NT/vQJw/sndk5M/PNzJkzewGerP+pAmy+ON8lLzUJgA8ZYxYIYZmGYRnctDaWvJJAmTtfP1pvXsBCCPP8QFcCaRkZYACgDZFO4stNIcBCajEOlmmC9XpJ9bAGCaPaPmzPl32dvLSVu3BWCTQs0XQQ6g0DYgwLIoAZbBCdW/i+781o1VVlm/410mw4h06Y7bIPHNyWDyL4FHkX03Q8SrzNhZTZriieckWt7cL6MM85YcLpsi/7O9/iXFT6MswI0DmmpkSaJ0qLxFIm3+i1THHB3zmBH3PYx9CcykcLOeQVVa7QtdxTgQgEleX2AjHYfwA+2ddV77ruGoJUbhGDI09YSNXyMpUt5ylOzxgbUmtOp7NmbNt8v3arjTBfYELmLUV+M+nSawNNAUqpT3ClJWg5I3BLT+cGW/DXNGCa6tx1aakCGEigArTn4TDIPdrXXYKCZNrHLMCOEPvHBlLQ99s9eHB7EB6NTki73CVPQ2F5MSx/uRQixfmq7rK0wYD8w8E905bnPDfwoWs/rfv93NWN/ZfvwsLIU7A09gxECyISeGJkHAau98L97tuw7NXnoPyNF8FcYGLGKsOs0mN3OEyec9esGW/ZEl945dTP34wlR2FZVQWU1q0Cw8Tr7p+hgLLNL0FPxx/Q35mA8aEUrH6nCgwEl0tn7wUiZYJnNRh6DK4UH/k0lfyrsBKdPVv/AriGIQcEDQZ65LBAGe2Rzui9Ybjz7XUppz1/uKBbyVPGkN3ZAeC6hr0x7Nr38N5+EqkoOm17xpoqR9ohQF55ERSvr4Dkr3chNfC3DMzGJlNBElW8w9nsGQvhNGIzDkXzCg8cLK951xHsFBlTJspJNi3ZFIMF2AeDV3q8DNOB+YHi6QTrChDIWDBRi5U5f+ZMfJLu3ccrqxtdxk4SKH336LFxSmkqefwU5T8fhdSdQf9IVKD6aNiwI/hnmcAZ91isYMJIaCUCx9W098+LgruikeTqzqqxKPUwqJyCPJiyemVVZBOijDGjD38Os0jOiSPL1z3SPjXNANbiNPXAdzTfukjjuknNBbyz3nwgTd3AVFqUJ5hpHlq9MveLnWwttUfoygBmvVjuikxND3znrhsELnZk7k+OjIGxeNEkomyLVta0xxn+HZhjBc4YZ/AFjHjz9u3xRZl2BN4aq9nFwWh16IrQ1aHHEd3j1+4/dB9OtH4e29A2H1DyHQRmOSfQZ1Fy7MHBTGB6J/Djq6p3OxyO2cB+4Car7v/o3GXgfAkj23+x9ID1Teoamo/SXcbvSf2PX7Vc8DdCmE1vN9di+32P9/5YR3vLnhCVGUWBjEkr3yh4H8v9CzmsbdhzOKzsJKM90iFdaTMjRPhGVsakRvOaRidljo6H6G7j+ctrJpsP+4COhDIl0La2+FS4+5mlocBaXY5QnGZysIBYoeSsl5qQzrSj/cgNrfuEzlWBfwA+EjrZyWUvpAAAAABJRU5ErkJggg==">Dubbo负载均衡原理解析<!----></h1>  <div class="theme-vdoing-content content__default"><h2 id="负载均衡介绍"><a href="#负载均衡介绍" class="header-anchor">#</a> 负载均衡介绍</h2> <p>负载均衡，英文名称为Load Balance，指由多台服务器以对称的方式组成一个服务器集合，每台服务器都具有等价的地位，都可以单独对外提供服务而无须其他服务器的辅助。</p> <p>通过某种负载分担技术，将外部发送来的请求均匀分配到对称结构中的某一台服务器上，而接收到请求的服务器独立地回应客户的请求。</p> <p>负载均衡能够平均分配客户请求到服务器阵列，借此提供快速获取重要数据，解决大量并发访问服务问题，这种集群技术可以用最少的投资获得接近于大型主机的性能。</p> <h2 id="负载均衡方式"><a href="#负载均衡方式" class="header-anchor">#</a> 负载均衡方式</h2> <p>负载均衡分为软件负载均衡和硬件负载均衡</p> <p><strong>建议没有相关软件使用经验的同学不要太纠结他们的不同之处，可继续往下看。</strong></p> <h3 id="软件负载均衡"><a href="#软件负载均衡" class="header-anchor">#</a> 软件负载均衡</h3> <p>常见的负载均衡软件有Nginx、LVS、HAProxy。</p> <p>关于这几个软件的特点比较不是本文重点，感兴趣同学可以参见博客：</p> <ul><li>（总结）Nginx/LVS/HAProxy负载均衡软件的优缺点详解：http://www.ha97.com/5646.html</li> <li>三大主流软件负载均衡器对比(LVS 、 Nginx 、Haproxy)：http://www.21yunwei.com/archives/5824</li></ul> <h3 id="硬件负载均衡"><a href="#硬件负载均衡" class="header-anchor">#</a> 硬件负载均衡</h3> <p>常见的负载均衡硬件有Array、F5。</p> <h2 id="负载均衡算法"><a href="#负载均衡算法" class="header-anchor">#</a> 负载均衡算法</h2> <p>常见的负载均衡算法有：随机算法、加权轮询、一致性hash、最小活跃数算法。</p> <p><strong>千万别以为这几个算法看上去都特别简单，但其实真正在生产上用到时会远比你想的复杂</strong></p> <h3 id="算法前提条件"><a href="#算法前提条件" class="header-anchor">#</a> 算法前提条件</h3> <p>定义一个服务器列表，每个负载均衡的算法会从中挑出一个服务器作为算法的结果。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class ServerIps {
+    private static final List&lt;String&gt; LIST = Arrays.asList(
+            &quot;192.168.0.1&quot;,
+            &quot;192.168.0.2&quot;,
+            &quot;192.168.0.3&quot;,
+            &quot;192.168.0.4&quot;,
+            &quot;192.168.0.5&quot;,
+            &quot;192.168.0.6&quot;,
+            &quot;192.168.0.7&quot;,
+            &quot;192.168.0.8&quot;,
+            &quot;192.168.0.9&quot;,
+            &quot;192.168.0.10&quot;
+    );
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><h3 id="随机算法-randomloadbalance"><a href="#随机算法-randomloadbalance" class="header-anchor">#</a> 随机算法-RandomLoadBalance</h3> <p>先来个最简单的实现。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class Random {
+    public static String getServer() {
+        // 生成一个随机数作为list的下标值
+        java.util.Random random = new java.util.Random();
+        int randomPos = random.nextInt(ServerIps.LIST.size());
+        return ServerIps.LIST.get(randomPos);
+    }
+    public static void main(String[] args) {
+        // 连续调用10次
+        for (int i=0; i&lt;10; i++) {
+            System.out.println(getServer());
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>运行结果：
+192.168.0.3
+192.168.0.4
+192.168.0.7
+192.168.0.1
+192.168.0.2
+192.168.0.7
+192.168.0.3
+192.168.0.9
+192.168.0.1
+192.168.0.1
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>当调用次数比较少时，Random 产生的随机数可能会比较集中，此时多数请求会落到同一台服务器上，只有在经过多次请求后，才能使调用请求进行“均匀”分配。调用量少这一点并没有什么关系，负载均衡机制不正是为了应对请求量多的情况吗，所以随机算法也是用得比较多的一种算法。</p> <p>但是，上面的随机算法适用于每天机器的性能差不多的时候，实际上，生产中可能某些机器的性能更高一点，它可以处理更多的请求，所以，我们可以对每台服务器设置一个权重。</p> <p>在ServerIps类中增加服务器权重对应关系MAP，权重之和为50：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public static final Map&lt;String, Integer&gt; WEIGHT_LIST = new HashMap&lt;String, Integer&gt;();
+    static {
+        // 权重之和为50
+        WEIGHT_LIST.put(&quot;192.168.0.1&quot;, 1);
+        WEIGHT_LIST.put(&quot;192.168.0.2&quot;, 8);
+        WEIGHT_LIST.put(&quot;192.168.0.3&quot;, 3);
+        WEIGHT_LIST.put(&quot;192.168.0.4&quot;, 6);
+        WEIGHT_LIST.put(&quot;192.168.0.5&quot;, 5);
+        WEIGHT_LIST.put(&quot;192.168.0.6&quot;, 5);
+        WEIGHT_LIST.put(&quot;192.168.0.7&quot;, 4);
+        WEIGHT_LIST.put(&quot;192.168.0.8&quot;, 7);
+        WEIGHT_LIST.put(&quot;192.168.0.9&quot;, 2);
+        WEIGHT_LIST.put(&quot;192.168.0.10&quot;, 9);
+    }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>那么现在的随机算法应该要改成<strong>权重随机算法</strong>，当调用量比较多的时候，服务器使用的分布应该近似对应权重的分布。</p> <h4 id="权重随机算法"><a href="#权重随机算法" class="header-anchor">#</a> 权重随机算法</h4> <p>简单的实现思路是，把每个服务器按它所对应的服务器进行复制，具体看代码更加容易理解</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class WeightRandom {
+    public static String getServer() {
+        // 生成一个随机数作为list的下标值
+        List&lt;String&gt; ips = new ArrayList&lt;String&gt;();
+        for (String ip : ServerIps.WEIGHT_LIST.keySet()) {
+            Integer weight = ServerIps.WEIGHT_LIST.get(ip);
+            // 按权重进行复制
+            for (int i=0; i&lt;weight; i++) {
+                ips.add(ip);
+            }
+        }
+        java.util.Random random = new java.util.Random();
+        int randomPos = random.nextInt(ips.size());
+        return ips.get(randomPos);
+    }
+    public static void main(String[] args) {
+        // 连续调用10次
+        for (int i=0; i&lt;10; i++) {
+            System.out.println(getServer());
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>运行结果：
+192.168.0.8
+192.168.0.2
+192.168.0.7
+192.168.0.10
+192.168.0.8
+192.168.0.8
+192.168.0.4
+192.168.0.7
+192.168.0.6
+192.168.0.8
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p><strong>这种实现方法在遇到权重之和特别大的时候就会比较消耗内存，因为需要对ip地址进行复制，权重之和越大那么上文中的ips就需要越多的内存</strong>，下面介绍另外一种实现思路。</p> <p>假设我们有一组服务器 servers = [A, B, C]，他们对应的权重为 weights = [5, 3, 2]，权重总和为10。现在把这些权重值平铺在一维坐标值上，[0, 5) 区间属于服务器 A，[5, 8) 区间属于服务器 B，[8, 10) 区间属于服务器 C。接下来通过随机数生成器生成一个范围在 [0, 10) 之间的随机数，然后计算这个随机数会落到哪个区间上。比如数字3会落到服务器 A 对应的区间上，此时返回服务器 A 即可。权重越大的机器，在坐标轴上对应的区间范围就越大，因此随机数生成器生成的数字就会有更大的概率落到此区间内。只要随机数生成器产生的随机数分布性很好，在经过多次选择后，每个服务器被选中的次数比例接近其权重比例。比如，经过一万次选择后，服务器 A 被选中的次数大约为5000次，服务器 B 被选中的次数约为3000次，服务器 C 被选中的次数约为2000次。</p> <p>假设现在随机数offset=7：</p> <ol><li>offset&lt;5 is false，所以不在[0, 5)区间，将offset = offset - 5（offset=2）</li> <li>offset&lt;3 is true，所以处于[5, 8)区间，所以应该选用B服务器
+实现如下：</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class WeightRandomV2 {
+    public static String getServer() {
+        int totalWeight = 0;
+        boolean sameWeight = true; // 如果所有权重都相等，那么随机一个ip就好了
+        Object[] weights = ServerIps.WEIGHT_LIST.values().toArray();
+        for (int i = 0; i &lt; weights.length; i++) {
+            Integer weight = (Integer) weights[i];
+            totalWeight += weight;
+            if (sameWeight &amp;&amp; i &gt; 0 &amp;&amp; !weight.equals(weights[i - 1])) {
+                sameWeight = false;
+            }
+        }
+        java.util.Random random = new java.util.Random();
+        int randomPos = random.nextInt(totalWeight);
+        if (!sameWeight) {
+            for (String ip : ServerIps.WEIGHT_LIST.keySet()) {
+                Integer value = ServerIps.WEIGHT_LIST.get(ip);
+                if (randomPos &lt; value) {
+                    return ip;
+                }
+                randomPos = randomPos - value;
+            }
+        }
+        return (String) ServerIps.WEIGHT_LIST.keySet().toArray()[new java.util.Random().nextInt(ServerIps.WEIGHT_LIST.size())];
+    }
+    public static void main(String[] args) {
+        // 连续调用10次
+        for (int i = 0; i &lt; 10; i++) {
+            System.out.println(getServer());
+        } 
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br></div></div><p>这就是另外一种权重随机算法。</p> <h3 id="轮询算法-roundrobinloadbalance"><a href="#轮询算法-roundrobinloadbalance" class="header-anchor">#</a> 轮询算法-RoundRobinLoadBalance</h3> <p>简单的轮询算法很简单</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class RoundRobin {
+    // 当前循环的位置
+    private static Integer pos = 0;
+    public static String getServer() {
+        String ip = null;
+        // pos同步
+        synchronized (pos) {
+            if (pos &gt;= ServerIps.LIST.size()) {
+                pos = 0;
+            }
+            ip = ServerIps.LIST.get(pos);
+            pos++;
+        }
+        return ip;
+    }
+    public static void main(String[] args) {
+        // 连续调用10次
+        for (int i = 0; i &lt; 11; i++) {
+            System.out.println(getServer());
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>运行结果：
+192.168.0.1
+192.168.0.2
+192.168.0.3
+192.168.0.4
+192.168.0.5
+192.168.0.6
+192.168.0.7
+192.168.0.8
+192.168.0.9
+192.168.0.10
+192.168.0.1
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>这种算法很简单，也很<strong>公平</strong>，每台服务轮流来进行服务，但是有的机器性能好，所以<strong>能者多劳</strong>，和随机算法一下，加上权重这个维度之后，其中一种实现方法就是<strong>复制法</strong>，这里就不演示了，这种复制算法的缺点和随机算法的是一样的，比较消耗内存，那么自然就有其他实现方法。我下面来介绍一种算法：</p> <p>这种算法需要加入一个概念：<strong>调用编号</strong>，比如第1次调用为1， 第2次调用为2， 第100次调用为100，调用编号是递增的，所以我们可以根据这个调用编号推算出服务器。</p> <p>假设我们有三台服务器 servers = [A, B, C]，对应的权重为 weights = [ 2, 5, 1], 总权重为8，我们可以理解为有8台“服务器”，这是8台“不具有并发功能”，其中有2台为A，5台为B，1台为C，一次调用过来的时候，需要按顺序访问，比如有10次调用，那么服务器调用顺序为AABBBBBCAA，调用编号会越来越大，而服务器是固定的，所以需要把调用编号“缩小”，这里对调用编号进行<strong>取余，除数为总权重和</strong>，比如：</p> <ol><li><p>1号调用，1%8=1；</p></li> <li><p>2号调用，2%8=2；</p></li> <li><p>3号调用，3%8=3；</p></li> <li><p>8号调用，8%8=0；</p></li> <li><p>9号调用，9%8=1；</p></li> <li><p>100号调用，100%8=4；
+我们发现调用编号可以被<strong>缩小</strong>为0-7之间的8个数字，问题是怎么根据这个8个数字找到对应的服务器呢？和我们随机算法类似，这里也可以把权重想象为一个坐标轴“0-----2-----7-----8”</p></li> <li><p>1号调用，1%8=1，offset = 1, offset &lt;= 2 is true，取A；</p></li> <li><p>2号调用，2%8=2；offset = 2，offset &lt;= 2 is true, 取A;</p></li> <li><p>3号调用，3%8=3；offset = 3, offset &lt;= 2 is false, offset = offset - 2, offset = 1, offset &lt;= 5，取B</p></li> <li><p>8号调用，8%8=0；offset = 0, 特殊情况，offset = 8，offset &lt;= 2 is false, offset = offset - 2, offset = 6, offset  &lt;= 5 is false, offset = offset - 5, offset = 1, offset &lt;= 1 is true, 取C;</p></li> <li><p>9号调用，9%8=1；// ...</p></li> <li><p>100号调用，100%8=4； //...
+实现：
+模拟调用编号获取工具：</p></li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class Sequence {
+    public static Integer num = 0;
+    public static Integer getAndIncrement() {
+        return ++num;
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>public class WeightRoundRobin {
+    private static Integer pos = 0;
+    public static String getServer() {
+        int totalWeight = 0;
+        boolean sameWeight = true; // 如果所有权重都相等，那么随机一个ip就好了
+        Object[] weights = ServerIps.WEIGHT_LIST.values().toArray();
+        for (int i = 0; i &lt; weights.length; i++) {
+            Integer weight = (Integer) weights[i];
+            totalWeight += weight;
+            if (sameWeight &amp;&amp; i &gt; 0 &amp;&amp; !weight.equals(weights[i - 1])) {
+                sameWeight = false;
+            }
+        }
+        Integer sequenceNum = Sequence.getAndIncrement();
+        Integer offset = sequenceNum % totalWeight;
+        offset = offset == 0 ?  totalWeight : offset;
+        if (!sameWeight) {
+            for (String ip : ServerIps.WEIGHT_LIST.keySet()) {
+                Integer weight = ServerIps.WEIGHT_LIST.get(ip);
+                if (offset &lt;= weight) {
+                    return ip;
+                }
+                offset = offset - weight;
+            }
+        }
+        String ip = null;
+        synchronized (pos) {
+            if (pos &gt;= ServerIps.LIST.size()) {
+                pos = 0;
+            }
+            ip = ServerIps.LIST.get(pos);
+            pos++;
+        }
+        return ip;
+    }
+    public static void main(String[] args) {
+        // 连续调用11次
+        for (int i = 0; i &lt; 11; i++) {
+            System.out.println(getServer());
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>运行结果：
+192.168.0.1
+192.168.0.2
+192.168.0.2
+192.168.0.2
+192.168.0.2
+192.168.0.2
+192.168.0.2
+192.168.0.2
+192.168.0.2
+192.168.0.3
+192.168.0.3
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>但是这种算法有一个缺点：一台服务器的权重特别大的时候，他需要连续的的处理请求，但是实际上我们想达到的效果是，对于100次请求，只要有100*8/50=16次就够了，这16次不一定要连续的访问，比如假设我们有三台服务器 servers = [A, B, C]，对应的权重为 weights = [5, 1, 1] , 总权重为7，那么上述这个算法的结果是：AAAAABC，那么如果能够是这么一个结果呢：AABACAA，把B和C平均插入到5个A中间，这样是比较均衡的了。</p> <p>我们这里可以改成<strong>平滑加权轮询。</strong></p> <h4 id="平滑加权轮询"><a href="#平滑加权轮询" class="header-anchor">#</a> 平滑加权轮询</h4> <p>思路：每个服务器对应两个权重，分别为 weight 和 currentWeight。其中 weight 是固定的，currentWeight 会动态调整，初始值为0。当有新的请求进来时，遍历服务器列表，让它的 currentWeight 加上自身权重。遍历完成后，找到最大的 currentWeight，并将其减去权重总和，然后返回相应的服务器即可。</p> <table><thead><tr><th>请求编号</th> <th>currentWeight 数组 (current_weight += weight)</th> <th>选择结果(max(currentWeight))</th> <th>减去权重总和后的currentWeight 数组（max(currentWeight) -= sum(weight))</th></tr></thead> <tbody><tr><td>1</td> <td>[5, 1, 1]</td> <td>A</td> <td>[-2, 1, 1]</td></tr> <tr><td>2</td> <td>[3, 2, 2]</td> <td>A</td> <td>[-4, 2, 2]</td></tr> <tr><td>3</td> <td>[1, 3, 3]</td> <td>B</td> <td>[1, -4, 3]</td></tr> <tr><td>4</td> <td>[6, -3, 4]</td> <td>A</td> <td>[-1, -3, 4]</td></tr> <tr><td>5</td> <td>[4, -2, 5]</td> <td>C</td> <td>[4, -2, -2]</td></tr> <tr><td>6</td> <td>[9, -1, -1]</td> <td>A</td> <td>[2, -1, -1]</td></tr> <tr><td>7</td> <td>[7, 0, 0]</td> <td>A</td> <td>[0, 0, 0]</td></tr></tbody></table> <p>如上，经过平滑性处理后，得到的服务器序列为 [A, A, B, A, C, A, A]，相比之前的序列 [A, A, A, A, A, B, C]，分布性要好一些。初始情况下 currentWeight = [0, 0, 0]，第7个请求处理完后，currentWeight 再次变为 [0, 0, 0]。</p> <p>实现：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 增加一个Weight类，用来保存ip, weight（固定不变的原始权重）, currentweight（当前会变化的权重）
+public class Weight {
+    private String ip;
+    private Integer weight;
+    private Integer currentWeight;
+    public Weight(String ip, Integer weight, Integer currentWeight) {
+        this.ip = ip;
+        this.weight = weight;
+        this.currentWeight = currentWeight;
+    }
+    public String getIp() {
+        return ip;
+    }
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+    public Integer getWeight() {
+        return weight;
+    }
+    public void setWeight(Integer weight) {
+        this.weight = weight;
+    }
+    public Integer getCurrentWeight() {
+        return currentWeight;
+    }
+    public void setCurrentWeight(Integer currentWeight) {
+        this.currentWeight = currentWeight;
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>public class WeightRoundRobinV2 {
+    private static Map&lt;String, Weight&gt; weightMap = new HashMap&lt;String, Weight&gt;();
+    public static String getServer() {
+        // java8
+        int totalWeight = ServerIps.WEIGHT_LIST.values().stream().reduce(0, (w1, w2) -&gt; w1+w2);
+        // 初始化weightMap，初始时将currentWeight赋值为weight
+        if (weightMap.isEmpty()) {
+            ServerIps.WEIGHT_LIST.forEach((key, value) -&gt; {
+                weightMap.put(key, new Weight(key, value, value));
+            });
+        }
+        // 找出currentWeight最大值
+        Weight maxCurrentWeight = null;
+        for (Weight weight : weightMap.values()) {
+            if (maxCurrentWeight == null || weight.getCurrentWeight() &gt; maxCurrentWeight.getCurrentWeight()) {
+                maxCurrentWeight = weight;
+            }
+        }
+        // 将maxCurrentWeight减去总权重和
+        maxCurrentWeight.setCurrentWeight(maxCurrentWeight.getCurrentWeight() - totalWeight);
+        // 所有的ip的currentWeight统一加上原始权重
+        for (Weight weight : weightMap.values()) {
+           weight.setCurrentWeight(weight.getCurrentWeight() + weight.getWeight());
+        }
+        // 返回maxCurrentWeight所对应的ip
+        return maxCurrentWeight.getIp();
+    }
+    public static void main(String[] args) {
+        // 连续调用10次
+        for (int i = 0; i &lt; 10; i++) {
+            System.out.println(getServer());
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br></div></div><p>讲ServerIps里的数据简化为：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>WEIGHT_LIST.put(&quot;A&quot;, 5);
+        WEIGHT_LIST.put(&quot;B&quot;, 1);
+        WEIGHT_LIST.put(&quot;C&quot;, 1);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>运行结果：
+A
+A
+B
+A
+C
+A
+A
+A
+A
+B
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>这就是<strong>轮询算法</strong>，一个循环很简单，但是真正在实际运用的过程中需要思考更多。</p> <h3 id="一致性哈希算法-consistenthashloadbalance"><a href="#一致性哈希算法-consistenthashloadbalance" class="header-anchor">#</a> 一致性哈希算法-ConsistentHashLoadBalance</h3> <p>服务器集群接收到一次请求调用时，可以根据根据请求的信息，比如客户端的ip地址，或请求路径与请求参数等信息进行哈希，可以得出一个哈希值，特点是对于相同的ip地址，或请求路径和请求参数哈希出来的值是一样的，只要能再增加一个算法，能够把这个哈希值映射成一个服务端ip地址，就可以使相同的请求（相同的ip地址，或请求路径和请求参数）落到同一服务器上。</p> <p>因为客户端发起的请求情况是无穷无尽的（客户端地址不同，请求参数不同等等），所以对于的哈希值也是无穷大的，所以我们不可能把所有的哈希值都进行映射到服务端ip上，所以这里需要用到<strong>哈希环</strong>。如下图：</p> <p><img src="https://gitee.com/nylg/picture/raw/master/dubbo/10.png" alt=""></p> <ul><li><p>哈希值如果需要ip1和ip2之间的，则应该选择ip2作为结果；</p></li> <li><p>哈希值如果需要ip2和ip3之间的，则应该选择ip3作为结果；</p></li> <li><p>哈希值如果需要ip3和ip4之间的，则应该选择ip4作为结果；</p></li> <li><p>哈希值如果需要ip4和ip1之间的，则应该选择ip1作为结果；</p></li></ul> <p>上面这情况是比较均匀情况，如果出现ip4服务器不存在，那就是这样了：</p> <p><img src="https://gitee.com/nylg/picture/raw/master/dubbo/11.png" alt=""></p> <p>会发现，ip3和ip1直接的范围是比较大的，会有更多的请求落在ip1上，这是不“公平的”，解决这个问题需要加入<strong>虚拟节点</strong>，比如：</p> <p><img src="https://gitee.com/nylg/picture/raw/master/dubbo/12.png" alt=""></p> <p>其中ip2-1, ip3-1就是虚拟结点，并不能处理节点，而是等同于对应的ip2和ip3服务器。</p> <p>实际上，这只是处理这种不均衡性的一种思路，实际上就算哈希环本身是均衡的，你也可以增加更多的虚拟节点来使这个环更加平滑，比如：</p> <p><img src="https://gitee.com/nylg/picture/raw/master/dubbo/14.png" alt=""></p> <p>这个彩环也是“公平的”，并且只有ip1,2,3,4是实际的服务器ip，其他的都是虚拟ip。</p> <p>那么我们怎么来实现呢？</p> <p>对于我们的服务端ip地址，我们肯定知道总共有多少个，需要多少个虚拟节点也有我们自己控制，虚拟节点越多则流量越均衡，另外哈希算法也是很关键的，哈希算法越散列流量也将越均衡。</p> <p>实现：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class ConsistentHash {
+    private static SortedMap&lt;Integer, String&gt; virtualNodes = new TreeMap&lt;&gt;();
+    private static final int VIRTUAL_NODES = 160;
+    static {
+        // 对每个真实节点添加虚拟节点，虚拟节点会根据哈希算法进行散列
+        for (String ip : ServerIps.LIST) {
+            for (int i = 0; i &lt; VIRTUAL_NODES; i++) {
+                int hash = getHash(ip+&quot;VN&quot;+i);
+                virtualNodes.put(hash, ip);
+            }
+        }
+    }
+    private static String getServer(String client) {
+        int hash = getHash(client);
+        // 得到大于该Hash值的排好序的Map
+        SortedMap&lt;Integer, String&gt; subMap = virtualNodes.tailMap(hash);
+        // 大于该hash值的第一个元素的位置
+        Integer nodeIndex = subMap.firstKey();
+        // 如果不存在大于该hash值的元素，则返回根节点
+        if (nodeIndex == null) {
+            nodeIndex = virtualNodes.firstKey();
+        }
+        // 返回对应的虚拟节点名称
+        return subMap.get(nodeIndex);
+    }
+    private static int getHash(String str) {
+        final int p = 16777619;
+        int hash = (int) 2166136261L;
+        for (int i = 0; i &lt; str.length(); i++)
+            hash = (hash ^ str.charAt(i)) * p;
+        hash += hash &lt;&lt; 13;
+        hash ^= hash &gt;&gt; 7;
+        hash += hash &lt;&lt; 3;
+        hash ^= hash &gt;&gt; 17;
+        hash += hash &lt;&lt; 5;
+        // 如果算出来的值为负数则取其绝对值
+        if (hash &lt; 0)
+            hash = Math.abs(hash);
+        return hash;
+    }
+    public static void main(String[] args) {
+        // 连续调用10次,随机10个client
+        for (int i = 0; i &lt; 10; i++) {
+            System.out.println(getServer(&quot;client&quot; + i));
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br></div></div><h3 id="最小活跃数算法-leastactiveloadbalance"><a href="#最小活跃数算法-leastactiveloadbalance" class="header-anchor">#</a> 最小活跃数算法-LeastActiveLoadBalance</h3> <p>前面几种方法主要目标是使服务端分配到的调用次数尽量均衡，但是实际情况是这样吗？调用次数相同，服务器的负载就均衡吗？当然不是，这里还要考虑每次调用的时间，而最小活跃数算法则是解决这种问题的。</p> <p>活跃调用数越小，表明该服务提供者效率越高，单位时间内可处理更多的请求。此时应优先将请求分配给该服务提供者。在具体实现中，每个服务提供者对应一个活跃数。初始情况下，所有服务提供者活跃数均为0。每收到一个请求，活跃数加1，完成请求后则将活跃数减1。在服务运行一段时间后，性能好的服务提供者处理请求的速度更快，因此活跃数下降的也越快，此时这样的服务提供者能够优先获取到新的服务请求、这就是最小活跃数负载均衡算法的基本思想。除了最小活跃数，最小活跃数算法在实现上还引入了权重值。所以准确的来说，最小活跃数算法是基于加权最小活跃数算法实现的。举个例子说明一下，在一个服务提供者集群中，有两个性能优异的服务提供者。某一时刻它们的活跃数相同，则会根据它们的权重去分配请求，权重越大，获取到新请求的概率就越大。如果两个服务提供者权重相同，此时随机选择一个即可。</p> <p>实现：</p> <p>因为活跃数是需要服务器请求处理相关逻辑配合的，一次调用开始时活跃数+1，结束是活跃数-1，所以这里就不对这部分逻辑进行模拟了，直接使用一个map来进行模拟。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 服务器当前的活跃数
+    public static final Map&lt;String, Integer&gt; ACTIVITY_LIST = new LinkedHashMap&lt;String, Integer&gt;();
+    static {
+        ACTIVITY_LIST.put(&quot;192.168.0.1&quot;, 2);
+        ACTIVITY_LIST.put(&quot;192.168.0.2&quot;, 0);
+        ACTIVITY_LIST.put(&quot;192.168.0.3&quot;, 1);
+        ACTIVITY_LIST.put(&quot;192.168.0.4&quot;, 3);
+        ACTIVITY_LIST.put(&quot;192.168.0.5&quot;, 0);
+        ACTIVITY_LIST.put(&quot;192.168.0.6&quot;, 1);
+        ACTIVITY_LIST.put(&quot;192.168.0.7&quot;, 4);
+        ACTIVITY_LIST.put(&quot;192.168.0.8&quot;, 2);
+        ACTIVITY_LIST.put(&quot;192.168.0.9&quot;, 7);
+        ACTIVITY_LIST.put(&quot;192.168.0.10&quot;, 3);
+    }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>public class LeastActive {
+    private static String getServer() {
+        // 找出当前活跃数最小的服务器
+        Optional&lt;Integer&gt; minValue = ServerIps.ACTIVITY_LIST.values().stream().min(Comparator.naturalOrder());
+        if (minValue.isPresent()) {
+            List&lt;String&gt; minActivityIps = new ArrayList&lt;&gt;();
+            ServerIps.ACTIVITY_LIST.forEach((ip, activity) -&gt; {
+                if (activity.equals(minValue.get())) {
+                    minActivityIps.add(ip);
+                }
+            });
+            // 最小活跃数的ip有多个，则根据权重来选，权重大的优先
+            if (minActivityIps.size() &gt; 1) {
+                // 过滤出对应的ip和权重
+                Map&lt;String, Integer&gt; weightList = new LinkedHashMap&lt;String, Integer&gt;();
+                ServerIps.WEIGHT_LIST.forEach((ip, weight) -&gt; {
+                    if (minActivityIps.contains(ip)) {
+                        weightList.put(ip, ServerIps.WEIGHT_LIST.get(ip));
+                    }
+                });
+                int totalWeight = 0;
+                boolean sameWeight = true; // 如果所有权重都相等，那么随机一个ip就好了
+                Object[] weights = weightList.values().toArray();
+                for (int i = 0; i &lt; weights.length; i++) {
+                    Integer weight = (Integer) weights[i];
+                    totalWeight += weight;
+                    if (sameWeight &amp;&amp; i &gt; 0 &amp;&amp; !weight.equals(weights[i - 1])) {
+                        sameWeight = false;
+                    }
+                }
+                java.util.Random random = new java.util.Random();
+                int randomPos = random.nextInt(totalWeight);
+                if (!sameWeight) {
+                    for (String ip : weightList.keySet()) {
+                        Integer value = weightList.get(ip);
+                        if (randomPos &lt; value) {
+                            return ip;
+                        }
+                        randomPos = randomPos - value;
+                    }
+                }
+                return (String) weightList.keySet().toArray()[new java.util.Random().nextInt(weightList.size())];
+            } else {
+                return minActivityIps.get(0);
+            }
+        } else {
+            return (String) ServerIps.WEIGHT_LIST.keySet().toArray()[new java.util.Random().nextInt(ServerIps.WEIGHT_LIST.size())];
+        }
+    }
+    public static void main(String[] args) {
+        // 连续调用10次,随机10个client
+        for (int i = 0; i &lt; 10; i++) {
+            System.out.println(getServer());
+        }
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br></div></div><p>这里因为不会对活跃数进行操作，所以结果是固定的（担任在随机权重的时候会随机，具体看源码实现，以及运行结果即可理解）。</p></div></div>  <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2022/04/21, 18:39:57</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/db9fb4/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">Dubbo的可扩展机制SPI源码解析</div></a> <a href="/pages/68b6a6/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">Dubbo与spring整合原理与源码分析</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/db9fb4/" class="prev">Dubbo的可扩展机制SPI源码解析</a></span> <span class="next"><a href="/pages/68b6a6/">Dubbo与spring整合原理与源码分析</a>→
+      </span></p></div></div></div> <div class="article-list"><div class="article-title"><a href="/archives/" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/pages/80365f/"><div>
+            证券市场基本法律法规
+            <!----></div></a> <span class="date">03-13</span></dt></dl><dl><dd>02</dd> <dt><a href="/pages/d9e4f4/"><div>
+            证券考试规则
+            <!----></div></a> <span class="date">03-12</span></dt></dl><dl><dd>03</dd> <dt><a href="/pages/cb2c17/"><div>
+            金融市场基础知识
+            <!----></div></a> <span class="date">03-12</span></dt></dl> <dl><dd></dd> <dt><a href="/archives/" class="more">更多文章&gt;</a></dt></dl></div></div></main></div> <div class="footer"><div class="icons"><a href="mailto:cloudjava@163.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="https://github.com/bigdatajava" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="https://gitee.com/nylg" title="Gitee" target="_blank" class="iconfont icon-gitee"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2014-2024
+    <span>wen chao | <a href="https://github.com/bigdatajava/blog-talk/blob/main/LICENSE" target="_blank">MIT License</a></span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"><div></div></div></div>
+    <script src="/assets/js/app.b2807c2b.js" defer></script><script src="/assets/js/2.eeaab5de.js" defer></script><script src="/assets/js/71.81f1af4b.js" defer></script>
+  </body>
+</html>

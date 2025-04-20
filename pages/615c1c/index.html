@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Spring核心API | wen chao</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_3129839_xft6cqs5gc.css">
+    <meta name="description" content="架构进阶之路...">
+    <meta name="keywords" content="全栈博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,js,ES6,TypeScript,vue">
+    <meta name="theme-color" content="#11a8cd">
+    
+    <link rel="preload" href="/assets/css/0.styles.237ce36e.css" as="style"><link rel="preload" href="/assets/js/app.b2807c2b.js" as="script"><link rel="preload" href="/assets/js/2.eeaab5de.js" as="script"><link rel="preload" href="/assets/js/215.81872845.js" as="script"><link rel="prefetch" href="/assets/js/10.30d760c8.js"><link rel="prefetch" href="/assets/js/100.d2a91f05.js"><link rel="prefetch" href="/assets/js/101.aa15113f.js"><link rel="prefetch" href="/assets/js/102.303aae62.js"><link rel="prefetch" href="/assets/js/103.39dbd83e.js"><link rel="prefetch" href="/assets/js/104.30434bc2.js"><link rel="prefetch" href="/assets/js/105.68d90558.js"><link rel="prefetch" href="/assets/js/106.2a47de1c.js"><link rel="prefetch" href="/assets/js/107.6c92802c.js"><link rel="prefetch" href="/assets/js/108.1a019470.js"><link rel="prefetch" href="/assets/js/109.f2cc4655.js"><link rel="prefetch" href="/assets/js/11.8c97a85c.js"><link rel="prefetch" href="/assets/js/110.8630d06d.js"><link rel="prefetch" href="/assets/js/111.fdf10f1a.js"><link rel="prefetch" href="/assets/js/112.ea841a58.js"><link rel="prefetch" href="/assets/js/113.bd8e761d.js"><link rel="prefetch" href="/assets/js/114.63ed667a.js"><link rel="prefetch" href="/assets/js/115.909a8353.js"><link rel="prefetch" href="/assets/js/116.62dab6c0.js"><link rel="prefetch" href="/assets/js/117.d0ef1d76.js"><link rel="prefetch" href="/assets/js/118.39e6e925.js"><link rel="prefetch" href="/assets/js/119.e0265f93.js"><link rel="prefetch" href="/assets/js/12.156b3963.js"><link rel="prefetch" href="/assets/js/120.4be98e6e.js"><link rel="prefetch" href="/assets/js/121.518d8dd5.js"><link rel="prefetch" href="/assets/js/122.477dd94b.js"><link rel="prefetch" href="/assets/js/123.d6065aca.js"><link rel="prefetch" href="/assets/js/124.c6f965c7.js"><link rel="prefetch" href="/assets/js/125.3ee79c35.js"><link rel="prefetch" href="/assets/js/126.bcc69ad9.js"><link rel="prefetch" href="/assets/js/127.8f3ce1ac.js"><link rel="prefetch" href="/assets/js/128.03c90841.js"><link rel="prefetch" href="/assets/js/129.ab248cd9.js"><link rel="prefetch" href="/assets/js/13.c67aac42.js"><link rel="prefetch" href="/assets/js/130.dd64983e.js"><link rel="prefetch" href="/assets/js/131.6ffe6940.js"><link rel="prefetch" href="/assets/js/132.2a8fed26.js"><link rel="prefetch" href="/assets/js/133.6a7673eb.js"><link rel="prefetch" href="/assets/js/134.c00b7bf2.js"><link rel="prefetch" href="/assets/js/135.59d75ce6.js"><link rel="prefetch" href="/assets/js/136.bcd27d57.js"><link rel="prefetch" href="/assets/js/137.75dd3384.js"><link rel="prefetch" href="/assets/js/138.a2ababbf.js"><link rel="prefetch" href="/assets/js/139.6aa75eaa.js"><link rel="prefetch" href="/assets/js/14.8ab9a27a.js"><link rel="prefetch" href="/assets/js/140.58295019.js"><link rel="prefetch" href="/assets/js/141.8d05c3a5.js"><link rel="prefetch" href="/assets/js/142.18498abf.js"><link rel="prefetch" href="/assets/js/143.20c6bdde.js"><link rel="prefetch" href="/assets/js/144.ac94f8ff.js"><link rel="prefetch" href="/assets/js/145.e135dd8a.js"><link rel="prefetch" href="/assets/js/146.13a537e3.js"><link rel="prefetch" href="/assets/js/147.016b19e9.js"><link rel="prefetch" href="/assets/js/148.d3a909f2.js"><link rel="prefetch" href="/assets/js/149.90d05716.js"><link rel="prefetch" href="/assets/js/15.2b8ce9c5.js"><link rel="prefetch" href="/assets/js/150.e61c5f29.js"><link rel="prefetch" href="/assets/js/151.c81aa646.js"><link rel="prefetch" href="/assets/js/152.82944cc0.js"><link rel="prefetch" href="/assets/js/153.410a3789.js"><link rel="prefetch" href="/assets/js/154.cc1235ef.js"><link rel="prefetch" href="/assets/js/155.1e7fae81.js"><link rel="prefetch" href="/assets/js/156.cfaa0244.js"><link rel="prefetch" href="/assets/js/157.47981f53.js"><link rel="prefetch" href="/assets/js/158.e9c295a1.js"><link rel="prefetch" href="/assets/js/159.50ba3574.js"><link rel="prefetch" href="/assets/js/16.a8b0b084.js"><link rel="prefetch" href="/assets/js/160.5845ca9d.js"><link rel="prefetch" href="/assets/js/161.0e97694f.js"><link rel="prefetch" href="/assets/js/162.3c77226a.js"><link rel="prefetch" href="/assets/js/163.17c9ec79.js"><link rel="prefetch" href="/assets/js/164.7736f87d.js"><link rel="prefetch" href="/assets/js/165.ff7b4f9e.js"><link rel="prefetch" href="/assets/js/166.6956307c.js"><link rel="prefetch" href="/assets/js/167.366611f7.js"><link rel="prefetch" href="/assets/js/168.57345d6b.js"><link rel="prefetch" href="/assets/js/169.25420ee7.js"><link rel="prefetch" href="/assets/js/17.68e41786.js"><link rel="prefetch" href="/assets/js/170.bedd4eac.js"><link rel="prefetch" href="/assets/js/171.374570cf.js"><link rel="prefetch" href="/assets/js/172.2f8bf4a8.js"><link rel="prefetch" href="/assets/js/173.42ea0d36.js"><link rel="prefetch" href="/assets/js/174.0ccfd7c6.js"><link rel="prefetch" href="/assets/js/175.7ab333d2.js"><link rel="prefetch" href="/assets/js/176.c7266816.js"><link rel="prefetch" href="/assets/js/177.d0a95fb6.js"><link rel="prefetch" href="/assets/js/178.2bb652ad.js"><link rel="prefetch" href="/assets/js/179.a8eab386.js"><link rel="prefetch" href="/assets/js/18.8e0d47a1.js"><link rel="prefetch" href="/assets/js/180.9fd22be7.js"><link rel="prefetch" href="/assets/js/181.5d5358d4.js"><link rel="prefetch" href="/assets/js/182.af7d36e2.js"><link rel="prefetch" href="/assets/js/183.dddc555d.js"><link rel="prefetch" href="/assets/js/184.a3396baf.js"><link rel="prefetch" href="/assets/js/185.2f7da675.js"><link rel="prefetch" href="/assets/js/186.92639766.js"><link rel="prefetch" href="/assets/js/187.711debd8.js"><link rel="prefetch" href="/assets/js/188.149256e6.js"><link rel="prefetch" href="/assets/js/189.c118aa93.js"><link rel="prefetch" href="/assets/js/19.770d847c.js"><link rel="prefetch" href="/assets/js/190.4d85ee4e.js"><link rel="prefetch" href="/assets/js/191.ff095a9a.js"><link rel="prefetch" href="/assets/js/192.4b5fe55c.js"><link rel="prefetch" href="/assets/js/193.415828fe.js"><link rel="prefetch" href="/assets/js/194.ce801921.js"><link rel="prefetch" href="/assets/js/195.c668b288.js"><link rel="prefetch" href="/assets/js/196.8825af00.js"><link rel="prefetch" href="/assets/js/197.d09dcd8b.js"><link rel="prefetch" href="/assets/js/198.396382cf.js"><link rel="prefetch" href="/assets/js/199.facc6630.js"><link rel="prefetch" href="/assets/js/20.97979961.js"><link rel="prefetch" href="/assets/js/200.db1ff45e.js"><link rel="prefetch" href="/assets/js/201.ab79fbd5.js"><link rel="prefetch" href="/assets/js/202.46e8525c.js"><link rel="prefetch" href="/assets/js/203.2cc13ae9.js"><link rel="prefetch" href="/assets/js/204.3c8a5bcd.js"><link rel="prefetch" href="/assets/js/205.3d0d8394.js"><link rel="prefetch" href="/assets/js/206.261623f6.js"><link rel="prefetch" href="/assets/js/207.6260c0aa.js"><link rel="prefetch" href="/assets/js/208.0fd63045.js"><link rel="prefetch" href="/assets/js/209.e5eaeeca.js"><link rel="prefetch" href="/assets/js/21.e6565c56.js"><link rel="prefetch" href="/assets/js/210.bccc650e.js"><link rel="prefetch" href="/assets/js/211.c238d796.js"><link rel="prefetch" href="/assets/js/212.dd4703ab.js"><link rel="prefetch" href="/assets/js/213.110becf0.js"><link rel="prefetch" href="/assets/js/214.a90d9da2.js"><link rel="prefetch" href="/assets/js/216.2ae9609f.js"><link rel="prefetch" href="/assets/js/217.567657f9.js"><link rel="prefetch" href="/assets/js/218.bc570e81.js"><link rel="prefetch" href="/assets/js/219.32a64945.js"><link rel="prefetch" href="/assets/js/22.92562bc3.js"><link rel="prefetch" href="/assets/js/220.d1605ea9.js"><link rel="prefetch" href="/assets/js/221.c1483dee.js"><link rel="prefetch" href="/assets/js/222.188d3bb6.js"><link rel="prefetch" href="/assets/js/223.b4d7fc4a.js"><link rel="prefetch" href="/assets/js/224.5495522d.js"><link rel="prefetch" href="/assets/js/225.ea320f20.js"><link rel="prefetch" href="/assets/js/226.1f245007.js"><link rel="prefetch" href="/assets/js/227.280e3176.js"><link rel="prefetch" href="/assets/js/228.7ea12e2e.js"><link rel="prefetch" href="/assets/js/229.0697746f.js"><link rel="prefetch" href="/assets/js/23.4b595789.js"><link rel="prefetch" href="/assets/js/230.8efdd773.js"><link rel="prefetch" href="/assets/js/231.44bfbfb5.js"><link rel="prefetch" href="/assets/js/232.24dc2667.js"><link rel="prefetch" href="/assets/js/233.6c77b12b.js"><link rel="prefetch" href="/assets/js/234.1ea57e5c.js"><link rel="prefetch" href="/assets/js/235.efb990b9.js"><link rel="prefetch" href="/assets/js/236.2e8820ed.js"><link rel="prefetch" href="/assets/js/237.b108feed.js"><link rel="prefetch" href="/assets/js/238.22baaff8.js"><link rel="prefetch" href="/assets/js/239.ac2c0eba.js"><link rel="prefetch" href="/assets/js/24.b1f29ab1.js"><link rel="prefetch" href="/assets/js/240.1f419e38.js"><link rel="prefetch" href="/assets/js/241.e23fbc50.js"><link rel="prefetch" href="/assets/js/242.83b3226c.js"><link rel="prefetch" href="/assets/js/243.1ce8a9be.js"><link rel="prefetch" href="/assets/js/244.d7c93bdb.js"><link rel="prefetch" href="/assets/js/245.a1b402c0.js"><link rel="prefetch" href="/assets/js/246.7eeb5e18.js"><link rel="prefetch" href="/assets/js/247.b2c0ab4a.js"><link rel="prefetch" href="/assets/js/248.5b2dd7ed.js"><link rel="prefetch" href="/assets/js/249.6278d6f1.js"><link rel="prefetch" href="/assets/js/25.748022ff.js"><link rel="prefetch" href="/assets/js/250.e3114578.js"><link rel="prefetch" href="/assets/js/251.1f576677.js"><link rel="prefetch" href="/assets/js/252.7e83dd55.js"><link rel="prefetch" href="/assets/js/253.ab219365.js"><link rel="prefetch" href="/assets/js/254.31655221.js"><link rel="prefetch" href="/assets/js/255.402ba0fd.js"><link rel="prefetch" href="/assets/js/256.2f1f131a.js"><link rel="prefetch" href="/assets/js/257.cd0dac87.js"><link rel="prefetch" href="/assets/js/258.5e84f5d0.js"><link rel="prefetch" href="/assets/js/259.72cf210e.js"><link rel="prefetch" href="/assets/js/26.d566b8b1.js"><link rel="prefetch" href="/assets/js/260.ddfd8bc7.js"><link rel="prefetch" href="/assets/js/261.b074e8b6.js"><link rel="prefetch" href="/assets/js/262.e0b94776.js"><link rel="prefetch" href="/assets/js/263.2e66950f.js"><link rel="prefetch" href="/assets/js/264.f3ac339f.js"><link rel="prefetch" href="/assets/js/265.384c189b.js"><link rel="prefetch" href="/assets/js/266.635a72af.js"><link rel="prefetch" href="/assets/js/267.c9ede946.js"><link rel="prefetch" href="/assets/js/268.9ec888f5.js"><link rel="prefetch" href="/assets/js/269.2a81258c.js"><link rel="prefetch" href="/assets/js/27.3085f660.js"><link rel="prefetch" href="/assets/js/270.973f0998.js"><link rel="prefetch" href="/assets/js/271.de24bbf3.js"><link rel="prefetch" href="/assets/js/272.68e83c3c.js"><link rel="prefetch" href="/assets/js/273.d740150b.js"><link rel="prefetch" href="/assets/js/274.dc1b1f0c.js"><link rel="prefetch" href="/assets/js/275.cf028a33.js"><link rel="prefetch" href="/assets/js/276.351dbc96.js"><link rel="prefetch" href="/assets/js/277.6a9f5699.js"><link rel="prefetch" href="/assets/js/278.0c28ac6f.js"><link rel="prefetch" href="/assets/js/279.b14576ac.js"><link rel="prefetch" href="/assets/js/28.47957820.js"><link rel="prefetch" href="/assets/js/280.906a73b1.js"><link rel="prefetch" href="/assets/js/281.4173499d.js"><link rel="prefetch" href="/assets/js/282.43873aa6.js"><link rel="prefetch" href="/assets/js/283.2a3d0552.js"><link rel="prefetch" href="/assets/js/284.2c7aa3fb.js"><link rel="prefetch" href="/assets/js/285.a62f9799.js"><link rel="prefetch" href="/assets/js/286.2f0b6532.js"><link rel="prefetch" href="/assets/js/287.d770d01f.js"><link rel="prefetch" href="/assets/js/288.97207297.js"><link rel="prefetch" href="/assets/js/289.ddf5a46c.js"><link rel="prefetch" href="/assets/js/29.716c8a52.js"><link rel="prefetch" href="/assets/js/290.9f1b4436.js"><link rel="prefetch" href="/assets/js/291.885ac485.js"><link rel="prefetch" href="/assets/js/292.b1fe886b.js"><link rel="prefetch" href="/assets/js/293.f597359f.js"><link rel="prefetch" href="/assets/js/294.f559040e.js"><link rel="prefetch" href="/assets/js/295.ef66e1a4.js"><link rel="prefetch" href="/assets/js/296.47009685.js"><link rel="prefetch" href="/assets/js/297.fb7d20ba.js"><link rel="prefetch" href="/assets/js/298.cb1631f8.js"><link rel="prefetch" href="/assets/js/299.25f28097.js"><link rel="prefetch" href="/assets/js/3.9c10c990.js"><link rel="prefetch" href="/assets/js/30.b35b7ad0.js"><link rel="prefetch" href="/assets/js/300.ab5c587e.js"><link rel="prefetch" href="/assets/js/301.544c6982.js"><link rel="prefetch" href="/assets/js/302.70396486.js"><link rel="prefetch" href="/assets/js/303.fa1f3a02.js"><link rel="prefetch" href="/assets/js/304.c344682e.js"><link rel="prefetch" href="/assets/js/305.a0620b1d.js"><link rel="prefetch" href="/assets/js/306.8cb43e28.js"><link rel="prefetch" href="/assets/js/307.ee4d9e2d.js"><link rel="prefetch" href="/assets/js/308.bb04656d.js"><link rel="prefetch" href="/assets/js/309.b3e3c0be.js"><link rel="prefetch" href="/assets/js/31.af0fa05e.js"><link rel="prefetch" href="/assets/js/310.162df0c7.js"><link rel="prefetch" href="/assets/js/311.1a5e341e.js"><link rel="prefetch" href="/assets/js/312.9fe4ed85.js"><link rel="prefetch" href="/assets/js/313.e187b781.js"><link rel="prefetch" href="/assets/js/314.c832b372.js"><link rel="prefetch" href="/assets/js/315.66b7260d.js"><link rel="prefetch" href="/assets/js/316.074c1e65.js"><link rel="prefetch" href="/assets/js/317.9210b762.js"><link rel="prefetch" href="/assets/js/318.50ac3392.js"><link rel="prefetch" href="/assets/js/319.996a4c1b.js"><link rel="prefetch" href="/assets/js/32.81b4ee4b.js"><link rel="prefetch" href="/assets/js/320.661c3aa7.js"><link rel="prefetch" href="/assets/js/321.91d065c2.js"><link rel="prefetch" href="/assets/js/322.21d177e9.js"><link rel="prefetch" href="/assets/js/323.c240199c.js"><link rel="prefetch" href="/assets/js/324.fc71e18c.js"><link rel="prefetch" href="/assets/js/325.d441ab5e.js"><link rel="prefetch" href="/assets/js/326.6065a9e1.js"><link rel="prefetch" href="/assets/js/327.b68a9e0f.js"><link rel="prefetch" href="/assets/js/328.082fa547.js"><link rel="prefetch" href="/assets/js/329.17abf0b7.js"><link rel="prefetch" href="/assets/js/33.c41edd68.js"><link rel="prefetch" href="/assets/js/330.076712a3.js"><link rel="prefetch" href="/assets/js/331.b883690e.js"><link rel="prefetch" href="/assets/js/332.a942e6bd.js"><link rel="prefetch" href="/assets/js/333.e193acf6.js"><link rel="prefetch" href="/assets/js/334.5721c074.js"><link rel="prefetch" href="/assets/js/335.b759f5ec.js"><link rel="prefetch" href="/assets/js/336.8f786a4b.js"><link rel="prefetch" href="/assets/js/337.8ef80b90.js"><link rel="prefetch" href="/assets/js/338.8c63fda7.js"><link rel="prefetch" href="/assets/js/339.3df2ba0b.js"><link rel="prefetch" href="/assets/js/34.e166f3d5.js"><link rel="prefetch" href="/assets/js/340.e54bd836.js"><link rel="prefetch" href="/assets/js/341.1de3160e.js"><link rel="prefetch" href="/assets/js/342.52f64508.js"><link rel="prefetch" href="/assets/js/343.f56c914e.js"><link rel="prefetch" href="/assets/js/344.63033532.js"><link rel="prefetch" href="/assets/js/345.b23610d1.js"><link rel="prefetch" href="/assets/js/346.2c817177.js"><link rel="prefetch" href="/assets/js/347.bb20d78f.js"><link rel="prefetch" href="/assets/js/348.bba2b968.js"><link rel="prefetch" href="/assets/js/349.620d4fde.js"><link rel="prefetch" href="/assets/js/35.827d2ea3.js"><link rel="prefetch" href="/assets/js/350.a24a894c.js"><link rel="prefetch" href="/assets/js/351.9fc8ae8f.js"><link rel="prefetch" href="/assets/js/352.9229b958.js"><link rel="prefetch" href="/assets/js/353.ffe6628c.js"><link rel="prefetch" href="/assets/js/354.4f883a51.js"><link rel="prefetch" href="/assets/js/355.3232e481.js"><link rel="prefetch" href="/assets/js/356.52bb9172.js"><link rel="prefetch" href="/assets/js/357.4ee29887.js"><link rel="prefetch" href="/assets/js/358.22886190.js"><link rel="prefetch" href="/assets/js/359.1f40fcc5.js"><link rel="prefetch" href="/assets/js/36.7c80731a.js"><link rel="prefetch" href="/assets/js/360.630b9c12.js"><link rel="prefetch" href="/assets/js/37.6608ea0a.js"><link rel="prefetch" href="/assets/js/38.4c69b602.js"><link rel="prefetch" href="/assets/js/39.19f940a6.js"><link rel="prefetch" href="/assets/js/4.55a001d1.js"><link rel="prefetch" href="/assets/js/40.d3257c4f.js"><link rel="prefetch" href="/assets/js/41.89db1eaf.js"><link rel="prefetch" href="/assets/js/42.4a12d693.js"><link rel="prefetch" href="/assets/js/43.cbe3ed47.js"><link rel="prefetch" href="/assets/js/44.61c79193.js"><link rel="prefetch" href="/assets/js/45.ce5ed428.js"><link rel="prefetch" href="/assets/js/46.eea0f2fa.js"><link rel="prefetch" href="/assets/js/47.f3bd04d8.js"><link rel="prefetch" href="/assets/js/48.ed81abeb.js"><link rel="prefetch" href="/assets/js/49.978d3cae.js"><link rel="prefetch" href="/assets/js/5.fe551af2.js"><link rel="prefetch" href="/assets/js/50.e21176fc.js"><link rel="prefetch" href="/assets/js/51.2f5a0327.js"><link rel="prefetch" href="/assets/js/52.125f820a.js"><link rel="prefetch" href="/assets/js/53.4a1c114d.js"><link rel="prefetch" href="/assets/js/54.dfe3253b.js"><link rel="prefetch" href="/assets/js/55.5959dcbb.js"><link rel="prefetch" href="/assets/js/56.9d18670e.js"><link rel="prefetch" href="/assets/js/57.c238fb54.js"><link rel="prefetch" href="/assets/js/58.e221eedb.js"><link rel="prefetch" href="/assets/js/59.f628533d.js"><link rel="prefetch" href="/assets/js/6.4670d323.js"><link rel="prefetch" href="/assets/js/60.919ac5be.js"><link rel="prefetch" href="/assets/js/61.3a63b17e.js"><link rel="prefetch" href="/assets/js/62.e61011ad.js"><link rel="prefetch" href="/assets/js/63.55200ef4.js"><link rel="prefetch" href="/assets/js/64.7c19f83d.js"><link rel="prefetch" href="/assets/js/65.833da817.js"><link rel="prefetch" href="/assets/js/66.13f4f83f.js"><link rel="prefetch" href="/assets/js/67.0c77e799.js"><link rel="prefetch" href="/assets/js/68.cc0e543d.js"><link rel="prefetch" href="/assets/js/69.555bef08.js"><link rel="prefetch" href="/assets/js/7.90cda232.js"><link rel="prefetch" href="/assets/js/70.5d2ec40f.js"><link rel="prefetch" href="/assets/js/71.81f1af4b.js"><link rel="prefetch" href="/assets/js/72.8a66936f.js"><link rel="prefetch" href="/assets/js/73.2655fba2.js"><link rel="prefetch" href="/assets/js/74.ba0b3153.js"><link rel="prefetch" href="/assets/js/75.536955ba.js"><link rel="prefetch" href="/assets/js/76.3a946a81.js"><link rel="prefetch" href="/assets/js/77.9b243f6c.js"><link rel="prefetch" href="/assets/js/78.f580a907.js"><link rel="prefetch" href="/assets/js/79.38cbcc11.js"><link rel="prefetch" href="/assets/js/8.9cebf18a.js"><link rel="prefetch" href="/assets/js/80.e82012e8.js"><link rel="prefetch" href="/assets/js/81.73c65f97.js"><link rel="prefetch" href="/assets/js/82.ddfa06dd.js"><link rel="prefetch" href="/assets/js/83.b75fcea2.js"><link rel="prefetch" href="/assets/js/84.5e0efc6d.js"><link rel="prefetch" href="/assets/js/85.3a495ae2.js"><link rel="prefetch" href="/assets/js/86.1ebe8967.js"><link rel="prefetch" href="/assets/js/87.cd673062.js"><link rel="prefetch" href="/assets/js/88.f50e4960.js"><link rel="prefetch" href="/assets/js/89.06660ffb.js"><link rel="prefetch" href="/assets/js/9.04fce59d.js"><link rel="prefetch" href="/assets/js/90.aa61aeaf.js"><link rel="prefetch" href="/assets/js/91.865e8535.js"><link rel="prefetch" href="/assets/js/92.fd2d2a62.js"><link rel="prefetch" href="/assets/js/93.b185de83.js"><link rel="prefetch" href="/assets/js/94.f5290c38.js"><link rel="prefetch" href="/assets/js/95.be5b7fed.js"><link rel="prefetch" href="/assets/js/96.d442acd0.js"><link rel="prefetch" href="/assets/js/97.2f9b0746.js"><link rel="prefetch" href="/assets/js/98.3bba4945.js"><link rel="prefetch" href="/assets/js/99.cd82a6ed.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.237ce36e.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.png" alt="wen chao" class="logo"> <span class="site-name can-hide">wen chao</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Algorithm" class="dropdown-title"><a href="/Algorithm/" class="link-title">Algorithm</a> <span class="title" style="display:none;">Algorithm</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/d8e764/" class="nav-link">Theory</a></li><li class="dropdown-item"><!----> <a href="/pages/81a4bd/" class="nav-link">LeetCode</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Spring" class="dropdown-title"><a href="/Spring/" class="link-title">Spring</a> <span class="title" style="display:none;">Spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/373439/" class="nav-link">Spring</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Technology" class="dropdown-title"><a href="/Technology/" class="link-title">Technology</a> <span class="title" style="display:none;">Technology</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/3b6841/" class="nav-link">DB</a></li><li class="dropdown-item"><!----> <a href="/pages/d7857e/" class="nav-link">Linux</a></li><li class="dropdown-item"><!----> <a href="/pages/b89362/" class="nav-link">Redis</a></li><li class="dropdown-item"><!----> <a href="/pages/ec8b81/" class="nav-link">MongoDB</a></li><li class="dropdown-item"><!----> <a href="/pages/4e3ff1/" class="nav-link">Zookeeper</a></li><li class="dropdown-item"><!----> <a href="/pages/a75fef/" class="nav-link">MQ</a></li><li class="dropdown-item"><!----> <a href="/pages/b194d7/" class="nav-link">Dubbo</a></li><li class="dropdown-item"><!----> <a href="/pages/371f2f/" class="nav-link">ElasticSearch</a></li><li class="dropdown-item"><!----> <a href="/pages/027aa3/" class="nav-link">Workflow</a></li><li class="dropdown-item"><!----> <a href="/pages/73ab4b/" class="nav-link">OAuth2</a></li><li class="dropdown-item"><!----> <a href="/pages/d7a38a/" class="nav-link">JPA</a></li><li class="dropdown-item"><!----> <a href="/pages/eb5dc1/" class="nav-link">Liquibase</a></li><li class="dropdown-item"><!----> <a href="/pages/e54277/" class="nav-link">Lombok</a></li><li class="dropdown-item"><!----> <a href="/pages/62e4f6/" class="nav-link">Git</a></li><li class="dropdown-item"><!----> <a href="/pages/13c836/" class="nav-link">Nginx</a></li><li class="dropdown-item"><!----> <a href="/pages/b50b3d/" class="nav-link">Mini Program</a></li><li class="dropdown-item"><!----> <a href="/pages/09d3b8/" class="nav-link">JVM</a></li><li class="dropdown-item"><!----> <a href="/pages/a526c7/" class="nav-link">Log</a></li><li class="dropdown-item"><!----> <a href="/pages/59cf4f/" class="nav-link">JDK</a></li><li class="dropdown-item"><!----> <a href="/pages/d50dab/" class="nav-link">Thymeleaf</a></li><li class="dropdown-item"><!----> <a href="/pages/97abaa/" class="nav-link">Maven</a></li><li class="dropdown-item"><!----> <a href="/pages/7879f1/" class="nav-link">Mybatis</a></li><li class="dropdown-item"><!----> <a href="/pages/745b7c/" class="nav-link">Network</a></li><li class="dropdown-item"><!----> <a href="/pages/274dac/" class="nav-link">Raspberrypi</a></li><li class="dropdown-item"><!----> <a href="/pages/87c097/" class="nav-link">Node</a></li><li class="dropdown-item"><!----> <a href="/pages/927664/" class="nav-link">HTML</a></li><li class="dropdown-item"><!----> <a href="/pages/2c3f19/" class="nav-link">Vue</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Other" class="dropdown-title"><a href="/Other/" class="link-title">Other</a> <span class="title" style="display:none;">Other</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/fea344/" class="nav-link">Book</a></li><li class="dropdown-item"><!----> <a href="/pages/d62f72/" class="nav-link">面试</a></li><li class="dropdown-item"><!----> <a href="/pages/f3d338/" class="nav-link">问题</a></li><li class="dropdown-item"><!----> <a href="/pages/ff202b/" class="nav-link">友链</a></li><li class="dropdown-item"><!----> <a href="/pages/2b746e/" class="nav-link">证券</a></li></ul></div></div><div class="nav-item"><a href="/About/" class="nav-link">About</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Index" class="dropdown-title"><a href="/archives/" class="link-title">Index</a> <span class="title" style="display:none;">Index</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="/img/touxiang-lanse.png"> <div class="blogger-info"><h3>wen chao</h3> <span>持之以恒做正确有价值的事!</span></div></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Algorithm" class="dropdown-title"><a href="/Algorithm/" class="link-title">Algorithm</a> <span class="title" style="display:none;">Algorithm</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/d8e764/" class="nav-link">Theory</a></li><li class="dropdown-item"><!----> <a href="/pages/81a4bd/" class="nav-link">LeetCode</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Spring" class="dropdown-title"><a href="/Spring/" class="link-title">Spring</a> <span class="title" style="display:none;">Spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/373439/" class="nav-link">Spring</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Technology" class="dropdown-title"><a href="/Technology/" class="link-title">Technology</a> <span class="title" style="display:none;">Technology</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/3b6841/" class="nav-link">DB</a></li><li class="dropdown-item"><!----> <a href="/pages/d7857e/" class="nav-link">Linux</a></li><li class="dropdown-item"><!----> <a href="/pages/b89362/" class="nav-link">Redis</a></li><li class="dropdown-item"><!----> <a href="/pages/ec8b81/" class="nav-link">MongoDB</a></li><li class="dropdown-item"><!----> <a href="/pages/4e3ff1/" class="nav-link">Zookeeper</a></li><li class="dropdown-item"><!----> <a href="/pages/a75fef/" class="nav-link">MQ</a></li><li class="dropdown-item"><!----> <a href="/pages/b194d7/" class="nav-link">Dubbo</a></li><li class="dropdown-item"><!----> <a href="/pages/371f2f/" class="nav-link">ElasticSearch</a></li><li class="dropdown-item"><!----> <a href="/pages/027aa3/" class="nav-link">Workflow</a></li><li class="dropdown-item"><!----> <a href="/pages/73ab4b/" class="nav-link">OAuth2</a></li><li class="dropdown-item"><!----> <a href="/pages/d7a38a/" class="nav-link">JPA</a></li><li class="dropdown-item"><!----> <a href="/pages/eb5dc1/" class="nav-link">Liquibase</a></li><li class="dropdown-item"><!----> <a href="/pages/e54277/" class="nav-link">Lombok</a></li><li class="dropdown-item"><!----> <a href="/pages/62e4f6/" class="nav-link">Git</a></li><li class="dropdown-item"><!----> <a href="/pages/13c836/" class="nav-link">Nginx</a></li><li class="dropdown-item"><!----> <a href="/pages/b50b3d/" class="nav-link">Mini Program</a></li><li class="dropdown-item"><!----> <a href="/pages/09d3b8/" class="nav-link">JVM</a></li><li class="dropdown-item"><!----> <a href="/pages/a526c7/" class="nav-link">Log</a></li><li class="dropdown-item"><!----> <a href="/pages/59cf4f/" class="nav-link">JDK</a></li><li class="dropdown-item"><!----> <a href="/pages/d50dab/" class="nav-link">Thymeleaf</a></li><li class="dropdown-item"><!----> <a href="/pages/97abaa/" class="nav-link">Maven</a></li><li class="dropdown-item"><!----> <a href="/pages/7879f1/" class="nav-link">Mybatis</a></li><li class="dropdown-item"><!----> <a href="/pages/745b7c/" class="nav-link">Network</a></li><li class="dropdown-item"><!----> <a href="/pages/274dac/" class="nav-link">Raspberrypi</a></li><li class="dropdown-item"><!----> <a href="/pages/87c097/" class="nav-link">Node</a></li><li class="dropdown-item"><!----> <a href="/pages/927664/" class="nav-link">HTML</a></li><li class="dropdown-item"><!----> <a href="/pages/2c3f19/" class="nav-link">Vue</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Other" class="dropdown-title"><a href="/Other/" class="link-title">Other</a> <span class="title" style="display:none;">Other</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pages/fea344/" class="nav-link">Book</a></li><li class="dropdown-item"><!----> <a href="/pages/d62f72/" class="nav-link">面试</a></li><li class="dropdown-item"><!----> <a href="/pages/f3d338/" class="nav-link">问题</a></li><li class="dropdown-item"><!----> <a href="/pages/ff202b/" class="nav-link">友链</a></li><li class="dropdown-item"><!----> <a href="/pages/2b746e/" class="nav-link">证券</a></li></ul></div></div><div class="nav-item"><a href="/About/" class="nav-link">About</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Index" class="dropdown-title"><a href="/archives/" class="link-title">Index</a> <span class="title" style="display:none;">Index</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/" class="nav-link">分类</a></li><li class="dropdown-item"><!----> <a href="/tags/" class="nav-link">标签</a></li><li class="dropdown-item"><!----> <a href="/archives/" class="nav-link">归档</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Book</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>性能调优专题</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>并发编程专题</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>源码框架专题</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/pages/6f13ef/" class="sidebar-link">Spring源码</a></li><li><a href="/pages/615c1c/" aria-current="page" class="active sidebar-link">Spring核心API</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level2"><a href="/pages/615c1c/#spring核心api" class="sidebar-link">Spring核心API</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/pages/615c1c/#beanfactory" class="sidebar-link">BeanFactory</a></li><li class="sidebar-sub-header level3"><a href="/pages/615c1c/#beandefinition" class="sidebar-link">BeanDefinition</a></li><li class="sidebar-sub-header level3"><a href="/pages/615c1c/#aop" class="sidebar-link">AOP</a></li><li class="sidebar-sub-header level3"><a href="/pages/615c1c/#advisor" class="sidebar-link">Advisor</a></li></ul></li></ul></li><li><a href="/pages/883153/" class="sidebar-link">Spring IOC</a></li><li><a href="/pages/e5e86f/" class="sidebar-link">Spring AOP</a></li><li><a href="/pages/f958e8/" class="sidebar-link">Spring声明式事务源码</a></li><li><a href="/pages/3a0c9d/" class="sidebar-link">Spring MVC</a></li><li><a href="/pages/e73dd4/" class="sidebar-link">Spring解决循环依赖</a></li><li><a href="/pages/b8bd50/" class="sidebar-link">Spring事件监听机制</a></li><li><a href="/pages/8ddff3/" class="sidebar-link">Spring设计模式</a></li><li><a href="/pages/8b0b75/" class="sidebar-link">spring事务的隔离传播机制</a></li><li><a href="/pages/ed1d6a/" class="sidebar-link">Mybatis基础</a></li><li><a href="/pages/e200a1/" class="sidebar-link">Mybatis执行SQL流程分析</a></li><li><a href="/pages/e33d50/" class="sidebar-link">Spring整合Mybatis原理</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>微服务专题</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>项目实战专题</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>设计模式专题</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>面试</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>问题</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>友链</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>证券</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-06225672><div class="articleInfo" data-v-06225672><ul class="breadcrumbs" data-v-06225672><li data-v-06225672><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-06225672></a></li> <li data-v-06225672><a href="/Other/#Other" data-v-06225672>Other</a></li><li data-v-06225672><a href="/Other/#Book" data-v-06225672>Book</a></li><li data-v-06225672><a href="/Other/#源码框架专题" data-v-06225672>源码框架专题</a></li></ul> <div class="info" data-v-06225672><div title="作者" class="author iconfont icon-touxiang" data-v-06225672><a href="https://nylg.gitee.io" target="_blank" title="作者" class="beLink" data-v-06225672>wen chao</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-06225672><a href="javascript:;" data-v-06225672>2022-06-18</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABH1JREFUSA3tVl1oHFUUPmdmd2ltklqbpJDiNnXFmgbFktho7YMPNiJSSZM0+CAYSkUELVhM6YuwIPpgoOKDqOBDC0XE2CQoNtQXBUFTTcCi+Wlh1V2TQExsUzcltd3M9Tt3ZjZzZ2fT+OJTL8yeM+eee757fmeJbq//KQL8X3DUSFOcfr7cRsRtxNQMWueeVzOkaITIGqQHNg5y8+jNW9ldM7A6nTpAjuolUikAwq7CE3WcM2RRDz+XGVgN3FptU/aUSlvq9Pa3iZ1+sgAqJyyAFqkipd9dqiwHF3P65YycLWc/6sqGrvoEoIp6DOFaX5h6+dnfjkWprwqsPk0dUGq5vySwDImC10KxFHgGL1SWoc92O3eVht09qdXNH11I2SsTsJYqMWzihqGMi+A+Garf3BAuuLI5oGlULyNfyB/HYNujwktOfRrMr5t77NmevqaUopx0grnKAyvVpmwUDB4x6FPXuGvYLTDwWsejwgtgkYKPqRJg8SV6xaiZ3ZTppGneS4yfH5/66fZSDHv+QZci/+h5c5UHtpy67JUqGppM0sh0Nc1dW6/N1W5Yoqat8/TU/VnadmdeW2PLLSyh0cvxBs3KbqTmwYPpxN4do/mzE8nEpvX/UMu2Wbp74zUAK5q6WkHns7V0eWkdPbPzd3rxkTGybadYySumVzhcaJFbs5UrEkQ/+CK8gF5dnh/6ciIZ73gwQ927L1IitoxKLXYP3SjYdOrHHfTZhRRlFyrorafPk20B3HPD1y2G3qKZME5Jcf3t/HUC13/8tSd++vqFveMUTwAUxSUFI1QekR1+bIze3D9MF2aq6cPvG72CgnldWCFqyRw3lwH8ZMerjTD9ElRO7Gv44wNpC90aASqGfVlz/Rx17srQ57/UU26hkhQqUB7dBR71WmzQhHUnblGmVOEw0jhbV1n9OlXUDCIRGaNV5Jp43N516fN7JmnTHdfp7Hgy0luO4aMhtkLL8Bi3bUWYvzh5Mn1dTxrL6QmGuRhGL/TiTTxRoEdTszSaq9GR0NGA3KdkOz3hqSV3MIDhQ5IVX/Ivx3umBti2es2h4eZby7x8br1rkf7Mo90AqC8aQ3sJeNzqFRu+vSANAQe3PL7l0HGOAdwDCeZYvNKeoZp1Qfs6Aipndh86HmFRi0LAnEO47wsqM6cdfjh3jBPUzhZy7nvlUfFsamED1VQt6aISHVymXZ/B2aCtIG8AI8xfobj2d3en1wWVhOeHELKmLQ1s211s88comkv4UCwWyF787mJdYXtNfhKAXVqnKTq8QZvGAGGOfaTo5pGZ/PwbUCr5+DPr/1J92JNHr9aOl/F3iI5+O1nfybsGxoimvZ3ViWSluDITw3P37mypheDIPY0tw7+O/5ApbkYw+zpfaUVu32Pi98+defdUhEpZkRFq0aqyNh9FuL9hpYbEm6iwi0z2REd09ZmyENEbuhjDWzKvZXTqKYaBIr3tt5kuPtQBZFvEUwHt60vfCNu41XsksH9Ij1BMMz1Y0OOunHNShFIP5868g5zeXmuLwL9T4b6Q2+KejgAAAABJRU5ErkJggg==">Spring核心API<!----></h1>  <div class="theme-vdoing-content content__default"><h2 id="spring核心api"><a href="#spring核心api" class="header-anchor">#</a> Spring核心API</h2> <div class="language- line-numbers-mode"><pre class="language-text"><code>U2FsdGVkX18nOumNSd91SZ9FbOSPULp+W+jPyHF5IsarhKkY5nNTQsg7eux7Gusz
+upzObsEoi5ADEruF82qu73V+G5g+JHavu2tnaiwtE6CA8zrEjjfyIdMjaeGUur8c
+/Ls0A0v9O5PolN7tlh+EWVntOShwmqX/8sECxz/eFQ==
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="beanfactory"><a href="#beanfactory" class="header-anchor">#</a> BeanFactory</h3> <p>org.springframework.beans.factory</p> <p>BeanFactory是用于访问Spring Bean容器的根接口，典型的工厂模式，用于生产Bean的一个Bean工厂，其提供了生产Bean所需的最基本规则。</p> <p>BeanFactory的所有方法：</p> <p>​    <img src="https://gitee.com/nylg/picture/raw/master/spring/7408.png" alt="0"></p> <p>​    <img src="https://gitee.com/nylg/picture/raw/master/spring/7410.png" alt="0"></p> <h3 id="beandefinition"><a href="#beandefinition" class="header-anchor">#</a> BeanDefinition</h3> <p><strong>功能</strong></p> <p>BeanDefinition是bean在spring中的描述，有了BeanDefinition我们就可以创建Bean,BeanDefinition是Bean在spring中的定义形态 接下来我们看看BeanDefinition的相关接口与类.</p> <p><strong>方法</strong></p> <ul><li>String: getBeanClassName: 返回当前bean definition定义的类名</li> <li>ConstructorArgumentValues: getConstructorArgumentValues:返回bean的构造函数参数</li> <li>String[]: getDependsOn:返回当前bean所依赖的其他bean的名称</li> <li>String: getFactoryBeanName: 返回factory bean的名称</li> <li>String: getFactoryMethodName: 返回工厂方法的名称</li> <li>BeanDefinition: getOriginatingBeanDefinition: 返回原始的BeanDefinition,如果不存在返回null</li> <li>String: getParentName: 返回当前bean definition的父definition的名字</li> <li>MutablePropertyValues: getPropertyValues: 返回一个用于新的bean实例上的属性值</li> <li>String: getScope: 返回当前bean的目标范围</li> <li>boolean: isAbstract: 当前bean是否是abstract,意味着不能被实例化</li> <li>boolean: isLazyInit: bean是否是延迟初始化</li> <li>boolean: isPrimary: bean是否为自动装配的主要候选bean</li> <li>boolean: isPrototype: bean是否是多实例</li> <li>boolean: isSingleton: bean是否是单例</li> <li>void: setAutowiredCandidate(boolean): 设置bean是否对其他bean是自动装配的候选bean</li> <li>void: setBeanClassName(String): 指定bean definition的类名</li> <li>void: setDependsOn(String ...): 设置当前bean初始化所依赖的beans的名称</li> <li>void: setFactoryBeanName(String): 如果factory bean的名称</li> <li>void: setFactoryMethodName(String): 设置工厂的方法名</li> <li>void: setLazyInit(boolean lazyInit): 设置是否延迟初始化</li> <li>void: setParentName(String): 设置父definition的名称</li> <li>void: setPrimary(boolean): 设置是否主要的候选bean</li> <li>void: setScope(String): 设置bean的范围,如:单例,多实例</li></ul> <p>定义</p> <ul><li><strong>BeanDefinition接口</strong>: 顶级基础接口,用来描述Bean,里面存放Bean元数据，比如Bean类名、scope、属性、构造函数参数列表、依赖的bean、是否是单例类、是否是懒加载等一些列信息。</li></ul> <p><strong>向上</strong></p> <p>​    <img src="https://gitee.com/nylg/picture/raw/master/spring/7425.png" alt="0"></p> <ul><li><strong>BeanMetadataElement接口</strong>：BeanDefinition元数据，返回该Bean的来源</li> <li><strong>AttributeAccessor接口</strong>：提供对BeanDefinition属性操作能力，</li></ul> <p><strong>向下</strong></p> <p>​    <img src="D:%5CFile%5Cnylg%5Cdocs%5C02.Spring%5C01.Spring!%5B%5D(https:%5Cgitee.com%5Cnylg%5Cpicture%5Craw%5Cmaster%5Cspring%5C7419.png)" alt="0"></p> <ul><li><strong>AbstractBeanDefinition类</strong>：抽象类统一实现了BeanDefinition定义的一部分操作，可以说是定义了BeanDefinition很多默认的属性。 正是在AbstractBeanDefinition基础上， Spring衍生出了一些列BeaDefinition。</li></ul> <p>这里我们可以关注下重写的equals(),hashcode(), toString()方法</p> <p>此外initMethodName属性，destroyMethodName 属性， 这两个属性bean的生命周期有关，此处只提一句，后续讲解。</p> <p>接下来。我们看看从AbstractBeanDefinition上衍生出来的几个类</p> <ul><li><strong>RootBeanDefinition</strong>: 代表一个xml,java Config来的BeanDefinition</li> <li><strong>ChildBeanDefinition</strong>: 从Spring2.5开始，ChildBeanDefinition已经不再使用，取而代之的是GenericBeanDefinition。</li> <li><strong>GenericBeanDefinition:</strong> spring2.5后注册bean首选的是GenericBeanDefinition。GenericBeanDefinition允许动态的设置父bean.GenericBeanDefinition可以作为RootBeanDefinition与ChildBeanDefinition的替代品。</li> <li><strong>AnnotatedBeanDefinition接口</strong>： 表示注解类型BeanDefinition。有两个重要的属性，AnnotationMetadata，MethodMetadata分别表示BeanDefinition的注解元信息和方法元信息 实现了此接口的BeanDefinition可以获取到注解元数据和方法元数据。</li> <li><strong>AnnotatedGenericBeanDefinition类</strong>: 表示@Configuration注解注释的BeanDefinition类</li> <li><strong>ScannedGenericBeanDefinition类</strong>: 表示@Component、@Service、@Controller等注解注释的Bean类</li></ul> <p>操作</p> <p>动作也可分为两种： 一种是针对自身的操作: 自提提供给外部的可以操作其本身的动作 另一种是外部对BeanDefinition的操作</p> <ul><li><strong>BeanDefinitionRegistry接口</strong>：具有增，查，删BeanDefinition的能力。一次只能注册一个BeanDefinition.</li></ul> <p>实现类SimpleBeanDefinitionRegistry，DefaultListableBeanFactory，GenericApplicationContext等 一般实现类里都都有一个 private final Map beanDefinitionMap = new ConcurrentHashMap()来存储BeanDefinition.</p> <p><img src="https://gitee.com/nylg/picture/raw/master/spring/image-20220617133628271.png" alt="image-20220617133628271"></p> <ul><li><strong>BeanDefinitionReader接口</strong>： 既可以使用BeanDefinitionRegistry构造。也可以通过loadBeanDefinitions把配置加载为多个BeanDefinition并注册到BeanDefinitionRegistry中。 可以说是高效版本的BeanDefinitionRegistry. 实现类有 XmlBeanDefinitionReader从xml中读取BeanDefinition； PropertiesBeanDefinitionReader从Properties文件读取BeanDefinition</li> <li><strong>AnnotatedBeanDefinitionReader类</strong> 对带有注解的BeanDefinition进行注册</li> <li><strong>ClassPathBeanDefinitionScanner类</strong>： 可以扫描到<a href="https://my.oschina.net/u/3907912" target="_blank" rel="noopener noreferrer">@Component<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> @Repository @Service @Controller 的BeanDefinition注册到容器中。</li></ul> <p>其他形态</p> <ul><li>BeanDefinitionHolder： BeanDefinition包装类。</li></ul> <p>Bean</p> <p>Bean是我们需要的对象，是我们从spring内得到的结果，也就是对象实例</p> <p>定义</p> <p>从定义层面看.Bean其实就是我们需要的对象.</p> <p>操作</p> <p>我们来看看Bean在spring有哪些操作相关的接口或类。</p> <ul><li>SingletonBeanRegistry接口：与BeanDefinition的注册相应的。Bean的操作也有一个类似的接口来操作Bean.SingletonBeanRegistry接口提供了对Bean的注册，获取，存在性判断等功能。</li> <li>InitializingBean:对于实现 InitializingBean的Bean，它将执行 afterPropertiesSet(); 在所有的 bean 属性被设置之后。</li> <li>InstantiationStrategy:提供 Bean实例化的策略接口，</li> <li>DisposableBean:对于 实现了DisposableBean的Bean ，它将运行 destroy()在 Spring 容器释放该 bean 之后</li> <li>FactoryBean: 生产Bean的Bean.</li></ul> <p>其他形态</p> <ul><li>BeanWrapper: 对Bean的包装.BeanWrapper可以看作是一个从 BeanDefinition 到 Bean 过程中间的产物，可以称为”低级 bean“，在一般情况下，我们不会在实际项目中用到它。BeanWrapper 是 Spring 框架中重要的组件类，它就相当于一个代理类，Spring 委托 BeanWrapper 完成 Bean 属性的填充工作。在 bean 实例被 InstantiatioonStrategy 创建出来后，Spring 容器会将 Bean 实例通过 BeanWrapper 包裹起来，是通过 BeanWrapper.setWrappedInstance() 完成的</li></ul> <p>总结：</p> <p>BeanDefinition是物料，Bean是成品，理解BeanDefinition与Bean的关系是理解spring的基础。</p> <h3 id="aop"><a href="#aop" class="header-anchor">#</a> AOP</h3> <p><strong>Pointcut家族</strong></p> <p><strong>它是Spring AOP对切点的一个顶层首相，非常的重要。</strong></p> <p>首先得看看这个顶级接口抽象的图谱：</p> <p>​    <img src="https://gitee.com/nylg/picture/raw/master/spring/7409.png" alt="0"></p> <p>这里面有一个非常重要得子接口：ExpressionPointcut，它是用于解析String类型的切点表达式的接口（这也是我们使用得最最最多的）</p> <p><strong>Pointcut接口分析</strong></p> <p>**主要负责对系统的相应的Joinpoint进行捕捉，对系统中所有的对象进行Joinpoint所定义的规则进行匹配。**提供了一个TruePointcut实例，当Pointcut为TruePointcut类型时，则会忽略所有的匹配条件，永远返回true</p> <p>显然可以看出，这个接口和ClassFilter和MethodMatcher有关系</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public interface Pointcut {
+
+	ClassFilter getClassFilter();
+	MethodMatcher getMethodMatcher();
+	/**
+	 * Canonical Pointcut instance that always matches.
+	 * 意思是：用于匹配上的一个实例（意思是永远返回true嘛）
+	 */
+	Pointcut TRUE = TruePointcut.INSTANCE;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p>ClassFilter与MethodMatcher分别用于在不同的级别上限定Joinpoint的匹配范围，满足不同粒度的匹配</p> <p><strong>ClassFilter限定在类级别上，MethodMatcher限定在方法级别上</strong></p> <p>SpringAop主要支持在方法级别上的匹配，所以对类级别的匹配支持相对简单一些</p> <p><strong>ClassFilter</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>@FunctionalInterface
+public interface ClassFilter {
+
+	// true表示能够匹配。那就会进行织入的操作
+	boolean matches(Class&lt;?&gt; clazz);
+	// 常量 会匹配所有的类   TrueClassFilter不是public得class，所以只是Spring内部自己使用的
+	ClassFilter TRUE = TrueClassFilter.INSTANCE;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>Spring给他的实现类也比较多，如下：</p> <p>​    <img src="https://gitee.com/nylg/picture/raw/master/spring/7420.png" alt="0"></p> <p><strong>RootClassFilter</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class RootClassFilter implements ClassFilter, Serializable {
+
+	private Class&lt;?&gt; clazz;
+	public RootClassFilter(Class&lt;?&gt; clazz) {
+		this.clazz = clazz;
+	}
+	// 显然，传进来的candidate必须是clazz的子类才行
+	@Override
+	public boolean matches(Class&lt;?&gt; candidate) {
+		return clazz.isAssignableFrom(candidate);
+	}
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>​</p> <p><strong>AnnotationClassFilter</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class AnnotationClassFilter implements ClassFilter {
+	...
+	public AnnotationClassFilter(Class&lt;? extends Annotation&gt; annotationType) {
+		// 默认情况下checkInherited给的false：不去看它继承过来的注解
+		this(annotationType, false);
+	}
+	// checkInherited true：表示继承过来得注解也算
+	public AnnotationClassFilter(Class&lt;? extends Annotation&gt; annotationType, boolean checkInherited) {
+		Assert.notNull(annotationType, &quot;Annotation type must not be null&quot;);
+		this.annotationType = annotationType;
+		this.checkInherited = checkInherited;
+	}
+	...
+	@Override
+	public boolean matches(Class&lt;?&gt; clazz) {
+		return (this.checkInherited ?
+				// 继承的注解也会找出来
+				(AnnotationUtils.findAnnotation(clazz, this.annotationType) != null) :
+				// 只会看自己本类的注解
+				clazz.isAnnotationPresent(this.annotationType));
+	}
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><p>​</p> <p><strong>AspectJExpressionPointcut</strong></p> <p>它既是个Pointcut，它也是个ClassFilter，下面会详细分析本类</p> <p><strong>MethodMatcher</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public interface MethodMatcher {
+	
+	// 这个称为静态匹配：在匹配条件不是太严格时使用，可以满足大部分场景的使用
+	boolean matches(Method method, @Nullable Class&lt;?&gt; targetClass);
+	// 这个称为动态匹配（运行时匹配）: 它是严格的匹配。在运行时动态的对参数的类型进行匹配
+	boolean matches(Method method, @Nullable Class&lt;?&gt; targetClass, Object... args);
+	
+	//两个方法的分界线就是boolean isRuntime()方法，步骤如下
+	// 1、先调用静态匹配，若返回true。此时就会继续去检查isRuntime()的返回值
+	// 2、若isRuntime()还返回true，那就继续调用动态匹配
+	// (若静态匹配都匹配上，动态匹配那铁定更匹配不上得~~~~)
+
+	// 是否需要执行动态匹配
+	boolean isRuntime();
+	MethodMatcher TRUE = TrueMethodMatcher.INSTANCE;
+
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p>应用场景：比如需要统计用户登录次数时，那么登录传入的参数就是可以忽略的，则静态匹配就足够了</p> <p>但是若要在登陆时对用户账号执行特殊的操作**（如赋予特殊的操作权限）**，就需要对参数进行一个类似于检验的操作，因此需要动态匹配</p> <p>​    <img src="https://gitee.com/nylg/picture/raw/master/spring/7411.png" alt="0"></p> <p>它有两个非常重要的抽象实现：StaticMethodMatcher和DynamicMethodMatcher</p> <p><strong>StaticMethodMatcher 静态匹配</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public abstract class StaticMethodMatcher implements MethodMatcher {
+	// 永远返回false表示只会去静态匹配
+	@Override
+	public final boolean isRuntime() {
+		return false;
+	}
+	// 三参数matches抛出异常，使其不被调用
+	@Override
+	public final boolean matches(Method method, @Nullable Class&lt;?&gt; targetClass, Object... args) {
+		// should never be invoked because isRuntime() returns false
+		throw new UnsupportedOperationException(&quot;Illegal MethodMatcher usage&quot;);
+	}
+
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p>​</p> <p>作用：它表示不会考虑具体 方法参数。因为不用每次都检查参数，那么对于同样的类型的方法匹配结果，就可以在框架内部缓存以提高性能。比如常用的实现类：AnnotationMethodMatcher</p> <p><strong>DynamicMethodMatcher 动态匹配</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public abstract class DynamicMethodMatcher implements MethodMatcher {
+	
+	// 永远返回true
+	@Override
+	public final boolean isRuntime() {
+		return true;
+	}
+	// 永远返回true，去匹配动态匹配的方法即可
+	@Override
+	public boolean matches(Method method, @Nullable Class&lt;?&gt; targetClass) {
+		return true;
+	}
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>​</p> <p>说明：因为每次都要对方法参数进行检查，无法对匹配结果进行缓存，所以，匹配效率相对 StatisMethodMatcher 来说要差，但匹配度更高。(实际使用得其实较少)</p> <p><strong>JdkRegexpMethodPointcut：基于正则的Pointcut</strong></p> <p>Spring官方为我们提供了一个基于正则表达式来匹配方法名的Pointcut，JdkRegexpMethodPointcut。</p> <p>​    <img src="https://gitee.com/nylg/picture/raw/master/spring/7413.png" alt="0"></p> <p>它提供了最重要的4个属性(<strong>patterns和excludedPatterns</strong>来自于父类AbstractRegexpMethodPointcut)：</p> <p>这里昂个属性来自于父类，相对来说就是比较简单的匹配signatureString（方法的全路径名称）</p> <ul><li>String[] patterns：匹配的正则表达式。如find.*表示所有方法名以find开始的方法</li> <li>String[] excludedPatterns：排除的正则表达式们</li></ul> <p>下面两个是子类，也就是JdkRegexpMethodPointcut自己提供的属性</p> <ul><li>Pattern[] compiledPatterns：相当于把正则字符串，Pattern.compile()成正则对象</li> <li>Pattern[] compiledExclusionPatterns：同上</li></ul> <p>都是数组，正则表达式都可以多个哟~~</p> <p><strong>需要注意的是，这两组含义相同，请不要同时跨组使用，没有意义，没必要深究。</strong></p> <p>这种切点表达式，在早期Spring中的使用较多，一般这么使用：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;!-- 自己书写的日志切面 --&gt;
+&lt;bean id=&quot;logBeforeAdvice&quot; class=&quot;com.fsx.aop.LogBeforeAdvice&quot; /&gt;
+
+&lt;!-- 使用JDK的正则切点~~~~~~ --&gt;
+&lt;bean id=&quot;regexPointcut&quot; class=&quot;org.springframework.aop.support.JdkRegexpMethodPointcut&quot;&gt;
+    &lt;property name=&quot;patterns&quot;&gt;
+         &lt;list&gt;
+             &lt;value&gt;find.*&lt;/value&gt;&lt;!-- 拦截所有方法名以find开始的方法 --&gt;
+         &lt;/list&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;
+
+&lt;!-- 切面+切点  组合成一个增强器即可~~~~~~ --&gt;
+&lt;aop:config&gt;
+     &lt;aop:advisor advice-ref=&quot;logBeforeAdvice&quot; pointcut-ref=&quot;regexPointcut&quot;/&gt;
+ &lt;/aop:config&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>其实Spring为我们提供了一个简便的Advisor定义，<strong>可以方便的让我们同时指定一个</strong>JdkRegexpMethodPointcut和其需要对应的Advice，它就是RegexpMethodPointcutAdvisor，这样配置起来非常的方便</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>	&lt;bean id=&quot;logBeforeAdvice&quot; class=&quot;com.fsx.aop.LogBeforeAdvice&quot; /&gt;
+    &lt;bean class=&quot;org.springframework.aop.support.RegexpMethodPointcutAdvisor&quot;&gt;
+        &lt;property name=&quot;advice&quot; ref=&quot;logBeforeAdvice&quot;/&gt;
+        &lt;property name=&quot;pattern&quot; value=&quot;find.*&quot;/&gt;
+    &lt;/bean&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>​</p> <p>​    <img src="https://gitee.com/nylg/picture/raw/master/spring/7418.png" alt="0"></p> <p>这个举例事基于XML的，之前我们都是这么来用的。那么现在用Java代码的方式也实现一遍（不需要Spring容器）：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code> public static void main(String[] args) {
+
+        ProxyFactory factory = new ProxyFactory(new Person());
+
+        //声明一个aspectj切点,一张切面
+        JdkRegexpMethodPointcut cut = new JdkRegexpMethodPointcut();
+        //cut.setPattern(&quot;com.fsx.maintest.Person.run&quot;); //它会拦截Person类下所有run的方法（无法精确到方法签名）
+        //cut.setPattern(&quot;.*run.*&quot;);//.号匹配除&quot;\r\n&quot;之外的任何单个字符。*号代表零次或多次匹配前面的字符或子表达式  所以它拦截任意包下任意类的run方法
+        cut.setPatterns(new String[]{&quot;.*run.*&quot;, &quot;.*say.*&quot;}); //可以配置多个正则表达  式...  sayHi方法也会被拦截 
+
+        // 声明一个通知（此处使用环绕通知 MethodInterceptor ）
+        Advice advice = (MethodInterceptor) invocation -&gt; {
+            System.out.println(&quot;============&gt;放行前拦截...&quot;);
+            Object obj = invocation.proceed();
+            System.out.println(&quot;============&gt;放行后拦截...&quot;);
+            return obj;
+        };
+
+        //切面=切点+通知
+        // 它还有个构造函数：DefaultPointcutAdvisor(Advice advice); 用的切面就是Pointcut.TRUE，所以如果你要指定切面，请使用自己指定的构造函数
+        // Pointcut.TRUE：表示啥都返回true，也就是说这个切面作用于所有的方法上/所有的方法
+        // addAdvice();方法最终内部都是被包装成一个 `DefaultPointcutAdvisor`，且使用的是Pointcut.TRUE切面，因此需要注意这些区别  相当于new DefaultPointcutAdvisor(Pointcut.TRUE,advice);
+        Advisor advisor = new DefaultPointcutAdvisor(cut, advice);
+        factory.addAdvisor(advisor);
+        Person p = (Person) factory.getProxy();
+
+        // 执行方法
+        p.run();
+        p.run(10);
+        p.say();
+        p.sayHi(&quot;Jack&quot;);
+        p.say(&quot;Tom&quot;, 666);
+
+    }
+}
+
+class Person {
+
+    public int run() {
+        System.out.println(&quot;我在run...&quot;);
+        return 0;
+    }
+
+    public void run(int i) {
+        System.out.println(&quot;我在run...&lt;&quot; + i + &quot;&gt;&quot;);
+    }
+
+    public void say() {
+        System.out.println(&quot;我在say...&quot;);
+    }
+
+    public void sayHi(String name) {
+        System.out.println(&quot;Hi,&quot; + name + &quot;,你好&quot;);
+    }
+
+    public int say(String name, int i) {
+        System.out.println(name + &quot;----&quot; + i);
+        return 0;
+    }
+
+}
+输出：
+============&gt;放行前拦截...
+我在run...
+============&gt;放行后拦截...
+============&gt;放行前拦截...
+我在run...&lt;10&gt;
+============&gt;放行后拦截...
+============&gt;放行前拦截...
+我在say...
+============&gt;放行后拦截...
+============&gt;放行前拦截...
+Hi,Jack,你好
+============&gt;放行后拦截...
+============&gt;放行前拦截...
+Tom----666
+============&gt;放行后拦截...
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br></div></div><p>最后需要注意的是：RegexpMethodPointcutAdvisor没有提供不匹配的正则表达式注入方法，即没有excludedPatterns注入，<strong>如果需要该功能请还是使用JdkRegexpMethodPointcut</strong>。</p> <p><strong>AspectJExpressionPointcut详细使用和分析</strong></p> <p>AspectJExpressionPointcut如字面，它和Expression有关，而这个切点表达式，最终还是依赖于AspectJ的jar包去解析的~~~~ Spring在使用@Aspect注解时，会大量的用到它</p> <p>用AspectJExpressionPointcut实现的切点比JdkRegexpMethodPointcut实现切点的好处就是，在设置切点的时候可以用切点语言来<strong>更加精确的</strong>表示拦截哪个方法。（可以精确到返回参数，参数类型，方法名,当然，也可以模糊匹配）</p> <p><strong>纯Java方式Demo：</strong></p> <p>下面我先用一个纯Java的方式的例子，先体验一把：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public static void main(String[] args) {
+        //String pointcutExpression = &quot;execution( int com.fsx.maintest.Person.run() )&quot;; // 会拦截Person.run()方法
+        //String pointcutExpression = &quot;args()&quot;; // 所有没有入参的方法会被拦截。  比如：run()会拦截,但是run(int i)不会被拦截
+        // ... AspectJExpressionPointcut支持的表达式 一共有11种（也就是Spring全部支持的切点表达式类型）
+        String pointcutExpression = &quot;@annotation(org.springframework.test.context.transaction.AfterTransaction)&quot;; // 拦截上方法标有@AfterTransaction此注解的任意方法们
+
+
+        // =============================================================
+        ProxyFactory factory = new ProxyFactory(new Person());
+
+        //声明一个aspectj切点,一张切面
+        AspectJExpressionPointcut cut = new AspectJExpressionPointcut();
+        cut.setExpression(pointcutExpression); // 设置切点表达式
+
+        // 声明一个通知（此处使用环绕通知 MethodInterceptor ）
+        Advice advice = (MethodInterceptor) invocation -&gt; {
+            System.out.println(&quot;============&gt;放行前拦截...&quot;);
+            Object obj = invocation.proceed();
+            System.out.println(&quot;============&gt;放行后拦截...&quot;);
+            return obj;
+        };
+
+        //切面=切点+通知
+        // 它还有个构造函数：DefaultPointcutAdvisor(Advice advice); 用的切面就是Pointcut.TRUE，所以如果你要指定切面，请使用自己指定的构造函数
+        // Pointcut.TRUE：表示啥都返回true，也就是说这个切面作用于所有的方法上/所有的方法
+        // addAdvice();方法最终内部都是被包装成一个 `DefaultPointcutAdvisor`，且使用的是Pointcut.TRUE切面，因此需要注意这些区别  相当于new DefaultPointcutAdvisor(Pointcut.TRUE,advice);
+        Advisor advisor = new DefaultPointcutAdvisor(cut, advice);
+        factory.addAdvisor(advisor);
+        Person p = (Person) factory.getProxy();
+
+        // 执行方法
+        p.run();
+        p.run(10);
+        p.say();
+        p.sayHi(&quot;Jack&quot;);
+        p.say(&quot;Tom&quot;, 666);
+
+    }
+
+}
+
+class Person {
+
+    @AfterTransaction
+    public int run() {
+        System.out.println(&quot;我在run...&quot;);
+        return 0;
+    }
+
+    public void run(int i) {
+        System.out.println(&quot;我在run...&lt;&quot; + i + &quot;&gt;&quot;);
+    }
+
+    public void say() {
+        System.out.println(&quot;我在say...&quot;);
+    }
+
+    public void sayHi(String name) {
+        System.out.println(&quot;Hi,&quot; + name + &quot;,你好&quot;);
+    }
+
+    public int say(String name, int i) {
+        System.out.println(name + &quot;----&quot; + i);
+        return 0;
+    }
+
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br></div></div><p>​</p> <p>如上面的图，其实Spring也我们提供了AspectJExpressionPointcutAdvisor来专门处理基于AspectJ的通知+切点的</p> <p><strong>XML方式</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class Person {
+
+    @AfterTransaction
+    public int run() {
+        System.out.println(&quot;我在run...&quot;);
+        return 0;
+    }
+
+    public void run(int i) {
+        System.out.println(&quot;我在run...&lt;&quot; + i + &quot;&gt;&quot;);
+    }
+
+    public void say() {
+        System.out.println(&quot;我在say...&quot;);
+    }
+
+    public void sayHi(String name) {
+        System.out.println(&quot;Hi,&quot; + name + &quot;,你好&quot;);
+    }
+
+    public int say(String name, int i) {
+        System.out.println(name + &quot;----&quot; + i);
+        return 0;
+    }
+
+}
+
+// 相当于准备了一个Advice
+public class MyMethodInteceptor implements MethodInterceptor {
+
+    @Override
+    public Object invoke(MethodInvocation invocation) throws Throwable {
+        System.out.println(&quot;============&gt;放行前拦截...&quot;);
+        Object obj = invocation.proceed();
+        System.out.println(&quot;============&gt;放行后拦截...&quot;);
+        return obj;
+    }
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br></div></div><p>书写Spring的xml配置文件：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+       xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+
+    &lt;!-- 作为示例，这是需要被切入的目标类 --&gt;
+    &lt;bean class=&quot;com.fsx.bean.Person&quot;/&gt;
+
+    &lt;!-- 切面=切点+通知 (采用面向切点语言进行配置切面)   此处为了便捷 直接使用 AspectJExpressionPointcutAdvisor --&gt;
+    &lt;bean id=&quot;advisor&quot; class=&quot;org.springframework.aop.aspectj.AspectJExpressionPointcutAdvisor&quot;&gt;
+        &lt;property name=&quot;expression&quot;
+                  value=&quot;@annotation(org.springframework.test.context.transaction.AfterTransaction)&quot;&gt;&lt;/property&gt;
+
+        &lt;!-- 一个Advisor里面对应一个advice~~~ --&gt;
+        &lt;property name=&quot;advice&quot;&gt;
+            &lt;bean class=&quot;com.fsx.aop.MyMethodInteceptor&quot;/&gt;
+        &lt;/property&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p>​</p> <p>把该xml配置文件导入Config配置类，让它生效</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>...
+@Configuration
+@ImportResource(locations = &quot;classpath:spring.xml&quot;)
+public class RootConfig { ... }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>启动Spring容器（采用JUnit测试）：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = {RootConfig.class})
+public class TestSpringBean {
+
+    @Autowired
+    private Person p;
+
+    @Test
+    public void test1() {
+
+        System.out.println(p.getClass()); //class com.fsx.bean.Person$$EnhancerBySpringCGLIB$$cba1d735
+
+        p.run();
+        p.run(10);
+        p.say();
+        p.sayHi(&quot;Jack&quot;);
+        p.say(&quot;Tom&quot;, 666);
+    }
+}
+
+输出：
+class com.fsx.bean.Person$$EnhancerBySpringCGLIB$$cba1d735 // 说明它是CGLIB的代理
+============&gt;放行前拦截...
+我在run...
+============&gt;放行后拦截...
+我在run...&lt;10&gt;
+我在say...
+Hi,Jack,你好
+Tom----666
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br></div></div><p>备注：此xml的配置方式其实是最原始的Spring AOP的使用。并没有使用到、这种标签注解，关于使用它们的xml配置方式，此处不做过多介绍了~~~因为也比较简单~</p> <p><strong>AspectJExpressionPointcut****源码分析</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 很容易发现，自己即是ClassFilter，也是MethodMatcher   
+// 它是子接口:ExpressionPointcut的实现类
+public class AspectJExpressionPointcut extends AbstractExpressionPointcut
+		implements ClassFilter, IntroductionAwareMethodMatcher, BeanFactoryAware {
+		...
+		private static final Set&lt;PointcutPrimitive&gt; SUPPORTED_PRIMITIVES = new HashSet&lt;&gt;();
+		
+	// 从此处可以看出，Spring支持的AspectJ的切点语言表达式一共有10中（加上后面的自己的Bean方式一共11种）
+	// AspectJ框架本省支持的非常非常多，详解枚举类：org.aspectj.weaver.tools.PointcutPrimitive
+	static {
+		SUPPORTED_PRIMITIVES.add(PointcutPrimitive.EXECUTION);
+		SUPPORTED_PRIMITIVES.add(PointcutPrimitive.ARGS);
+		SUPPORTED_PRIMITIVES.add(PointcutPrimitive.REFERENCE);
+		SUPPORTED_PRIMITIVES.add(PointcutPrimitive.THIS);
+		SUPPORTED_PRIMITIVES.add(PointcutPrimitive.TARGET);
+		SUPPORTED_PRIMITIVES.add(PointcutPrimitive.WITHIN);
+		SUPPORTED_PRIMITIVES.add(PointcutPrimitive.AT_ANNOTATION);
+		SUPPORTED_PRIMITIVES.add(PointcutPrimitive.AT_WITHIN);
+		SUPPORTED_PRIMITIVES.add(PointcutPrimitive.AT_ARGS);
+		SUPPORTED_PRIMITIVES.add(PointcutPrimitive.AT_TARGET);
+	}
+	...
+		
+	// 它持有BeanFactory 的引用，但是是可以为null的，也就是说它脱离容器也能够正常work
+	@Nullable
+	private BeanFactory beanFactory;
+	...
+	// PointcutExpression是org.aspectj.weaver.tools.PointcutExpression是AspectJ的类
+	// 它最终通过一系列操作，由org.aspectj.weaver.tools.PointcutParser#parsePointcutExpression从字符串表达式解析出来
+	@Nullable
+	private transient PointcutExpression pointcutExpression;
+	
+	...
+	// 由此可见，我们不仅仅可议写&amp;&amp; ||  !这种。也支持 and or not这种哦~~~
+	private String replaceBooleanOperators(String pcExpr) {
+		String result = StringUtils.replace(pcExpr, &quot; and &quot;, &quot; &amp;&amp; &quot;);
+		result = StringUtils.replace(result, &quot; or &quot;, &quot; || &quot;);
+		result = StringUtils.replace(result, &quot; not &quot;, &quot; ! &quot;);
+		return result;
+	}
+	...
+	// 这是ClassFilter 匹配类。借助的PointcutExpression#couldMatchJoinPointsInType 去匹配
+	public boolean matches(Class&lt;?&gt; targetClass) { ... }
+	// MethodMatcher 匹配方法，借助的PointcutExpression和ShadowMatch去匹配的
+	public boolean matches(Method method, @Nullable Class&lt;?&gt; targetClass, boolean hasIntroductions) { ... }
+	@Override
+	public boolean isRuntime() {
+		//mayNeedDynamicTest 相当于由AspectJ框架去判断的（是否有动态内容）
+		return obtainPointcutExpression().mayNeedDynamicTest();
+	}
+	...
+
+	// 初始化一个Pointcut的解析器。我们发现最后一行，新注册了一个BeanPointcutDesignatorHandler  它是准们处理Spring自己支持的bean() 的切点表达式的
+	private PointcutParser initializePointcutParser(@Nullable ClassLoader classLoader) {
+		PointcutParser parser = PointcutParser
+				.getPointcutParserSupportingSpecifiedPrimitivesAndUsingSpecifiedClassLoaderForResolution(
+						SUPPORTED_PRIMITIVES, classLoader);
+		parser.registerPointcutDesignatorHandler(new BeanPointcutDesignatorHandler());
+		return parser;
+	}
+
+	// 真正的解析，依赖于Spring自己实现的这个内部类（主要是ContextBasedMatcher 这个类，就会使用到BeanFactory了）
+	private class BeanPointcutDesignatorHandler implements PointcutDesignatorHandler {
+
+		private static final String BEAN_DESIGNATOR_NAME = &quot;bean&quot;;
+		@Override
+		public String getDesignatorName() {
+			return BEAN_DESIGNATOR_NAME;
+		}
+		// ContextBasedMatcher由Spring自己实现，对容器内Bean的匹配
+		@Override
+		public ContextBasedMatcher parse(String expression) {
+			return new BeanContextMatcher(expression);
+		}
+	}
+
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br></div></div><p>​</p> <p><strong>NameMatchMethodPointcut</strong></p> <p>如果创建切入点时候，我们往往<strong>只需要方法名字匹配</strong>，无需理会方法的签名和返回类型，这种情况下，我们可以使用 NameMatchMethodPointCut方法名字匹配切入点。（这种功能最弱，但显然效率是最高的）</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class Main {
+
+    public static void main(String[] args) {
+        ProxyFactory factory = new ProxyFactory(new Person());
+
+
+
+
+
+        // 声明一个通知（此处使用环绕通知 MethodInterceptor ）
+        Advice advice = (MethodInterceptor) invocation -&gt; {
+            System.out.println(&quot;============&gt;放行前拦截...&quot;);
+            Object obj = invocation.proceed();
+            System.out.println(&quot;============&gt;放行后拦截...&quot;);
+            return obj;
+        };
+        声明一个aspectj切点,一张切面
+        //NameMatchMethodPointcut cut = new NameMatchMethodPointcut();
+        //cut.setMappedName(&quot;run&quot;); //会匹配所有的方法名为run的方法
+         切点+通知
+        //Advisor advisor = new DefaultPointcutAdvisor(cut, advice);
+
+        NameMatchMethodPointcutAdvisor advisor = new NameMatchMethodPointcutAdvisor();
+        advisor.setMappedName(&quot;run&quot;);
+        advisor.setAdvice(advice);
+
+        factory.addAdvisor(advisor);
+        Person p = (Person) factory.getProxy();
+
+        // 执行方法
+        p.run();
+        p.run(10);
+        p.say();
+        p.sayHi(&quot;Jack&quot;);
+        p.say(&quot;Tom&quot;, 666);
+
+    }
+
+}
+输出：
+============&gt;放行前拦截...
+我在run...
+============&gt;放行后拦截...
+============&gt;放行前拦截...
+我在run...&lt;10&gt;
+============&gt;放行后拦截...
+我在say...
+Hi,Jack,你好
+Tom----666
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br></div></div><p><strong>其它Pointcut</strong></p> <p>上面已经介绍了Spring中使用得比较多的Pointcut，接下来简单的讲述一下稍微偏门些的Pointcut。</p> <p>从顶部的pointcut的继承图中可以看出，有很多实现类。</p> <p><strong>ControlFlowPointCut：流程切入点</strong></p> <p>如果有这样的特殊需求：我们对一个方法进行切入通知，但只有这个方法<strong>在一个特定方法中被调用的时候执行通知（即存在流程上行的依赖关系）</strong>，我们可以使用ControlFlowPointCut流程切入点</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class Main {
+
+    public static void main(String[] args) {
+        ProxyFactory factory = new ProxyFactory(new Person());
+
+        // 声明一个通知（此处使用环绕通知 MethodInterceptor ）
+        Advice advice = (MethodInterceptor) invocation -&gt; {
+            System.out.println(&quot;============&gt;放行前拦截...&quot;);
+            Object obj = invocation.proceed();
+            System.out.println(&quot;============&gt;放行后拦截...&quot;);
+            return obj;
+        };
+        声明一个aspectj切点,一张切面
+        // 含义：Main类里面，方法名为funabc执行时，内部调用的任何代理的方法都会被拦截~~~ 它控制的是整个流程
+        ControlFlowPointcut cut = new ControlFlowPointcut(Main.class, &quot;funabc&quot;);
+
+        // 切点+通知
+        Advisor advisor = new DefaultPointcutAdvisor(cut, advice);
+        factory.addAdvisor(advisor);
+        Person p = (Person) factory.getProxy();
+
+        // 执行方法
+        p.run();
+        p.run(10);
+        p.say();
+        p.sayHi(&quot;Jack&quot;);
+        p.say(&quot;Tom&quot;, 666);
+
+        // 此处调用Main类，方法名为funabc的方法。内部代理对象的方法就都会被拦截上了
+        funabc(p);
+    }
+
+    private static void funabc(Person person) {
+        person.run();
+        person.say();
+    }
+
+}
+
+输出：
+我在run...
+我在run...&lt;10&gt;
+我在say...
+Hi,Jack,你好
+Tom----666
+============&gt;放行前拦截...
+我在run...
+============&gt;放行后拦截...
+============&gt;放行前拦截...
+我在say...
+============&gt;放行后拦截...
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br></div></div><p>​</p> <p>使用流程切入点有时候可以解决不少问题，但值得注意的是：</p> <p>使用流程切入点在jdk1.4中比其他切入点要慢5倍，在1.3上则要慢10倍，追求高性能的<strong>要慎重使用</strong></p> <p><strong>ComposablePointcut 组合切入点</strong></p> <p>从上面的例子中，每次我们只能定义一个切入点（切点表达式）。有的时候，一个切点可能难以描述目标连接点的信息，而是需要同时满足两个切入点才行，那么ComposablePointcut就派上了用场（<strong>aspectJ里面的&amp;&amp; ||等其实也能达到类似的效果</strong>）。</p> <p>但是更好的方式是使用Spring提供的ComposalbePointcut把两个切点组合起来，通过切点的复合运行算表示，ComposalbePointcut可以将多个切点以并集或者交集的方式组合起来，提供切点之间复合运算的功能。</p> <p>先看一个Demo：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class Main {
+
+    public static void main(String[] args) {
+        ProxyFactory factory = new ProxyFactory(new Person());
+
+        // 声明一个通知（此处使用环绕通知 MethodInterceptor ）
+        Advice advice = (MethodInterceptor) invocation -&gt; {
+            System.out.println(&quot;============&gt;放行前拦截...&quot;);
+            Object obj = invocation.proceed();
+            System.out.println(&quot;============&gt;放行后拦截...&quot;);
+            return obj;
+        };
+
+        // 先创建一个流程切入点
+        ControlFlowPointcut controlFlowPointcut = new ControlFlowPointcut(Main.class, &quot;funabc&quot;);
+        // 再创建一个方法名切入点
+        NameMatchMethodPointcut nameMatchMethodPointcut = new NameMatchMethodPointcut();
+        nameMatchMethodPointcut.addMethodName(&quot;say&quot;);
+
+        // 创建一个复合切点 把上面两者并且进来
+        ComposablePointcut cut = new ComposablePointcut();
+        cut.intersection((Pointcut) controlFlowPointcut).intersection((Pointcut)nameMatchMethodPointcut);
+
+        // 切点+通知（注意：此处放的是复合切面）
+        Advisor advisor = new DefaultPointcutAdvisor(cut, advice);
+        factory.addAdvisor(advisor);
+        Person p = (Person) factory.getProxy();
+
+        // 执行方法
+        p.run();
+        p.run(10);
+        p.say();
+        p.sayHi(&quot;Jack&quot;);
+        p.say(&quot;Tom&quot;, 666);
+
+        funabc(p);
+    }
+
+    private static void funabc(Person person) {
+        person.run();
+        person.say();
+
+    }
+
+}
+
+输出：
+我在run...
+我在run...&lt;10&gt;
+我在say...
+Hi,Jack,你好
+Tom----666
+我在run...
+============&gt;放行前拦截...
+我在say...
+============&gt;放行后拦截...
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br></div></div><p>从结果中和上面对比我们能看出，两个切入点有并且的效果。（只有say方法被拦截了，run方法并没有被拦截）</p> <p><strong>ComposablePointcut 源码分析</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class ComposablePointcut implements Pointcut, Serializable {
+
+	// 它持有ClassFilter 和 MethodMatcher ，最终通过它去组合匹配
+	private ClassFilter classFilter;
+	private MethodMatcher methodMatcher;
+
+	// 构造函数一个共5个
+
+	// 匹配所有类所有方法的复合切点
+	public ComposablePointcut() {
+		this.classFilter = ClassFilter.TRUE;
+		this.methodMatcher = MethodMatcher.TRUE;
+	}
+	// 匹配特定切点的复合切点（相当于把这个节点包装了一下而已）
+	public ComposablePointcut(Pointcut pointcut) {
+		Assert.notNull(pointcut, &quot;Pointcut must not be null&quot;);
+		this.classFilter = pointcut.getClassFilter();
+		this.methodMatcher = pointcut.getMethodMatcher();
+	}
+	// 匹配特定类**所有方法**的复合切点
+	public ComposablePointcut(ClassFilter classFilter) {
+		Assert.notNull(classFilter, &quot;ClassFilter must not be null&quot;);
+		this.classFilter = classFilter;
+		this.methodMatcher = MethodMatcher.TRUE;
+	}
+	// 匹配**所有类**特定方法的复合切点
+	public ComposablePointcut(MethodMatcher methodMatcher) {
+		Assert.notNull(methodMatcher, &quot;MethodMatcher must not be null&quot;);
+		this.classFilter = ClassFilter.TRUE;
+		this.methodMatcher = methodMatcher;
+	}
+	// 匹配特定类特定方法的复合切点（这个是最为强大的）
+	public ComposablePointcut(ClassFilter classFilter, MethodMatcher methodMatcher) {
+		Assert.notNull(classFilter, &quot;ClassFilter must not be null&quot;);
+		Assert.notNull(methodMatcher, &quot;MethodMatcher must not be null&quot;);
+		this.classFilter = classFilter;
+		this.methodMatcher = methodMatcher;
+	}
+	
+	// 匹配特定类特定方法的复合切点（这个是最为强大的）
+	public ComposablePointcut union(ClassFilter other) {
+		this.classFilter = ClassFilters.union(this.classFilter, other);
+		return this;
+	}
+
+	// ==========3个并集(union) / 3个交集(intersection) 运算的方法========
+	public ComposablePointcut intersection(ClassFilter other) {
+		this.classFilter = ClassFilters.intersection(this.classFilter, other);
+		return this;
+	}
+	public ComposablePointcut union(MethodMatcher other) {
+		this.methodMatcher = MethodMatchers.union(this.methodMatcher, other);
+		return this;
+	}
+	public ComposablePointcut intersection(MethodMatcher other) {
+		this.methodMatcher = MethodMatchers.intersection(this.methodMatcher, other);
+		return this;
+	}
+	public ComposablePointcut union(Pointcut other) {
+		this.methodMatcher = MethodMatchers.union(
+				this.methodMatcher, this.classFilter, other.getMethodMatcher(), other.getClassFilter());
+		this.classFilter = ClassFilters.union(this.classFilter, other.getClassFilter());
+		return this;
+	}
+	public ComposablePointcut intersection(Pointcut other) {
+		this.classFilter = ClassFilters.intersection(this.classFilter, other.getClassFilter());
+		this.methodMatcher = MethodMatchers.intersection(this.methodMatcher, other.getMethodMatcher());
+		return this;
+	}
+	...
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br></div></div><p>ComposablePointcut没有提供<strong>直接对两个切点类型</strong>并集交集的运算的方法。若需要，请参照org.springframework.aop.support.Pointcuts这个工具类里面有对两个Pointcut进行并集、交集的操作（后面再介绍）</p> <p><strong>AnnotationMatchingPointcut 注解切入点</strong></p> <p>根据对象是否有指定类型的注解来匹配Pointcut</p> <p>有两种注解，类级别注解和方法级别注解。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>//仅指定类级别的注解， 标注了 ClassLevelAnnotation 注解的类中的**所有方法**执行的时候，将全部匹配。  
+AnnotationMatchingPointcut pointcut = new AnnotationMatchingPointcut(ClassLevelAnnotation.class);  
+// === 还可以使用静态方法创建 pointcut 实例  
+AnnotationMatchingPointcut pointcut = AnnotationMatchingPointcut.forClassAnnotation(ClassLevelAnnotation.class);  
+
+
+//仅指定方法级别的注解，标注了 MethodLeavelAnnotaion 注解的**方法（忽略类匹配）都将匹配**  
+AnnotationMatchingPointcut pointcut = AnnotationMatchingPointcut.forMethodAnnotation(MethodLevelAnnotation.class);  
+
+==========这个是同时想限定：===============
+//同时限定类级别和方法级别的注解，只有标注了 ClassLevelAnnotation 的类中 ***同时***标注了 MethodLevelAnnotation 的方法才会匹配  
+AnnotationMatchingPointcut pointcut = new AnnotationMatchingPointcut(ClassLevelAnnotation.class, MethodLevelAnnotation.class);  
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>​</p> <p>Demo：略</p> <p><strong>总结</strong></p> <p>其实，这些基础的知识也是为了去更好的理解Spring的自动代理创建器铺路</p> <h3 id="advisor"><a href="#advisor" class="header-anchor">#</a> Advisor</h3> <p>Advisor是Spring AOP的顶层抽象，用来管理Advice和Pointcut（PointcutAdvisor和切点有关，但IntroductionAdvisor和切点无关）</p> <p>注意：Advice是aopalliance对通知（增强器）的顶层抽象，请注意区分~~</p> <p>Pointcut是Spring AOP对切点的抽象。切点的实现方式有多种，其中一种就是AspectJ</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public interface Advisor {
+
+	//@since 5.0 Spring5以后才有的  空通知  一般当作默认值
+	Advice EMPTY_ADVICE = new Advice() {};
+	
+	// 该Advisor 持有的通知器
+	Advice getAdvice();
+	// 这个有点意思：Spring所有的实现类都是return true(官方说暂时还没有应用到)
+	// 注意：生成的Advisor是单例还是多例不由isPerInstance()的返回结果决定，而由自己在定义bean的时候控制
+	// 理解：和类共享（per-class）或基于实例（per-instance）相关  类共享：类比静态变量   实例共享：类比实例变量
+	boolean isPerInstance();
+
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>​</p> <p>它的继承体系主要有如下两个：PointcutAdvisor和IntroductionAdvisor</p> <p>​    <img src="https://gitee.com/nylg/picture/raw/master/spring/7423.png" alt="0"></p> <p>IntroductionAdvisor与PointcutAdvisor最本质上的区别就是，IntroductionAdvisor<strong>只能应用于类级别的拦截</strong>，只能使用Introduction型的Advice。</p> <p>而不能像PointcutAdvisor那样，可以使用任何类型的Pointcut，以及几乎任何类型的Advice。</p> <p><strong>PointcutAdvisor</strong>**：和切点有关的Advisor**</p> <p>顾名思义，它和Pointcu有关。在上一篇博文：<a href="https://blog.csdn.net/f641385712/article/details/89178421" target="_blank" rel="noopener noreferrer">【小家Spring】Spring AOP核心类Pointcut解析，对PointcutExpression切点表达式解析原理分析（以AspectJExpressionPointcut为例）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>其实我们已经介绍了好几个PointcutAdvisor。比如：RegexpMethodPointcutAdvisor和NameMatchMethodPointcutAdvisor,它哥俩都位于org.springframework.aop.support此包。当然还要介绍过AspectJExpressionPointcutAdvisor…</p> <p>PointcutAdvisor它的实现类非常的多：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public interface PointcutAdvisor extends Advisor {
+	Pointcut getPointcut();
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>​    <img src="https://gitee.com/nylg/picture/raw/master/spring/7414.png" alt="0"></p> <p><strong>AbstractPointcutAdvisor</strong>**：抽象实现**</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 实现了 Ordered接口
+public abstract class AbstractPointcutAdvisor implements PointcutAdvisor, Ordered, Serializable {
+	// 调用者可以手动来指定Order
+	public void setOrder(int order) {
+		this.order = order;
+	}
+	
+	@Override
+	public int getOrder() {
+		if (this.order != null) {
+			return this.order;
+		}
+		
+		// 若调用者没有指定Order，那就拿advice的order为准（若有），否则LOWEST_PRECEDENCE表示最后执行
+		Advice advice = getAdvice();
+		if (advice instanceof Ordered) {
+			return ((Ordered) advice).getOrder();
+		}
+		return Ordered.LOWEST_PRECEDENCE;
+	}
+	// Spring还没有使用该属性 永远返回true了
+	@Override
+	public boolean isPerInstance() {
+		return true;
+	}
+	...
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br></div></div><p>​</p> <hr> <p><strong>AbstractGenericPointcutAdvisor 一般的、通用的PointcutAdvisor</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public abstract class AbstractGenericPointcutAdvisor extends AbstractPointcutAdvisor {
+	private Advice advice = EMPTY_ADVICE;
+	public void setAdvice(Advice advice) {
+		this.advice = advice;
+	}
+	@Override
+	public Advice getAdvice() {
+		return this.advice;
+	}
+	...
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>​</p> <p><strong>DefaultPointcutAdvisor 通用的，最强大的Advisor</strong></p> <p>它是Spring提供的通用的，也被认为是最强大的Advisor。它可以把任意的两个Advice和Pointcut放在一起：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class DefaultPointcutAdvisor extends AbstractGenericPointcutAdvisor implements Serializable {
+	private Pointcut pointcut = Pointcut.TRUE;
+	public DefaultPointcutAdvisor() {
+	}
+	// 若没有指定advice,默认Pointcut.TRUE，也就是说会匹配所有的方法的执行
+	public DefaultPointcutAdvisor(Advice advice) {
+		this(Pointcut.TRUE, advice);
+	}
+	// 显然，这个构造函数式非常强大的~~
+	public DefaultPointcutAdvisor(Pointcut pointcut, Advice advice) {
+		this.pointcut = pointcut;
+		setAdvice(advice);
+	}
+
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>​</p> <hr> <p><strong>AbstractBeanFactoryPointcutAdvisor：和bean工厂有关的PointcutAdvisor</strong></p> <p>从命名也能看出来，它和BeanFactory有关。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 实现了BeanFactoryAware接口，若在Bean容器里注册可议注入BeanFactory~~~从而访问里面的实例
+public abstract class AbstractBeanFactoryPointcutAdvisor extends AbstractPointcutAdvisor implements BeanFactoryAware {
+	
+	// 我们发现这两个都是@Nullable，所以他们脱离容器使用也是可以的
+	@Nullable
+	private String adviceBeanName;
+	@Nullable
+	private BeanFactory beanFactory;
+	
+	@Nullable
+	private transient volatile Advice advice;
+	public void setAdviceBeanName(@Nullable String adviceBeanName) {
+		this.adviceBeanName = adviceBeanName;
+	}
+	@Override
+	public void setBeanFactory(BeanFactory beanFactory) {
+		this.beanFactory = beanFactory;
+		// 若在Spring环境下，会给AdviceMonitor重新赋值为：getSingletonMutex()
+		resetAdviceMonitor();
+	}
+	
+	// 此处加锁
+	public void setAdvice(Advice advice) {
+		synchronized (this.adviceMonitor) {
+			this.advice = advice;
+		}
+	}
+
+	// 这是它最重要的方法，获取增强器
+	@Override
+	public Advice getAdvice() {
+		Advice advice = this.advice;
+		// 非Spring环境一般手动set进来，所以就直接返回吧
+		if (advice != null) {
+			return advice;
+		}
+
+		// 显然进来Spring容器环境了，bean工厂和beanName都是不能为null的
+		Assert.state(this.adviceBeanName != null, &quot;'adviceBeanName' must be specified&quot;);
+		Assert.state(this.beanFactory != null, &quot;BeanFactory must be set to resolve 'adviceBeanName'&quot;);
+		
+		// 若bean是单例的  那就没什么好说的  直接去工厂里拿出来就完事了（Advice.class）  有可能返回null哦
+		if (this.beanFactory.isSingleton(this.adviceBeanName)) {
+			advice = this.beanFactory.getBean(this.adviceBeanName, Advice.class);
+			this.advice = advice;
+			return advice;
+		}
+		// 若是多例的，就加锁  然后调用getBean()给他生成一个新的实例即可
+		else {
+			synchronized (this.adviceMonitor) {
+				//这步赋值和判断不能省~~~确保万无一失
+				advice = this.advice;
+				if (advice == null) {
+					advice = this.beanFactory.getBean(this.adviceBeanName, Advice.class);
+					this.advice = advice;
+				}
+				return advice;
+			}
+		}
+	}
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br></div></div><p>​</p> <p><strong>DefaultBeanFactoryPointcutAdvisor：通用的BeanFactory的Advisor</strong></p> <p>这个是和Bean工厂关联的，通用的PointcutAdvisor</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class DefaultBeanFactoryPointcutAdvisor extends AbstractBeanFactoryPointcutAdvisor {
+	private Pointcut pointcut = Pointcut.TRUE;
+
+	// 若传进来为null，还是选择 Pointcut.TRUE 匹配所有
+	public void setPointcut(@Nullable Pointcut pointcut) {
+		this.pointcut = (pointcut != null ? pointcut : Pointcut.TRUE);
+	}
+	@Override
+	public Pointcut getPointcut() {
+		return this.pointcut;
+	}
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>在Spring事务相关里，你会看到这个类</p> <p>位于org.springframework.aop.support包内</p> <p><strong>BeanFactoryCacheOperationSourceAdvisor：和Cache有关</strong></p> <p>Spring Cache的@Cachable等注解的拦截，就是采用了它。该类位于：org.springframework.cache.interceptor，显然它和cache相关了。Jar包属于：Spring-context.jar</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// @since 3.1  毕竟Spring的整个org.springframework.cache.Cache体系都是从这里开始的。（@Cacheable...等等）
+public class BeanFactoryCacheOperationSourceAdvisor extends AbstractBeanFactoryPointcutAdvisor {
+
+	// 显然它最重要的是持有这个引用（Cache章节详细介绍了它）
+	@Nullable
+	private CacheOperationSource cacheOperationSource;
+
+	// Pointcut使用的是CacheOperationSourcePointcut
+	private final CacheOperationSourcePointcut pointcut = new CacheOperationSourcePointcut() {
+		@Override
+		@Nullable
+		protected CacheOperationSource getCacheOperationSource() {
+			return cacheOperationSource;
+		}
+	};
+
+
+	public void setCacheOperationSource(CacheOperationSource cacheOperationSource) {
+		this.cacheOperationSource = cacheOperationSource;
+	}
+	public void setClassFilter(ClassFilter classFilter) {
+		this.pointcut.setClassFilter(classFilter);
+	}
+	@Override
+	public Pointcut getPointcut() {
+		return this.pointcut;
+	}
+
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br></div></div><p><strong>AsyncAnnotationAdvisor：和@Async有关</strong></p> <p>位于包为：org.springframework.scheduling.annotation，所属jar包为spring-context.jar</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class AsyncAnnotationAdvisor extends AbstractPointcutAdvisor implements BeanFactoryAware {
+	// 处理异步发生的异常的====
+	private AsyncUncaughtExceptionHandler exceptionHandler;
+	
+	private Advice advice;
+	private Pointcut pointcut;
+
+	// 构造函数们
+	public AsyncAnnotationAdvisor() {
+		this(null, null);
+	}
+	// executor：可以自己指定异步任务的执行器
+	// exceptionHandler：异步异常的处理器
+	public AsyncAnnotationAdvisor(@Nullable Executor executor, @Nullable AsyncUncaughtExceptionHandler exceptionHandler) {
+		Set&lt;Class&lt;? extends Annotation&gt;&gt; asyncAnnotationTypes = new LinkedHashSet&lt;&gt;(2);
+		asyncAnnotationTypes.add(Async.class);
+		
+		// 支持EJB的注解：@Asynchronous
+		try {
+			asyncAnnotationTypes.add((Class&lt;? extends Annotation&gt;)
+					ClassUtils.forName(&quot;javax.ejb.Asynchronous&quot;, AsyncAnnotationAdvisor.class.getClassLoader()));
+		} catch (ClassNotFoundException ex) {
+			// If EJB 3.1 API not present, simply ignore.
+		}
+		if (exceptionHandler != null) {
+			this.exceptionHandler = exceptionHandler;
+		} else {
+			// SimpleAsyncUncaughtExceptionHandler：只是一个简单的logger.error的输入打印
+			this.exceptionHandler = new SimpleAsyncUncaughtExceptionHandler();
+		}
+		
+		// buildAdvice: new AnnotationAsyncExecutionInterceptor(executor, exceptionHandler)   它是个MethodInterceptor  环绕通知器
+		this.advice = buildAdvice(executor, this.exceptionHandler);
+		// 把asyncAnnotationTypes交给buildPointcut，它最终是个ComposablePointcut，会把这两种注解都支持。union起来 或者的关系
+		this.pointcut = buildPointcut(asyncAnnotationTypes);
+	}
+
+	public void setTaskExecutor(Executor executor) {
+		this.advice = buildAdvice(executor, this.exceptionHandler);
+	}
+	...
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br></div></div><p><strong>AbstractAspectJAdvice****的实现类如下：这5个实现类完完整整的对应着我们AspectJ的那5个注解。</strong></p> <p>​    <img src="https://gitee.com/nylg/picture/raw/master/spring/7417.png" alt="0"></p> <hr> <p><strong>AspectJPointcutAdvisor</strong></p> <p>显然是和AspectJ相关的，使用得很是广泛。注意它和AspectJExpressionPointcutAdvisor的区别。有名字也能看出来，AspectJExpressionPointcutAdvisor和表达式语言的切点相关的，而AspectJPointcutAdvisor是无关的。它哥俩都位于包org.springframework.aop.aspectj里。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class AspectJPointcutAdvisor implements PointcutAdvisor, Ordered {
+	
+	// AbstractAspectJAdvice通知：它的子类看下面截图，就非常清楚了
+	private final AbstractAspectJAdvice advice;
+	// 可以接受任意的Pointcut，可谓非常的通用（当然也包含切点表达式啦）
+	private final Pointcut pointcut;
+
+	@Nullable
+	private Integer order;
+	
+	// 只有这一个构造函数，包装一个advice
+	public AspectJPointcutAdvisor(AbstractAspectJAdvice advice) {
+		Assert.notNull(advice, &quot;Advice must not be null&quot;);
+		this.advice = advice;
+		// 然后pointcut根据advice直接给生成了一个。这是AbstractAspectJAdvice#buildSafePointcut的方法
+		this.pointcut = advice.buildSafePointcut();
+	}
+
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><hr> <hr> <p><strong>InstantiationModelAwarePointcutAdvisor</strong></p> <p>它是PointcutAdvisor的一个子接口。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 由SpringAOP顾问包装AspectJ实现的接口 可能具有延迟初始化策略的方面。
+// 例如，一个PerThis实例化模型意味着对建议的初始化太慢
+public interface InstantiationModelAwarePointcutAdvisor extends PointcutAdvisor {
+
+	// 该Advisor是否需要懒加载
+	boolean isLazy();
+	// 判断此Advisor它所拥有的Advice是否已经初始化了
+	boolean isAdviceInstantiated();
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>它的唯一实现类：InstantiationModelAwarePointcutAdvisorImpl</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 默认的访问权限，显然是Spring内部自己用的
+class InstantiationModelAwarePointcutAdvisorImpl
+		implements InstantiationModelAwarePointcutAdvisor, AspectJPrecedenceInformation, Serializable {
+	private static final Advice EMPTY_ADVICE = new Advice() {};
+	// 和AspectJExpression
+	private final AspectJExpressionPointcut declaredPointcut;
+	..
+	
+	// 通知方法
+	private transient Method aspectJAdviceMethod;
+	
+	private final AspectJAdvisorFactory aspectJAdvisorFactory;
+	private final MetadataAwareAspectInstanceFactory aspectInstanceFactory;
+
+	@Nullable
+	private Advice instantiatedAdvice;
+	@Nullable
+	private Boolean isBeforeAdvice;
+	@Nullable
+	private Boolean isAfterAdvice;
+	
+	...
+	@Override
+	public boolean isPerInstance() {
+		return (getAspectMetadata().getAjType().getPerClause().getKind() != PerClauseKind.SINGLETON);
+	}
+	@Override
+	public synchronized Advice getAdvice() {
+		if (this.instantiatedAdvice == null) {
+			this.instantiatedAdvice = instantiateAdvice(this.declaredPointcut);
+		}
+		return this.instantiatedAdvice;
+	}
+	// advice 由aspectJAdvisorFactory去生产  懒加载的效果
+	private Advice instantiateAdvice(AspectJExpressionPointcut pointcut) {
+		Advice advice = this.aspectJAdvisorFactory.getAdvice(this.aspectJAdviceMethod, pointcut,
+				this.aspectInstanceFactory, this.declarationOrder, this.aspectName);
+		return (advice != null ? advice : EMPTY_ADVICE);
+	}
+
+	@Override
+	public boolean isBeforeAdvice() {
+		if (this.isBeforeAdvice == null) {
+			determineAdviceType();
+		}
+		return this.isBeforeAdvice;
+	}
+	@Override
+	public boolean isAfterAdvice() {
+		if (this.isAfterAdvice == null) {
+			determineAdviceType();
+		}
+		return this.isAfterAdvice;
+	}
+	
+	// 这里解释根据@Aspect方法上标注的注解，来区分这两个字段的值的
+	private void determineAdviceType() {
+		AspectJAnnotation&lt;?&gt; aspectJAnnotation =
+				AbstractAspectJAdvisorFactory.findAspectJAnnotationOnMethod(this.aspectJAdviceMethod);
+		if (aspectJAnnotation == null) {
+			this.isBeforeAdvice = false;
+			this.isAfterAdvice = false;
+		}
+		else {
+			switch (aspectJAnnotation.getAnnotationType()) {
+				case AtAfter:
+				case AtAfterReturning:
+				case AtAfterThrowing:
+					this.isAfterAdvice = true;
+					this.isBeforeAdvice = false;
+					break;
+				case AtAround:
+				case AtPointcut:
+					this.isAfterAdvice = false;
+					this.isBeforeAdvice = false;
+					break;
+				case AtBefore:
+					this.isAfterAdvice = false;
+					this.isBeforeAdvice = true;
+			}
+		}
+	}
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br></div></div><p><strong>这个<strong><strong>Advisor</strong></strong>是在Spring解析被</strong> <strong>@AspectJ****注解注释的类时生成的 Advisor,。</strong></p> <p>而这个 Advisor中的 Pointcut与Advice都是由ReflectiveAspectJAdvisorFactory 来解析生成的(与之对应的 Advice 是 AspectJMethodBeforeAdvice, AspectJAfterAdvice, AspectJAfterReturningAdvice, AspectJAfterThrowingAdvice, AspectJAroundAdvice,</p> <p>Pointcut 则是AspectJExpressionPointcut)， 解析的步骤是:</p> <p>自动代理创建器：AnnotationAwareAspectJAutoProxyCreator.findCandidateAdvisors() -&gt;</p> <p>Bean工厂相关的Advisor构建器：BeanFactoryAspectJAdvisorsBuilder.buildAspectJAdvisors() -&gt;</p> <p>ReflectiveAspectJAdvisorFactory.getAdvisors() -&gt;</p> <p>ReflectiveAspectJAdvisorFactory.getAdvisor() 最终生成了InstantiationModelAwarePointcutAdvisorImpl(当然包括里面的 Pointcut与 advice 也都是由 ReflectiveAspectJAdvisorFactory 解析生成的)</p> <hr> <p><strong>IntroductionAdvisor：引介切面</strong></p> <p>Spring中有五种增强：BeforeAdvide（前置增强）、AfterAdvice（后置增强）、ThrowsAdvice（异常增强）、RoundAdvice（环绕增强）、IntroductionAdvice（引入增强）</p> <p>RoundAdvice（环绕增强）：就是BeforeAdvide（前置增强）、AfterAdvice（后置增强）的组合使用叫环绕增强。前四种都比较简单。。。</p> <p><strong>引入增强（Introduction Advice）的概念：一个Java类，没有实现A接口，在不修改Java类的情况下，使其具备A接口的功能。****（非常强大有木有，A不需要动代码，就能有别的功能，吊炸天有木有）</strong></p> <p>IntroductionAdvisor纯粹就是为Introduction而生的。</p> <p>IntroductionAdvisor 和 PointcutAdvisor接口不同，它仅有一个类过滤器ClassFilter 而没有 MethodMatcher，这是因为 <strong>`引介切面</strong> 的切点是类级别的，而 Pointcut 的切点是方法级别的（<strong>细粒度更细，所以更加常用</strong>）。</p> <p>为了更好的了解IntroductionAdvisor，我先有必要讲解下IntroductionInfo和IntroductionInterceptor；</p> <p>Introduction可以在不改动目标类定义的情况下，为目标类增加新的属性和行为。</p> <p><strong>IntroductionInfo：引介信息</strong></p> <p>IntroductionInfo 接口描述了目标类需要实现的新接口。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 提供描述引言所需信息的接口
+// IntroductionAdvisor必须实现这个接口。若`org.aopalliance.aop.Advice`直接实现了此接口，
+// 它可议独立的当作introduction来使用而不用依赖IntroductionAdvisor。这种情况下，这个advice可议自描述，不仅提供。。。
+public interface IntroductionInfo {
+	//Return the additional interfaces introduced by this Advisor or Advice.
+	// 返回额外给Advisor 或者 advice实现的接口们
+	Class&lt;?&gt;[] getInterfaces();
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>​</p> <p>它的继承结构如下：</p> <p>​    <img src="https://gitee.com/nylg/picture/raw/master/spring/7416.png" alt="0"></p> <p><strong>IntroductionInterceptor：引介拦截器</strong></p> <p>在Spring中，为目标对象添加新的属性和行为必须声明相应的接口以及相应的实现。这样，再通过特定的拦截器将新的接口定义以及实现类中的逻辑附加到目标对象上。然后，目标对象（确切的说，是目标对象的代理对象）就拥有了新的状态和行为</p> <p>这里面介绍这个非常强大的拦截器：IntroductionInterceptor</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// IntroductionInterceptor它是对MethodInterceptor的一个扩展，同时他还继承了接口DynamicIntroductionAdvice
+public interface IntroductionInterceptor extends MethodInterceptor, DynamicIntroductionAdvice {
+	
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>​</p> <p><strong>DynamicIntroductionAdvice</strong>**：**</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public interface DynamicIntroductionAdvice extends Advice {
+	boolean implementsInterface(Class&lt;?&gt; intf);
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>​</p> <p>通过DynamicIntroductionAdvice，可以界定当前的 IntroductionInterceptor为哪些接口<strong>提供相应的拦截功能</strong>。通过MethodInterceptor,IntroductionInterceptor 就可以处理新添加的接口上的方法调用了</p> <p><strong>打个比方</strong></p> <p>如果把每个目标对象实例看作盒装牛奶生产线上的那一盒盒牛奶的话，那么生产合格证就是新的Introduction逻辑，而introductionInterceptor 就是把这些生产合格证<strong>贴到一盒盒牛奶上的那个人</strong>。</p> <p>要对目标对象进行拦截并添加Introduction的逻辑，我们可以直接扩展IntroductionInterceptor，然后在子类的invoke方法中实现所有的拦截逻辑</p> <p>除非特殊情况下需要直接扩展IntroductionInterceptor,大多数时候，<strong>直接使用Spring提供的两个现成的实现类就可以了</strong>：DelegatingIntroductionInterceptor 和 DelegatePerTargetObjectIntroductionInterceptor</p> <p>​    <img src="https://gitee.com/nylg/picture/raw/master/spring/7422.png" alt="0"></p> <p><strong>例子</strong></p> <p>下面使用一个例子，加深一下对引介增强的了解：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 定义一个新的行为接口，这个行为准备作用在目标对象上
+public interface IOtherInte {
+    void doOther();
+}
+// 自己定义一个IntroductionInterceptor来实现IntroductionInterceptor接口
+// 注意：此处也实现了接口IOtherInte（这是类似于增强器部分）  相当于这个interptor目前就只处理 IOtherInte
+public class SomeInteIntroductionInterceptor implements IntroductionInterceptor, IOtherInte {
+    /**
+     * 判断调用的方法是否为指定类中的方法
+     * 如果Method代表了一个方法 那么调用它的invoke就相当于执行了它代表的这个方法
+     */
+    @Override
+    public Object invoke(MethodInvocation invocation) throws Throwable {
+        if (implementsInterface(invocation.getMethod().getDeclaringClass())) {
+            System.out.println(&quot;我是引介增强的方法体~~~invoke&quot;);
+            return invocation.getMethod().invoke(this, invocation.getArguments());
+        }
+        return invocation.proceed();
+    }
+
+    /**
+     * 判断clazz是否为给定接口IOtherBean的实现
+     */
+    @Override
+    public boolean implementsInterface(Class clazz) {
+        return clazz.isAssignableFrom(IOtherInte.class);
+    }
+
+    @Override
+    public void doOther() {
+        System.out.println(&quot;给人贴标签 doOther...&quot;);
+    }
+}
+
+// 方法测试
+    public static void main(String[] args) {
+        ProxyFactory factory = new ProxyFactory(new Person());
+        factory.setProxyTargetClass(true); // 强制私用CGLIB 以保证我们的Person方法也能正常调用
+
+        // 此处采用IntroductionInterceptor 这个引介增强的拦截器
+        Advice advice = new SomeInteIntroductionInterceptor();
+
+        // 切点+通知（注意：此处放的是复合切面）
+        Advisor advisor = new DefaultIntroductionAdvisor((DynamicIntroductionAdvice) advice, IOtherInte.class);
+        //Advisor advisor = new DefaultPointcutAdvisor(cut, advice);
+        factory.addAdvisor(advisor);
+
+        IOtherInte otherInte = (IOtherInte) factory.getProxy();
+        otherInte.doOther();
+
+        System.out.println(&quot;===============================&quot;);
+
+        // Person本身自己的方法  也得到了保留
+        Person p = (Person) factory.getProxy();
+        p.run();
+        p.say();
+    }
+
+输出：
+我是引介增强的方法体~~~invoke
+给人贴标签 doOther...
+===============================
+我在run...
+我在say...
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br></div></div><p>​</p> <p>我们发现，我们没有更改过Person类的任何代码，它竟然就有了doOther()方法的功能，这就是引介增强的强大功能。此处使用的Advisor为DefaultIntroductionAdvisor。它也是我们最常用的Advisor:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 它是一个Advisor，同时也是一个IntroductionInfo 
+public interface IntroductionAdvisor extends Advisor, IntroductionInfo {
+	
+	// 它只有ClassFilter，因为它只能作用在类层面上
+	ClassFilter getClassFilter();
+	// 判断这些接口，是否真的能够增强。  DynamicIntroductionAdvice#implementsInterface()方法
+	void validateInterfaces() throws IllegalArgumentException;
+
+}
+
+// 它直接事IntroductionAdvisor的实现类。同时也是一个ClassFilter
+public class DefaultIntroductionAdvisor implements IntroductionAdvisor, ClassFilter, Ordered, Serializable {
+	private final Advice advice;
+
+	private final Set&lt;Class&lt;?&gt;&gt; interfaces = new LinkedHashSet&lt;&gt;();
+	private int order = Ordered.LOWEST_PRECEDENCE;
+    
+	// 构造函数们
+	public DefaultIntroductionAdvisor(Advice advice) {
+		this(advice, (advice instanceof IntroductionInfo ? (IntroductionInfo) advice : null));
+	}
+	
+	// 如果IntroductionInfo 不等于null，就会把接口都add进去/
+	// IntroductionInfo 的实现类有常用的：DelegatingIntroductionInterceptor和DelegatePerTargetObjectIntroductionInterceptor
+	public DefaultIntroductionAdvisor(Advice advice, @Nullable IntroductionInfo introductionInfo) {
+		Assert.notNull(advice, &quot;Advice must not be null&quot;);
+		this.advice = advice;
+		if (introductionInfo != null) {
+			Class&lt;?&gt;[] introducedInterfaces = introductionInfo.getInterfaces();
+			if (introducedInterfaces.length == 0) {
+				throw new IllegalArgumentException(&quot;IntroductionAdviceSupport implements no interfaces&quot;);
+			}
+			for (Class&lt;?&gt; ifc : introducedInterfaces) {
+				addInterface(ifc);
+			}
+		}
+	}
+	
+	//当然你也可以不使用IntroductionInfo，而自己手动指定了这个接口
+	public DefaultIntroductionAdvisor(DynamicIntroductionAdvice advice, Class&lt;?&gt; intf) {
+		Assert.notNull(advice, &quot;Advice must not be null&quot;);
+		this.advice = advice;
+		addInterface(intf);
+	}
+	...
+	@Override
+	public void validateInterfaces() throws IllegalArgumentException {
+		for (Class&lt;?&gt; ifc : this.interfaces) {
+			if (this.advice instanceof DynamicIntroductionAdvice &amp;&amp;
+					!((DynamicIntroductionAdvice) this.advice).implementsInterface(ifc)) {
+			 throw new IllegalArgumentException(&quot;DynamicIntroductionAdvice [&quot; + this.advice + &quot;] &quot; +
+					 &quot;does not implement interface [&quot; + ifc.getName() + &quot;] specified for introduction&quot;);
+			}
+		}
+	}
+	...
+	
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br></div></div><p><strong>DelegatingIntroductionInterceptor和DelegatePerTargetObjectIntroductionInterceptor</strong></p> <p>这两个类是 Spring AOP 中为 IntroductionInterceptor 介面所提供的实作类别，我们可以直接继承他俩，然后扩展我们自己的行为状态。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class DelegatingIntroductionInterceptor extends IntroductionInfoSupport
+		implements IntroductionInterceptor {
+	
+	// 需要被代理的那个对象。因为这个类需要子类继承使用，所以一般都是thid
+	@Nullable
+	private Object delegate;
+	/**
+	 * Construct a new DelegatingIntroductionInterceptor.
+	 * The delegate will be the subclass, which must implement
+	 * additional interfaces.
+	 * 访问权限事protected，显然就是说子类必须去继承这个类，然后提供空构造函数。代理类就是this
+	 */
+	protected DelegatingIntroductionInterceptor() {
+		init(this);
+	}
+	// 当然，你也可以手动指定delegate
+	public DelegatingIntroductionInterceptor(Object delegate) {
+		init(delegate);
+	}
+	private void init(Object delegate) {
+		Assert.notNull(delegate, &quot;Delegate must not be null&quot;);
+		this.delegate = delegate;
+		implementInterfacesOnObject(delegate);
+		
+		// 移除调这些内部标记的接口们
+		// We don't want to expose the control interface
+		suppressInterface(IntroductionInterceptor.class);
+		suppressInterface(DynamicIntroductionAdvice.class);
+	}
+	
+	// 如果你要自定义一些行为：比如环绕通知之类的，子类需要复写此方法（否则没有必要了）
+	@Override
+	@Nullable
+	public Object invoke(MethodInvocation mi) throws Throwable {
+		// 判断是否是引介增强
+		if (isMethodOnIntroducedInterface(mi)) {
+			Object retVal = AopUtils.invokeJoinpointUsingReflection(this.delegate, mi.getMethod(), mi.getArguments());
+
+			// 如果返回值就是delegate 本身，那就把本身返回出去
+			if (retVal == this.delegate &amp;&amp; mi instanceof ProxyMethodInvocation) {
+				Object proxy = ((ProxyMethodInvocation) mi).getProxy();
+				if (mi.getMethod().getReturnType().isInstance(proxy)) {
+					retVal = proxy;
+				}
+			}
+			return retVal;
+		}
+
+		return doProceed(mi);
+	}
+	...
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br></div></div><p>因此，上面的例子Demo，我用DelegatingIntroductionInterceptor改造一下（只需要改造SomeInteIntroductionInterceptor即可）：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 因为我们继承自DelegatingIntroductionInterceptor，所以若我们不做环绕通知个性化，只需要实现接口的方法即可
+public class SomeInteIntroductionInterceptor extends DelegatingIntroductionInterceptor implements IOtherInte {
+
+    @Override
+    public void doOther() {
+        System.out.println(&quot;给人贴标签 doOther...&quot;);
+    }
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>​</p> <p>继承此类，确实少了不少事呢。</p> <p><strong>DelegatePerTargetObjectIntroductionInterceptor</strong></p> <p>与DelegatingIntroductionInterceptor不同，DelegatePerTargetObjectIntroductionInterceptor会在内部持有一个目标对象<strong>与相应Introduction逻辑实现类之间的映射关系</strong>。</p> <p>当每个目标对象上的新定义的接口方法被调用的时候，它会拦截这些调用。然后以目标对象实例作为键，到它持有的那个映射关系中取得对应当前目标对象实例的Introduction实现类实例。 使用起来和DelegatingIntroductionInterceptor没有太大区别，主要在构造函数上：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>1: 可以删除掉SomeInteIntroductionInterceptor类了
+2：单独实现引介接口
+public class OtherImpl implements IOtherInte {
+
+    @Override
+    public void doOther() {
+        System.out.println(&quot;我是OtherImpl&quot;);
+    }
+}
+main方法里修改如下：这样就ok了
+Advice advice = new DelegatePerTargetObjectIntroductionInterceptor(OtherImpl.class, IOtherInte.class);
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>备注：若你需要复写invoke方法的逻辑，请扩展它即可~~~（它的优点是：每次执行目标对象的时候，都可议缓存起来，提高一点效率吧）</p> <p><strong>总结</strong></p> <p>Advisor是Spring AOP中非常重要的一个概念，最终代理对象进行执行什么的，都是适配到此处，因此需要重点掌握。</p> <p>其中，引介增强平时使用得较少，但是在特殊的场景下，它能够解决某一类问题，还是非常不错的~</p> <p><strong>事务</strong></p> <p>DataSourceTransactionManager:</p> <p>​    <img src="https://gitee.com/nylg/picture/raw/master/spring/7424.png" alt="0"></p> <p><strong>TransactionAttribute</strong></p> <p>这个接口是在TransactionDefinition的基础上的扩展</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 它继承自TransactionDefinition ，所有可以定义事务的基础属性
+public interface TransactionAttribute extends TransactionDefinition {
+	 // 返回与此事务属性关联的限定符值
+	//@since 3.0
+	@Nullable
+	String getQualifier();
+	// Should we roll back on the given exception?
+	boolean rollbackOn(Throwable ex);
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>​</p> <p>​    <img src="https://gitee.com/nylg/picture/raw/master/spring/7412.png" alt="0"></p> <p>它的主要实现类有：DefaultTransactionAttribute、RuleBasedTransactionAttribute、DelegatingTransactionAttribute</p> <p><strong>DefaultTransactionAttribute</strong></p> <p>默认的事务属性实现，也是最常用的一个实现。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 它继承自DefaultTransactionDefinition 
+public class DefaultTransactionAttribute extends DefaultTransactionDefinition implements TransactionAttribute {
+
+	@Nullable
+	private String qualifier;
+	@Nullable
+	private String descriptor;
+
+	// 你自己也可以自定义一个TransactionAttribute other 来替换掉一些默认行为
+	public DefaultTransactionAttribute() {
+		super();
+	}
+	public DefaultTransactionAttribute(TransactionAttribute other) {
+		super(other);
+	}
+
+	// @since 3.0
+	public void setQualifier(@Nullable String qualifier) {
+		this.qualifier = qualifier;
+	}
+	@Override
+	@Nullable
+	public String getQualifier() {
+		return this.qualifier;
+	}
+	...
+	// 可以清晰的看到：默认只回滚RuntimeException 或者 Error(比如OOM这种)
+	@Override
+	public boolean rollbackOn(Throwable ex) {
+		return (ex instanceof RuntimeException || ex instanceof Error);
+	}
+	
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br></div></div><p><strong>RuleBasedTransactionAttribute</strong></p> <p>这个在基础实现的基础上扩展了一下，扩展了一些规则。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class RuleBasedTransactionAttribute extends DefaultTransactionAttribute implements Serializable {
+	/** Prefix for rollback-on-exception rules in description strings. */
+	public static final String PREFIX_ROLLBACK_RULE = &quot;-&quot;;
+	/** Prefix for commit-on-exception rules in description strings. */
+	public static final String PREFIX_COMMIT_RULE = &quot;+&quot;;
+
+	// RollbackRuleAttribute：它是个实体类，确定给定异常是否应导致回滚的规则
+	// 相当于封装了这个规则的一个实体，内部封装一个异常  提供一个实例变量： 这个变量相当于回滚规则为只回滚RuntimeException
+	// public static final RollbackRuleAttribute ROLLBACK_ON_RUNTIME_EXCEPTIONS = new RollbackRuleAttribute(RuntimeException.class);
+	// 所以此类最重要的一个属性，就是这个，它能维护多种回滚的规则~~~~
+	@Nullable
+	private List&lt;RollbackRuleAttribute&gt; rollbackRules;
+	...
+	public List&lt;RollbackRuleAttribute&gt; getRollbackRules() {
+		if (this.rollbackRules == null) {
+			this.rollbackRules = new LinkedList&lt;&gt;();
+		}
+		return this.rollbackRules;
+	}
+
+	// 核心逻辑输入，复写了父类的rollbackOn方法。也就是看看当前异常是否需要回滚呢？？？
+	@Override
+	public boolean rollbackOn(Throwable ex) {
+		RollbackRuleAttribute winner = null;
+		int deepest = Integer.MAX_VALUE;
+
+		// 这里getDepth()就是去看看异常栈里面  该类型的异常处于啥位置。
+		// 这里用了Integer的最大值，基本相当于不管异常有多深，遇上此异常都应该回滚喽，也就是找到这个winnner了~~~~~
+		if (this.rollbackRules != null) {
+			for (RollbackRuleAttribute rule : this.rollbackRules) {
+				int depth = rule.getDepth(ex);
+				if (depth &gt;= 0 &amp;&amp; depth &lt; deepest) {
+					deepest = depth;
+					winner = rule;
+				}
+			}
+		}
+
+		// User superclass behavior (rollback on unchecked) if no rule matches.
+		// 这句相当于：如果你没有指定回滚规则，那就交给父类吧（只回滚RuntimeException和Error类型）
+		if (winner == null) {
+			return super.rollbackOn(ex);
+		}
+		
+		// 最终只要找到了，但是不是NoRollbackRuleAttribute类型就成`~~~~
+		return !(winner instanceof NoRollbackRuleAttribute);
+	}
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br></div></div><p>​</p> <p><strong>DelegatingTransactionAttribute</strong></p> <p>很显然，它就是一个简单的代理，内部持有一个TransactionAttribute的引用。自己也是个抽象类，没做啥事，此处略过。它也继承自：DelegatingTransactionDefinition</p> <p><strong>TransactionDefinition</strong></p> <p>事务的定义，上面已经介绍了一个重要分支：TransactionAttribute。接下来继续介绍另外一个分支：</p> <p><strong>DelegatingTransactionDefinition</strong></p> <p>一样的也就是个代理抽象类，啥都木有做。内部持有一个TransactionDefinition targetDefinition的引用而已，所有方法都是委托给targetDefinition去做的</p> <p><strong>ResourceTransactionDefinition</strong></p> <p>这个子接口非常的新，是Spring5.1才提供的</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// @since 5.1
+// 指示资源事务，尤其是事务性资源是否准备好进行本地优化
+public interface ResourceTransactionDefinition extends TransactionDefinition {
+	// 确定事务性资源是否准备好进行本地优化
+	// @see #isReadOnly()
+	boolean isLocalResource();
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>​</p> <p>它和ResourceTransactionManager的使用相关联。ResourceTransactionManager是PlatformTransactionManager的一个子接口。</p> <p>我们最常用的事务管理器DataSourceTransactionManager也实现了这个接口~~~~</p> <p>目前Spring还未提供任何ResourceTransactionDefinition它的具体实现~</p> <p><strong>TransactionAttributeSource：事务属性源</strong></p> <p>它位于包：org.springframework.transaction.interceptor</p> <p>它有点类似于之前讲过的TargetSource，它也是对TransactionAttribute进行了一层包装~~</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public interface TransactionAttributeSource {
+	// 通过Method和目标类，拿到事务属性~~~
+	// 比如我们的@Transaction是标注在方法上的，可议自定义方法级别的事务属性，用它就特别的方便~
+	@Nullable
+	TransactionAttribute getTransactionAttribute(Method method, @Nullable Class&lt;?&gt; targetClass);
+
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>​</p> <p>这里有很多人不明白了，为何都给了Method，为啥还要传入Class呢？难道Method还不知道它所属的类？？？</p> <p>这里做如下解释：</p> <ol><li>method – 目前正在进行的方法调用</li> <li>targetClass – 真正要调用的方法所在的类</li></ol> <p>这里是有细微差别的：</p> <ul><li>method的所属类不一样是targetClass。比如：method是代理对象的方法，它的所属类是代理出来的类</li> <li>但是：targetClass一定会有一个方法和method的方法签名一样</li></ul> <p>通常情况下，method的所属类会是targetClass的某个祖先类或者实现的某个接口。(动态代理)</p> <p>它的实现有多种：</p> <p>​    <img src="https://gitee.com/nylg/picture/raw/master/spring/7415.png" alt="0"></p> <p>TransactionAttributeSource一般都是作为TransactionInterceptor的一个属性被set进去，然后看看这个事务属性可以作用在不同的方法上面，实现不同方法的个性化定制~</p> <p>（实际真正处理它的是父类TransactionAspectSupport，它会做匹配~~~~） 具体的在详解TransactionInterceptor的时候会讲述到</p> <p><strong>NameMatchTransactionAttributeSource</strong></p> <p>根据名字就能匹配，然后该事务属性就会作用在对应的方法上。比如下面例子：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// 自定义配置一个事务拦截器（@Transaction注解也会使用此拦截器进行拦截）
+    @Bean
+    public TransactionInterceptor transactionInterceptor(PlatformTransactionManager transactionManager) {
+        Map&lt;String, TransactionAttribute&gt; txMap = new HashMap&lt;&gt;();
+        // required事务  适用于觉得部分场景~
+        RuleBasedTransactionAttribute requiredTx = new RuleBasedTransactionAttribute();
+        requiredTx.setRollbackRules(Collections.singletonList(new RollbackRuleAttribute(RuntimeException.class)));
+        requiredTx.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+        txMap.put(&quot;add*&quot;, requiredTx);
+        txMap.put(&quot;save*&quot;, requiredTx);
+        txMap.put(&quot;insert*&quot;, requiredTx);
+        txMap.put(&quot;update*&quot;, requiredTx);
+        txMap.put(&quot;delete*&quot;, requiredTx);
+
+        // 查询 使用只读事务
+        RuleBasedTransactionAttribute readOnlyTx = new RuleBasedTransactionAttribute();
+        readOnlyTx.setReadOnly(true);
+        readOnlyTx.setPropagationBehavior(TransactionDefinition.PROPAGATION_NOT_SUPPORTED);
+        txMap.put(&quot;get*&quot;, readOnlyTx);
+        txMap.put(&quot;query*&quot;, readOnlyTx);
+
+        // 定义事务属性的source~~~ 此处使用它  也就是根据方法名进行匹配的~~~
+        NameMatchTransactionAttributeSource source = new NameMatchTransactionAttributeSource();
+        source.setNameMap(txMap);
+        return new TransactionInterceptor(transactionManager, source);
+    }
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><p>​</p> <p>这个在我们基于XML的配置事务的时候，原理就是这样的~~</p> <p>注意此处的匹配模式也是基于简单匹配的：PatternMatchUtils.simpleMatch。而非强大的正则匹配。底层getTransactionAttribute()时会根据不同的方法名，来返回不同的事务属性~~~</p> <p><strong>MethodMapTransactionAttributeSource</strong></p> <p>它的使用方式和NameMatchTransactionAttributeSource基本相同，但是有一个不同在于：</p> <p>如果使用NameMatchTransactionAttributeSource配置属性源，比如get*配置为执行事务，那么所有的bean的get方法都会被加上事务，这可能不是我们想要的，因此对于自动代理，我们更好的选择是MethodMapTransactionAttributeSource，它需要指定需要事务化的完整类名和方法名</p> <p><strong>CompositeTransactionAttributeSource</strong></p> <p>它代表一种组合模式。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// @since 2.0 它是Spring2.0后才推出来的
+public class CompositeTransactionAttributeSource implements TransactionAttributeSource, Serializable {
+	private final TransactionAttributeSource[] transactionAttributeSources;
+	public CompositeTransactionAttributeSource(TransactionAttributeSource... transactionAttributeSources) {
+		Assert.notNull(transactionAttributeSources, &quot;TransactionAttributeSource array must not be null&quot;);
+		this.transactionAttributeSources = transactionAttributeSources;
+	}
+		
+	// 这个实现方法也很容易。多个TransactionAttributeSource放在一起，只要任意一个匹配上就成
+	// 备注：若匹配上多个，请注意先后顺序就成   这里面是数组  会保持和你放入的顺序一样~~~
+	@Override
+	@Nullable
+	public TransactionAttribute getTransactionAttribute(Method method, @Nullable Class&lt;?&gt; targetClass) {
+		for (TransactionAttributeSource source : this.transactionAttributeSources) {
+			TransactionAttribute attr = source.getTransactionAttribute(method, targetClass);
+			if (attr != null) {
+				return attr;
+			}
+		}
+		return null;
+	}
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><p>​</p> <p><strong>MatchAlwaysTransactionAttributeSource</strong></p> <p>它是TransactionAttributeSource的一个最简单的实现，每次调用，都是返回相同的TransactionAttribute</p> <p>当然它是可议set一个TransactionAttribute作为通用的事务属性的实现的</p> <p><strong>AnnotationTransactionAttributeSource</strong></p> <p>这个就是重点了，它是基于注解驱动的事务管理的事务属性源，和@Transaction相关，也是现在使用得最最多的方式。</p> <p>它的基本作用为：它遇上比如@Transaction标注的方法时，此类会分析此事务注解，最终组织形成一个TransactionAttribute供随后的调用。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public class AnnotationTransactionAttributeSource extends AbstractFallbackTransactionAttributeSource implements Serializable {
+
+	// 这个是“向下兼容”，JavaEE提供的其余两种注解~~
+	private static final boolean jta12Present; //JTA 1.2事务注解
+	private static final boolean ejb3Present; //EJB 3 事务注解是
+	static {
+		ClassLoader classLoader = AnnotationTransactionAttributeSource.class.getClassLoader();
+		jta12Present = ClassUtils.isPresent(&quot;javax.transaction.Transactional&quot;, classLoader);
+		ejb3Present = ClassUtils.isPresent(&quot;javax.ejb.TransactionAttribute&quot;, classLoader);
+	}
+	
+	// true：只处理public方法（基于JDK的代理  显然就只会处理这种方法）
+	// false：private/protected等方法都会处理。   基于AspectJ代理得方式可议设置为false
+	// 默认情况下：会被赋值为true，表示只处理public的方法
+	private final boolean publicMethodsOnly;
+	// 保存用于分析事务注解的事务注解分析器   这个注解分析的解析器是重点
+	private final Set&lt;TransactionAnnotationParser&gt; annotationParsers;
+
+	// 构造函数, publicMethodsOnly 缺省使用 true
+	public AnnotationTransactionAttributeSource() {
+		this(true);
+	}
+	public AnnotationTransactionAttributeSource(boolean publicMethodsOnly) {
+		this.publicMethodsOnly = publicMethodsOnly;
+		if (jta12Present || ejb3Present) {
+			this.annotationParsers = new LinkedHashSet&lt;&gt;(4);
+			this.annotationParsers.add(new SpringTransactionAnnotationParser());
+			if (jta12Present) {
+				this.annotationParsers.add(new JtaTransactionAnnotationParser());
+			}
+			if (ejb3Present) {
+				this.annotationParsers.add(new Ejb3TransactionAnnotationParser());
+			}
+		} 
+		// 默认情况下，只添加Spring自己的注解解析器（绝大部分情况都实这里）
+		else {
+			this.annotationParsers = Collections.singleton(new SpringTransactionAnnotationParser());
+		}
+	}
+	// 自己也可以指定一个TransactionAnnotationParser   或者多个也成
+	public AnnotationTransactionAttributeSource(TransactionAnnotationParser annotationParser) {	... }
+	public AnnotationTransactionAttributeSource(TransactionAnnotationParser... annotationParsers) { ... }
+	public AnnotationTransactionAttributeSource(Set&lt;TransactionAnnotationParser&gt; annotationParsers) { ... }
+
+	// 获取某个类/方法上的事务注解属性（属于 父类的抽象方法）
+	@Override
+	@Nullable
+	protected TransactionAttribute findTransactionAttribute(Class&lt;?&gt; clazz) {
+		return determineTransactionAttribute(clazz);
+	}
+	@Override
+	@Nullable
+	protected TransactionAttribute findTransactionAttribute(Method method) {
+		return determineTransactionAttribute(method);
+	}
+
+	// 具体实现如下：
+	// 分析获取某个被注解的元素（AnnotatedElement ），具体的来讲，指的是一个类或者一个方法上的事务注解属性。
+	// 实现会遍历自己属性annotationParsers中所包含的事务注解属性分析器试图获取事务注解属性  所以主要还是依赖于TransactionAnnotationParser 去解析的
+	@Nullable
+	protected TransactionAttribute determineTransactionAttribute(AnnotatedElement element) {
+		for (TransactionAnnotationParser annotationParser : this.annotationParsers) {
+			TransactionAttribute attr = annotationParser.parseTransactionAnnotation(element);
+			if (attr != null) {
+				return attr;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * By default, only public methods can be made transactional.
+	 */
+	@Override
+	protected boolean allowPublicMethodsOnly() {
+		return this.publicMethodsOnly;
+	}
+	...
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br></div></div><p>从源码中可议知道，真正提供给调用的getTransactionAttribute在父类中实现的：</p> <p><strong>AbstractFallbackTransactionAttributeSource</strong></p> <p>AbstractFallbackTransactionAttributeSource是接口TransactionAttributeSource的抽象实现，也是上面提到的工具类AnnotationTransactionAttributeSource的父类。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>public abstract class AbstractFallbackTransactionAttributeSource implements TransactionAttributeSource {
+
+	// 针对没有事务注解属性的方法进行事务注解属性缓存时使用的特殊值，用于标记该方法没有事务注解属性
+	// 从而不用在首次缓存在信息后，不用再次重复执行真正的分析  来提高查找的效率
+	// 标注了@Transaction注解的表示有事务属性的，才会最终加入事务。但是，但是此处需要注意的是，只要被事务的Advisor切中的，都会缓存起来  放置过度的查找~~~~ 因此才有这个常量的出现
+	private static final TransactionAttribute NULL_TRANSACTION_ATTRIBUTE = new DefaultTransactionAttribute() {
+		@Override
+		public String toString() {
+			return &quot;null&quot;;
+		}
+	};
+
+	// 方法上的事务注解属性缓存，key使用目标类上的方法，使用类型MethodClassKey来表示
+	// 这个Map会比较大，会被事务相关的Advisor拦截下来的方法，最终都会缓存下来。关于事务相关的Advisor，后续也是会着重讲解的~~~
+	// 因为会有很多，所以我们才需要一个NULL_TRANSACTION_ATTRIBUTE常量来提高查找的效率~~~
+	private final Map&lt;Object, TransactionAttribute&gt; attributeCache = new ConcurrentHashMap&lt;&gt;(1024);
+
+	// 获取指定方法上的注解事务属性   如果方法上没有注解事务属性，则使用目标方法所属类上的注解事务属性
+	@Override
+	@Nullable
+	public TransactionAttribute getTransactionAttribute(Method method, @Nullable Class&lt;?&gt; targetClass) {
+		// 如果目标方法是内置类Object上的方法，总是返回null，这些方法上不应用事务
+		if (method.getDeclaringClass() == Object.class) {
+			return null;
+		}
+
+		// 先看缓存里有木有，此处使用的非常经典的MethodClassKey作为Map的key
+		Object cacheKey = getCacheKey(method, targetClass);
+		TransactionAttribute cached = this.attributeCache.get(cacheKey);
+		if (cached != null) {
+			//目标方法上上并没有事务注解属性，但是已经被尝试分析过并且已经被缓存，
+			// 使用的值是 NULL_TRANSACTION_ATTRIBUTE,所以这里再次尝试获取其注解事务属性时，直接返回 null
+			if (cached == NULL_TRANSACTION_ATTRIBUTE) {
+				return null;
+			} else {
+				return cached;
+			}
+		}
+		// 缓存没有命中~~~~
+		else {
+			// 通过方法、目标Class 分析出此方法上的事务属性~~~~~
+			TransactionAttribute txAttr = computeTransactionAttribute(method, targetClass);
+			// 如果目标方法上并没有使用注解事务属性，也缓存该信息，只不过使用的值是一个特殊值:
+			if (txAttr == null) {
+				this.attributeCache.put(cacheKey, NULL_TRANSACTION_ATTRIBUTE);
+			}
+			// 存在目标属性~ 就put到里面去。
+			// 获取到methodIdentification  基本只为了输出日志~~~
+			else {
+				String methodIdentification = ClassUtils.getQualifiedMethodName(method, targetClass);
+				if (txAttr instanceof DefaultTransactionAttribute) {
+					((DefaultTransactionAttribute) txAttr).setDescriptor(methodIdentification);
+				}
+				if (logger.isTraceEnabled()) {
+					logger.trace(&quot;Adding transactional method '&quot; + methodIdentification + &quot;' with attribute: &quot; + txAttr);
+				}
+				this.attributeCache.put(cacheKey, txAttr);
+			}
+			return txAttr;
+		}
+	}
+
+	//查找目标方法上的事务注解属性 也是上面的核心方法
+	@Nullable
+	protected TransactionAttribute computeTransactionAttribute(Method method, @Nullable Class&lt;?&gt; targetClass) {
+		// 如果事务注解属性分析仅仅针对public方法，而当前方法不是public，则直接返回null
+		// 如果是private，AOP是能切入，代理对象也会生成的  但就是事务不回生效的~~~~
+		if (allowPublicMethodsOnly() &amp;&amp; !Modifier.isPublic(method.getModifiers())) {
+			return null;
+		}
+
+		// 上面说了，因为Method并不一样属于目标类。所以这个方法就是获取targetClass上的那个和method对应的方法  也就是最终要执行的方法
+		Method specificMethod = AopUtils.getMostSpecificMethod(method, targetClass);
+
+		// 第一步：去找直接标记在方法上的事务属性~~~ 如果方法上有就直接返回（不用再看类上的了）
+		// findTransactionAttribute这个方法其实就是子类去实现的
+		TransactionAttribute txAttr = findTransactionAttribute(specificMethod);
+		if (txAttr != null) {
+			return txAttr;
+		}
+
+		// 然后尝试检查事务注解属性是否标记在目标方法 specificMethod（注意此处用不是Method） 所属类上
+		txAttr = findTransactionAttribute(specificMethod.getDeclaringClass());
+		if (txAttr != null &amp;&amp; ClassUtils.isUserLevelMethod(method)) {
+			return txAttr;
+		}
+
+		// 程序走到这里说明目标方法specificMethod，也就是实现类上的目标方法上没有标记事务注解属性（否则直接返回了嘛）
+		
+		// 如果 specificMethod 和 method 不同，则说明 specificMethod 是具体实现类的方法method 是实现类所实现接口的方法
+		// 因此再次尝试从 method 上获取事务注解属性
+		// 这也就是为何我们的@Transaction标注在接口上或者接口的方法上都是好使的原因~~~~~~~
+		if (specificMethod != method) {
+			// Fallback is to look at the original method.
+			txAttr = findTransactionAttribute(method);
+			if (txAttr != null) {
+				return txAttr;
+			}
+			txAttr = findTransactionAttribute(method.getDeclaringClass());
+			if (txAttr != null &amp;&amp; ClassUtils.isUserLevelMethod(method)) {
+				return txAttr;
+			}
+		}
+		return null;
+	}
+
+	// 可议看到默认值是false  表示private的也是ok的
+	// 但是`AnnotationTransactionAttributeSource`复写了它  可以由开发者指定（默认是true了）
+	protected boolean allowPublicMethodsOnly() {
+		return false;
+	}
+
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br></div></div><p>从上文可以看出，真正把@Transaction注解变成一个TransactionAttribute类的是TransactionAnnotationParser，下面有必要来具体看看它</p> <p><strong>TransactionAnnotationParser</strong></p> <p>顾名思义，它是解析方法/类上事务注解的。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// @since 2.5
+public interface TransactionAnnotationParser {
+	@Nullable
+	TransactionAttribute parseTransactionAnnotation(AnnotatedElement element);
+
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>它支持上面说的到三个注解，分别对应三个实现类：JtaTransactionAnnotationParser、Ejb3TransactionAnnotationParser、SpringTransactionAnnotationParser。</p> <p>因为现在基本是Spring的天下了，因此本文只讲述SpringTransactionAnnotationParser，其它的雷同</p> <p><strong>SpringTransactionAnnotationParser</strong></p> <p>它专门用于解析Class或者Method上的org.springframework.transaction.annotation.Transactional注解的。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// @since 2.5 此类的实现相对来说还是比较简单的
+public class SpringTransactionAnnotationParser implements TransactionAnnotationParser, Serializable {
+	
+	// 此方法对外暴露，表示获取该方法/类上面的TransactionAttribute 
+	@Override
+	@Nullable
+	public TransactionAttribute parseTransactionAnnotation(AnnotatedElement element) {
+		AnnotationAttributes attributes = AnnotatedElementUtils.findMergedAnnotationAttributes(element, Transactional.class, false, false);
+		if (attributes != null) {
+			// 此处注意，把这个注解的属性交给它，最终转换为事务的属性类~~~~
+			return parseTransactionAnnotation(attributes);
+		}
+		// 注解都木有，那就返回null
+		else {
+			return null;
+		}
+	}
+
+	// 顺便提供的一个重载方法，可以让你直接传入一个注解
+	public TransactionAttribute parseTransactionAnnotation(Transactional ann) {
+		return parseTransactionAnnotation(AnnotationUtils.getAnnotationAttributes(ann, false, false));
+	}
+
+	// 这个简单的说：就是把注解的属性们 专门为事务属性们~~~~
+	protected TransactionAttribute parseTransactionAnnotation(AnnotationAttributes attributes) {
+		// 此处用的 RuleBasedTransactionAttribute  因为它可议指定不需要回滚的类~~~~
+		RuleBasedTransactionAttribute rbta = new RuleBasedTransactionAttribute();
+		
+		// 事务的传播属性枚举：内部定义了7种事务传播行为~~~~~
+		Propagation propagation = attributes.getEnum(&quot;propagation&quot;);
+		rbta.setPropagationBehavior(propagation.value());
+		
+		// 事务的隔离级别枚举。一共是4中，枚举里提供一个默认值: 也就是上面我们说的TransactionDefinition.ISOLATION_DEFAULT
+		// 至于默认值是哪种隔离界别：这个具体的数据库有关~~~
+		Isolation isolation = attributes.getEnum(&quot;isolation&quot;);
+		rbta.setIsolationLevel(isolation.value());
+	
+		// 设置事务的超时时间
+		rbta.setTimeout(attributes.getNumber(&quot;timeout&quot;).intValue());
+		// 是否是只读事务
+		rbta.setReadOnly(attributes.getBoolean(&quot;readOnly&quot;));
+		// 这个属性，是指定事务管理器PlatformTransactionManager的BeanName的，若不指定，那就按照类型找了
+		// 若容器中存在多个事务管理器，但又没指定名字  那就报错啦~~~
+		rbta.setQualifier(attributes.getString(&quot;value&quot;));
+
+		// rollbackFor可以指定需要回滚的异常，可议指定多个  若不指定默认为RuntimeException
+		// 此处使用的RollbackRuleAttribute包装~~~~  它就是个POJO没有实现其余接口
+		List&lt;RollbackRuleAttribute&gt; rollbackRules = new ArrayList&lt;&gt;();
+		for (Class&lt;?&gt; rbRule : attributes.getClassArray(&quot;rollbackFor&quot;)) {
+			rollbackRules.add(new RollbackRuleAttribute(rbRule));
+		}
+		// 全类名的方式~~
+		for (String rbRule : attributes.getStringArray(&quot;rollbackForClassName&quot;)) {
+			rollbackRules.add(new RollbackRuleAttribute(rbRule));
+		}
+
+
+		// 指定不需要回滚的异常类型们~~~
+		// 此处使用的NoRollbackRuleAttribute包装  它是RollbackRuleAttribute的子类
+		for (Class&lt;?&gt; rbRule : attributes.getClassArray(&quot;noRollbackFor&quot;)) {
+			rollbackRules.add(new NoRollbackRuleAttribute(rbRule));
+		}
+		for (String rbRule : attributes.getStringArray(&quot;noRollbackForClassName&quot;)) {
+			rollbackRules.add(new NoRollbackRuleAttribute(rbRule));
+		}
+		// 最后别忘了set进去
+		rbta.setRollbackRules(rollbackRules);
+
+		return rbta;
+	}
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br></div></div><p>通过这个parser就可议把方法/类上的注解，转换为事务属性，然后缓存起来。</p> <p>这样方法在调用的时候，直接根据Method就能取到事务属性，从而执行不同的事务策略~~~</p> <p><strong>SavepointManager</strong></p> <p>管理事务savepoint的编程式API接口。</p> <p>JDBC定义了SavePoint接口，提供在一个更细粒度的事务控制机制。<strong>当设置了一个保存点后，可以rollback到该保存点处的状态，而不是rollback整个事务。Connection接口的setSavepoint和releaseSavepoint方法可以设置和释放保存点。</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// @since 1.1
+public interface SavepointManager {
+	Object createSavepoint() throws TransactionException;
+	void rollbackToSavepoint(Object savepoint) throws TransactionException;
+	void releaseSavepoint(Object savepoint) throws TransactionException;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>​</p> <p>它的主要实现有如下：</p> <p>​    <img src="https://gitee.com/nylg/picture/raw/master/spring/7421.png" alt="0"></p> <p>TransactionStatus这个分支很重要，后面有着重分析。这里先看看JdbcTransactionObjectSupport这个实现</p> <p><strong>JdbcTransactionObjectSupport</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>// @since 1.1  继承自SmartTransactionObject 
+public abstract class JdbcTransactionObjectSupport implements SavepointManager, SmartTransactionObject {
+	
+	// 这是Spring定义的类，持有java.sql.Connection
+	// 所以最支不支持还原点、创建还原点其实都是委托给它来的~
+	@Nullable
+	private ConnectionHolder connectionHolder;
+	...
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>它也只是个抽象类，SmartTransactionObject接口相关的方法都没有去实现~~~~但是它的子类DataSourceTransactionObject有去实现的~</p> <p>关于还原点的实现，整体上还是比较简单的，就是委托给Connection去做~</p></div></div>  <div class="page-edit"><!----> <!----> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2022/06/23, 19:19:48</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/6f13ef/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">Spring源码</div></a> <a href="/pages/883153/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">Spring IOC</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/6f13ef/" class="prev">Spring源码</a></span> <span class="next"><a href="/pages/883153/">Spring IOC</a>→
+      </span></p></div></div></div> <div class="article-list"><div class="article-title"><a href="/archives/" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/pages/80365f/"><div>
+            证券市场基本法律法规
+            <!----></div></a> <span class="date">03-13</span></dt></dl><dl><dd>02</dd> <dt><a href="/pages/d9e4f4/"><div>
+            证券考试规则
+            <!----></div></a> <span class="date">03-12</span></dt></dl><dl><dd>03</dd> <dt><a href="/pages/cb2c17/"><div>
+            金融市场基础知识
+            <!----></div></a> <span class="date">03-12</span></dt></dl> <dl><dd></dd> <dt><a href="/archives/" class="more">更多文章&gt;</a></dt></dl></div></div></main></div> <div class="footer"><div class="icons"><a href="mailto:cloudjava@163.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="https://github.com/bigdatajava" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="https://gitee.com/nylg" title="Gitee" target="_blank" class="iconfont icon-gitee"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2014-2024
+    <span>wen chao | <a href="https://github.com/bigdatajava/blog-talk/blob/main/LICENSE" target="_blank">MIT License</a></span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"><div></div></div></div>
+    <script src="/assets/js/app.b2807c2b.js" defer></script><script src="/assets/js/2.eeaab5de.js" defer></script><script src="/assets/js/215.81872845.js" defer></script>
+  </body>
+</html>
